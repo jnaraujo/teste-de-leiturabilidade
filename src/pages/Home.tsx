@@ -28,9 +28,9 @@ export function Home(){
 
     return (
         <div id="home">
-            <Container className="content">
+            <Container fluid className="content">
                 <Row className="justify-content-center">
-                    <Col className="col" lg={8}>
+                    <Col className="col" lg={8} xl={6}>
                         <div className="top">
                             <h1>
                                 Teste de leitura
