@@ -6,7 +6,7 @@ import React, { useRef, useState } from "react";
 import * as ReadingEase from './../script/ReadingEase'
 
 import ReactGA from 'react-ga';
-ReactGA.initialize('G-4LWJY6GY04')
+ReactGA.initialize('UA-185204927-2')
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 export function Home(){
