@@ -1,0 +1,215 @@
+@import "~bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+// VARIABLES
+$white: #FAFAFA;
+$black: #1A1A1A;
+$gray: #5F5F5F;
+$gray2: #CCCCCC;
+
+
+.top{
+    margin-top: 40px;
+    border-bottom: 1px solid $gray2;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+    h1{
+        font-weight: 600;
+        font-size: 35px;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 10px;
+        color: $black;
+    }
+    p{
+        font-size: 18px;
+        margin: 0;
+        padding-bottom: 15px;
+        color: $gray;
+        font-weight: 400;
+
+        span{
+            font-weight: 600;
+        }
+    }
+}
+
+.textarea{
+    font-size: 16px;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    color: $black;
+
+    
+    margin-bottom: 1rem;
+    line-height: 1.75;
+
+    border-bottom: 1px solid $gray2;
+    padding-bottom: 20px;
+
+    textarea{
+        width: 100%;
+        height: 60vh;
+        background-color: transparent;
+        overflow: hidden;
+        overflow-y: visible;
+        resize: none;
+        border: none;
+    }
+    textarea:focus{
+        outline: none !important;
+        border: none;
+    }
+
+    textarea::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    textarea::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+    
+    textarea::-webkit-scrollbar-thumb {
+        background: #888; 
+    }
+    textarea::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+        cursor: pointer; 
+    }
+}
+
+#home{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: $white;
+}
+.container{
+    display: flexbox;
+}
+.rd_result{
+    font-family: 'Poppins', sans-serif;
+
+    position: relative;
+    width: 90vw;
+    margin: 0 auto;
+
+    padding: 10px 10px;
+
+    p{
+        font-size: 18px;
+        span{
+            font-weight: bold;
+        }
+    }
+
+    ul{
+        margin-top: 5px;
+
+        span{
+            font-weight: bold;
+        }
+
+        display: flex;
+        flex-direction: row ;
+        justify-content: space-between;
+
+        padding: 0;
+        
+        li{
+            font-size: 15px;
+            list-style: none;
+            display: inline;
+        }
+        li:nth-child(1){
+            left: 0px
+        }
+        li:nth-child(3){
+            float: right
+        }
+    }
+
+    .ease_bar{
+        width: 100%;
+        box-shadow: 0px 0px 15px -5px #d4d4d4;
+        border-radius: 50px;
+
+        .slider{
+            position: absolute;
+            background-color: $gray;
+            width: 8px;
+            height: 30px;
+            margin-top: -5px;
+            border-radius: 20px;
+
+            // left: 11px; min
+            //max left: 280px;
+        }
+        .row .col{
+            height: 20px;
+        }
+        .row .col:nth-child(1){
+            border-radius: 50px 0 0 50px;
+            background-color: #BD2323;
+        }
+        .row .col:nth-child(2){
+            background-color: #E56D6D;
+        }
+        .row .col:nth-child(3){
+            background-color: #FFF4F4;
+        }
+        .row .col:nth-child(4){
+            background-color: #C3FFCD;
+        }
+        .row .col:nth-child(5){
+            background-color: #97FBA7;
+            border-radius: 0 50px 50px 0;
+        }
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .rd_result{
+        position: relative;
+        width: 50vw;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .top{
+        margin-top: 100px;
+        p{
+            font-size: 22px;
+        }
+        h1{
+            font-size: 56px;
+        }
+        p{
+            width: 600px;
+        }
+    }
+    .textarea{
+        font-size: 18px;
+        padding-bottom: 0;
+        border: none;
+    }
+
+    .rd_result{
+        font-family: 'Poppins', sans-serif;
+    
+        position: absolute;
+        top: 100px;
+        right: 50px;
+        width: 300px;
+        border-right: 2px solid $gray2;
+    }
+
+}
