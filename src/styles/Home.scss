@@ -317,8 +317,21 @@ $link: #0077b6;
     }
 }
 
-/* Extra Large devices (large desktops, 1200px and up) */
+/* Extra Large devices (large desktops, 1400px and up) */
 @media (min-width: 1400px) {
+    .rd_result{
+        font-family: 'Poppins', sans-serif;
+    
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        width: 300px;
+        border-right: 2px solid $gray2;
+    }
+}
+
+/* Extra Large devices (large desktops, 1600px and up) */
+@media (min-width: 1600px) {
     .rd_result{
         font-family: 'Poppins', sans-serif;
     
