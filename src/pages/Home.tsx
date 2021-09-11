@@ -5,14 +5,8 @@ import React, { useRef, useState } from "react";
 
 import * as ReadingEase from './../script/ReadingEase'
 
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-185204927-2')
-ReactGA.pageview(window.location.pathname + window.location.search);
-
 export function Home(){
-    // const [text, setText] = useState("");
     const [easeResult, setEaseResult] = useState(100);
-    
     const sliderRef = useRef(null)
 
 
