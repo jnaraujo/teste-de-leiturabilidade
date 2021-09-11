@@ -85,7 +85,7 @@ export function Home(){
                                 O que o teste leva em conta?
                             </h2>
                             <p>
-                                Tanto o a versão original do <strong>Teste de Flesch-Kincaid</strong> quando a versão brasileira levam em conta o <strong>tamanho da frase</strong> e o <strong>tamanho das palavras</strong>: quanto maior, mais difícil de ler.
+                                Tanto a versão original do <strong>Teste de Flesch-Kincaid</strong> quando a versão brasileira levam em conta o <strong>tamanho da frase</strong> e o <strong>tamanho das palavras</strong>: quanto maior, mais difícil de ler.
                             </p>
 
                             <h2>
