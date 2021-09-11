@@ -20,3 +20,7 @@ Tanto a versão original do  **Teste de Flesch-Kincaid**  quando a versão brasi
 
 ### Quão preciso é o teste?
 A versão original do  **Teste de Flesch-Kincaid**  precisão de quase 90% - o que, para uso comum, é um valor bastante considerável.
+
+#### Fontes:
+-   [http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf](http://www.ufrgs.br/textecc/acessibilidade/files/%C3%8Dndices-de-Leiturabilidade.pdf)
+-   [https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests)
