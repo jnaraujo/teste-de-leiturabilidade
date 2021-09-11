@@ -23,7 +23,7 @@ export function Home(){
         if(fred===0) return "um estudante universitário";
         if(fred===1) return "um estudante do ensino médio"
         if(fred===2) return "um estudante do 6º ao 9º ano"
-        return "um estudante do 1º a 5º ano"
+        return "um estudante do 1º ao 5º ano"
     }
 
     return (
