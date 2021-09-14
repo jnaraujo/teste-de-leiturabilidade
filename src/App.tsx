@@ -13,7 +13,7 @@ import './styles/global.scss'
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/" exact component={Home}></Route>
+      <Route path="/" component={Home}></Route>
     </BrowserRouter>
   );
 }
