@@ -7,15 +7,20 @@ import * as ReadingEase from './../script/ReadingEase'
 
 export function Home(){
     const [easeResult, setEaseResult] = useState(100);
+    const [sliderSize, setSliderSize] = useState(0);
+    const [easeExample, setEaseExample] = useState("");
     const sliderRef = useRef(null)
 
-
     function handleTextareaChange(event: { target: { value: React.SetStateAction<string>; }; }){
-        setEaseResult(ReadingEase.fleschReadingEaseBR(event.target.value).result)
+        const tFR = ReadingEase.fleschReadingEaseBR(event.target.value || "a").result
+        
+        setEaseResult(tFR)
+        setSliderSize(base100ToSlideBarSize(tFR))
+        setEaseExample(easeResultToExample(tFR))
     }
     function base100ToSlideBarSize(value: number) : number {
         const sliderWidth = sliderRef.current ? sliderRef.current.offsetWidth : 254
-        const formula = value * ((sliderWidth)/100); 
+        const formula = value * ((sliderWidth)/100);
         return Math.max(Math.min(formula, sliderWidth), 5);
     }
     function easeResultToExample(value: number) : string {
@@ -25,6 +30,20 @@ export function Home(){
         if(fred===2) return "um estudante do 6º ao 9º ano"
         return "um estudante do 1º ao 5º ano"
     }
+
+    window.onload = ()=>{
+        handleTextareaChange({
+            target: {
+                value: "a"
+            }
+        })
+    }
+
+    window.onresize = ()=>{
+        setSliderSize(base100ToSlideBarSize(easeResult))
+    }
+
+    
 
     return (
         <div id="home">
@@ -46,10 +65,10 @@ export function Home(){
                     </Col>
                     <aside className="rd_result">
                         <p>
-                            Seu texto está no nível de leitura de <span id="rd_exmlp">{easeResultToExample(easeResult)}.</span>
+                            Seu texto está no nível de leitura de <span id="rd_exmlp">{easeExample}.</span>
                         </p>
                         <div className="ease_bar">
-                            <div className="slider" style={{left: `${base100ToSlideBarSize(easeResult)}px`}}></div>
+                            <div className="slider" style={{left: `${sliderSize}px`}}></div>
                             <Container fluid className="cont">
                                 <Row ref={sliderRef}>
                                     <Col></Col>
