@@ -5,7 +5,7 @@ import React, { useRef, useState } from "react";
 
 import * as ReadingEase from './../script/ReadingEase'
 
-export function Home(){
+export default function Home(){
     const [easeResult, setEaseResult] = useState(100);
     const [sliderSize, setSliderSize] = useState(0);
     const [easeExample, setEaseExample] = useState("");
@@ -42,8 +42,6 @@ export function Home(){
     window.onresize = ()=>{
         setSliderSize(base100ToSlideBarSize(easeResult))
     }
-
-    
 
     return (
         <div id="home">

@@ -1,19 +1,30 @@
-import { BrowserRouter, Route } from 'react-router-dom';
+import './styles/global.scss'
+
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 ////////////////////////////////
 //////////// PAGES ////////////
 
-import {Home} from './pages/Home';
+const Home = lazy(() => import('./pages/Home'));
+const Teste = lazy(()=> import('./pages/Teste'));
+
+// import Home from './pages/Home';
+// import Teste from './pages/Teste';
 
 ////////////////////////////////
 ////////////////////////////////
-
-import './styles/global.scss'
 
 function App() {
+
   return (
     <BrowserRouter>
-      <Route path="/" component={Home}></Route>
+      <Suspense fallback={''}>
+        <Switch>
+          <Route path="/teste" component={Teste}/>
+          <Route exact path="/" component={Home}/>
+        </Switch>
+      </Suspense>
     </BrowserRouter>
   );
 }
