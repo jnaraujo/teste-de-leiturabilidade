@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "testzin",
+    siteUrl: "https://leiturabilidade.vercel.app",
+    title: "Teste de Leiturabilidade",
   },
   flags:{
     DEV_SSR: false

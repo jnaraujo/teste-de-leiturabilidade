@@ -91,9 +91,10 @@ export default function Home(){
     return (
         <div id="home">
             <Helmet>
-                <title>Jônatas Araujo - Webdev, development and design</title>
+                <html lang="pt-BR" amp />
+                <title>Teste de Leiturabilidade</title>
                 <meta name="description" content={"Saiba em tempo real e de graça o quão fácil de ser lido seu texto é."} />
-                <meta name="keywords" content="leitura, facilidade, texto, flesch, kincaid, blog, leiturabilidade"></meta>
+                <meta name="keywords" content={"leitura, facilidade, texto, flesch, kincaid, blog, leiturabilidade"}></meta>
             </Helmet>
             <Container fluid className="content">
                 <Row className="justify-content-center">
