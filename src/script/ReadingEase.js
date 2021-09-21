@@ -7,7 +7,7 @@ module.exports = {
         
         const totalWords = words.length
         let totalSentences = String(text).replace(/\n/g, ".").replace(/\r/g, "").split(".")
-        let totalSentences = totalSentences.filter( word=> (word != ".") && (word != ""))
+        totalSentences = totalSentences.filter( word=> (word != ".") && (word != ""))
         let nTotalSentences = totalSentences.length
     
         let totalSyllables =  0
