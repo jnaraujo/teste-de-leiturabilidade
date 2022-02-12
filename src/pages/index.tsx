@@ -46,7 +46,10 @@ export default function Home() {
       setEaseExample(easeResultToExample(tFR.result))
   }
   function base100ToSlideBarSize(value) {
-      const sliderWidth = sliderRef.current ? sliderRef.current.offsetWidth : 254
+    if(!sliderRef.current) return;
+      const sliderWidth = sliderRef.current.offsetWidth;
+      console.log(sliderWidth);
+      
       const formula = value * ((sliderWidth)/100);
       return Math.max(Math.min(formula, sliderWidth), 5);
   }
@@ -135,15 +138,17 @@ export default function Home() {
           <p>
               Seu texto está no nível de leitura de <span id="rd_exmlp">{easeExample}.</span>
           </p>
-          <div className="ease_bar">
-              <div className="slider" style={{left: `${sliderSize}px`}}></div>
-              <Grid container className={styles.cont}>
-                  <Grid item xs={6}>
-                      <p>
-                          <span id="rd_exmlp">{easeResult["result"]}</span>%
-                      </p>
-                    </Grid>
-              </Grid>
+          <div className={styles.ease_bar}>
+              <div className={styles.slider} style={{left: `${sliderSize}px`}}></div>
+              <div className={styles.cont}>
+                  <div className={styles.row} ref={sliderRef}>
+                      <div className={styles.col}></div>
+                      <div className={styles.col}></div>
+                      <div className={styles.col}></div>
+                      <div className={styles.col}></div>
+                      <div className={styles.col}></div>
+                  </div>
+              </div>
           </div>
           <ul>
               <li>Muito<br/><span>difícil</span></li>
