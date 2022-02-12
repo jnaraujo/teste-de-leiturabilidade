@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { createElement, useEffect, useRef, useState } from 'react';
 import styles from '@styles/Home.module.scss';
 
 import nookies from 'nookies'
+
+import { useRouter } from 'next/router';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,17 +13,16 @@ import { Grid } from '@material-ui/core';
 
 import * as ReadingEase from './../libs/readability/ReadingEase';
 
-import { useRouter } from 'next/router';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+
+import axios from 'axios';
 
 import { NotionRenderer } from "react-notion";
 
 import { renderToString } from 'react-dom/server'
 
-import {AiOutlineLoading3Quarters } from 'react-icons/ai';
 
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import axios from 'axios';
 
 type EaseResultType = {
   totalWords: number,
@@ -34,16 +35,13 @@ export default function Home() {
   const [easeResult, setEaseResult] = useState({} as EaseResultType);
   const [sliderSize, setSliderSize] = useState(0);
   const [easeExample, setEaseExample] = useState("");
-  const [userText, setUserText] = useState("");
 
-  const [isLoading, setLoading] = useState(false);
-
-  
+  const [editorHtml, setEditorHtml] = useState(null);
   const editorRef = useRef(null);
-  const notionUrlInputRef = useRef(null);
 
-  const router = useRouter();
-  const notionUrl = router.query.notion;
+  function onChange(e) {
+    setEditorHtml(e.target.value);
+  }
 
   const [modalMessage, setModalMessage] = useState({} as {
     title: string,
@@ -73,84 +71,20 @@ export default function Home() {
     }
   }
 
+  const router = useRouter();
+  const notionUrl = router.query.link;
+
   const sliderRef = useRef(null)
 
-  function getCookie(){
-    return nookies.get(null, {})[`toastedInfo`]
-  }
-
-  function setCookie(value: string | boolean) {
-    nookies.set(null, 'toastedInfo', String(value), {
-      maxAge: 24 * 60 * 60
-    })
-  }
-
-  function importNotionPageByUrl(url: string | any){
-    setLoading(true);
-    let pageIdSplit = String(url).split("-");
-    const pageId = pageIdSplit[pageIdSplit.length-1];
-
-    const fetchUrl = `https://notion-api.splitbee.io/v1/page/${pageId}`;
-
-    console.log(fetchUrl);
-    
-    
-    axios.get(fetchUrl).then(res => {
-      const data = res.data;
-      
-      if(Object.keys(data).length === 0){
-        changeModal({
-          title: "A sua página do Notion não está pública.",
-          message: 'Na sua página do Notion, clique em "Share" no canto superior direito e depois em "Share to web".',
-        }, {
-          value: "Tentar novamente",
-          onClick: () => {
-            closeModal()
-            router.push({
-              pathname: router.pathname,
-              query: router.query
-            });
-          }
-        })
-        
-        setOpen(true)
-        return;
-      }
-
-      const notionDiv = <NotionRenderer blockMap={data} />;
-      const html = renderToString(notionDiv);
-
-      setUserText(html)
-
-      // handleTextareaChange({target:{value:editorRef.current.value}});
-
-    }).catch(err => {
-      changeModal({
-        title: "A sua página do Notion não foi encontrada.",
-        message: 'Verifique se você deixou ela pública.',
-      })
-      setOpen(true)
-    }).finally(() => {
-      setLoading(false);
-    })
-  }
-
-  function getEditorHtml(){
-    return editorRef.current.innerHTML;
-  }
-  function getEditorText(){
-    return editorRef.current.innerText;
-  }
-
   function handleTextareaChange(event){
-      const tFR = ReadingEase.fleschReadingEaseBR(getEditorText())
-      
-      
-      localStorage.setItem("text", getEditorHtml());
 
-      setEaseResult(tFR)
-      setSliderSize(base100ToSlideBarSize(tFR.result))
-      setEaseExample(easeResultToExample(tFR.result))
+    const tFR = ReadingEase.fleschReadingEaseBR(event.target.value || "a")
+
+    console.log(111);
+
+    setEaseResult(tFR)
+    setSliderSize(base100ToSlideBarSize(tFR.result))
+    setEaseExample(easeResultToExample(tFR.result))
   }
   function base100ToSlideBarSize(value) {
     if(!sliderRef.current) return;
@@ -165,51 +99,37 @@ export default function Home() {
       if(fred===2) return "um estudante do 6º ao 9º ano"
       return "um estudante do 1º ao 5º ano"
   }
-
-  useEffect(() => {
-    const tFR = ReadingEase.fleschReadingEaseBR(getEditorText())
-    setEaseResult(tFR)
-    setSliderSize(base100ToSlideBarSize(tFR.result))
-    setEaseExample(easeResultToExample(tFR.result))
-  }, [editorRef.current])
-
-  useEffect(()=>{
-      setUserText(localStorage.getItem("text") ?? "")
-      if(!getCookie()){
-          toast.info('Ei! Sabia que seu texto é automaticamente salvo no seu navegador?', {
-              position: "top-left",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-          });
-
-          setCookie(true);
-      }else{
-          toast.info('Seu texto foi automaticamente carregado!', {
-              position: "top-left",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-          });
-      }
-
-      window.onresize = ()=>{
-          setSliderSize(base100ToSlideBarSize(easeResult["result"]));
-      }
-  }, [])
-
   useEffect(()=>{
     if(notionUrl){
-      importNotionPageByUrl(notionUrl);
-    }
-  }, [router]);
+      let pageIdSplit = String(notionUrl).split("-");
+      const pageId = pageIdSplit[pageIdSplit.length-1];
 
+      const fetchUrl = `https://notion-api.splitbee.io/v1/page/${pageId}`;
+      
+      axios.get(fetchUrl).then(res => {
+        const data = res.data;
+
+        const notionDiv = <NotionRenderer blockMap={data} />;
+        const html = renderToString(notionDiv);
+
+        setEditorHtml(html)
+
+        handleTextareaChange({target:{value:editorRef.current.value}});
+
+      }).catch(err => {
+        changeModal({
+          title: "A sua página do Notion não foi encontrada.",
+          message: 'Verifique se você deixou ela pública.',
+        }, {
+          value: 'Saiba mais',
+          onClick: () => {
+            
+          }
+        })
+        setOpen(true)
+      })
+    }
+}, [notionUrl])
   return (
     <>
     <DefaultSeo
@@ -241,8 +161,8 @@ export default function Home() {
       <Grid container justifyContent='center' className={styles.content}>
         <Grid item xs={11} md={8} xl={6}>
           <div className={styles.textarea}>
-            <div className={styles.editor} contentEditable={true} dangerouslySetInnerHTML={{
-                __html: userText
+              <div className={styles.editor} contentEditable={true} dangerouslySetInnerHTML={{
+                __html: editorHtml
               }}
               onInput={
                 handleTextareaChange
@@ -278,20 +198,6 @@ export default function Home() {
               Número de palavras: <strong>{easeResult.totalWords}</strong><br />
               Número de frases: <strong>{easeResult.nTotalSentences}</strong><br />
           </p>
-          <br />
-          <div className={styles.importFromNotion}>
-            <p>Deseja importar uma página do Notion?</p>
-            <input type="url" ref={notionUrlInputRef} />
-            <button onClick={()=>{
-              const url = notionUrlInputRef.current.value;
-              router.push({
-                pathname: router.pathname,
-                query: {
-                  notion: url
-                }
-              });
-            }}>Importar página</button>
-          </div>
         </Grid>
       </Grid>
       <ToastContainer position="top-left" hideProgressBar={false} draggable={true} autoClose={1000} pauseOnHover={false} pauseOnFocusLoss={false} />
@@ -358,14 +264,12 @@ export default function Home() {
                     secondButton.value ? (<>
                       <button onClick={secondButton.onClick}>{secondButton.value}</button>
                     </>): ""
+                    
                   }
               </div>
           </div>
         </Modal>
       </div>
-      </div>
-      <div className={(isLoading===true ? styles.loading : styles.hideAndNone)}>
-        <AiOutlineLoading3Quarters />
       </div>
     </div>
     </>
