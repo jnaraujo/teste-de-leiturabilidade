@@ -115,6 +115,7 @@ export default function Home() {
       }
     />
     <div className={styles.home}>
+      <div className={styles.container}>
       <Grid container justifyContent='center' className={styles.navbar}>
         <Grid item xs={11} md={8} lg={8} xl={8}>
           <div className={styles.top}>
@@ -212,6 +213,7 @@ export default function Home() {
             Feito por <a href='https://jnaraujo.com/' target="_blank" rel="noreferrer">Jônatas Araújo</a> - 2021
           </Grid>
         </Grid>
+      </div>
       </div>
     </div>
     </>
