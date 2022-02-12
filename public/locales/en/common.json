@@ -1,0 +1,9 @@
+{
+    "navbar": {
+        "myprojects": "My Projects",
+        "blog": "Blog",
+        "portfolio": "Portfolio",
+        "contactus": "Contact us",
+        "aboutme": "About me"
+    }
+}

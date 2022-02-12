@@ -1,0 +1,38 @@
+{
+  "name": "teste_de_leiturabilidade",
+  "author": "jnaraujo",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@hcaptcha/react-hcaptcha": "^1.1.0",
+    "@material-ui/core": "^4.12.3",
+    "@types/next-seo": "^2.1.2",
+    "@types/nookies": "^2.0.3",
+    "axios": "^0.25.0",
+    "classnames": "^2.3.1",
+    "next": "11.1.2",
+    "next-seo": "^5.1.0",
+    "nookies": "^2.5.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-notion": "^0.10.0",
+    "react-responsive-modal": "^6.2.0",
+    "react-toastify": "^8.1.0",
+    "sass": "^1.49.0",
+    "sharp": "^0.29.3",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "^12.0.8",
+    "typescript": "^4.5.5"
+  }
+}

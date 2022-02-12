@@ -1,0 +1,18 @@
+{
+    "title": "Meus projetos <span>incríveis</span></h2>",
+    "cta": "Ver mais projetos",
+    "projects": {
+        "xurumin": {
+            "title": "Xurumin - Discord Bot",
+            "description": "Um bot para Discord que toca músicas e podcasts. Além disso, possui diversos comandos de memes, imagens, jogos, etc."
+        },
+        "podcast": {
+            "title": "Podcast App UI",
+            "description": "A UI de um app de podcasts criado com o propósito de estudos. O app possui uma interface de podcast, como um player, uma lista de podcasts, etc."
+        },
+        "readability": {
+            "title": "Teste de Leiturabilidade",
+            "description": "Um website minimalista onde os usuários podem testar a leitura de um texto. Funciona totalmente em português. Foi feito com ReactJS e Typescript."
+        }
+    }
+}

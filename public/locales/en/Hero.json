@@ -1,0 +1,9 @@
+{
+    "title": "Heeeey!<br/>My name is <span>Jônatas</span>.",
+    "subtitle": "I am a web developer and designer.",
+    "AboutMe": {
+        "title": "Who am I?",
+        "cta": "Get in touch",
+        "description": "Hello! My name is Jônatas.<br />I am a front/backend developer who enjoys playing programming.<br />I&apos;ve made some interesting projects, like <a href='https://xurumin.github.io/' target='_blank' rel='noreferrer' >Xurumin</a>, a Discord bot with the main purpose of entertaining its users (used by over 1400 guilds and 120k users)."
+    }
+}

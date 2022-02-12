@@ -1,0 +1,9 @@
+{
+    "title": "Olá!<br/>Meu nome é <span>Jônatas</span>.",
+    "subtitle": "Sou um desenvolvedor web e designer.",
+    "AboutMe": {
+        "title": "Quem sou eu?",
+        "cta": "Entre em contato",
+        "description": "Olá! Meu nome é Jônatas.<br/>Eu sou um desenvolvedor front/back-end que gosta de brincar de criar coisas.<br />Eu já fiz diversos projetos interessantes, como o <a href='https://xurumin.github.io/' target='_blank' rel='noreferrer' >Xurumin</a>, um bot de entretenimento para Discord que está presente em mais de 1400 servidores, somando mais de 100 mil usuários.<br />Eu também sou um designer, e atualmente trabalho como freelancer.<br />Se você quiser saber mais sobre mim, entre em contato comigo."
+    }
+}
