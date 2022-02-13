@@ -102,7 +102,7 @@ export default function Home() {
       if(Object.keys(data).length === 0){
         changeModal({
           title: "A sua página do Notion não está pública.",
-          message: 'Na sua página do Notion, clique em "Share" no canto superior direito e depois em "Share to web".',
+          message: `Na sua página do Notion, clique em "Share" no canto superior direito e depois em "Share to web".<br/><img src="/images/raw/notion_share_link.webp"/>`,
         }, {
           value: "Tentar novamente",
           onClick: () => {
@@ -131,14 +131,6 @@ export default function Home() {
     }).finally(() => {
       setLoading(false);
     })
-  }
-
-  function getEditorHtml(){
-    return editorData.html;
-  }
-  function getEditorText(){
-    return editorData.text;
-
   }
   function handleEditorChange(data : {
     html: string,
@@ -338,8 +330,9 @@ export default function Home() {
                   <h1>
                     {modalMessage.title}
                   </h1>
-                  <p>
-                    {modalMessage.message}
+                  <p dangerouslySetInnerHTML={{
+                    __html: modalMessage.message
+                  }}>
                   </p>
               </div>
               <div className={styles.line}></div>
