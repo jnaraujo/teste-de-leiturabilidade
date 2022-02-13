@@ -99,7 +99,7 @@ function easeResultToExample(value){
 export default function Component(props: ComponentPropsType) {
     const editorRef = useRef(null);
 
-    function handleEditorChange(event){
+    function handleEditorChange(){
         if(props.onChange && editorRef.current.innerText != ""){
             // let editorDataHtml = "";
             // const editorLines = editorRef.current.innerText.replace(/<\/?(div)[^>]*>/g, "<xxxxxx>").split('<xxxxxx>').filter(line=> line && line!="<br>");
@@ -176,7 +176,7 @@ export default function Component(props: ComponentPropsType) {
 
             let onChangeData: OnChangePropsType = {
                 html: editorRef.current.innerHTML,
-                text: editorRef.current.innerText.replace(/\n/g, " "),
+                text: editorRef.current.innerText,
                 ease: {
                     indiceDeFacilidade: 0,
                     exemploDoIndice: "",
@@ -202,8 +202,8 @@ export default function Component(props: ComponentPropsType) {
         }
     }
     useEffect(() => {
-        handleEditorChange({});
-    }, []);
+        handleEditorChange();
+    }, [props.html]);
     
     return (<EditorDiv placeholder="Digite teu texto..." dangerouslySetInnerHTML={{
         __html: props.html
