@@ -56,6 +56,12 @@ const EditorDiv = styled.div`
         padding-bottom: 0;
         border: none;
     }
+    &:empty:before {
+        content: attr(placeholder);
+        position: absolute;
+        color: gray;
+        background-color: transparent;
+    }
 `
 type ComponentPropsType = {
     className?: string,
@@ -86,7 +92,7 @@ export default function Component(props: ComponentPropsType) {
         }
     }, [props.html]);
     
-    return (<EditorDiv dangerouslySetInnerHTML={{
+    return (<EditorDiv placeholder="Digite teu texto..." dangerouslySetInnerHTML={{
         __html: props.html
     }} contentEditable={true} ref={editorRef} onInput={handleEditorChange} className={props.className ? props.className : ""} />)
 }

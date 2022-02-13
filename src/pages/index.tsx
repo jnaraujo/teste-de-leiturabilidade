@@ -25,6 +25,7 @@ type EaseResultType = {
   totalWords: number,
   nTotalSentences: number,
   totalSyllables: number,
+  result: number,
 }
 
 import styles from '@styles/Home.module.scss';
@@ -34,7 +35,7 @@ import TextEditor from './../components/TextEditor';
 
 export default function Home() {
   const [easeResult, setEaseResult] = useState({} as EaseResultType);
-  const [sliderSize, setSliderSize] = useState(0);
+  const [sliderSize, setSliderSize] = useState(100);
   const [easeExample, setEaseExample] = useState("");
   const [editorHtml, setEditorHtml] = useState("");
 
@@ -135,9 +136,9 @@ export default function Home() {
   function handleEditorChange(data : {
     html: string,
     text: string,
-  }){
+   }){
     setEditorData(data);
-    const tFR = ReadingEase.fleschReadingEaseBR(data.text)
+    const tFR = ReadingEase.fleschReadingEaseBR(data.text || "a")
     
     localStorage.setItem("text", data.html);
 
@@ -185,9 +186,9 @@ export default function Home() {
               progress: undefined,
           });
       }
-
+      setSliderSize(base100ToSlideBarSize(1000))
       window.onresize = ()=>{
-          setSliderSize(base100ToSlideBarSize(easeResult["result"]));
+          setSliderSize(base100ToSlideBarSize(easeResult.result));
       }
   }, [])
 
