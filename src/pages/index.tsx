@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styles from '@styles/Home.module.scss';
-
 import nookies from 'nookies'
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -28,18 +26,25 @@ type EaseResultType = {
   nTotalSentences: number,
   totalSyllables: number,
 }
+
+import styles from '@styles/Home.module.scss';
+
 // COMPONENTS
+import TextEditor from './../components/TextEditor';
 
 export default function Home() {
   const [easeResult, setEaseResult] = useState({} as EaseResultType);
   const [sliderSize, setSliderSize] = useState(0);
   const [easeExample, setEaseExample] = useState("");
-  const [userText, setUserText] = useState("");
+  const [editorHtml, setEditorHtml] = useState("");
+
+  const [editorData, setEditorData] = useState({} as {
+    html: string,
+    text: string
+  })
 
   const [isLoading, setLoading] = useState(false);
 
-  
-  const editorRef = useRef(null);
   const notionUrlInputRef = useRef(null);
 
   const router = useRouter();
@@ -89,11 +94,7 @@ export default function Home() {
     setLoading(true);
     let pageIdSplit = String(url).split("-");
     const pageId = pageIdSplit[pageIdSplit.length-1];
-
     const fetchUrl = `https://notion-api.splitbee.io/v1/page/${pageId}`;
-
-    console.log(fetchUrl);
-    
     
     axios.get(fetchUrl).then(res => {
       const data = res.data;
@@ -120,10 +121,7 @@ export default function Home() {
       const notionDiv = <NotionRenderer blockMap={data} />;
       const html = renderToString(notionDiv);
 
-      setUserText(html)
-
-      // handleTextareaChange({target:{value:editorRef.current.value}});
-
+      setEditorHtml(html)
     }).catch(err => {
       changeModal({
         title: "A sua página do Notion não foi encontrada.",
@@ -136,22 +134,26 @@ export default function Home() {
   }
 
   function getEditorHtml(){
-    return editorRef.current.innerHTML;
+    return editorData.html;
   }
   function getEditorText(){
-    return editorRef.current.innerText;
+    return editorData.text;
+
+  }
+  function handleEditorChange(data : {
+    html: string,
+    text: string,
+  }){
+    setEditorData(data);
+    const tFR = ReadingEase.fleschReadingEaseBR(data.text)
+    
+    localStorage.setItem("text", data.html);
+
+    setEaseResult(tFR)
+    setSliderSize(base100ToSlideBarSize(tFR.result))
+    setEaseExample(easeResultToExample(tFR.result))
   }
 
-  function handleTextareaChange(event){
-      const tFR = ReadingEase.fleschReadingEaseBR(getEditorText())
-      
-      
-      localStorage.setItem("text", getEditorHtml());
-
-      setEaseResult(tFR)
-      setSliderSize(base100ToSlideBarSize(tFR.result))
-      setEaseExample(easeResultToExample(tFR.result))
-  }
   function base100ToSlideBarSize(value) {
     if(!sliderRef.current) return;
       const sliderWidth = sliderRef.current.offsetWidth;
@@ -166,15 +168,8 @@ export default function Home() {
       return "um estudante do 1º ao 5º ano"
   }
 
-  useEffect(() => {
-    const tFR = ReadingEase.fleschReadingEaseBR(getEditorText())
-    setEaseResult(tFR)
-    setSliderSize(base100ToSlideBarSize(tFR.result))
-    setEaseExample(easeResultToExample(tFR.result))
-  }, [editorRef.current])
-
   useEffect(()=>{
-      setUserText(localStorage.getItem("text") ?? "")
+      setEditorHtml(localStorage.getItem("text") ?? "")
       if(!getCookie()){
           toast.info('Ei! Sabia que seu texto é automaticamente salvo no seu navegador?', {
               position: "top-left",
@@ -240,13 +235,9 @@ export default function Home() {
       </Grid>
       <Grid container justifyContent='center' className={styles.content}>
         <Grid item xs={11} md={8} xl={6}>
+          
           <div className={styles.textarea}>
-            <div className={styles.editor} contentEditable={true} dangerouslySetInnerHTML={{
-                __html: userText
-              }}
-              onInput={
-                handleTextareaChange
-              } ref={editorRef}></div>
+            <TextEditor html={editorHtml} onChange={handleEditorChange}></TextEditor>
           </div>
         </Grid>
         <Grid item xs={11} md={8} xl={2} className={styles.rd_result}>
