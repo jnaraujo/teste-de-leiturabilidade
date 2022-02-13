@@ -2,6 +2,9 @@ import { useRef, useEffect } from "react";
 
 import styled from "styled-components";
 
+import * as ReadingEase from './../libs/readability/ReadingEase';
+
+
 const EditorDiv = styled.div`
     font-family: 'Merriweather', serif;
     font-size: 16px;
@@ -10,6 +13,7 @@ const EditorDiv = styled.div`
     line-height: 1.75;
 
     width: 99% !important;
+    min-width: 300px;
 
     height: 70vh;
 
@@ -63,34 +67,143 @@ const EditorDiv = styled.div`
         background-color: transparent;
     }
 `
+
+type OnChangePropsType = {
+    html: string,
+    text: string,
+    ease: {
+        indiceDeFacilidade: number,
+        exemploDoIndice: string,
+        text: {
+            totalSyllables: number,
+            totalWords: number,
+            totalSentences: number,
+        }
+    }
+}
 type ComponentPropsType = {
     className?: string,
 
-    onChange?: ({} : {
-        html: string,
-        text: string
-    }) => void,
+    onChange?: ({} : OnChangePropsType) => void,
     html: string
+}
+
+function easeResultToExample(value){
+    const fred = ReadingEase.fred(value)
+    if(fred===0) return "um estudante universitário";
+    if(fred===1) return "um estudante do ensino médio"
+    if(fred===2) return "um estudante do 6º ao 9º ano"
+    return "um estudante do 1º ao 5º ano"
 }
 
 export default function Component(props: ComponentPropsType) {
     const editorRef = useRef(null);
-    function handleEditorChange(){
-        if(props.onChange){
-            props.onChange({
+
+    function handleEditorChange(event){
+        if(props.onChange && editorRef.current.innerText != ""){
+            // let editorDataHtml = "";
+            // const editorLines = editorRef.current.innerText.replace(/<\/?(div)[^>]*>/g, "<xxxxxx>").split('<xxxxxx>').filter(line=> line && line!="<br>");
+            // const editorLines = editorRef.current.innerText.replace(/\n/g, "<xxxxxx>").split('<xxxxxx>');
+
+            // for(let i = 0; i < editorLines.length; i++){
+            //     const line = editorLines[i];
+            //     // const linePoints = line.split(".");
+            //     // console.log(linePoints);
+                
+            //     // let thisLine = "";
+
+            //     // for(let phrase of linePoints){
+            //     //     const phraseReadingEase = ReadingEase.fleschReadingEaseBR(phrase).result;
+            //     //     let color = "";
+
+            //     //     if(phraseReadingEase < 20){
+            //     //         color = "#BD2323"
+            //     //     }else if(phraseReadingEase < 40){
+            //     //         color = "#E56D6D"
+            //     //     }else if(phraseReadingEase < 60){
+            //     //         color = "#FFF4F4"
+            //     //     }else if(phraseReadingEase < 80){
+            //     //         color = "#C3FFCD"
+            //     //     }else{
+            //     //         color = "#97FBA7"
+            //     //     }
+
+            //     //     color = "white"
+            //     //     if(linePoints.length > 1){
+            //     //         thisLine += `<span style="background-color: ${color}">${phrase}.</span>`
+            //     //     }else{
+            //     //         thisLine += `<span style="background-color: ${color}">${phrase}</span>`
+            //     //     }
+            //     // }
+                
+            //     if(event && window){
+            //         const selection = window.getSelection();
+
+            //         var range = document.createRange();
+
+            //         // range.selectNodeContents(editorRef.current);
+                    
+
+            //         let anchorOffset = selection.anchorOffset;
+            //         let focusNode = selection.focusNode as any;
+
+            //         editorRef.current.focus();
+            //         // range.setStart(editorRef.current, anchorOffset);
+            //         // console.log(anchorOffset);
+
+            //         // const child = editorRef.current.childNodes.find(node=> node.id == focusNode?.id)
+            //         const child = Array.from(editorRef.current.childNodes).find((node : any)=> node == focusNode)
+                    
+            //     }
+                
+            //     const phraseReadingEase = ReadingEase.fleschReadingEaseBR(line).result;
+            //     let color = "";
+            //     if(phraseReadingEase < 20){
+            //         color = "#BD2323"
+            //     }else if(phraseReadingEase < 40){
+            //         color = "#E56D6D"
+            //     }else if(phraseReadingEase < 60){
+            //         color = "#FFF4F4"
+            //     }else if(phraseReadingEase < 80){
+            //         color = "#C3FFCD"
+            //     }else{
+            //         color = "#97FBA7"
+            //     }
+            //     editorDataHtml += `<div style="background-color: ${color}">${line}</div>`;
+            // }
+
+            // editorRef.current.innerHTML = editorDataHtml;
+
+            let onChangeData: OnChangePropsType = {
                 html: editorRef.current.innerHTML,
-                text: editorRef.current.innerText
-            });
+                text: editorRef.current.innerText.replace(/\n/g, " "),
+                ease: {
+                    indiceDeFacilidade: 0,
+                    exemploDoIndice: "",
+                    text: {
+                        totalSyllables: 0,
+                        totalWords: 0,
+                        totalSentences: 0,
+                    }
+                }
+            }
+
+            const textAnalyses = ReadingEase.fleschReadingEaseBR(onChangeData.text)
+            
+            onChangeData.ease.text = {
+                totalSyllables: textAnalyses.totalSyllables,
+                totalWords: textAnalyses.totalWords,
+                totalSentences: textAnalyses.nTotalSentences
+            }
+            onChangeData.ease.exemploDoIndice = easeResultToExample(ReadingEase.fred(onChangeData.text));
+            onChangeData.ease.indiceDeFacilidade = textAnalyses.result;
+
+            props.onChange(onChangeData);
         }
     }
     useEffect(() => {
-        if(props.onChange && editorRef.current.innerText != ""){
-            props.onChange({
-                html: editorRef.current.innerHTML,
-                text: editorRef.current.innerText
-            });
-        }
-    }, [props.html]);
+        handleEditorChange({});
+    }, []);
     
     return (<EditorDiv placeholder="Digite teu texto..." dangerouslySetInnerHTML={{
         __html: props.html

@@ -7,8 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { DefaultSeo } from 'next-seo';
 import { Grid } from '@material-ui/core';
 
-import * as ReadingEase from './../libs/readability/ReadingEase';
-
 import { useRouter } from 'next/router';
 
 import { NotionRenderer } from "react-notion";
@@ -21,11 +19,29 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import axios from 'axios';
 
+
+type OnChangePropsType = {
+  html: string,
+  text: string,
+  ease: {
+      indiceDeFacilidade: number,
+      exemploDoIndice: string,
+      text: {
+          totalSyllables: number,
+          totalWords: number,
+          totalSentences: number,
+      }
+  }
+}
+
 type EaseResultType = {
-  totalWords: number,
-  nTotalSentences: number,
-  totalSyllables: number,
-  result: number,
+  indiceDeFacilidade: number,
+  exemploDoIndice: string,
+  text: {
+      totalSyllables: number,
+      totalWords: number,
+      totalSentences: number,
+  }
 }
 
 import styles from '@styles/Home.module.scss';
@@ -34,7 +50,15 @@ import styles from '@styles/Home.module.scss';
 import TextEditor from './../components/TextEditor';
 
 export default function Home() {
-  const [easeResult, setEaseResult] = useState({} as EaseResultType);
+  const [easeResult, setEaseResult] = useState({
+    indiceDeFacilidade: 0,
+    exemploDoIndice: "",
+    text: {
+        totalSyllables: 0,
+        totalWords: 0,
+        totalSentences: 0,
+    }
+  } as EaseResultType);
   const [sliderSize, setSliderSize] = useState(100);
   const [easeExample, setEaseExample] = useState("");
   const [editorHtml, setEditorHtml] = useState("");
@@ -133,18 +157,13 @@ export default function Home() {
       setLoading(false);
     })
   }
-  function handleEditorChange(data : {
-    html: string,
-    text: string,
-   }){
+  function handleEditorChange(data : OnChangePropsType){
     setEditorData(data);
-    const tFR = ReadingEase.fleschReadingEaseBR(data.text || "a")
-    
     localStorage.setItem("text", data.html);
 
-    setEaseResult(tFR)
-    setSliderSize(base100ToSlideBarSize(tFR.result))
-    setEaseExample(easeResultToExample(tFR.result))
+    setEaseResult(data.ease);
+    setSliderSize(base100ToSlideBarSize(data.ease.indiceDeFacilidade));
+    setEaseExample(data.ease.exemploDoIndice);
   }
 
   function base100ToSlideBarSize(value) {
@@ -152,13 +171,6 @@ export default function Home() {
       const sliderWidth = sliderRef.current.offsetWidth;
       const formula = value * ((sliderWidth)/100);
       return Math.max(Math.min(formula, sliderWidth), 5);
-  }
-  function easeResultToExample(value){
-      const fred = ReadingEase.fred(value)
-      if(fred===0) return "um estudante universitário";
-      if(fred===1) return "um estudante do ensino médio"
-      if(fred===2) return "um estudante do 6º ao 9º ano"
-      return "um estudante do 1º ao 5º ano"
   }
 
   useEffect(()=>{
@@ -188,7 +200,7 @@ export default function Home() {
       }
       setSliderSize(base100ToSlideBarSize(1000))
       window.onresize = ()=>{
-          setSliderSize(base100ToSlideBarSize(easeResult.result));
+          setSliderSize(base100ToSlideBarSize(easeResult.indiceDeFacilidade));
       }
   }, [])
 
@@ -227,8 +239,7 @@ export default function Home() {
         </Grid>
       </Grid>
       <Grid container justifyContent='center' className={styles.content}>
-        <Grid item xs={11} md={8} lg={6}>
-          
+        <Grid item xs={11} md={8} lg={6}>         
           <div className={styles.textarea}>
             <TextEditor html={editorHtml} onChange={handleEditorChange}></TextEditor>
           </div>
@@ -259,8 +270,8 @@ export default function Home() {
               <strong style={{
                   fontSize: "20px"
               }}>Mais sobre seu texto:</strong><br />
-              Número de palavras: <strong>{easeResult.totalWords}</strong><br />
-              Número de frases: <strong>{easeResult.nTotalSentences}</strong><br />
+              Número de palavras: <strong>{easeResult.text.totalWords}</strong><br />
+              Número de frases: <strong>{easeResult.text.totalSentences}</strong><br />
           </p>
           <br />
           <div className={styles.importFromNotion}>
