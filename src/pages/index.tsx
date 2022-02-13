@@ -125,7 +125,7 @@ export default function Home() {
     }).catch(err => {
       changeModal({
         title: "A sua página do Notion não foi encontrada.",
-        message: 'Verifique se você deixou ela pública.',
+        message: 'Verifique se o link está correto e desative seu AdBlock.',
       })
       setOpen(true)
     }).finally(() => {
@@ -214,7 +214,7 @@ export default function Home() {
     <div className={styles.home}>
       <div className={styles.container}>
       <Grid container justifyContent='center' className={styles.navbar}>
-        <Grid item xs={11} md={8} lg={8} xl={8}>
+        <Grid item xs={11} md={8} lg={9}>
           <div className={styles.top}>
               <h1>
                   Teste de leitura
@@ -226,13 +226,13 @@ export default function Home() {
         </Grid>
       </Grid>
       <Grid container justifyContent='center' className={styles.content}>
-        <Grid item xs={11} md={8} xl={6}>
+        <Grid item xs={11} md={8} lg={6}>
           
           <div className={styles.textarea}>
             <TextEditor html={editorHtml} onChange={handleEditorChange}></TextEditor>
           </div>
         </Grid>
-        <Grid item xs={11} md={8} xl={2} className={styles.rd_result}>
+        <Grid item xs={11} md={8} lg={3} className={styles.rd_result}>
           <p>
               Seu texto está no nível de leitura de <span id="rd_exmlp">{easeExample}.</span>
           </p>
