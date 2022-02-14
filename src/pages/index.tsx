@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { DefaultSeo } from 'next-seo';
-import { Grid } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 
 import { useRouter } from 'next/router';
 
