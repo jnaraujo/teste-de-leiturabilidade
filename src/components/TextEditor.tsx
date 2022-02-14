@@ -208,12 +208,10 @@ export default function Component(props: ComponentPropsType) {
     // {/* <EditorDiv placeholder="Digite teu texto..." dangerouslySetInnerHTML={{
     //     __html: props.html
     //     }} contentEditable={true} ref={editorRef} onInput={handleEditorChange} className={props.className ? props.className : ""} /> */}
-    
+    // dangerouslySetInnerHTML={{ __html: props.html }}
     return (
         <>
-        <div placeholder="Digite teu texto..." dangerouslySetInnerHTML={{
-        __html: props.html
-        }} contentEditable={true} ref={editorRef} onInput={handleEditorChange} className={"texteditor "+props.className ? props.className : ""}>
+        <div placeholder="Digite teu texto..." dangerouslySetInnerHTML={{ __html: props.html || "a" }}  contentEditable={true} ref={editorRef} onInput={handleEditorChange} className={"texteditor "+props.className ? props.className : ""}>
         </div>
         <style jsx>{`
             div {
@@ -223,10 +221,12 @@ export default function Component(props: ComponentPropsType) {
                 color: $black;
                 line-height: 1.75;
 
-                width: 99% !important;
-                min-width: 300px;
+                width: 300px;
+                min-width: 99% !important;
+                
 
-                height: 70vh;
+                min-height: 70vh;
+                height: 500px;
 
                 background-color: transparent;
                 overflow: hidden;
