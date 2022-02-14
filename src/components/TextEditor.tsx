@@ -165,12 +165,8 @@ export default function Component(props: ComponentPropsType) {
                 color: $black;
                 line-height: 1.75;
 
-                width: 300px;
-                min-width: 99% !important;
-                
-
-                min-height: 70vh;
-                height: 500px;
+                height: 100%;
+                width: 100%;
 
                 background-color: transparent;
                 overflow: hidden;
