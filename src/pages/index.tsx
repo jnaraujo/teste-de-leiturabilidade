@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { DefaultSeo } from 'next-seo';
-import { Grid, Container } from '@material-ui/core';
+import { Grid, Container } from '@mui/material';
 
 import { useRouter } from 'next/router';
 
@@ -18,7 +18,6 @@ import {AiOutlineLoading3Quarters } from 'react-icons/ai';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import axios from 'axios';
-
 
 type OnChangePropsType = {
   html: string,

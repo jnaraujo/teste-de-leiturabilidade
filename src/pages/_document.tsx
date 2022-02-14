@@ -2,6 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { ServerStyleSheet } from 'styled-components'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+// import { renderStaticOptimized } from '@emotion/server'
 
 export default class MyDocument extends Document {
   render() {

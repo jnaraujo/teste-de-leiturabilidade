@@ -3,7 +3,7 @@ import './../styles/_colors.scss';
 
 import { useRouter } from 'next/router';
 
-import { LinearProgress } from '@material-ui/core';
+import { LinearProgress } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 // eslint-disable-next-line react/prop-types

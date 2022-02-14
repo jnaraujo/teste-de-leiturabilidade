@@ -20,8 +20,7 @@
       ],
       "@context/*": [
         "/src/context/*"
-      ],
-      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+      ]
     },
     "target": "es5",
     "lib": [
