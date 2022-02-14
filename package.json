@@ -34,6 +34,7 @@
     "typescript": "^4.5.5"
   },
   "devDependencies": {
+    "@types/node": "^17.0.18",
     "babel-plugin-styled-components": "^2.0.2",
     "eslint": "8.9.0",
     "eslint-config-next": "^12.0.10"
