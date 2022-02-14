@@ -249,7 +249,7 @@ export default function Home() {
               Seu texto está no nível de leitura de <span id="rd_exmlp">{easeExample}.</span>
           </p>
           <div className={styles.ease_bar}>
-              {/* <div className={styles.slider} style={{left: `${sliderSize}px`}}></div> */}
+              <div className={styles.slider} style={{left: `${sliderSize}px`}}></div>
               <div className={styles.cont}>
                   <div className={styles.row} ref={sliderRef}>
                       <div className={styles.col}></div>

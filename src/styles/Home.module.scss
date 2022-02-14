@@ -36,8 +36,8 @@
 }
 .home{
     .container{
-        max-width: 1920px;
-        margin: 0 auto;
+        // max-width: 1920px;
+        // margin: 0 auto;
     }
     background-color: $white;
     .navbar{
@@ -89,10 +89,11 @@
     .textarea{
         margin: 0;
         padding: 0;
-        border-bottom: 1px solid $gray2;
+        // border-bottom: 1px solid $gray2;
         padding-bottom: 20px;
         width: 99% !important;
         height: 70vh;
+        // padding-bottom: 16px;
     }
     .line{
         border-top: 1px solid $gray2;
