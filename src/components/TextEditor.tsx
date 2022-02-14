@@ -204,79 +204,80 @@ export default function Component(props: ComponentPropsType) {
     useEffect(() => {
         handleEditorChange();
     }, [props.html]);
+
+    // {/* <EditorDiv placeholder="Digite teu texto..." dangerouslySetInnerHTML={{
+    //     __html: props.html
+    //     }} contentEditable={true} ref={editorRef} onInput={handleEditorChange} className={props.className ? props.className : ""} /> */}
     
     return (
         <>
-        {/* <EditorDiv placeholder="Digite teu texto..." dangerouslySetInnerHTML={{
-        __html: props.html
-        }} contentEditable={true} ref={editorRef} onInput={handleEditorChange} className={props.className ? props.className : ""} /> */}
         <div placeholder="Digite teu texto..." dangerouslySetInnerHTML={{
         __html: props.html
-        }} contentEditable={true} ref={editorRef} onInput={handleEditorChange} className={"texteditor "+props.className ? props.className : ""}></div>
-
+        }} contentEditable={true} ref={editorRef} onInput={handleEditorChange} className={"texteditor "+props.className ? props.className : ""}>
+        </div>
         <style jsx>{`
-        div {
-            font-family: 'Merriweather', serif;
-            font-size: 16px;
-            font-weight: 400;
-            color: $black;
-            line-height: 1.75;
+            div {
+                font-family: 'Merriweather', serif;
+                font-size: 16px;
+                font-weight: 400;
+                color: $black;
+                line-height: 1.75;
 
-            width: 99% !important;
-            min-width: 300px;
+                width: 99% !important;
+                min-width: 300px;
 
-            height: 70vh;
+                height: 70vh;
 
-            background-color: transparent;
-            overflow: hidden;
-            overflow-y: visible;
-            resize: none;
-            border: none;
+                background-color: transparent;
+                overflow: hidden;
+                overflow-y: visible;
+                resize: none;
+                border: none;
 
-            padding: 0 16px 0 0;
-        }
-        div figure div{
-            margin: 0 !important;
-            padding: 0 !important;
-        }
+                padding: 0 16px 0 0;
+            }
+            div figure div{
+                margin: 0 !important;
+                padding: 0 !important;
+            }
 
-        div img, div figure{
-            width: 90% !important;
-            height: auto;
-            margin: 0 auto !important;
-            padding: 0 !important;
-        }
-        div:focus{
-            outline: none !important;
-            border: none;
-        }
-        div::-webkit-scrollbar{
-            width: 10px;
-        }
-        div::-webkit-scrollbar-track{
-            background: #f1f1f1; 
-        }
-        div::-webkit-scrollbar-thumb{
-            background: #888; 
-        }
-        div::-webkit-scrollbar-thumb:hover {
-            background: #555; 
-            cursor: pointer; 
-        }
-        @media (min-width: 1200px) {
-            div{
-                font-size: 18px;
-                padding-bottom: 0;
+            div img, div figure{
+                width: 90% !important;
+                height: auto;
+                margin: 0 auto !important;
+                padding: 0 !important;
+            }
+            div:focus{
+                outline: none !important;
                 border: none;
             }
-        }
-        div:empty:before {
-            content: attr(placeholder);
-            position: absolute;
-            color: gray;
-            background-color: transparent;
-        }
-      `}</style>
+            div::-webkit-scrollbar{
+                width: 10px;
+            }
+            div::-webkit-scrollbar-track{
+                background: #f1f1f1; 
+            }
+            div::-webkit-scrollbar-thumb{
+                background: #888; 
+            }
+            div::-webkit-scrollbar-thumb:hover {
+                background: #555; 
+                cursor: pointer; 
+            }
+            @media (min-width: 1200px) {
+                div{
+                    font-size: 18px;
+                    padding-bottom: 0;
+                    border: none;
+                }
+            }
+            div:empty:before {
+                content: attr(placeholder);
+                position: absolute;
+                color: gray;
+                background-color: transparent;
+            }
+        `}</style>
         </>
     )
 }
