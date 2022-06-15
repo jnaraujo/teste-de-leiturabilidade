@@ -86,6 +86,14 @@ export default function Home() {
     importExternalPage(String(router.query.url));
   }, [router.query.url]);
 
+  function handleImportClick() {
+    const inputUrl = externalPageUrlRef.current?.value;
+    if (inputUrl === router.query.url) {
+      return importExternalPage(String(router.query.url));
+    }
+    handleExternalPageImport();
+  }
+
   const [modalMessage, setModalMessage] = useState(
     {} as {
       title: string;
@@ -123,6 +131,7 @@ export default function Home() {
 
   function handleExternalPageImport(url) {
     if (!url || url == "") return;
+    console.log("router push");
     router.push({
       pathname: router.pathname,
       query: {
@@ -382,15 +391,9 @@ export default function Home() {
               </p>
               <br />
               <div className={styles.importExternalPage}>
-                <h3>Deseja importar o conteúdo de uma página externa*</h3>
+                <h3>Deseja importar o conteúdo de uma página externa?</h3>
                 <input type="url" ref={externalPageUrlRef} />
-                <button
-                  onClick={() => {
-                    handleExternalPageImport(externalPageUrlRef.current?.value);
-                  }}
-                >
-                  Importar página
-                </button>
+                <button onClick={handleImportClick}>Importar página</button>
                 <p>* Serviços suportados: Notion, Google Docs</p>
               </div>
             </Grid>
