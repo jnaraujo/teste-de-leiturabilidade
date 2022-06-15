@@ -2,7 +2,7 @@
 
 Um teste de facilidade de leitura que funciona em textos em português. Utiliza a fórmula Flesch-Kincaid adaptada para a língua portuguesa em 1996 pelos pesquisadores Teresa B. F. Martins, Claudete M. Ghiraldelo, M. Graças V. Nunes e Osvaldo N. Oliveira Jr., do Instituto de Ciências Matemáticas e de Computação da USP de São Carlos;
 
-## Acesse a versão oficial [clicando aqui!](https://leitura.jnaraujo.com/)
+## Acesse a versão oficial [clicando aqui!](https://leitura.jnaraujo.com)
 
 ### Stack
  1. ReactJS
