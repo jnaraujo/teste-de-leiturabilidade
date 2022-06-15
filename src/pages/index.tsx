@@ -91,7 +91,7 @@ export default function Home() {
     if (inputUrl === router.query.url) {
       return importExternalPage(String(router.query.url));
     }
-    handleExternalPageImport();
+    return handleExternalPageImport(inputUrl);
   }
 
   const [modalMessage, setModalMessage] = useState(
