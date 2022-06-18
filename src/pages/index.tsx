@@ -16,56 +16,38 @@ import { Modal } from "react-responsive-modal";
 
 import handleImport from "../libs/ImportExternalPage";
 
-type OnChangePropsType = {
-  html: string;
-  text: string;
-  ease: {
-    indiceDeFacilidade: number;
-    exemploDoIndice: string;
-    text: {
-      totalSyllables: number;
-      totalWords: number;
-      totalSentences: number;
-    };
-  };
-};
-
-type EaseResultType = {
-  indiceDeFacilidade: number;
-  exemploDoIndice: string;
-  text: {
-    totalSyllables: number;
-    totalWords: number;
-    totalSentences: number;
-  };
-};
-
 import styles from "@styles/Home.module.scss";
 
 // COMPONENTS
 import TextEditor from "./../components/TextEditor";
+import { useLeiturabilidade } from "src/context/LeiturabilidadeContext";
+
+function getCookie() {
+  return nookies.get(null, {})[`toastedInfo`];
+}
+
+function setCookie(value: string | boolean) {
+  nookies.set(null, "toastedInfo", String(value), {
+    maxAge: 24 * 60 * 60,
+  });
+}
+
+function easeResultToExample(value) {
+  if (value === 0) return "um estudante universitário";
+  if (value === 1) return "um estudante do ensino médio";
+  if (value === 2) return "um estudante do 6º ao 9º ano";
+  return "um estudante do 1º ao 5º ano";
+}
 
 export default function Home() {
+  const { ease } = useLeiturabilidade();
+
+  const sliderRef = useRef(null);
+
   const { width, height } = useWindowSize();
-  const [easeResult, setEaseResult] = useState({
-    indiceDeFacilidade: 0,
-    exemploDoIndice: "",
-    text: {
-      totalSyllables: 0,
-      totalWords: 0,
-      totalSentences: 0,
-    },
-  } as EaseResultType);
   const [sliderSize, setSliderSize] = useState(100);
-  const [easeExample, setEaseExample] = useState("");
   const [editorHtml, setEditorHtml] = useState("");
 
-  const [editorData, setEditorData] = useState(
-    {} as {
-      html: string;
-      text: string;
-    }
-  );
   const [modalMessage, setModalMessage] = useState(
     {} as {
       title: string;
@@ -144,27 +126,6 @@ export default function Home() {
     }
   }
 
-  const sliderRef = useRef(null);
-
-  function getCookie() {
-    return nookies.get(null, {})[`toastedInfo`];
-  }
-
-  function setCookie(value: string | boolean) {
-    nookies.set(null, "toastedInfo", String(value), {
-      maxAge: 24 * 60 * 60,
-    });
-  }
-
-  function handleEditorChange(data: OnChangePropsType) {
-    setEditorData(data);
-    localStorage.setItem("text", data.html);
-
-    setEaseResult(data.ease);
-    setSliderSize(base100ToSlideBarSize(data.ease.indiceDeFacilidade));
-    setEaseExample(data.ease.exemploDoIndice);
-  }
-
   function base100ToSlideBarSize(value) {
     if (!sliderRef.current) return;
     const sliderWidth = sliderRef.current.offsetWidth;
@@ -173,7 +134,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    setEditorHtml(localStorage.getItem("text") ?? "");
+    // setEditorHtml(localStorage.getItem("text") ?? "");
     if (!getCookie()) {
       toast.info(
         "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
@@ -200,12 +161,11 @@ export default function Home() {
         progress: undefined,
       });
     }
-    setSliderSize(base100ToSlideBarSize(1000));
   }, []);
 
   useEffect(() => {
-    setSliderSize(base100ToSlideBarSize(easeResult.indiceDeFacilidade));
-  }, [width, height]);
+    setSliderSize(base100ToSlideBarSize(ease.index));
+  }, [width, height, ease]);
 
   return (
     <>
@@ -235,16 +195,13 @@ export default function Home() {
           <Grid container justifyContent="center" className={styles.content}>
             <Grid item xs={11} md={8} lg={6}>
               <div className={styles.textarea}>
-                <TextEditor
-                  html={editorHtml}
-                  onChange={handleEditorChange}
-                ></TextEditor>
+                <TextEditor html={editorHtml}></TextEditor>
               </div>
             </Grid>
             <Grid item xs={11} md={8} lg={3} className={styles.rd_result}>
               <p>
                 Seu texto está no nível de leitura de{" "}
-                <span id="rd_exmlp">{easeExample}.</span>
+                <span id="rd_exmlp">{easeResultToExample(ease.index)}.</span>
               </p>
               <div className={styles.ease_bar}>
                 <div
@@ -284,11 +241,9 @@ export default function Home() {
                   Mais sobre seu texto:
                 </strong>
                 <br />
-                Número de palavras:{" "}
-                <strong>{easeResult.text.totalWords}</strong>
+                Número de palavras: <strong>{ease.words}</strong>
                 <br />
-                Número de frases:{" "}
-                <strong>{easeResult.text.totalSentences}</strong>
+                Número de frases: <strong>{ease.sentences}</strong>
                 <br />
               </p>
               <br />

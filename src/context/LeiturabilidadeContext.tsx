@@ -1,25 +1,45 @@
 import { useContext, createContext, useState, useEffect } from "react";
 
 type LeiturabilidadeContextType = {
-  index: Number;
-  setIndex: (value: Number | any) => void;
+  ease: {
+    index: number;
+    syllables: number;
+    words: number;
+    sentences: number;
+  };
+  setEase: (value: Number | any) => void;
 };
 
 const LeiturabilidadeContext = createContext<LeiturabilidadeContextType>({
-  index: 100,
-  setIndex: (value: number) => {},
+  ease: {
+    index: 0,
+    syllables: 0,
+    words: 0,
+    sentences: 0,
+  },
+  setEase: (value: {
+    index: number;
+    syllables: number;
+    words: number;
+    sentences: number;
+  }) => {},
 });
 
 export default function LeiturabilidadeProvider({ children }) {
-  const [index, setIndex] = useState(100);
+  const [ease, setEase] = useState({
+    index: 0,
+    syllables: 0,
+    words: 0,
+    sentences: 0,
+  });
 
   useEffect(() => {}, []);
 
   return (
     <LeiturabilidadeContext.Provider
       value={{
-        index,
-        setIndex,
+        ease,
+        setEase,
       }}
     >
       {children}
