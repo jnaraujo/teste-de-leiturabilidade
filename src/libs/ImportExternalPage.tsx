@@ -5,7 +5,21 @@ import { renderToString } from "react-dom/server";
 import { getDocs, getIdFromUrl } from "../services/docs";
 
 const sanitizeOptions = {
-  nonTextTags: ["style", "script", "textarea", "noscript"],
+  allowedTags: [
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "p",
+    "a",
+    "ul",
+    "li",
+    "strong",
+    "em",
+    "img",
+    "br",
+  ],
 };
 
 async function importNotionPageByUrl(url: string) {

@@ -66,6 +66,20 @@ export default function Home() {
       text: string;
     }
   );
+  const [modalMessage, setModalMessage] = useState(
+    {} as {
+      title: string;
+      message: string;
+    }
+  );
+  const [secondButton, setSecondButton] = useState(
+    {} as {
+      value: string;
+      onClick: () => void;
+    }
+  );
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
 
   const [isLoading, setLoading] = useState(false);
 
@@ -110,22 +124,6 @@ export default function Home() {
     const inputUrl = externalPageUrlRef.current?.value;
     return importExternalPage(inputUrl);
   }
-
-  const [modalMessage, setModalMessage] = useState(
-    {} as {
-      title: string;
-      message: string;
-    }
-  );
-  const [secondButton, setSecondButton] = useState(
-    {} as {
-      value: string;
-      onClick: () => void;
-    }
-  );
-
-  const [open, setOpen] = useState(false);
-  const closeModal = () => setOpen(false);
 
   function changeModal(
     message: {
@@ -213,7 +211,7 @@ export default function Home() {
     <>
       <DefaultSeo
         title="Teste de Leiturabilidade"
-        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é."
+        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importa arquivos do Google Docs, Notion, etc e faça o teste de Leiturabilidade."
         additionalLinkTags={[
           {
             rel: "icon",
