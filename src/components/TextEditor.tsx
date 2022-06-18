@@ -2,7 +2,6 @@ import { useRef, useEffect } from "react";
 import { useLeiturabilidade } from "src/context/LeiturabilidadeContext";
 
 import styled from "styled-components";
-// import dynamic from 'next/dynamic';
 
 import * as ReadingEase from "./../libs/readability/ReadingEase";
 
@@ -18,11 +17,11 @@ const EditorDiv = styled.div`
 
   background-color: transparent;
   overflow: hidden;
-  overflow-y: visible;
+  overflow-y: scroll;
   resize: none;
   border: none;
 
-  padding: 0 16px 0 0;
+  padding: 0 0px 0 0;
 
   figure {
     div {
@@ -43,13 +42,14 @@ const EditorDiv = styled.div`
     border: none;
   }
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
   }
   &::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
   &::-webkit-scrollbar-thumb {
     background: #888;
+    border-radius: 8px;
   }
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
