@@ -94,7 +94,6 @@ export default function Component(props: ComponentPropsType) {
   }
   useEffect(() => {
     if (props.html) {
-      console.log("2");
       editorRef.current.innerHTML = props.html;
     }
     handleEditorChange();
