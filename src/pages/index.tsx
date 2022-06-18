@@ -22,6 +22,8 @@ import axios from "axios";
 import { getDocs, getIdFromUrl } from "../services/docs";
 import sanitize from "sanitize-html-react";
 
+import handleImport from "../libs/ImportExternalPage";
+
 const sanitizeOptions = {
   nonTextTags: ["style", "script", "textarea", "noscript"],
 };
@@ -82,16 +84,42 @@ export default function Home() {
 
   const router = useRouter();
 
+  async function importExternalPage(url: string) {
+    setLoading(true);
+
+    const data = await handleImport(url);
+
+    if (data.status === "error") {
+      changeModal(
+        {
+          title: data.message.title,
+          message: data.message.description,
+        },
+        {
+          value: "Tentar novamente",
+          onClick: () => {
+            closeModal();
+            importExternalPage(url);
+          },
+        }
+      );
+      setLoading(false);
+      return setOpen(true);
+    }
+
+    setEditorHtml(data.html);
+
+    setLoading(false);
+  }
+
   useEffect(() => {
     importExternalPage(String(router.query.url));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.url]);
 
   function handleImportClick() {
     const inputUrl = externalPageUrlRef.current?.value;
-    if (inputUrl === router.query.url) {
-      return importExternalPage(String(router.query.url));
-    }
-    return handleExternalPageImport(inputUrl);
+    return importExternalPage(inputUrl);
   }
 
   const [modalMessage, setModalMessage] = useState(
@@ -151,100 +179,7 @@ export default function Home() {
       maxAge: 24 * 60 * 60,
     });
   }
-  function importGoogleDocsPage(url: string | any) {
-    setLoading(true);
 
-    const id = getIdFromUrl(url);
-
-    // id eh invalido
-    if (id === "") {
-      changeModal(
-        {
-          title: "O id da sua página não foi encontrado.",
-          message: `Verifique se a URL indicada está correta.`,
-        },
-        {
-          value: "Tentar novamente",
-          onClick: () => {
-            closeModal();
-            router.push({
-              pathname: router.pathname,
-              query: router.query,
-            });
-          },
-        }
-      );
-      setLoading(false);
-      return setOpen(true);
-    }
-
-    getDocs(id)
-      .then((data) => {
-        const html = sanitize(data, sanitizeOptions);
-        setEditorHtml(html);
-      })
-      .catch((err) => {
-        changeModal({
-          title: "Não foi possível importar seu documento.",
-          message:
-            "Para permitir a importação, você deve compartilhar seu documento. <br><ol><li>Abra seu documento.</li><li>No canto superior direito, clique em 'Compartilhar'.</li><li>Em 'Acesso geral', mude de 'Restrito' para 'Qualquer pessoa com o link'.</li><li>Clique em 'Concluído'.</li></ol>",
-        });
-        setOpen(true);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }
-
-  function importNotionPageByUrl(url: string | any) {
-    setLoading(true);
-    let pageIdSplit = String(url).split("-");
-    const pageId = pageIdSplit[pageIdSplit.length - 1];
-    const fetchUrl = `https://notion-api.splitbee.io/v1/page/${pageId}`;
-
-    axios
-      .get(fetchUrl)
-      .then((res) => {
-        const data = res.data;
-
-        if (Object.keys(data).length === 0) {
-          changeModal(
-            {
-              title: "A sua página do Notion não está pública.",
-              message: `Na sua página do Notion, clique em "Share" no canto superior direito e depois em "Share to web".<br/><img src="/images/raw/notion_share_link.webp"/>`,
-            },
-            {
-              value: "Tentar novamente",
-              onClick: () => {
-                closeModal();
-                router.push({
-                  pathname: router.pathname,
-                  query: router.query,
-                });
-              },
-            }
-          );
-
-          setOpen(true);
-          return;
-        }
-
-        const notionDiv = <NotionRenderer blockMap={data} />;
-        const html = renderToString(notionDiv);
-
-        setEditorHtml(html);
-      })
-      .catch((err) => {
-        changeModal({
-          title: "A sua página do Notion não foi encontrada.",
-          message: "Verifique se o link está correto e desative seu AdBlock.",
-        });
-        setOpen(true);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }
   function handleEditorChange(data: OnChangePropsType) {
     setEditorData(data);
     localStorage.setItem("text", data.html);
@@ -294,16 +229,6 @@ export default function Home() {
       setSliderSize(base100ToSlideBarSize(easeResult.indiceDeFacilidade));
     };
   }, []);
-
-  function importExternalPage(url: string) {
-    const notionUrls = ["notion.so", "notion.com", "notion.site"];
-    const googleDocsUrls = ["docs.google.com", "drive.google.com"];
-    if (notionUrls.some((notion) => url.includes(notion))) {
-      return importNotionPageByUrl(url);
-    } else if (googleDocsUrls.some((googleDocs) => url.includes(googleDocs))) {
-      return importGoogleDocsPage(url);
-    }
-  }
 
   return (
     <>
