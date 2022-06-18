@@ -8,25 +8,13 @@ import { DefaultSeo } from "next-seo";
 import { Grid } from "@mui/material";
 
 import { useRouter } from "next/router";
-
-import { NotionRenderer } from "react-notion";
-
-import { renderToString } from "react-dom/server";
-
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useWindowSize } from "react-use";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import axios from "axios";
-
-import { getDocs, getIdFromUrl } from "../services/docs";
-import sanitize from "sanitize-html-react";
 
 import handleImport from "../libs/ImportExternalPage";
-
-const sanitizeOptions = {
-  nonTextTags: ["style", "script", "textarea", "noscript"],
-};
 
 type OnChangePropsType = {
   html: string;
@@ -58,6 +46,7 @@ import styles from "@styles/Home.module.scss";
 import TextEditor from "./../components/TextEditor";
 
 export default function Home() {
+  const { width, height } = useWindowSize();
   const [easeResult, setEaseResult] = useState({
     indiceDeFacilidade: 0,
     exemploDoIndice: "",
@@ -157,17 +146,6 @@ export default function Home() {
     }
   }
 
-  function handleExternalPageImport(url) {
-    if (!url || url == "") return;
-    console.log("router push");
-    router.push({
-      pathname: router.pathname,
-      query: {
-        url: url,
-      },
-    });
-  }
-
   const sliderRef = useRef(null);
 
   function getCookie() {
@@ -225,10 +203,11 @@ export default function Home() {
       });
     }
     setSliderSize(base100ToSlideBarSize(1000));
-    window.onresize = () => {
-      setSliderSize(base100ToSlideBarSize(easeResult.indiceDeFacilidade));
-    };
   }, []);
+
+  useEffect(() => {
+    setSliderSize(base100ToSlideBarSize(easeResult.indiceDeFacilidade));
+  }, [width, height]);
 
   return (
     <>
