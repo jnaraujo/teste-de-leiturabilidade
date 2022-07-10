@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect, useRef, useState } from "react";
 import nookies from "nookies";
 
@@ -14,16 +15,16 @@ import { useWindowSize } from "react-use";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
+// eslint-disable-next-line import/no-unresolved
+import styles from "@styles/Home.module.scss";
+import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
 import handleImport from "../libs/ImportExternalPage";
 
-import styles from "@styles/Home.module.scss";
-
 // COMPONENTS
-import TextEditor from "./../components/TextEditor";
-import { useLeiturabilidade } from "src/context/LeiturabilidadeContext";
+import TextEditor from "../components/TextEditor";
 
 function getCookie() {
-  return nookies.get(null, {})[`toastedInfo`];
+  return nookies.get(null, {}).toastedInfo;
 }
 
 function setCookie(value: string | boolean) {
@@ -39,7 +40,7 @@ function easeResultToExample(value) {
   return "um estudante do 1º ao 5º ano";
 }
 
-export default function Home() {
+const Home = () => {
   const { ease } = useLeiturabilidade();
 
   const sliderRef = useRef(null);
@@ -69,6 +70,25 @@ export default function Home() {
 
   const router = useRouter();
 
+  function changeModal(
+    message: {
+      title: string;
+      message: string;
+    },
+    secondButtonn?: {
+      value: string;
+      onClick: () => void;
+    }
+  ) {
+    setModalMessage({
+      title: message.title,
+      message: message.message,
+    });
+    if (secondButtonn) {
+      setSecondButton(secondButtonn);
+    }
+  }
+
   async function importExternalPage(url: string) {
     setLoading(true);
 
@@ -94,42 +114,24 @@ export default function Home() {
 
     setEditorHtml(data.html);
 
-    setLoading(false);
+    return setLoading(false);
   }
 
   useEffect(() => {
     importExternalPage(String(router.query.url));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.url]);
 
-  function handleImportClick() {
+  const handleImportClick = () => {
     const inputUrl = externalPageUrlRef.current?.value;
     return importExternalPage(inputUrl);
-  }
-
-  function changeModal(
-    message: {
-      title: string;
-      message: string;
-    },
-    secondButton?: {
-      value: string;
-      onClick: () => void;
-    }
-  ) {
-    setModalMessage({
-      title: message.title,
-      message: message.message,
-    });
-    if (secondButton) {
-      setSecondButton(secondButton);
-    }
-  }
+  };
 
   function base100ToSlideBarSize(value) {
-    if (!sliderRef.current) return;
+    if (!sliderRef.current) return 0;
+
     const sliderWidth = sliderRef.current.offsetWidth;
     const formula = value * (sliderWidth / 100);
+
     return Math.max(Math.min(formula, sliderWidth), 5);
   }
 
@@ -195,7 +197,7 @@ export default function Home() {
           <Grid container justifyContent="center" className={styles.content}>
             <Grid item xs={11} md={8} lg={6}>
               <div className={styles.textarea}>
-                <TextEditor html={editorHtml}></TextEditor>
+                <TextEditor html={editorHtml} />
               </div>
             </Grid>
             <Grid item xs={11} md={8} lg={3} className={styles.rd_result}>
@@ -207,14 +209,14 @@ export default function Home() {
                 <div
                   className={styles.slider}
                   style={{ left: `${sliderSize}px` }}
-                ></div>
+                />
                 <div className={styles.cont}>
                   <div className={styles.row} ref={sliderRef}>
-                    <div className={styles.col}></div>
-                    <div className={styles.col}></div>
-                    <div className={styles.col}></div>
-                    <div className={styles.col}></div>
-                    <div className={styles.col}></div>
+                    <div className={styles.col} />
+                    <div className={styles.col} />
+                    <div className={styles.col} />
+                    <div className={styles.col} />
+                    <div className={styles.col} />
                   </div>
                 </div>
               </div>
@@ -250,7 +252,9 @@ export default function Home() {
               <div className={styles.importExternalPage}>
                 <h3>Deseja importar o conteúdo de uma página externa?</h3>
                 <input type="url" ref={externalPageUrlRef} />
-                <button onClick={handleImportClick}>Importar página</button>
+                <button onClick={handleImportClick} type="submit">
+                  Importar página
+                </button>
                 <p>* Serviços suportados: Notion, Google Docs</p>
               </div>
             </Grid>
@@ -258,14 +262,14 @@ export default function Home() {
           <ToastContainer
             position="top-left"
             hideProgressBar={false}
-            draggable={true}
+            draggable
             autoClose={1000}
             pauseOnHover={false}
             pauseOnFocusLoss={false}
           />
           <div className={styles.infos}>
             <Grid container justifyContent="center">
-              <Grid item xs={11} className={styles.line}></Grid>
+              <Grid item xs={11} className={styles.line} />
               <Grid item xs={11} lg={10} xl={7} className={styles.texts}>
                 <h2>Como funciona o teste?</h2>
                 <p>
@@ -291,8 +295,8 @@ export default function Home() {
                 <p>
                   Tanto a versão original do{" "}
                   <strong>Teste de Flesch-Kincaid</strong> quando a versão
-                  brasileira levam em conta o <strong>tamanho da frase</strong>{" "}
-                  e o <strong>tamanho das palavras</strong>: quanto maior, mais
+                  brasileira levam em conta o<strong>tamanho da frase</strong> e
+                  o <strong>tamanho das palavras</strong>: quanto maior, mais
                   difícil de ler.
                 </p>
 
@@ -328,7 +332,7 @@ export default function Home() {
               </Grid>
             </Grid>
             <Grid container justifyContent="center">
-              <Grid item xs={12} className={styles.line}></Grid>
+              <Grid item xs={12} className={styles.line} />
               <Grid item xs={12} className={styles.footer}>
                 Feito por{" "}
                 <a
@@ -349,17 +353,17 @@ export default function Home() {
                     dangerouslySetInnerHTML={{
                       __html: modalMessage.message,
                     }}
-                  ></p>
+                  />
                 </div>
-                <div className={styles.line}></div>
+                <div className={styles.line} />
                 <div className={styles.button}>
-                  <button onClick={closeModal}>Fechar</button>
+                  <button onClick={closeModal} type="button">
+                    Fechar
+                  </button>
                   {secondButton.value ? (
-                    <>
-                      <button onClick={secondButton.onClick}>
-                        {secondButton.value}
-                      </button>
-                    </>
+                    <button onClick={secondButton.onClick} type="button">
+                      {secondButton.value}
+                    </button>
                   ) : (
                     ""
                   )}
@@ -376,4 +380,6 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home;

@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react";
-import { useLeiturabilidade } from "src/context/LeiturabilidadeContext";
-
 import styled from "styled-components";
 
-import * as ReadingEase from "./../libs/readability/ReadingEase";
+import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
+
+import * as ReadingEase from "../libs/readability/ReadingEase.js";
 
 const EditorDiv = styled.div`
   font-family: "Merriweather", serif;
@@ -73,12 +73,12 @@ type ComponentPropsType = {
   html: string;
 };
 
-export default function Component(props: ComponentPropsType) {
+const Component = ({ html, className }: ComponentPropsType) => {
   const editorRef = useRef(null);
   const { setEase } = useLeiturabilidade();
 
-  function handleEditorChange() {
-    if (editorRef.current.innerText != "") {
+  const handleEditorChange = () => {
+    if (editorRef.current.innerText !== "") {
       const textAnalyses = ReadingEase.fleschReadingEaseBR(
         editorRef.current.innerText
       );
@@ -91,28 +91,27 @@ export default function Component(props: ComponentPropsType) {
       });
       localStorage.setItem("text", editorRef.current.innerHTML);
     }
-  }
+  };
   useEffect(() => {
-    if (props.html) {
-      editorRef.current.innerHTML = props.html;
+    if (html) {
+      editorRef.current.innerHTML = html;
     }
     handleEditorChange();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.html]);
+  }, [html]);
 
   useEffect(() => {
     editorRef.current.innerHTML = localStorage.getItem("text") ?? "";
   }, []);
 
   return (
-    <>
-      <EditorDiv
-        placeholder="Digite teu texto..."
-        contentEditable={true}
-        ref={editorRef}
-        onInput={handleEditorChange}
-        className={props.className ? props.className : ""}
-      />
-    </>
+    <EditorDiv
+      placeholder="Digite teu texto..."
+      contentEditable
+      ref={editorRef}
+      onInput={handleEditorChange}
+      className={className && className}
+    />
   );
-}
+};
+
+export default Component;

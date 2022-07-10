@@ -1,5 +1,6 @@
+const TerserPlugin = require("terser-webpack-plugin");
+
 module.exports = {
-  target: "experimental-serverless-trace",
   swcMinify: true,
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
@@ -8,11 +9,15 @@ module.exports = {
         "react-dom/test-utils": "preact/test-utils",
         "react-dom": "preact/compat",
       });
+      // eslint-disable-next-line no-param-reassign
+      config.optimization.minimizer = [];
+      config.optimization.minimizer.push(new TerserPlugin({ parallel: true }));
     }
     return config;
   },
   generateBuildId: () => "build",
-  experimental: {
+  pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
+  compiler: {
     styledComponents: true,
   },
 };

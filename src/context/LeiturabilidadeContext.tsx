@@ -7,6 +7,7 @@ type LeiturabilidadeContextType = {
     words: number;
     sentences: number;
   };
+  // eslint-disable-next-line no-unused-vars
   setEase: (value: Number | any) => void;
 };
 
@@ -17,6 +18,7 @@ const LeiturabilidadeContext = createContext<LeiturabilidadeContextType>({
     words: 0,
     sentences: 0,
   },
+  // eslint-disable-next-line no-unused-vars
   setEase: (value: {
     index: number;
     syllables: number;
@@ -25,7 +27,7 @@ const LeiturabilidadeContext = createContext<LeiturabilidadeContextType>({
   }) => {},
 });
 
-export default function LeiturabilidadeProvider({ children }) {
+const LeiturabilidadeProvider = ({ children }) => {
   const [ease, setEase] = useState({
     index: 0,
     syllables: 0,
@@ -37,6 +39,7 @@ export default function LeiturabilidadeProvider({ children }) {
 
   return (
     <LeiturabilidadeContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         ease,
         setEase,
@@ -45,7 +48,9 @@ export default function LeiturabilidadeProvider({ children }) {
       {children}
     </LeiturabilidadeContext.Provider>
   );
-}
+};
 export function useLeiturabilidade() {
   return useContext(LeiturabilidadeContext);
 }
+
+export default LeiturabilidadeProvider;

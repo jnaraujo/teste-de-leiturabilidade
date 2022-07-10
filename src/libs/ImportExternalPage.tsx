@@ -23,12 +23,13 @@ const sanitizeOptions = {
 };
 
 async function importNotionPageByUrl(url: string) {
-  let pageIdSplit = String(url).split("-");
+  const pageIdSplit = String(url).split("-");
   const pageId = pageIdSplit[pageIdSplit.length - 1];
   const fetchUrl = `https://notion-api.splitbee.io/v1/page/${pageId}`;
 
   try {
-    const data = (await axios.get(fetchUrl)).data;
+    const { data } = await axios.get(fetchUrl);
+
     if (Object.keys(data).length === 0) {
       return {
         status: "error",
@@ -102,9 +103,10 @@ export default async function handleImport(url: string) {
   const googleDocsUrls = ["docs.google.com", "drive.google.com"];
 
   if (notionUrls.some((notion) => url.includes(notion))) {
-    return await importNotionPageByUrl(url);
-  } else if (googleDocsUrls.some((googleDocs) => url.includes(googleDocs))) {
-    return await importGoogleDocsPage(url);
+    return importNotionPageByUrl(url);
+  }
+  if (googleDocsUrls.some((googleDocs) => url.includes(googleDocs))) {
+    return importGoogleDocsPage(url);
   }
 
   return {

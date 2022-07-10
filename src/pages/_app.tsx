@@ -1,14 +1,14 @@
-import "./../styles/global.scss";
-import "./../styles/_colors.scss";
+import "../styles/global.scss";
+import "../styles/_colors.scss";
 
 import { useRouter } from "next/router";
 
 import { LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
-import LeiturabilidadeProvider from "src/context/LeiturabilidadeContext";
+import LeiturabilidadeProvider from "../context/LeiturabilidadeContext";
 
 // eslint-disable-next-line react/prop-types
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -52,6 +52,6 @@ function MyApp({ Component, pageProps }) {
       </LeiturabilidadeProvider>
     </>
   );
-}
+};
 
 export default MyApp;
