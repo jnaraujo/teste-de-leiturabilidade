@@ -110,6 +110,16 @@ export const EditorDiv = styled.div`
     height: 16px;
   }
 
+  .ease_hard {
+    background-color: #bd2323;
+  }
+  .ease_medium {
+    background-color: #fff4f4;
+  }
+  .ease_easy {
+    background-color: #97fba7;
+  }
+
   .editor {
     width: 100%;
     height: 100%;

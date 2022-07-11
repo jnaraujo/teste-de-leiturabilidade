@@ -30,6 +30,12 @@ type ComponentPropsType = {
   html: string;
 };
 
+function easeResultToTag(value) {
+  if (value === 0) return "ease_hard";
+  if (value === 1) return "ease_medium";
+  return "ease_easy";
+}
+
 const textExample = `
   <h1>Ei! Esse é um exemplo de título.</h1> 
   <p>
@@ -48,16 +54,49 @@ const textExample = `
   </p>
 `;
 
+let textEditorLines = {};
+
 const Component = ({ html, className }: ComponentPropsType) => {
   const [editorHTML, setEditorHTML] = useState({
     html: "",
   });
+
   const editorRef = useRef(null);
   const { setEase } = useLeiturabilidade();
 
   const setContent = (content) => {
     setEditorHTML({ html: content });
   };
+
+  function textAnalizer(editorReference) {
+    const nodes = editorReference.current.childNodes;
+
+    if (nodes.length === 0) {
+      return;
+    }
+
+    for (let i = 0; i < nodes.length; i += 1) {
+      const node = nodes[i];
+
+      if (node.nodeType === 1) {
+        const analysis = ReadingEase.fleschReadingEaseBR(node.textContent);
+        const result = easeResultToTag(analysis.result);
+
+        console.log(textEditorLines);
+
+        if (i in textEditorLines) {
+          if (textEditorLines[i] !== result) {
+            (node as any).classList.remove(...(node as any).classList);
+            (node as any).classList.add(result);
+          }
+        } else {
+          textEditorLines[i] = result;
+          (node as any).classList.remove(...(node as any).classList);
+          (node as any).classList.add(result);
+        }
+      }
+    }
+  }
 
   const handleEditorChange = (event) => {
     const { value } = event.target;
@@ -76,6 +115,8 @@ const Component = ({ html, className }: ComponentPropsType) => {
     const textAnalyses = ReadingEase.fleschReadingEaseBR(
       editorRef.current.innerText
     );
+
+    textAnalizer(editorRef);
 
     if (editorHTML.html !== "") {
       localStorage.setItem("text", editorHTML.html);
@@ -173,13 +214,16 @@ const Component = ({ html, className }: ComponentPropsType) => {
           />
         </div>
       </Toolbar>
-      <ContentEditable
+      <div ref={editorRef} className="editor">
+        <p contentEditable>Olá!</p>
+      </div>
+      {/* <ContentEditable
         placeholder="Digite aqui..."
         innerRef={editorRef}
         html={editorHTML.html}
         onChange={handleEditorChange}
         className="editor"
-      />
+      /> */}
     </EditorDiv>
   );
 };

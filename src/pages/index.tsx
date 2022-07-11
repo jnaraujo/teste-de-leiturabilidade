@@ -17,6 +17,7 @@ import { Modal } from "react-responsive-modal";
 
 // eslint-disable-next-line import/no-unresolved
 import styles from "@styles/Home.module.scss";
+import { getReadingTimeByWords, secondsToHMS } from "src/utils/readingTime";
 import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
 import handleImport from "../libs/ImportExternalPage";
 
@@ -241,6 +242,11 @@ const Home = () => {
                   }}
                 >
                   Mais sobre seu texto:
+                </strong>
+                <br />
+                Temo de leitura:{" "}
+                <strong>
+                  {secondsToHMS(getReadingTimeByWords(ease.words))}
                 </strong>
                 <br />
                 Número de palavras: <strong>{ease.words}</strong>
