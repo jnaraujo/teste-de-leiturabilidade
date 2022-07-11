@@ -50,7 +50,7 @@ const textExample = `
 
 const Component = ({ html, className }: ComponentPropsType) => {
   const [editorHTML, setEditorHTML] = useState({
-    html: textExample,
+    html: "",
   });
   const editorRef = useRef(null);
   const { setEase } = useLeiturabilidade();
@@ -96,8 +96,15 @@ const Component = ({ html, className }: ComponentPropsType) => {
 
   useEffect(() => {
     document.execCommand("defaultParagraphSeparator", false, "p");
-    if (localStorage.getItem("text")) {
+
+    if (
+      sanitize(localStorage.getItem("text"), {
+        allowedTags: [],
+      }).replace(/\s/g, "") !== ""
+    ) {
       setEditorHTML({ html: localStorage.getItem("text") });
+    } else {
+      setEditorHTML({ html: textExample });
     }
   }, []);
 
