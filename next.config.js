@@ -1,5 +1,3 @@
-const TerserPlugin = require("terser-webpack-plugin");
-
 module.exports = {
   swcMinify: true,
   webpack: (config, { dev, isServer }) => {
@@ -9,9 +7,6 @@ module.exports = {
         "react-dom/test-utils": "preact/test-utils",
         "react-dom": "preact/compat",
       });
-      // eslint-disable-next-line no-param-reassign
-      config.optimization.minimizer = [];
-      config.optimization.minimizer.push(new TerserPlugin({ parallel: true }));
     }
     return config;
   },

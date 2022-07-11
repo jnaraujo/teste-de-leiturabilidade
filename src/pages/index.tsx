@@ -21,7 +21,7 @@ import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
 import handleImport from "../libs/ImportExternalPage";
 
 // COMPONENTS
-import TextEditor from "../components/TextEditor";
+import TextEditor from "../components/TextEditor/index";
 
 function getCookie() {
   return nookies.get(null, {}).toastedInfo;

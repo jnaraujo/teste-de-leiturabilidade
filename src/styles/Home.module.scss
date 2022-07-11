@@ -36,8 +36,8 @@
 }
 .home {
   .container {
-    // max-width: 1920px;
-    // margin: 0 auto;
+    max-width: 1920px;
+    margin: 0 auto;
   }
   background-color: $white;
   .navbar {
@@ -48,12 +48,9 @@
     margin-top: 24px;
   }
   .top {
-    // margin: 0;
-    // padding: 0;
-    // margin-top: 40px;
     border-bottom: 1px solid $gray2;
     font-family: "Inter", sans-serif;
-    // margin-bottom: 15px;
+
     h1 {
       font-weight: 600;
       font-size: 35px;
@@ -79,7 +76,7 @@
         font-size: 22px;
       }
       h1 {
-        font-size: 56px;
+        font-size: 35px;
       }
       p {
         width: 600px;
@@ -92,7 +89,7 @@
     // border-bottom: 1px solid $gray2;
     padding-bottom: 20px;
     width: 99% !important;
-    height: 70vh;
+    min-height: 70vh;
     // padding-bottom: 16px;
   }
   .line {
