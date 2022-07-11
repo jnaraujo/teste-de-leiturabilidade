@@ -17,7 +17,7 @@ import { Modal } from "react-responsive-modal";
 
 // eslint-disable-next-line import/no-unresolved
 import styles from "@styles/Home.module.scss";
-import { getReadingTimeByWords, secondsToHMS } from "src/utils/readingTime";
+import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
 import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
 import handleImport from "../libs/ImportExternalPage";
 
@@ -35,10 +35,11 @@ function setCookie(value: string | boolean) {
 }
 
 function easeResultToExample(value) {
-  if (value === 0) return "um estudante universitário";
-  if (value === 1) return "um estudante do ensino médio";
-  if (value === 2) return "um estudante do 6º ao 9º ano";
-  return "um estudante do 1º ao 5º ano";
+  if (value > 75) return "um estudante do 1º ao 5º ano";
+  if (value > 50) return "um estudante do 6º ao 9º ano";
+  if (value > 25) return "um estudante do ensino médio";
+
+  return "um estudante universitário";
 }
 
 const Home = () => {
