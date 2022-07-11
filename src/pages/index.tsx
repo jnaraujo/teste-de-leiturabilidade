@@ -270,7 +270,7 @@ const Home = () => {
           <div className={styles.infos}>
             <Grid container justifyContent="center">
               <Grid item xs={11} className={styles.line} />
-              <Grid item xs={11} lg={10} xl={7} className={styles.texts}>
+              <Grid item xs={11} className={styles.texts}>
                 <h2>Como funciona o teste?</h2>
                 <p>
                   Para testar o nível de leitura de um texto, nós utilizamos o{" "}

@@ -12,6 +12,7 @@ import {
   AiOutlineUnderline,
   AiOutlineUnorderedList,
 } from "react-icons/ai";
+import { VscQuote } from "react-icons/vsc";
 import {
   GrTextAlignCenter,
   GrTextAlignFull,
@@ -24,39 +25,35 @@ import EditButton from "./EditButton";
 import * as ReadingEase from "../../libs/readability/ReadingEase.js";
 import { EditorDiv, Toolbar } from "./styles";
 
-const sanitizeOptions = {
-  allowedTags: [
-    "h1",
-    "h2",
-    "h3",
-    "h4",
-    "h5",
-    "h6",
-    "p",
-    "br",
-    "a",
-    "ul",
-    "li",
-    "strong",
-    "em",
-    "img",
-    "i",
-    "b",
-  ],
-};
 type ComponentPropsType = {
   className?: string;
   html: string;
 };
 
+const textExample = `
+  <h1>Ei! Esse é um exemplo de título.</h1> 
+  <p>
+    Você poder escrever <b>qualquer texto</b> que quiser aqui. <br />
+    Além disso, ainda pode importar textos de outros lugares!
+  </p>
+  <p>
+    O texto que você escreve é analisado automaticamente.<br />
+    Você pode ver o resultado na barra de ferramentas ao lado.
+  </p>
+  <blockquote>
+    Você também pode formatar o texto com as ferramentas acima. :)
+  </blockquote>
+  <p>
+    Se quiser saber mais sobre como funciona o site, tem mais conteúdo logo abaixo!
+  </p>
+`;
+
 const Component = ({ html, className }: ComponentPropsType) => {
   const [editorHTML, setEditorHTML] = useState({
-    html: `<h1>Ei! Esse é um exemplo de texto :)</h1>`,
+    html: textExample,
   });
   const editorRef = useRef(null);
   const { setEase } = useLeiturabilidade();
-
-  // const analyzeAndFormatText = (HTML) => HTML;
 
   const setContent = (content) => {
     setEditorHTML({ html: content });
@@ -98,9 +95,9 @@ const Component = ({ html, className }: ComponentPropsType) => {
   }, [html]);
 
   useEffect(() => {
-    // document.execCommand("defaultParagraphSeparator", false, "p");
+    document.execCommand("defaultParagraphSeparator", false, "p");
     if (localStorage.getItem("text")) {
-      // setEditorHTML({ html: localStorage.getItem("text") });
+      setEditorHTML({ html: localStorage.getItem("text") });
     }
   }, []);
 
@@ -116,6 +113,12 @@ const Component = ({ html, className }: ComponentPropsType) => {
           <EditButton cmd="formatBlock" arg="h2" name="H2" tooltip="H2" />
           <EditButton cmd="formatBlock" arg="h3" name="H3" tooltip="H3" />
           <EditButton cmd="formatBlock" arg="p" name="P" tooltip="Parágrafo" />
+          <EditButton
+            cmd="formatBlock"
+            arg="blockquote"
+            icon={<VscQuote />}
+            tooltip="Citação"
+          />
         </div>
 
         <div className="group">

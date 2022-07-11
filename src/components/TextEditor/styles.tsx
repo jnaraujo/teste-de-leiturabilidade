@@ -115,7 +115,7 @@ export const EditorDiv = styled.div`
     height: 100%;
     background-color: transparent;
     overflow: hidden;
-    overflow-y: scroll;
+
     resize: none;
     border: none;
 
@@ -152,6 +152,16 @@ export const EditorDiv = styled.div`
     height: auto;
     margin: 0 auto !important;
     padding: 0 !important;
+  }
+
+  blockquote {
+    padding: 12px;
+    padding-right: 0;
+    margin: 16px 0;
+    border-left: 4px solid #495057;
+    font-weight: 500;
+    line-height: 150%;
+    font-size: 1rem;
   }
 
   @media (min-width: 1200px) {

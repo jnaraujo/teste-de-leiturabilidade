@@ -36,7 +36,7 @@
 }
 .home {
   .container {
-    max-width: 1920px;
+    max-width: 1400px;
     margin: 0 auto;
   }
   background-color: $white;
@@ -60,7 +60,7 @@
       color: $black;
     }
     p {
-      font-size: 18px;
+      font-size: 16px;
       margin: 0;
       padding-bottom: 15px;
       color: $gray;
@@ -73,7 +73,7 @@
     @media (min-width: $lg) {
       margin-top: 30px;
       p {
-        font-size: 22px;
+        font-size: 20px;
       }
       h1 {
         font-size: 35px;
@@ -96,12 +96,12 @@
     border-top: 1px solid $gray2;
   }
   .infos {
+    max-width: 1200px;
+    margin: 0 auto;
     .texts {
       font-family: "Inter", sans-serif;
       padding-top: 40px;
       padding-bottom: 30px;
-
-      max-width: 1920px;
       h2 {
         font-weight: 600;
         font-size: 25px;
