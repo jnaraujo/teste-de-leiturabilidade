@@ -2,6 +2,7 @@
 /* eslint-disable react/no-danger */
 import Link from "next/link";
 import { useEffect } from "react";
+import Head from "next/head";
 import { getPost, getPosts } from "../../network/blog";
 
 import {
@@ -13,7 +14,6 @@ import {
 } from "../../styles/Blog";
 
 import MidCta from "../../components/MidCta";
-import Head from "next/head";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
