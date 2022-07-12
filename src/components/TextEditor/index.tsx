@@ -102,7 +102,6 @@ const Component = ({ html, className }: ComponentPropsType) => {
     //     document.execCommand("insertHTML", false, "<br>");
     //   }
     // });
-
     if (
       sanitize(localStorage.getItem("text"), {
         allowedTags: [],
@@ -112,7 +111,7 @@ const Component = ({ html, className }: ComponentPropsType) => {
     } else {
       setEditorContent(textExample);
     }
-    handleEditorChange();
+    textAnalizer(editorRef);
   }, []);
 
   return (
