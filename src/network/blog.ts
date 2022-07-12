@@ -24,9 +24,9 @@ async function getPost(url: string) {
 
   return {
     meta: {
-      title: metadata?.title,
-      description: metadata?.metaDesc,
-      date: metadata?.date,
+      title: metadata.title || "",
+      description: metadata.metaDesc || "",
+      date: metadata.date || "",
     },
     html,
   };
@@ -37,10 +37,12 @@ export { getPost };
 async function getPosts() {
   const { data } = await axios.get(process.env.POSTS_URL);
 
-  const posts = data.map((post) => ({
-    slug: post.name.replace(".md", ""),
-    raw: post.download_url,
-  }));
+  const posts = data
+    .filter((post) => post.name !== "README.md")
+    .map((post) => ({
+      slug: post.name.replace(".md", ""),
+      raw: post.download_url,
+    }));
 
   return posts;
 }

@@ -29,10 +29,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const post = await getPost(slug);
-
   return {
     props: {
-      ...post,
+      meta: {
+        title: post.meta.title,
+        description: post.meta.description,
+        date: post.meta.date,
+      },
+      html: post.html,
     },
     revalidate: 120,
   };
@@ -49,7 +53,7 @@ interface IProps {
 
 const BlogPage = ({ meta, html }: IProps) => {
   useEffect(() => {
-    console.log(meta);
+    // console.log(meta);
   }, []);
   return (
     <MainContainer>
@@ -70,7 +74,7 @@ const BlogPage = ({ meta, html }: IProps) => {
           </div>
         </Navbar>
         <Container>
-          <h1>{meta.title}</h1>
+          <h1>{meta?.title}</h1>
           <BlogText dangerouslySetInnerHTML={{ __html: html }} />
           <MidCta />
         </Container>
