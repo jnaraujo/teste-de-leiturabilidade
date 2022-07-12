@@ -111,6 +111,7 @@ const Component = ({ html, className }: ComponentPropsType) => {
     } else {
       setEditorContent(textExample);
     }
+    handleContentEase();
     textAnalizer(editorRef);
   }, []);
 
