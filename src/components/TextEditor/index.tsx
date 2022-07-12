@@ -103,6 +103,7 @@ const Component = ({ html, className }: ComponentPropsType) => {
     //   }
     // });
     if (
+      localStorage.getItem("text") &&
       sanitize(localStorage.getItem("text"), {
         allowedTags: [],
       }).replace(/\s/g, "") !== ""
