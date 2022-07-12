@@ -8,7 +8,7 @@ import axios from "axios";
 import { MainContainer, Container, MainContent } from "../../styles/Blog";
 
 import MidCta from "../../components/MidCta";
-import Navbar from "../../components/NavbarBlog";
+import Navbar from "../../components/Navbar";
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);

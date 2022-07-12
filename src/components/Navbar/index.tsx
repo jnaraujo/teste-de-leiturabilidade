@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import styled from "styled-components";
 
@@ -122,6 +123,13 @@ const Navbar = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &.there {
+          a {
+            border-bottom: 3px solid #06d6a0;
+          }
+        }
+
         a {
           all: unset;
           font-size: 1rem;
@@ -140,10 +148,16 @@ const Navbar = styled.div`
 
 const NavbarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [path, setPath] = useState("");
+  const router = useRouter();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    setPath(router.pathname.split("/")[1]);
+  }, [router.pathname]);
 
   return (
     <Navbar className={isOpen ? "open" : "closed"}>
@@ -164,12 +178,12 @@ const NavbarComponent = () => {
           <AiOutlineClose />
         </div>
         <ul>
-          <li>
+          <li className={path === "blog" ? "there" : ""}>
             <Link href="/blog" passHref>
               <a>Blog</a>
             </Link>
           </li>
-          <li>
+          <li className={path === "editor" ? "there" : ""}>
             <Link href="/editor" passHref>
               <a>Editor</a>
             </Link>
