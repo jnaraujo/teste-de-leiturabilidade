@@ -13,6 +13,7 @@ import {
 } from "../../styles/Blog";
 
 import MidCta from "../../components/MidCta";
+import Head from "next/head";
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -56,30 +57,36 @@ const BlogPage = ({ meta, html }: IProps) => {
     // console.log(meta);
   }, []);
   return (
-    <MainContainer>
-      <MainContent>
-        <Navbar>
-          <div>
-            <h3 className="title">
-              <Link href="/" passHref>
-                <a>Teste de Leitura</a>
-              </Link>
-            </h3>
-          </div>
+    <>
+      <Head>
+        <title>{meta?.title} - Teste de Leitura</title>
+        <meta name="description" content={meta?.description} />
+      </Head>
+      <MainContainer>
+        <MainContent>
+          <Navbar>
+            <div>
+              <h3 className="title">
+                <Link href="/" passHref>
+                  <a>Teste de Leitura</a>
+                </Link>
+              </h3>
+            </div>
 
-          <div className="cta">
-            <Link href="/" passHref>
-              <a>Testar meu texto!</a>
-            </Link>
-          </div>
-        </Navbar>
-        <Container>
-          <h1>{meta?.title}</h1>
-          <BlogText dangerouslySetInnerHTML={{ __html: html }} />
-          <MidCta />
-        </Container>
-      </MainContent>
-    </MainContainer>
+            <div className="cta">
+              <Link href="/" passHref>
+                <a>Testar meu texto!</a>
+              </Link>
+            </div>
+          </Navbar>
+          <Container>
+            <h1>{meta?.title}</h1>
+            <BlogText dangerouslySetInnerHTML={{ __html: html }} />
+            <MidCta />
+          </Container>
+        </MainContent>
+      </MainContainer>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import nookies from "nookies";
 
 import { ToastContainer, toast } from "react-toastify";
