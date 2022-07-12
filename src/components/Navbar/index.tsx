@@ -183,11 +183,11 @@ const NavbarComponent = () => {
               <a>Blog</a>
             </Link>
           </li>
-          <li className={path === "editor" ? "there" : ""}>
+          {/* <li className={path === "editor" ? "there" : ""}>
             <Link href="/editor" passHref>
               <a>Editor</a>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href="/#como-funciona" passHref>
               <a>Como funciona?</a>

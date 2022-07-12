@@ -60,7 +60,7 @@ export const MainContainer = styled.div`
 
     border-radius: 4px;
 
-    font-size: 15px;
+    font-size: 1rem;
     font-weight: 600;
 
     color: #212529;
