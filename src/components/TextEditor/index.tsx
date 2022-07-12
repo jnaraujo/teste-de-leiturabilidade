@@ -11,7 +11,6 @@ import * as ReadingEase from "../../libs/readability/ReadingEase.js";
 import { EditorDiv } from "./styles";
 
 import Toolbar from "./Toolbar";
-import { useWindowSize } from "react-use";
 
 type ComponentPropsType = {
   className?: string;
@@ -27,7 +26,6 @@ function easeResultToTag(value) {
 }
 
 const Component = ({ html, className }: ComponentPropsType) => {
-  const { width, height } = useWindowSize();
   const editorRef = useRef(null);
   const { setEase } = useLeiturabilidade();
   const [editorConfig] = useState({
