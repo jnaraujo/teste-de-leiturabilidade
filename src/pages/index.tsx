@@ -245,7 +245,7 @@ const Home = () => {
                   Mais sobre seu texto:
                 </strong>
                 <br />
-                Temo de leitura:{" "}
+                Tempo de leitura:{" "}
                 <strong>
                   {secondsToHMS(getReadingTimeByWords(ease.words))}
                 </strong>
