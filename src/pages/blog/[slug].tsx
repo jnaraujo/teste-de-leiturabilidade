@@ -5,7 +5,7 @@ import Head from "next/head";
 
 import { getReadingTime } from "../../utils/readingTime";
 
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/NavbarBlog";
 
 import {
   MainContainer,

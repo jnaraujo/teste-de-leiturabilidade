@@ -1,14 +1,99 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from "next/link";
+import { useState } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import styled from "styled-components";
 
-export const Navbar = styled.div`
+const Cta = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .link {
+    all: unset;
+    text-align: center;
+    width: 100% !important;
+    color: #fff !important;
+    font-size: 16px !important;
+
+    padding: 8px 24px !important;
+    font-weight: 600 !important;
+  }
+  &:hover {
+    background: white !important;
+    .link {
+      color: black !important;
+    }
+  }
+
+  cursor: pointer;
+  background: black;
+  min-height: 30px;
+  min-width: fit-content;
+
+  border-radius: 4px;
+
+  border: 2px solid black;
+  transition: background 0.3s ease-in-out;
+`;
+
+const Navbar = styled.div`
+  font-family: "Inter", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 
   max-width: 90vw;
+  margin: 0 auto;
+  height: fit-content;
+
+  .openBtn,
+  .top_close {
+    display: none;
+
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 768px) {
+    .openBtn {
+      display: block;
+    }
+    .menu {
+      display: none;
+    }
+
+    &.open {
+      .menu {
+        .top_close {
+          display: block;
+          position: absolute;
+          top: 16px;
+          right: 16px;
+        }
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        background-color: #fafafa;
+
+        ul {
+          padding: 0;
+          flex-direction: column;
+          a {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
 
   .title {
     a {
@@ -26,58 +111,84 @@ export const Navbar = styled.div`
       margin-left: 4px;
     }
   }
-  .cta {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    a {
-      all: unset;
-      text-align: center;
-      width: 100%;
+
+  .menu {
+    ul {
+      margin: 0;
+      display: flex;
+      gap: 32px;
+      li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
+          all: unset;
+          font-size: 1rem;
+          font-weight: 500;
+          color: #212529;
+          cursor: pointer;
+        }
+
+        a:hover {
+          color: #495057;
+        }
+      }
     }
-
-    cursor: pointer;
-    background: black;
-
-    padding: 2px 24px;
-    min-height: 30px;
-    min-width: fit-content;
-
-    border-radius: 4px;
-
-    font-size: 15px;
-    font-weight: 600;
-
-    color: #fff;
-
-    border: 2px solid black;
-    transition: background 0.3s ease-in-out;
-  }
-
-  .cta:hover {
-    background: white;
-    color: black;
   }
 `;
 
-const NavbarComponent = () => (
-  <Navbar>
-    <div>
-      <h3 className="title">
-        <Link href="/" passHref>
-          <a>Teste de Leitura</a>
-        </Link>
-        <Link href="/blog" passHref>
-          <a className="blog">/blog</a>
-        </Link>
-      </h3>
-    </div>
+const NavbarComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    <div className="cta">
-      <Link href="/" passHref>
-        <a>Analisar meu texto!</a>
-      </Link>
-    </div>
-  </Navbar>
-);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <Navbar className={isOpen ? "open" : "closed"}>
+      <div>
+        <h3 className="title">
+          <Link href="/" passHref>
+            <a>Teste de Leitura</a>
+          </Link>
+        </h3>
+      </div>
+
+      <div className="openBtn" onClick={handleClick}>
+        <AiOutlineMenu />
+      </div>
+
+      <div className="menu">
+        <div className="top_close" onClick={handleClick}>
+          <AiOutlineClose />
+        </div>
+        <ul>
+          <li>
+            <Link href="/blog" passHref>
+              <a>Blog</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor" passHref>
+              <a>Editor</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/#como-funciona" passHref>
+              <a>Como funciona?</a>
+            </Link>
+          </li>
+          <li>
+            <Cta>
+              <Link href="/" passHref>
+                <a className="link">Analisar meu texto!</a>
+              </Link>
+            </Cta>
+          </li>
+        </ul>
+      </div>
+    </Navbar>
+  );
+};
 export default NavbarComponent;

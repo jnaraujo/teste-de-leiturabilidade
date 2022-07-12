@@ -23,6 +23,7 @@ import handleImport from "../libs/ImportExternalPage";
 
 // COMPONENTS
 import TextEditor from "../components/TextEditor/index";
+import Navbar from "../components/Navbar";
 
 function getCookie() {
   return nookies.get(null, {}).toastedInfo;
@@ -185,10 +186,10 @@ const Home = () => {
       />
       <div className={styles.home}>
         <div className={styles.container}>
+          <Navbar />
           <Grid container justifyContent="center" className={styles.navbar}>
             <Grid item xs={11} md={8} lg={10}>
               <div className={styles.top}>
-                <h1>Teste de leitura</h1>
                 <p>
                   Digite o seu texto abaixo e descubra, em tempo real, o{" "}
                   <span>nível de leitura</span>.
@@ -277,7 +278,7 @@ const Home = () => {
           <div className={styles.infos}>
             <Grid container justifyContent="center">
               <Grid item xs={11} className={styles.line} />
-              <Grid item xs={11} className={styles.texts}>
+              <Grid item xs={11} className={styles.texts} id="como-funciona">
                 <h2>Como funciona o teste?</h2>
                 <p>
                   Para testar o nível de leitura de um texto, nós utilizamos o{" "}
