@@ -8,6 +8,8 @@ export const MainContainer = styled.div`
   border-radius: 8px;
   padding: 30px 24px;
 
+  margin: 16px 0;
+
   @media (min-width: 768px) {
     .button {
       width: 300px;
@@ -20,7 +22,7 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: left;
-    gap: 8px;
+    gap: 16px;
   }
 
   * {
@@ -31,6 +33,7 @@ export const MainContainer = styled.div`
     font-size: 1.6rem;
     color: #f8f9fa;
     line-height: 120%;
+    margin: 0;
   }
   p {
     color: #ced4da;
@@ -38,7 +41,7 @@ export const MainContainer = styled.div`
   }
 
   .button {
-    margin-top: 16px;
+    /* margin-top: 16px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +55,7 @@ export const MainContainer = styled.div`
     background: #06d6a0;
 
     padding: 2px 24px;
-    min-height: 30px;
+    min-height: 35px;
     min-width: fit-content;
 
     border-radius: 4px;

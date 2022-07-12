@@ -1,17 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-danger */
-import Link from "next/link";
 import { useEffect } from "react";
 import Head from "next/head";
-import { getPost, getPosts } from "../../network/blog";
+
+import { getReadingTime } from "../../utils/readingTime";
+
+import Navbar from "../../components/Navbar";
 
 import {
   MainContainer,
   Container,
   MainContent,
-  Navbar,
   BlogText,
 } from "../../styles/Blog";
+
+import { getPost, getPosts } from "../../network/blog";
 
 import MidCta from "../../components/MidCta";
 
@@ -64,23 +67,21 @@ const BlogPage = ({ meta, html }: IProps) => {
       </Head>
       <MainContainer>
         <MainContent>
-          <Navbar>
-            <div>
-              <h3 className="title">
-                <Link href="/" passHref>
-                  <a>Teste de Leitura</a>
-                </Link>
-              </h3>
-            </div>
-
-            <div className="cta">
-              <Link href="/" passHref>
-                <a>Testar meu texto!</a>
-              </Link>
-            </div>
-          </Navbar>
+          <Navbar />
           <Container>
             <h1>{meta?.title}</h1>
+            {/* <h2>{meta?.description}</h2> */}
+            <div className="information">
+              <p>
+                {new Date(meta?.date).toLocaleDateString("pt-BR", {
+                  // weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+              <p className="right">Leitura: {getReadingTime(html)} minutos</p>
+            </div>
             <BlogText dangerouslySetInnerHTML={{ __html: html }} />
             <MidCta />
           </Container>
