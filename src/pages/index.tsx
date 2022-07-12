@@ -302,7 +302,7 @@ const Home = () => {
                 <p>
                   Tanto a versão original do{" "}
                   <strong>Teste de Flesch-Kincaid</strong> quando a versão
-                  brasileira levam em conta o<strong>tamanho da frase</strong> e
+                  brasileira levam em conta o <strong>tamanho da frase</strong> e
                   o <strong>tamanho das palavras</strong>: quanto maior, mais
                   difícil de ler.
                 </p>
