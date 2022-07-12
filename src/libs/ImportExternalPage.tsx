@@ -1,7 +1,5 @@
 import axios from "axios";
 import sanitize from "sanitize-html-react";
-import { NotionRenderer } from "react-notion";
-import { renderToString } from "react-dom/server";
 import { getDocs, getIdFromUrl } from "../services/docs";
 
 const sanitizeOptions = {
@@ -25,12 +23,12 @@ const sanitizeOptions = {
 async function importNotionPageByUrl(url: string) {
   const pageIdSplit = String(url).split("-");
   const pageId = pageIdSplit[pageIdSplit.length - 1];
-  const fetchUrl = `https://notion-api.splitbee.io/v1/page/${pageId}`;
+  const fetchUrl = `https://potion-api.vercel.app/html?id=${pageId}`;
 
   try {
     const { data } = await axios.get(fetchUrl);
 
-    if (Object.keys(data).length === 0) {
+    if (!data) {
       return {
         status: "error",
         message: {
@@ -40,12 +38,9 @@ async function importNotionPageByUrl(url: string) {
       };
     }
 
-    const notionDiv = <NotionRenderer blockMap={data} />;
-    const html = renderToString(notionDiv);
-
     return {
       status: "success",
-      html: sanitize(html, sanitizeOptions),
+      html: sanitize(data, sanitizeOptions),
     };
   } catch (e) {
     return {
