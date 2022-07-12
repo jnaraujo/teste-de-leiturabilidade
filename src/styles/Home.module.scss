@@ -43,6 +43,11 @@
   .navbar {
     margin-top: 16px;
   }
+  .left {
+    @media (min-width: $md) {
+      padding-right: 32px;
+    }
+  }
   .content {
     min-height: 70vh;
     margin-top: 8px;
@@ -345,7 +350,6 @@
     }
     @media (min-width: $xl) {
       position: relative;
-      padding-left: 32px;
     }
   }
 }

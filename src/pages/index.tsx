@@ -186,7 +186,7 @@ const Home = () => {
       <div className={styles.home}>
         <div className={styles.container}>
           <Grid container justifyContent="center" className={styles.navbar}>
-            <Grid item xs={11} md={8} lg={9}>
+            <Grid item xs={11} md={8} lg={10}>
               <div className={styles.top}>
                 <h1>Teste de leitura</h1>
                 <p>
@@ -197,7 +197,7 @@ const Home = () => {
             </Grid>
           </Grid>
           <Grid container justifyContent="center" className={styles.content}>
-            <Grid item xs={11} md={8} lg={6}>
+            <Grid item xs={11} md={8} lg={7} className={styles.left}>
               <div className={styles.textarea}>
                 <TextEditor html={editorHtml} />
               </div>
