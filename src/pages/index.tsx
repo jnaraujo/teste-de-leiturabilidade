@@ -175,7 +175,7 @@ const Home = () => {
   return (
     <>
       <DefaultSeo
-        title="Teste de Leiturabilidade"
+        title="Teste de Leitura"
         description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importa arquivos do Google Docs, Notion, etc e faça o teste de Leiturabilidade."
         additionalLinkTags={[
           {
