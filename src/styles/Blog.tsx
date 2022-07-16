@@ -25,7 +25,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: 90vw;
 
-  margin: 18px;
+  margin: 32px;
 
   .share {
     display: flex;
@@ -43,25 +43,18 @@ export const Container = styled.div`
 
   .information {
     margin: 16px 0;
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    align-items: center;
-    justify-content: space-between;
 
-    padding-bottom: 16px;
+    /* padding-bottom: 16px; */
 
     p {
       margin: 0;
     }
     p {
-      letter-spacing: 1px;
-      font-size: 1.1rem;
+      letter-spacing: 2px;
+      font-size: 1rem;
       font-weight: 500;
       color: #6c757d;
-    }
-    .right {
-      text-align: right;
+      line-height: 150%;
     }
   }
 
@@ -71,17 +64,10 @@ export const Container = styled.div`
 
   h1 {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 120%;
     color: #212529;
     margin: 0;
-  }
-  h2 {
-    font-size: 1.1rem;
-    color: #6c757d;
-    margin: 0;
-    margin: 32px 0;
-    font-weight: 500;
   }
 
   .postList {
@@ -129,6 +115,7 @@ export const BlogText = styled.div`
     line-height: 150%;
     font-weight: 600;
     color: #343a40;
+    margin: 24px 0 8px 0;
   }
   p {
     color: #495057;

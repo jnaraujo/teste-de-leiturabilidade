@@ -78,9 +78,9 @@ const BlogPage = ({ meta, html }: IProps) => {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
-                })}
+                })}{" "}
+                • Leitura: {getReadingTime(html)} minutos
               </p>
-              <p className="right">Leitura: {getReadingTime(html)} minutos</p>
             </div>
             <BlogText dangerouslySetInnerHTML={{ __html: html }} />
             <MidCta />
