@@ -2,7 +2,9 @@ import axios from "axios";
 import Markdown from "markdown-it";
 import matter from "gray-matter";
 
-const md = new Markdown();
+const md = new Markdown({
+  html: true,
+});
 
 async function getPost(url: string) {
   const { data } = await axios.get(`${process.env.POST_URL}/${url}.md`);

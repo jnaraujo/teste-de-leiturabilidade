@@ -54,11 +54,11 @@ const BlogPage = ({ posts }) => (
           <div className="postList">
             {posts.map((post) => (
               <div key={post.slug}>
-                <h2>
+                <h3>
                   <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
                     <a>{post.title}</a>
                   </Link>
-                </h2>
+                </h3>
                 <p>{post.description}</p>
               </div>
             ))}

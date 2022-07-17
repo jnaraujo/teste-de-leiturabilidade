@@ -63,9 +63,8 @@ export const Container = styled.div`
   }
 
   h1 {
-    font-size: 2rem;
     font-weight: 700;
-    line-height: 120%;
+    line-height: 130%;
     color: #212529;
     margin: 0;
   }
@@ -84,12 +83,11 @@ export const Container = styled.div`
     a {
       all: unset;
     }
-    h2,
+    h3,
     p {
       margin: 0 !important;
     }
-    h2 {
-      font-size: 1.4rem;
+    h3 {
       color: #343a40;
 
       cursor: pointer;
@@ -108,11 +106,34 @@ export const Container = styled.div`
 export const BlogText = styled.div`
   width: 100%;
   margin: 0;
+
+  .image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      font-size: 0.8rem;
+      color: #b5bcc2;
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+
   h2 {
     max-width: 100%;
     overflow-wrap: break-word;
-    font-size: 1.4rem;
-    line-height: 150%;
+    font-weight: 600;
+    color: #343a40;
+    margin: 24px 0 8px 0;
+  }
+
+  h3 {
+    max-width: 100%;
+    overflow-wrap: break-word;
     font-weight: 600;
     color: #343a40;
     margin: 24px 0 8px 0;
@@ -121,7 +142,7 @@ export const BlogText = styled.div`
     color: #495057;
     font-size: 1.1rem;
     line-height: 150%;
-    font-weight: 500;
+    font-weight: 400;
     margin: 8px 0;
   }
   a {

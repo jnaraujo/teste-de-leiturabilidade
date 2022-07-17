@@ -9,4 +9,61 @@ html {
   @media (max-width: 720px) {
     font-size: 16px;
   }
+
+  line-height: 1.5;
+}
+
+/* ↓ This one is for smaller phones ↓ */
+@media (max-width: 350px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+/* ↓ These are for high-res displays ↓ */
+@media (min-width: 1900px) {
+  html {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 2500px) {
+  html {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 3000px) {
+  html {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 3400px) {
+  html {
+    font-size: 3rem;
+  }
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 0.875rem;
 }
