@@ -96,6 +96,14 @@ const Component = ({ html, className }: ComponentPropsType) => {
   useEffect(() => {
     document.execCommand("defaultParagraphSeparator", false, "p");
 
+    const pasteEventHandler = (e) => {
+      e.preventDefault();
+      const text = e.clipboardData.getData("text/plain");
+      document.execCommand("insertHTML", false, text);
+    };
+
+    editorRef.current.addEventListener("paste", pasteEventHandler);
+
     // editorRef.current.addEventListener("keydown", (event) => {
     //   if (event.key === "Enter") {
     //     event.preventDefault();
@@ -114,6 +122,10 @@ const Component = ({ html, className }: ComponentPropsType) => {
     }
     handleContentEase();
     textAnalizer(editorRef);
+
+    return () => {
+      editorRef.current.removeEventListener("paste", pasteEventHandler);
+    };
   }, []);
 
   return (
