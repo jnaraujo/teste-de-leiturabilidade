@@ -124,7 +124,7 @@ const Component = ({ html, className }: ComponentPropsType) => {
     textAnalizer(editorRef);
 
     return () => {
-      editorRef.current.removeEventListener("paste", pasteEventHandler);
+      editorRef?.current?.removeEventListener("paste", pasteEventHandler);
     };
   }, []);
 
