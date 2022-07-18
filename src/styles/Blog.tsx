@@ -146,7 +146,7 @@ export const BlogText = styled.div`
     margin: 8px 0;
   }
   a {
-    color: #06d6a0;
+    color: #00be8b;
   }
   ul,
   ol {
