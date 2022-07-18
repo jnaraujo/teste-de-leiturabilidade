@@ -311,7 +311,7 @@ const Home = () => {
                 <h2>Quão preciso é o teste?</h2>
                 <p>
                   A versão original do <strong>Teste de Flesch-Kincaid</strong>{" "}
-                  precisão de quase 90% - o que, para uso comum, é um valor
+                  tem precisão de quase 90% - o que, para uso comum, é um valor
                   bastante considerável.
                 </p>
 
