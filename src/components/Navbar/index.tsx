@@ -178,14 +178,19 @@ const NavbarComponent = () => {
           <AiOutlineClose />
         </div>
         <ul>
+          <li>
+            <Link href="/#como-funciona" passHref>
+              <a>Como funciona?</a>
+            </Link>
+          </li>
           <li className={path === "blog" ? "there" : ""}>
             <Link href="/blog" passHref>
               <a>Blog</a>
             </Link>
           </li>
-          <li>
-            <Link href="/#como-funciona" passHref>
-              <a>Como funciona?</a>
+          <li className={path === "editor" ? "there" : ""}>
+            <Link href="/editor" passHref>
+              <a>Editor</a>
             </Link>
           </li>
           <li>
