@@ -11,6 +11,7 @@ import * as ReadingEase from "../../libs/readability/ReadingEase.js";
 import { EditorDiv } from "./styles";
 
 import Toolbar from "./Toolbar";
+import IntextMenu from "./IntextMenu";
 
 type ComponentPropsType = {
   className?: string;
@@ -27,6 +28,11 @@ function easeResultToTag(value) {
 
 const Component = ({ html, className }: ComponentPropsType) => {
   const editorRef = useRef(null);
+  const [intextMenuConfig, setIntextMenuConfig] = useState({
+    isActive: false,
+    x: 0,
+    y: 0,
+  });
   const { setEase } = useLeiturabilidade();
   const [editorConfig] = useState({
     colors: true,
@@ -104,12 +110,31 @@ const Component = ({ html, className }: ComponentPropsType) => {
 
     editorRef.current.addEventListener("paste", pasteEventHandler);
 
-    // editorRef.current.addEventListener("keydown", (event) => {
-    //   if (event.key === "Enter") {
-    //     event.preventDefault();
-    //     document.execCommand("insertHTML", false, "<br>");
-    //   }
-    // });
+    const displayIntextMenu = (event: any) => {
+      const xPos = event.pageX;
+      const yPos = event.pageY;
+
+      if (typeof window !== "undefined") {
+        const selection = window.getSelection().toString();
+
+        if (selection !== "") {
+          setIntextMenuConfig({
+            isActive: true,
+            x: xPos,
+            y: yPos,
+          });
+        } else {
+          setIntextMenuConfig({
+            isActive: false,
+            x: 0,
+            y: 0,
+          });
+        }
+      }
+    };
+    editorRef.current.addEventListener("contextmenu", displayIntextMenu);
+    editorRef.current.addEventListener("mouseup", displayIntextMenu);
+
     if (
       localStorage.getItem("text") &&
       sanitize(localStorage.getItem("text"), {
@@ -125,6 +150,8 @@ const Component = ({ html, className }: ComponentPropsType) => {
 
     return () => {
       editorRef?.current?.removeEventListener("paste", pasteEventHandler);
+      editorRef?.current?.removeEventListener("contextmenu", displayIntextMenu);
+      editorRef?.current?.removeEventListener("mouseup", displayIntextMenu);
     };
   }, []);
 
@@ -142,6 +169,11 @@ const Component = ({ html, className }: ComponentPropsType) => {
         className="editor"
         ref={editorRef}
         onInput={handleEditorChange}
+      />
+      <IntextMenu
+        isActive={intextMenuConfig.isActive}
+        x={intextMenuConfig.x}
+        y={intextMenuConfig.y}
       />
     </EditorDiv>
   );
