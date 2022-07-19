@@ -279,7 +279,7 @@ const Home = () => {
             <Grid container justifyContent="center">
               <Grid item xs={11} className={styles.line} />
               <Grid item xs={11} className={styles.texts} id="como-funciona">
-                <h2>Como funciona o teste?</h2>
+                <h2>Como funciona o Teste de Leitura?</h2>
                 <p>
                   Para testar o nível de leitura de um texto, nós utilizamos o{" "}
                   <a
@@ -299,7 +299,7 @@ const Home = () => {
                   Ciências Matemáticas e de Computação da USP de São Carlos;
                 </p>
 
-                <h2>O que o teste leva em conta?</h2>
+                <h2>O que o Teste de Leitura leva em conta?</h2>
                 <p>
                   Tanto a versão original do{" "}
                   <strong>Teste de Flesch-Kincaid</strong> quando a versão
@@ -308,7 +308,7 @@ const Home = () => {
                   difícil de ler.
                 </p>
 
-                <h2>Quão preciso é o teste?</h2>
+                <h2>Quão preciso é o Teste de Leitura?</h2>
                 <p>
                   A versão original do <strong>Teste de Flesch-Kincaid</strong>{" "}
                   tem precisão de quase 90% - o que, para uso comum, é um valor
