@@ -49,7 +49,7 @@
     }
   }
   .content {
-    min-height: 70vh;
+    min-height: 72vh;
     margin-top: 8px;
   }
   .top {
@@ -76,7 +76,7 @@
       }
     }
     @media (min-width: $lg) {
-      margin-top: 30px;
+      // margin-top: 30px;
       p {
         font-size: 20px;
       }
