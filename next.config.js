@@ -19,6 +19,9 @@ const nextConfig = {
     disable: process.env.NODE_ENV === "development",
     runtimeCaching,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = withBundleAnalyzer(withPWA(nextConfig));
