@@ -139,7 +139,6 @@ const Home = () => {
   }
 
   useEffect(() => {
-    // setEditorHtml(localStorage.getItem("text") ?? "");
     if (!getCookie()) {
       toast.info(
         "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",

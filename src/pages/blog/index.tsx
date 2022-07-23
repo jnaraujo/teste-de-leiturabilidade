@@ -7,33 +7,16 @@ import { MainContainer, Container, MainContent } from "../../styles/Blog";
 
 import MidCta from "../../components/MidCta";
 import Navbar from "../../components/Navbar";
-import { getPost, getPosts } from "../../network/blog";
+import { getBlogPosts } from "../../network/notion";
 
 export async function getStaticProps() {
-  const posts = await getPosts();
-  const paypack = [];
-  const promises = [];
-
-  for (let i = 0; i < posts.length; i += 1) {
-    promises.push(getPost(posts[i].slug));
-  }
-
-  const result = await Promise.all(promises);
-
-  for (let i = 0; i < posts.length; i += 1) {
-    paypack.push({
-      title: result[i].meta.title,
-      slug: posts[i].slug,
-      date: result[i].meta.date,
-      description: result[i].meta.description,
-    });
-  }
+  const posts = await getBlogPosts();
 
   return {
     props: {
-      posts: paypack,
+      posts,
     },
-    revalidate: 120,
+    revalidate: 120, // In seconds
   };
 }
 
@@ -55,7 +38,7 @@ const BlogPage = ({ posts }) => (
             {posts.map((post) => (
               <div key={post.slug}>
                 <h3>
-                  <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
+                  <Link href={`/blog/${post.slug}`}>
                     <a>{post.title}</a>
                   </Link>
                 </h3>

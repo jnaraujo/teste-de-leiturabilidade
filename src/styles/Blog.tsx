@@ -164,6 +164,26 @@ export const BlogText = styled.div`
       list-style-type: disc;
     }
   }
+  figure {
+    margin: 0;
+    width: 100% !important;
+    div {
+      padding: 0 !important;
+      height: fit-content;
+      position: relative;
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    figcaption {
+      font-size: 0.8rem;
+      color: #495057;
+      text-align: center;
+      font-weight: 400;
+      margin: 4px 0;
+    }
+  }
   blockquote {
     padding: 16px;
     padding-right: 0;

@@ -14,75 +14,100 @@ import {
   BlogText,
 } from "../../styles/Blog";
 
-import { getPost, getPosts } from "../../network/blog";
+import { getBlogPosts, getPost } from "../../network/notion";
 
 import MidCta from "../../components/MidCta";
 
 export async function getStaticPaths() {
-  const posts = await getPosts();
+  const posts = await getBlogPosts();
+
+  const paths = posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+  }));
 
   return {
-    paths: posts.map((post) => ({
-      params: {
-        slug: post.slug,
-      },
-    })),
+    paths,
     fallback: true,
   };
 }
 
 export async function getStaticProps({ params: { slug } }) {
   const post = await getPost(slug);
-  return {
-    props: {
-      meta: {
-        title: post.meta.title,
-        description: post.meta.description,
-        date: post.meta.date,
+
+  if (!post) {
+    return {
+      props: {
+        notFound: true,
       },
-      html: post.html,
-    },
+    };
+  }
+
+  return {
+    props: { ...post },
     revalidate: 120,
   };
 }
 
 interface IProps {
-  meta: {
-    title: string;
-    description: string;
-    date: string;
-  };
-  html: string;
+  title: string;
+  description: string;
+  body: string;
+  publishedAt: string;
+  picture: string;
 }
 
-const BlogPage = ({ meta, html }: IProps) => {
+const BlogPage = ({
+  title,
+  description,
+  body,
+  publishedAt,
+  picture,
+}: IProps) => {
   useEffect(() => {
     // console.log(meta);
   }, []);
   return (
     <>
       <Head>
-        <title>{meta?.title} - Teste de Leitura</title>
-        <meta name="description" content={meta?.description} />
+        <title>{title} - Teste de Leitura</title>
+        <meta name="description" content={description} />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://leitura.jnaraujo.com/" />
+        <meta property="og:title" content={`${title} - Teste de Leitura`} />
+        <meta property="og:description" content={description} />
+        {picture && <meta property="og:image" content={picture} />}
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://leitura.jnaraujo.com/" />
+        <meta
+          property="twitter:title"
+          content={`${title} - Teste de Leitura`}
+        />
+        <meta property="twitter:description" content={description} />
+        {picture && <meta property="twitter:image" content={picture} />}
       </Head>
       <MainContainer>
         <MainContent>
           <Navbar />
           <Container>
-            <h1>{meta?.title}</h1>
-            {/* <h2>{meta?.description}</h2> */}
+            <h1>{title}</h1>
             <div className="information">
               <p>
-                {new Date(meta?.date).toLocaleDateString("pt-BR", {
+                {new Date(publishedAt).toLocaleDateString("pt-BR", {
                   // weekday: "long",
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}{" "}
-                • Leitura: {getReadingTime(html)} minutos
+                • Leitura: {getReadingTime(body)} minutos
               </p>
             </div>
-            <BlogText dangerouslySetInnerHTML={{ __html: html }} />
+            <BlogText dangerouslySetInnerHTML={{ __html: body }} />
             <MidCta />
           </Container>
         </MainContent>
