@@ -7,6 +7,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig = {
   target: "experimental-serverless-trace",
   swcMinify: true,
+
   generateBuildId: () => "build",
   pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
   compiler: {
