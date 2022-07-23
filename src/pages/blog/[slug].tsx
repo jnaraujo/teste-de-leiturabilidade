@@ -46,7 +46,7 @@ export async function getStaticProps({ params: { slug } }) {
   }
 
   return {
-    props: { ...post },
+    props: { notFound: false, ...post },
     revalidate: 120,
   };
 }
@@ -57,7 +57,7 @@ interface IProps {
   body: string;
   publishedAt: string;
   picture: string;
-  notFound?: boolean;
+  notFound: boolean;
 }
 
 const BlogPage = ({
@@ -71,7 +71,7 @@ const BlogPage = ({
   const router = useRouter();
 
   useEffect(() => {
-    if (props?.notFound) {
+    if (props.notFound) {
       router.push("/blog");
     }
   }, []);
