@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
 
   font-family: "Inter", sans-serif;
 
-  background-color: #fafafa;
+  background-color: ${(props) => props.theme.colors.gray.white};
   min-height: 100vh;
 `;
 
@@ -37,7 +37,8 @@ export const Container = styled.div`
     top: 0;
 
     font-size: 1.4rem;
-    color: #6c757d;
+
+    color: ${(props) => props.theme.colors.gray.gray2};
     cursor: pointer;
   }
 
@@ -45,15 +46,13 @@ export const Container = styled.div`
     margin: 16px 0;
 
     /* padding-bottom: 16px; */
-
     p {
       margin: 0;
-    }
-    p {
+
       letter-spacing: 2px;
       font-size: 1rem;
       font-weight: 500;
-      color: #6c757d;
+      color: ${(props) => props.theme.colors.gray.gray2};
       line-height: 150%;
     }
   }
@@ -65,7 +64,8 @@ export const Container = styled.div`
   h1 {
     font-weight: 700;
     line-height: 130%;
-    color: #212529;
+    color: ${(props) => props.theme.colors.gray.black};
+
     margin: 0;
   }
 
@@ -88,17 +88,17 @@ export const Container = styled.div`
       margin: 0 !important;
     }
     h3 {
-      color: #343a40;
+      color: ${(props) => props.theme.colors.gray.black};
 
       cursor: pointer;
 
       &:hover {
-        color: #007bff;
+        color: ${(props) => props.theme.colors.semantic.blue};
       }
     }
     p {
       font-size: 1rem;
-      color: #6c757d;
+      color: ${(props) => props.theme.colors.gray.gray2};
     }
   }
 `;
@@ -115,7 +115,7 @@ export const BlogText = styled.div`
 
     p {
       font-size: 0.8rem;
-      color: #b5bcc2;
+      color: ${(props) => props.theme.colors.gray.gray2};
 
       a {
         color: inherit;
@@ -127,7 +127,8 @@ export const BlogText = styled.div`
     max-width: 100%;
     overflow-wrap: break-word;
     font-weight: 600;
-    color: #343a40;
+
+    color: ${(props) => props.theme.colors.gray.gray3};
     margin: 24px 0 8px 0;
   }
 
@@ -135,22 +136,22 @@ export const BlogText = styled.div`
     max-width: 100%;
     overflow-wrap: break-word;
     font-weight: 600;
-    color: #343a40;
+    color: ${(props) => props.theme.colors.gray.gray3};
     margin: 24px 0 8px 0;
   }
   p {
-    color: #495057;
+    color: ${(props) => props.theme.colors.gray.gray3};
     font-size: 1.1rem;
     line-height: 150%;
     font-weight: 400;
     margin: 8px 0;
   }
   a {
-    color: #00be8b;
+    color: ${(props) => props.theme.colors.semantic.green};
   }
   ul,
   ol {
-    color: #495057;
+    color: ${(props) => props.theme.colors.gray.gray3};
     margin: 8px 0;
     font-weight: 500;
     line-height: 150%;
@@ -178,7 +179,7 @@ export const BlogText = styled.div`
     }
     figcaption {
       font-size: 0.8rem;
-      color: #495057;
+      color: ${(props) => props.theme.colors.gray.gray3};
       text-align: center;
       font-weight: 400;
       margin: 4px 0;
@@ -188,11 +189,11 @@ export const BlogText = styled.div`
     padding: 16px;
     padding-right: 0;
     margin: 16px 0;
-    border-left: 4px solid #06d6a0;
+    border-left: 4px solid ${(props) => props.theme.colors.semantic.green};
     font-weight: 500;
     line-height: 150%;
     font-size: 1rem;
-    color: #495057;
+    color: ${(props) => props.theme.colors.gray.gray3};
   }
   pre {
     position: relative;

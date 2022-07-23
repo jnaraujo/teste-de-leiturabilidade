@@ -1,11 +1,13 @@
-import "../styles/global.scss";
-import "../styles/_colors.scss";
-
 import { useRouter } from "next/router";
+
+import { ThemeProvider } from "styled-components";
 
 import { LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import LeiturabilidadeProvider from "../context/LeiturabilidadeContext";
+
+import { lightTheme } from "../styles/theme";
+import { GlobalStyles } from "../styles/global";
 
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }) => {
@@ -34,6 +36,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   return (
     <>
+      <GlobalStyles />
       {loading ? (
         <LinearProgress
           style={{
@@ -47,9 +50,11 @@ const MyApp = ({ Component, pageProps }) => {
       ) : (
         ""
       )}
-      <LeiturabilidadeProvider>
-        <Component {...pageProps} />
-      </LeiturabilidadeProvider>
+      <ThemeProvider theme={lightTheme}>
+        <LeiturabilidadeProvider>
+          <Component {...pageProps} />
+        </LeiturabilidadeProvider>
+      </ThemeProvider>
     </>
   );
 };
