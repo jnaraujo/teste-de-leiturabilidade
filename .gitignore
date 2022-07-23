@@ -36,7 +36,7 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
-./netlify.toml
+netlify.toml
 
 
 # PWA files
