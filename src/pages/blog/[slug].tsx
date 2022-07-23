@@ -2,6 +2,7 @@
 /* eslint-disable react/no-danger */
 import { useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import { getReadingTime } from "../../utils/readingTime";
 
@@ -38,8 +39,8 @@ export async function getStaticProps({ params: { slug } }) {
 
   if (!post) {
     return {
-      redirect: {
-        destination: "/blog",
+      props: {
+        notFound: true,
       },
     };
   }
@@ -56,6 +57,7 @@ interface IProps {
   body: string;
   publishedAt: string;
   picture: string;
+  notFound?: boolean;
 }
 
 const BlogPage = ({
@@ -64,9 +66,14 @@ const BlogPage = ({
   body,
   publishedAt,
   picture,
+  ...props
 }: IProps) => {
+  const router = useRouter();
+
   useEffect(() => {
-    // console.log(meta);
+    if (props?.notFound) {
+      router.push("/blog");
+    }
   }, []);
   return (
     <>
