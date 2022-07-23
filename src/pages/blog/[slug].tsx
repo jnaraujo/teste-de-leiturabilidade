@@ -99,7 +99,6 @@ const BlogPage = ({
             <div className="information">
               <p>
                 {new Date(publishedAt).toLocaleDateString("pt-BR", {
-                  // weekday: "long",
                   year: "numeric",
                   month: "long",
                   day: "numeric",

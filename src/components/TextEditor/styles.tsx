@@ -14,6 +14,15 @@ export const EditorDiv = styled.div`
 
   font-size: 18px;
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 175%;
+  }
+
   h1 {
     font-size: 1.7rem;
   }
@@ -37,6 +46,7 @@ export const EditorDiv = styled.div`
     font-size: 1rem;
     width: 100%;
     min-height: 1rem;
+    line-height: 175%;
   }
 
   &.editorColor {
