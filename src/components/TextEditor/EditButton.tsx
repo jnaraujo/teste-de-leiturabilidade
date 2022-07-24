@@ -2,13 +2,11 @@ import { Tooltip } from "@mui/material";
 import React from "react";
 
 const EditButton = ({
-  cmd,
   icon,
   name,
   tooltip,
   onClick,
 }: {
-  cmd: string;
   tooltip: string;
 
   name?: string;
@@ -17,7 +15,7 @@ const EditButton = ({
   onClick: () => void;
 }) => (
   <button
-    key={cmd}
+    key={name}
     onMouseDown={() => {
       onClick();
     }}

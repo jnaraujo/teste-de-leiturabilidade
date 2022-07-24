@@ -87,7 +87,6 @@ const IntextMenu = ({ editor }: { editor: Editor }) => (
               editor.chain().focus().toggleItalic().run();
             }}
             tooltip="Itálico"
-            cmd="italic"
             icon={<AiOutlineItalic />}
           />
         </li>
@@ -97,7 +96,6 @@ const IntextMenu = ({ editor }: { editor: Editor }) => (
               editor.chain().focus().toggleBold().run();
             }}
             tooltip="Negrito"
-            cmd="bold"
             icon={<AiOutlineBold />}
           />
         </li>
@@ -107,7 +105,6 @@ const IntextMenu = ({ editor }: { editor: Editor }) => (
               editor.chain().focus().toggleUnderline().run();
             }}
             tooltip="Sublinhado"
-            cmd="underline"
             icon={<AiOutlineUnderline />}
           />
         </li>
@@ -117,8 +114,6 @@ const IntextMenu = ({ editor }: { editor: Editor }) => (
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 1 }).run();
             }}
-            cmd="formatBlock"
-            arg="h1"
             name="H1"
             tooltip="H1"
           />
@@ -128,8 +123,6 @@ const IntextMenu = ({ editor }: { editor: Editor }) => (
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 2 }).run();
             }}
-            cmd="formatBlock"
-            arg="h2"
             name="H2"
             tooltip="H2"
           />
@@ -139,8 +132,6 @@ const IntextMenu = ({ editor }: { editor: Editor }) => (
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 3 }).run();
             }}
-            cmd="formatBlock "
-            arg="h3"
             name="H3"
             tooltip="H3"
           />
@@ -150,8 +141,6 @@ const IntextMenu = ({ editor }: { editor: Editor }) => (
             onClick={() => {
               editor.chain().focus().setParagraph().run();
             }}
-            cmd="formatBlock"
-            arg="p"
             name="P"
             tooltip="Parágrafo"
           />

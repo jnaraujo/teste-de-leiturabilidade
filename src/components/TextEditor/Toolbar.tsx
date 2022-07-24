@@ -118,8 +118,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
         onClick={() => {
           editor.chain().focus().toggleHeading({ level: 1 }).run();
         }}
-        cmd="formatBlock"
-        arg="h1"
         name="H1"
         tooltip="H1"
       />
@@ -127,8 +125,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
         onClick={() => {
           editor.chain().focus().toggleHeading({ level: 2 }).run();
         }}
-        cmd="formatBlock"
-        arg="h2"
         name="H2"
         tooltip="H2"
       />
@@ -136,8 +132,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
         onClick={() => {
           editor.chain().focus().toggleHeading({ level: 3 }).run();
         }}
-        cmd="formatBlock"
-        arg="h3"
         name="H3"
         tooltip="H3"
       />
@@ -145,8 +139,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
         onClick={() => {
           editor.chain().focus().setParagraph().run();
         }}
-        cmd="formatBlock"
-        arg="p"
         name="P"
         tooltip="Parágrafo"
       />
@@ -154,8 +146,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
         onClick={() => {
           editor.chain().focus().setBlockquote().run();
         }}
-        cmd="formatBlock"
-        arg="blockquote"
         icon={<VscQuote />}
         tooltip="Citação"
       />
@@ -167,7 +157,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().toggleBulletList().run();
         }}
         tooltip="Lista com Marcadores"
-        cmd="insertorderedlist"
         icon={<AiOutlineOrderedList />}
       />
       <EditButton
@@ -175,7 +164,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().toggleOrderedList().run();
         }}
         tooltip="Lista Numerada"
-        cmd="insertunorderedlist"
         icon={<AiOutlineUnorderedList />}
       />
     </div>
@@ -186,7 +174,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().toggleItalic().run();
         }}
         tooltip="Itálico"
-        cmd="italic"
         icon={<AiOutlineItalic />}
       />
       <EditButton
@@ -194,7 +181,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().toggleBold().run();
         }}
         tooltip="Negrito"
-        cmd="bold"
         icon={<AiOutlineBold />}
       />
       <EditButton
@@ -202,7 +188,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().toggleUnderline().run();
         }}
         tooltip="Sublinhado"
-        cmd="underline"
         icon={<AiOutlineUnderline />}
       />
     </div>
@@ -213,7 +198,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().setTextAlign("left").run();
         }}
         tooltip="Alinhar à Esquerda"
-        cmd="JustifyLeft"
         icon={<GrTextAlignFull />}
       />
       <EditButton
@@ -221,7 +205,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().setTextAlign("center").run();
         }}
         tooltip="Alinhar ao Centro"
-        cmd="JustifyCenter"
         icon={<GrTextAlignCenter />}
       />
       <EditButton
@@ -229,7 +212,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().setTextAlign("right").run();
         }}
         tooltip="Alinhar à Direita"
-        cmd="JustifyRight"
         icon={<GrTextAlignLeft />}
       />
     </div>
