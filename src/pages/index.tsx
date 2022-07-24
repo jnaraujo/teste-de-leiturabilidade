@@ -155,16 +155,6 @@ const Home = () => {
       );
 
       setCookie(true);
-    } else {
-      toast.info("Seu texto foi automaticamente carregado!", {
-        position: "top-left",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     }
   }, []);
 
