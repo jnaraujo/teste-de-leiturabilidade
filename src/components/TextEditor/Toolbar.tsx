@@ -157,14 +157,14 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           editor.chain().focus().toggleBulletList().run();
         }}
         tooltip="Lista com Marcadores"
-        icon={<AiOutlineOrderedList />}
+        icon={<AiOutlineUnorderedList />}
       />
       <EditButton
         onClick={() => {
           editor.chain().focus().toggleOrderedList().run();
         }}
         tooltip="Lista Numerada"
-        icon={<AiOutlineUnorderedList />}
+        icon={<AiOutlineOrderedList />}
       />
     </div>
 

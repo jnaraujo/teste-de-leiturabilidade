@@ -3,9 +3,18 @@ import { useEffect, useRef, useState } from "react";
 // RichText.tsx in your components folder
 import { useEditor, EditorContent } from "@tiptap/react";
 import Document from "@tiptap/extension-document";
-import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
+import Heading from "@tiptap/extension-heading";
+import BulletList from "@tiptap/extension-bullet-list";
+import OrderedList from "@tiptap/extension-ordered-list";
+import ListItem from "@tiptap/extension-list-item";
+import Blockquote from "@tiptap/extension-blockquote";
+import Paragraph from "@tiptap/extension-paragraph";
+import Text from "@tiptap/extension-text";
+import Bold from "@tiptap/extension-bold";
+import Italic from "@tiptap/extension-italic";
+import BubbleMenu from "@tiptap/extension-bubble-menu";
 
 import cx from "classnames";
 
@@ -54,9 +63,18 @@ const Component = ({ html, className }: ComponentPropsType) => {
 
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      Heading,
       Underline,
+      BulletList,
+      OrderedList,
+      Blockquote,
+      ListItem,
+      Text,
+      Bold,
+      Italic,
+      Paragraph,
       Document,
+      BubbleMenu.configure({}),
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
