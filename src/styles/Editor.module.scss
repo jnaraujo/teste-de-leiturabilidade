@@ -48,7 +48,12 @@
   }
   .content {
     min-height: 100vh;
-    margin-top: 16px;
+    margin-top: 0px;
+  }
+  @media (min-width: $lg) {
+    .content {
+      margin-top: 16px;
+    }
   }
   .top {
     border-bottom: 1px solid $gray2;

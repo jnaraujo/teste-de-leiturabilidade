@@ -1,8 +1,13 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+// RichText.tsx in your components folder
+import { useEditor, EditorContent } from "@tiptap/react";
+import Document from "@tiptap/extension-document";
+import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
+import TextAlign from "@tiptap/extension-text-align";
 
 import cx from "classnames";
-
-import sanitize from "sanitize-html-react";
 
 import { useLeiturabilidade } from "../../context/LeiturabilidadeContext";
 
@@ -18,142 +23,64 @@ type ComponentPropsType = {
   html: string;
 };
 
-function easeResultToTag(value) {
-  if (value > 75) return "ease_easy";
-  // if (value > 50) return "um estudante do 6º ao 9º ano";
-  if (value > 25) return "ease_medium";
+// function easeResultToTag(value) {
+//   if (value > 75) return "ease_easy";
+//   // if (value > 50) return "um estudante do 6º ao 9º ano";
+//   if (value > 25) return "ease_medium";
 
-  return "ease_hard";
-}
+//   return "ease_hard";
+// }
+
+// const ease_classes = ["ease_easy", "ease_medium", "ease_hard"];
+
+const handleContentEase = (text, setEase) => {
+  const textAnalyses = ReadingEase.fleschReadingEaseBR(text);
+
+  setEase({
+    index: textAnalyses.result,
+    syllables: textAnalyses.totalSyllables,
+    words: textAnalyses.totalWords,
+    sentences: textAnalyses.nTotalSentences,
+  });
+};
 
 const Component = ({ html, className }: ComponentPropsType) => {
-  const editorRef = useRef(null);
-  const [intextMenuConfig, setIntextMenuConfig] = useState({
-    isActive: false,
-    x: 0,
-    y: 0,
-  });
   const { setEase } = useLeiturabilidade();
   const [editorConfig] = useState({
     colors: true,
   });
 
-  function textAnalizer(editorReference) {
-    const nodes = editorReference.current.childNodes;
+  const editorRef = useRef(null);
 
-    if (nodes.length === 0) {
-      return;
-    }
-
-    for (let i = 0; i < nodes.length; i += 1) {
-      const node = nodes[i];
-
-      if (node.nodeType === 1) {
-        const analysis = ReadingEase.fleschReadingEaseBR(node.textContent);
-        const result = easeResultToTag(analysis.result);
-
-        (node as any).classList.remove(...(node as any).classList);
-
-        if (node.textContent !== "") {
-          (node as any).classList.add(result);
-        }
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Underline,
+      Document,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+    ],
+    onCreate: (state) => {
+      if (localStorage.getItem("text")) {
+        state.editor.commands.setContent(localStorage.getItem("text"));
       }
-    }
-  }
+      handleContentEase(state.editor.getText(), setEase);
+    },
+    onUpdate: (state) => {
+      localStorage.setItem("text", state.editor.getHTML());
 
-  const setEditorContent = (content) => {
-    editorRef.current.innerHTML = content;
-  };
-
-  const handleContentEase = () => {
-    const textAnalyses = ReadingEase.fleschReadingEaseBR(
-      editorRef.current.innerText
-    );
-
-    setEase({
-      index: textAnalyses.result,
-      syllables: textAnalyses.totalSyllables,
-      words: textAnalyses.totalWords,
-      sentences: textAnalyses.nTotalSentences,
-    });
-  };
-
-  const handleEditorChange = () => {
-    textAnalizer(editorRef);
-
-    const value = editorRef.current.innerText;
-    if (value === "") {
-      setEditorContent(`<p> </p>`);
-    }
-    if (editorRef.current.innerHTML !== "") {
-      localStorage.setItem("text", editorRef.current.innerHTML);
-    }
-
-    handleContentEase();
-  };
+      handleContentEase(state.editor.getText(), setEase);
+      // textAnalizer(editorRef);
+    },
+    content: textExample,
+  });
 
   useEffect(() => {
     if (html) {
-      setEditorContent(html);
-      handleEditorChange();
+      editor.commands.setContent(html);
     }
   }, [html]);
-
-  useEffect(() => {
-    document.execCommand("defaultParagraphSeparator", false, "p");
-
-    const pasteEventHandler = (e) => {
-      e.preventDefault();
-      const text = e.clipboardData.getData("text/plain");
-      document.execCommand("insertHTML", false, text);
-    };
-
-    editorRef.current.addEventListener("paste", pasteEventHandler);
-
-    const displayIntextMenu = (event: any) => {
-      const xPos = event.pageX;
-      const yPos = event.pageY;
-
-      if (typeof window !== "undefined") {
-        const selection = window.getSelection().toString();
-
-        if (selection !== "") {
-          setIntextMenuConfig({
-            isActive: true,
-            x: xPos,
-            y: yPos,
-          });
-        } else {
-          setIntextMenuConfig({
-            isActive: false,
-            x: 0,
-            y: 0,
-          });
-        }
-      }
-    };
-    editorRef.current.addEventListener("contextmenu", displayIntextMenu);
-    editorRef.current.addEventListener("mouseup", displayIntextMenu);
-
-    if (
-      localStorage.getItem("text") &&
-      sanitize(localStorage.getItem("text"), {
-        allowedTags: [],
-      }).replace(/\s/g, "") !== ""
-    ) {
-      setEditorContent(localStorage.getItem("text"));
-    } else {
-      setEditorContent(textExample);
-    }
-    handleContentEase();
-    textAnalizer(editorRef);
-
-    return () => {
-      editorRef?.current?.removeEventListener("paste", pasteEventHandler);
-      editorRef?.current?.removeEventListener("contextmenu", displayIntextMenu);
-      editorRef?.current?.removeEventListener("mouseup", displayIntextMenu);
-    };
-  }, []);
 
   return (
     <EditorDiv
@@ -162,19 +89,17 @@ const Component = ({ html, className }: ComponentPropsType) => {
         editorColor: editorConfig.colors,
       })}
     >
-      <Toolbar />
+      <Toolbar editor={editor} />
 
-      <div
+      <EditorContent ref={editorRef} className="editor" editor={editor} />
+
+      {/* <div
         contentEditable
         className="editor"
         ref={editorRef}
         onInput={handleEditorChange}
-      />
-      <IntextMenu
-        isActive={intextMenuConfig.isActive}
-        x={intextMenuConfig.x}
-        y={intextMenuConfig.y}
-      />
+      /> */}
+      {editor && <IntextMenu editor={editor} />}
     </EditorDiv>
   );
 };

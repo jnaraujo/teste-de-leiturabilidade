@@ -1,3 +1,4 @@
+import { Editor, BubbleMenu } from "@tiptap/react";
 import {
   AiOutlineBold,
   AiOutlineItalic,
@@ -6,33 +7,20 @@ import {
 import styled from "styled-components";
 import EditButton from "./EditButton";
 
-const ComponentDiv = styled.div<{
-  isActive: boolean;
-  x: number;
-  y: number;
-}>`
+const ComponentDiv = styled.div`
+  position: relative;
   --vWidth: 300px;
   --vHeight: 30px;
-
-  position: absolute;
-
-  top: calc(${(props) => props.y}px - var(--vHeight) - 20px);
-  left: calc(${(props) => props.x}px - var(--vWidth) / 2);
 
   @media (max-width: 768px) {
     --vHeight: 40px;
     --vWidth: 320px;
-
-    top: calc(${(props) => props.y}px - var(--vHeight) - 20px);
-    left: calc(100vw / 2 - var(--vWidth) / 2);
   }
 
   width: var(--vWidth);
   height: var(--vHeight);
 
   background-color: #e9ecef;
-
-  display: ${(props) => (props.isActive ? "block" : "none")};
 
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.11);
 
@@ -89,44 +77,87 @@ const ComponentDiv = styled.div<{
   }
 `;
 
-const IntextMenu = ({
-  isActive,
-  x,
-  y,
-}: {
-  isActive: boolean;
-  x: number;
-  y: number;
-}) => (
-  <ComponentDiv x={x} y={y} isActive={isActive}>
-    <ul>
-      <li>
-        <EditButton tooltip="Itálico" cmd="italic" icon={<AiOutlineItalic />} />
-      </li>
-      <li>
-        <EditButton tooltip="Negrito" cmd="bold" icon={<AiOutlineBold />} />
-      </li>
-      <li>
-        <EditButton
-          tooltip="Sublinhado"
-          cmd="underline"
-          icon={<AiOutlineUnderline />}
-        />
-      </li>
+const IntextMenu = ({ editor }: { editor: Editor }) => (
+  <BubbleMenu editor={editor}>
+    <ComponentDiv>
+      <ul>
+        <li>
+          <EditButton
+            onClick={() => {
+              editor.chain().focus().toggleItalic().run();
+            }}
+            tooltip="Itálico"
+            cmd="italic"
+            icon={<AiOutlineItalic />}
+          />
+        </li>
+        <li>
+          <EditButton
+            onClick={() => {
+              editor.chain().focus().toggleBold().run();
+            }}
+            tooltip="Negrito"
+            cmd="bold"
+            icon={<AiOutlineBold />}
+          />
+        </li>
+        <li>
+          <EditButton
+            onClick={() => {
+              editor.chain().focus().toggleUnderline().run();
+            }}
+            tooltip="Sublinhado"
+            cmd="underline"
+            icon={<AiOutlineUnderline />}
+          />
+        </li>
 
-      <li>
-        <EditButton cmd="formatBlock" arg="h1" name="H1" tooltip="H1" />
-      </li>
-      <li>
-        <EditButton cmd="formatBlock" arg="h2" name="H2" tooltip="H2" />
-      </li>
-      <li>
-        <EditButton cmd="formatBlock" arg="h3" name="H3" tooltip="H3" />
-      </li>
-      <li>
-        <EditButton cmd="formatBlock" arg="p" name="P" tooltip="Parágrafo" />
-      </li>
-    </ul>
-  </ComponentDiv>
+        <li>
+          <EditButton
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 1 }).run();
+            }}
+            cmd="formatBlock"
+            arg="h1"
+            name="H1"
+            tooltip="H1"
+          />
+        </li>
+        <li>
+          <EditButton
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 2 }).run();
+            }}
+            cmd="formatBlock"
+            arg="h2"
+            name="H2"
+            tooltip="H2"
+          />
+        </li>
+        <li>
+          <EditButton
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 3 }).run();
+            }}
+            cmd="formatBlock "
+            arg="h3"
+            name="H3"
+            tooltip="H3"
+          />
+        </li>
+        <li>
+          <EditButton
+            onClick={() => {
+              editor.chain().focus().setParagraph().run();
+            }}
+            cmd="formatBlock"
+            arg="p"
+            name="P"
+            tooltip="Parágrafo"
+          />
+        </li>
+      </ul>
+    </ComponentDiv>
+  </BubbleMenu>
 );
 export default IntextMenu;

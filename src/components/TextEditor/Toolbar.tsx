@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Editor } from "@tiptap/react";
+
 import {
   AiOutlineBold,
   AiOutlineItalic,
@@ -109,14 +111,49 @@ export const Toolbar = styled.div`
   }
 `;
 
-const ToolbarComponent = () => (
+const ToolbarComponent = ({ editor }: { editor: Editor }) => (
   <Toolbar>
     <div className="group">
-      <EditButton cmd="formatBlock" arg="h1" name="H1" tooltip="H1" />
-      <EditButton cmd="formatBlock" arg="h2" name="H2" tooltip="H2" />
-      <EditButton cmd="formatBlock" arg="h3" name="H3" tooltip="H3" />
-      <EditButton cmd="formatBlock" arg="p" name="P" tooltip="Parágrafo" />
       <EditButton
+        onClick={() => {
+          editor.chain().focus().toggleHeading({ level: 1 }).run();
+        }}
+        cmd="formatBlock"
+        arg="h1"
+        name="H1"
+        tooltip="H1"
+      />
+      <EditButton
+        onClick={() => {
+          editor.chain().focus().toggleHeading({ level: 2 }).run();
+        }}
+        cmd="formatBlock"
+        arg="h2"
+        name="H2"
+        tooltip="H2"
+      />
+      <EditButton
+        onClick={() => {
+          editor.chain().focus().toggleHeading({ level: 3 }).run();
+        }}
+        cmd="formatBlock"
+        arg="h3"
+        name="H3"
+        tooltip="H3"
+      />
+      <EditButton
+        onClick={() => {
+          editor.chain().focus().setParagraph().run();
+        }}
+        cmd="formatBlock"
+        arg="p"
+        name="P"
+        tooltip="Parágrafo"
+      />
+      <EditButton
+        onClick={() => {
+          editor.chain().focus().setBlockquote().run();
+        }}
         cmd="formatBlock"
         arg="blockquote"
         icon={<VscQuote />}
@@ -126,11 +163,17 @@ const ToolbarComponent = () => (
 
     <div className="group">
       <EditButton
+        onClick={() => {
+          editor.chain().focus().toggleBulletList().run();
+        }}
         tooltip="Lista com Marcadores"
         cmd="insertorderedlist"
         icon={<AiOutlineOrderedList />}
       />
       <EditButton
+        onClick={() => {
+          editor.chain().focus().toggleOrderedList().run();
+        }}
         tooltip="Lista Numerada"
         cmd="insertunorderedlist"
         icon={<AiOutlineUnorderedList />}
@@ -138,9 +181,26 @@ const ToolbarComponent = () => (
     </div>
 
     <div className="group">
-      <EditButton tooltip="Itálico" cmd="italic" icon={<AiOutlineItalic />} />
-      <EditButton tooltip="Negrito" cmd="bold" icon={<AiOutlineBold />} />
       <EditButton
+        onClick={() => {
+          editor.chain().focus().toggleItalic().run();
+        }}
+        tooltip="Itálico"
+        cmd="italic"
+        icon={<AiOutlineItalic />}
+      />
+      <EditButton
+        onClick={() => {
+          editor.chain().focus().toggleBold().run();
+        }}
+        tooltip="Negrito"
+        cmd="bold"
+        icon={<AiOutlineBold />}
+      />
+      <EditButton
+        onClick={() => {
+          editor.chain().focus().toggleUnderline().run();
+        }}
         tooltip="Sublinhado"
         cmd="underline"
         icon={<AiOutlineUnderline />}
@@ -149,16 +209,25 @@ const ToolbarComponent = () => (
 
     <div className="group">
       <EditButton
+        onClick={() => {
+          editor.chain().focus().setTextAlign("left").run();
+        }}
         tooltip="Alinhar à Esquerda"
         cmd="JustifyLeft"
         icon={<GrTextAlignFull />}
       />
       <EditButton
+        onClick={() => {
+          editor.chain().focus().setTextAlign("center").run();
+        }}
         tooltip="Alinhar ao Centro"
         cmd="JustifyCenter"
         icon={<GrTextAlignCenter />}
       />
       <EditButton
+        onClick={() => {
+          editor.chain().focus().setTextAlign("right").run();
+        }}
         tooltip="Alinhar à Direita"
         cmd="JustifyRight"
         icon={<GrTextAlignLeft />}
