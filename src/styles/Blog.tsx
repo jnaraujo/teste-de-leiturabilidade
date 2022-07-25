@@ -149,6 +149,9 @@ export const BlogText = styled.div`
   a {
     color: ${(props) => props.theme.colors.semantic.green};
   }
+  b {
+    font-weight: 600;
+  }
   ul,
   ol {
     color: ${(props) => props.theme.colors.gray.gray3};
