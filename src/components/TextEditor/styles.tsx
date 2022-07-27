@@ -4,7 +4,7 @@ export const EditorDiv = styled.div`
   font-family: "Merriweather", serif;
 
   font-weight: 400;
-  color: $black;
+
   line-height: 1.75;
 
   width: 100%;
@@ -47,6 +47,8 @@ export const EditorDiv = styled.div`
     width: 100%;
     min-height: 1rem;
     line-height: 175%;
+
+    margin: 0.5rem 0;
   }
 
   &.editorColor {
