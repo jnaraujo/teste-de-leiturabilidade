@@ -14,6 +14,7 @@ interface IColors {
 
   semantic: {
     link: string;
+    error: string;
   };
 }
 

@@ -34,6 +34,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  reactStrictMode: true,
 };
 
 module.exports = withBundleAnalyzer(withPWA(nextConfig));

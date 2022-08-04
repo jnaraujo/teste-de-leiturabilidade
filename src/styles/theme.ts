@@ -35,6 +35,7 @@ const lightTheme: DefaultTheme = {
 
     semantic: {
       link: "#00be8b",
+      error: "#ef233c",
     },
   },
   breakpoints: {

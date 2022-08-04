@@ -22,6 +22,7 @@ import {
   Informations,
   MainContainer,
   MainContent,
+  ModalDiv,
   RdResult,
   TopBar,
 } from "../styles/Home";
@@ -367,7 +368,7 @@ const Home = () => {
             </Container>
 
             <Modal open={open} onClose={closeModal} center>
-              <div className="modal">
+              <ModalDiv>
                 <div className="message">
                   <h1>{modalMessage.title}</h1>
                   <p
@@ -389,7 +390,7 @@ const Home = () => {
                     ""
                   )}
                 </div>
-              </div>
+              </ModalDiv>
             </Modal>
           </Informations>
         </MainContent>
