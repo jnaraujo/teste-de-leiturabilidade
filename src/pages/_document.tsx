@@ -57,21 +57,6 @@ export default class MyDocument extends Document {
           `,
             }}
           />
-
-          <link rel="manifest" href="/manifest.json" />
-
-          <link
-            href="/public/icons/48.png"
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-          />
-          <link
-            href="/public/icons/48.png"
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-          />
           <meta name="theme-color" content="#317EFB" />
         </Head>
         <body>
