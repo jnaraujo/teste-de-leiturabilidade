@@ -11,6 +11,13 @@ export const MainContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
   min-height: 100vh;
 
+  .line {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 950px;
+    border-top: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};
+  }
+
   .aweHidden {
     opacity: 0;
   }
@@ -86,10 +93,6 @@ export const Container = styled(Grid)`
 export const Content = styled(Grid)`
   max-width: 1200px;
   margin: 0 auto;
-
-  .line {
-    border-top: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};
-  }
 
   &.left {
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {

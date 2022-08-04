@@ -214,7 +214,7 @@ const Home = () => {
             />
           </Container>
           <Container container justifyContent="center">
-            <Content item xs={11} md={8} lg={7} className="left">
+            <Content item xs={11} md={8} className="left">
               <div className="textarea">
                 <TextEditor html={editorHtml} />
               </div>
@@ -288,9 +288,9 @@ const Home = () => {
             pauseOnHover={false}
             pauseOnFocusLoss={false}
           />
+          <div className="line" />
           <Informations>
             <Grid container justifyContent="center">
-              <Grid item xs={11} className="line" />
               <Grid item xs={11} className="texts" id="como-funciona">
                 <h2>Como funciona o Teste de Leitura?</h2>
                 <p>

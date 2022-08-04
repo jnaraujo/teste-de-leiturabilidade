@@ -186,7 +186,7 @@ const Home = () => {
         </MainContent>
         <MainContent>
           <Container container justifyContent="center">
-            <Content item xs={11} md={8} lg={7} className="left">
+            <Content item xs={11} md={8} className="left">
               <div className="textarea">
                 <TextEditor html={editorHtml} />
               </div>
