@@ -15,8 +15,6 @@ import { useWindowSize } from "react-use";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-// eslint-disable-next-line import/no-unresolved
-import styles from "@styles/Home.module.scss";
 import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
 import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
 import handleImport from "../libs/ImportExternalPage";
@@ -24,6 +22,15 @@ import handleImport from "../libs/ImportExternalPage";
 // COMPONENTS
 import TextEditor from "../components/TextEditor/index";
 import Navbar from "../components/Navbar";
+import {
+  Container,
+  Content,
+  Footer,
+  MainContainer,
+  MainContent,
+  ModalDiv,
+  RdResult,
+} from "../styles/Home";
 
 function getCookie() {
   return nookies.get(null, {}).toastedInfo;
@@ -139,7 +146,6 @@ const Home = () => {
   }
 
   useEffect(() => {
-    // setEditorHtml(localStorage.getItem("text") ?? "");
     if (!getCookie()) {
       toast.info(
         "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
@@ -155,16 +161,6 @@ const Home = () => {
       );
 
       setCookie(true);
-    } else {
-      toast.info("Seu texto foi automaticamente carregado!", {
-        position: "top-left",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     }
   }, []);
 
@@ -175,8 +171,8 @@ const Home = () => {
   return (
     <>
       <DefaultSeo
-        title="Teste de Leitura"
-        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importa arquivos do Google Docs, Notion, etc e faça o teste de Leiturabilidade."
+        title="Editor de Texto - Teste de Leitura"
+        description="Editor completo com teste de leitura integrado. Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importa arquivos do Google Docs, Notion, etc e faça o teste de Leiturabilidade."
         additionalLinkTags={[
           {
             rel: "icon",
@@ -184,42 +180,31 @@ const Home = () => {
           },
         ]}
       />
-      <div className={styles.home}>
-        <div className={styles.container}>
+      <MainContainer>
+        <MainContent>
           <Navbar />
-          <Grid container justifyContent="center" className={styles.navbar}>
-            <Grid item xs={11} md={8} lg={10}>
-              <div className={styles.top}>
-                <p>
-                  Digite o seu texto abaixo e descubra, em tempo real, o{" "}
-                  <span>nível de leitura</span>.
-                </p>
-              </div>
-            </Grid>
-          </Grid>
-          <Grid container justifyContent="center" className={styles.content}>
-            <Grid item xs={11} md={8} lg={7} className={styles.left}>
-              <div className={styles.textarea}>
+        </MainContent>
+        <MainContent>
+          <Container container justifyContent="center">
+            <Content item xs={11} md={8} lg={7} className="left">
+              <div className="textarea">
                 <TextEditor html={editorHtml} />
               </div>
-            </Grid>
-            <Grid item xs={11} md={8} lg={3} className={styles.rd_result}>
+            </Content>
+            <RdResult item xs={11} md={8} lg={3}>
               <p>
                 Seu texto está no nível de leitura de{" "}
                 <span id="rd_exmlp">{easeResultToExample(ease.index)}.</span>
               </p>
-              <div className={styles.ease_bar}>
-                <div
-                  className={styles.slider}
-                  style={{ left: `${sliderSize}px` }}
-                />
-                <div className={styles.cont}>
-                  <div className={styles.row} ref={sliderRef}>
-                    <div className={styles.col} />
-                    <div className={styles.col} />
-                    <div className={styles.col} />
-                    <div className={styles.col} />
-                    <div className={styles.col} />
+              <div className="ease_bar">
+                <div className="slider" style={{ left: `${sliderSize}px` }} />
+                <div className="cont">
+                  <div className="row" ref={sliderRef}>
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
                   </div>
                 </div>
               </div>
@@ -257,7 +242,7 @@ const Home = () => {
                 <br />
               </p>
               <br />
-              <div className={styles.importExternalPage}>
+              <div className="importExternalPage">
                 <h3>Deseja importar o conteúdo de uma página externa?</h3>
                 <input type="url" ref={externalPageUrlRef} />
                 <button onClick={handleImportClick} type="submit">
@@ -265,8 +250,8 @@ const Home = () => {
                 </button>
                 <p>* Serviços suportados: Notion, Google Docs</p>
               </div>
-            </Grid>
-          </Grid>
+            </RdResult>
+          </Container>
           <ToastContainer
             position="top-left"
             hideProgressBar={false}
@@ -275,117 +260,48 @@ const Home = () => {
             pauseOnHover={false}
             pauseOnFocusLoss={false}
           />
-          <div className={styles.infos}>
-            <Grid container justifyContent="center">
-              <Grid item xs={11} className={styles.line} />
-              <Grid item xs={11} className={styles.texts} id="como-funciona">
-                <h2>Como funciona o teste?</h2>
-                <p>
-                  Para testar o nível de leitura de um texto, nós utilizamos o{" "}
-                  <a
-                    href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Teste de Legibilidade de Flesch-Kincaid
-                  </a>{" "}
-                  (artigo da Wikipedia em inglês).
-                </p>
-                <p>
-                  O teste original foi feito para a língua inglesa. Porém, a
-                  fórmula foi adaptada para a língua portuguesa em 1996 pelos
-                  pesquisadores Teresa B. F. Martins, Claudete M. Ghiraldelo, M.
-                  Graças V. Nunes e Osvaldo N. Oliveira Jr., do Instituto de
-                  Ciências Matemáticas e de Computação da USP de São Carlos;
-                </p>
+          <Container container justifyContent="center">
+            <Grid item xs={12} className="line" />
+            <Footer item xs={12} className="footer">
+              Feito por{" "}
+              <a href="https://jnaraujo.com/" target="_blank" rel="noreferrer">
+                Jônatas Araújo
+              </a>{" "}
+              - 2021
+            </Footer>
+          </Container>
 
-                <h2>O que o teste leva em conta?</h2>
-                <p>
-                  Tanto a versão original do{" "}
-                  <strong>Teste de Flesch-Kincaid</strong> quando a versão
-                  brasileira levam em conta o <strong>tamanho da frase</strong>{" "}
-                  e o <strong>tamanho das palavras</strong>: quanto maior, mais
-                  difícil de ler.
-                </p>
-
-                <h2>Quão preciso é o teste?</h2>
-                <p>
-                  A versão original do <strong>Teste de Flesch-Kincaid</strong>{" "}
-                  tem precisão de quase 90% - o que, para uso comum, é um valor
-                  bastante considerável.
-                </p>
-
-                <h3>Quer saber mais? Dá uma olhada nas fontes:</h3>
-
-                <ul>
-                  <li>
-                    <a
-                      href="http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests
-                    </a>
-                  </li>
-                </ul>
-              </Grid>
-            </Grid>
-            <Grid container justifyContent="center">
-              <Grid item xs={12} className={styles.line} />
-              <Grid item xs={12} className={styles.footer}>
-                Feito por{" "}
-                <a
-                  href="https://jnaraujo.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Jônatas Araújo
-                </a>{" "}
-                - 2021
-              </Grid>
-            </Grid>
-            <Modal open={open} onClose={closeModal} center>
-              <div className={styles.modal}>
-                <div className={styles.message}>
-                  <h1>{modalMessage.title}</h1>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: modalMessage.message,
-                    }}
-                  />
-                </div>
-                <div className={styles.line} />
-                <div className={styles.button}>
-                  <button onClick={closeModal} type="button">
-                    Fechar
-                  </button>
-                  {secondButton.value ? (
-                    <button onClick={secondButton.onClick} type="button">
-                      {secondButton.value}
-                    </button>
-                  ) : (
-                    ""
-                  )}
-                </div>
+          <Modal open={open} onClose={closeModal} center>
+            <ModalDiv>
+              <div className="message">
+                <h1>{modalMessage.title}</h1>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: modalMessage.message,
+                  }}
+                />
               </div>
-            </Modal>
-          </div>
-        </div>
-        <div
-          className={isLoading === true ? styles.loading : styles.hideAndNone}
-        >
+              <div className="line" />
+              <div className="button">
+                <button onClick={closeModal} type="button">
+                  Fechar
+                </button>
+                {secondButton.value ? (
+                  <button onClick={secondButton.onClick} type="button">
+                    {secondButton.value}
+                  </button>
+                ) : (
+                  ""
+                )}
+              </div>
+            </ModalDiv>
+          </Modal>
+        </MainContent>
+
+        <div className={isLoading === true ? "loading" : "hideAndNone"}>
           <AiOutlineLoading3Quarters />
         </div>
-      </div>
+      </MainContainer>
     </>
   );
 };
