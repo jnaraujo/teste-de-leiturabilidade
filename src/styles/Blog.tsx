@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
 
   font-family: "Inter", sans-serif;
 
-  background-color: ${(props) => props.theme.colors.gray.white};
+  background-color: ${({ theme }) => theme.colors.background};
   min-height: 100vh;
 `;
 
@@ -38,7 +38,7 @@ export const Container = styled.div`
 
     font-size: 1.4rem;
 
-    color: ${(props) => props.theme.colors.gray.gray2};
+    color: ${(props) => props.theme.colors.onSurfaceSecondary};
     cursor: pointer;
   }
 
@@ -52,7 +52,7 @@ export const Container = styled.div`
       letter-spacing: 2px;
       font-size: 1rem;
       font-weight: 500;
-      color: ${(props) => props.theme.colors.gray.gray2};
+      color: ${(props) => props.theme.colors.onBackground};
       line-height: 150%;
     }
   }
@@ -64,7 +64,7 @@ export const Container = styled.div`
   h1 {
     font-weight: 700;
     line-height: 130%;
-    color: ${(props) => props.theme.colors.gray.black};
+    color: ${(props) => props.theme.colors.primary};
 
     margin: 0;
   }
@@ -88,17 +88,17 @@ export const Container = styled.div`
       margin: 0 !important;
     }
     h3 {
-      color: ${(props) => props.theme.colors.gray.black};
+      color: ${(props) => props.theme.colors.primary};
 
       cursor: pointer;
 
       &:hover {
-        color: ${(props) => props.theme.colors.semantic.blue};
+        color: ${(props) => props.theme.colors.semantic.link};
       }
     }
     p {
       font-size: 1rem;
-      color: ${(props) => props.theme.colors.gray.gray2};
+      color: ${(props) => props.theme.colors.onBackground};
     }
   }
 `;
@@ -115,7 +115,7 @@ export const BlogText = styled.div`
 
     p {
       font-size: 0.8rem;
-      color: ${(props) => props.theme.colors.gray.gray2};
+      color: ${(props) => props.theme.colors.onBackground};
 
       a {
         color: inherit;
@@ -128,7 +128,7 @@ export const BlogText = styled.div`
     overflow-wrap: break-word;
     font-weight: 600;
 
-    color: ${(props) => props.theme.colors.gray.gray3};
+    color: ${(props) => props.theme.colors.onBackground};
     margin: 24px 0 8px 0;
   }
 
@@ -136,25 +136,25 @@ export const BlogText = styled.div`
     max-width: 100%;
     overflow-wrap: break-word;
     font-weight: 600;
-    color: ${(props) => props.theme.colors.gray.gray3};
+    color: ${(props) => props.theme.colors.onBackground};
     margin: 24px 0 8px 0;
   }
   p {
-    color: ${(props) => props.theme.colors.gray.gray3};
+    color: ${(props) => props.theme.colors.onBackground};
     font-size: 1.1rem;
     line-height: 150%;
     font-weight: 400;
     margin: 8px 0;
   }
   a {
-    color: ${(props) => props.theme.colors.semantic.green};
+    color: ${(props) => props.theme.colors.semantic.link};
   }
   b {
     font-weight: 600;
   }
   ul,
   ol {
-    color: ${(props) => props.theme.colors.gray.gray3};
+    color: ${(props) => props.theme.colors.onBackground};
     margin: 8px 0;
     font-weight: 500;
     line-height: 150%;
@@ -182,7 +182,7 @@ export const BlogText = styled.div`
     }
     figcaption {
       font-size: 0.8rem;
-      color: ${(props) => props.theme.colors.gray.gray3};
+      color: ${(props) => props.theme.colors.onBackground};
       text-align: center;
       font-weight: 400;
       margin: 4px 0;
@@ -192,11 +192,11 @@ export const BlogText = styled.div`
     padding: 16px;
     padding-right: 0;
     margin: 16px 0;
-    border-left: 4px solid ${(props) => props.theme.colors.semantic.green};
+    border-left: 4px solid ${(props) => props.theme.colors.semantic.link};
     font-weight: 500;
     line-height: 150%;
     font-size: 1rem;
-    color: ${(props) => props.theme.colors.gray.gray3};
+    color: ${(props) => props.theme.colors.onBackground};
   }
   pre {
     position: relative;
