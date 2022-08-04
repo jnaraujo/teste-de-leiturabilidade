@@ -3,12 +3,24 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["/src/components/*"],
-      "@styles/*": ["/src/styles/*"],
-      "@lib/*": ["/src/libs/*"],
-      "@hooks/*": ["/src/hooks/*"],
-      "@services/*": ["/src/services/*"],
-      "@context/*": ["/src/context/*"]
+      "@components/*": [
+        "/src/components/*"
+      ],
+      "@styles/*": [
+        "/src/styles/*"
+      ],
+      "@lib/*": [
+        "/src/libs/*"
+      ],
+      "@hooks/*": [
+        "/src/hooks/*"
+      ],
+      "@services/*": [
+        "/src/services/*"
+      ],
+      "@context/*": [
+        "/src/context/*"
+      ]
     }
   }
 }

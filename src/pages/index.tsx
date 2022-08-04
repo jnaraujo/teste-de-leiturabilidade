@@ -15,8 +15,17 @@ import { useWindowSize } from "react-use";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-// eslint-disable-next-line import/no-unresolved
-import styles from "@styles/Home.module.scss";
+import {
+  Container,
+  Content,
+  Footer,
+  Informations,
+  MainContainer,
+  MainContent,
+  ModalDiv,
+  RdResult,
+  TopBar,
+} from "../styles/Home";
 import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
 import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
 import handleImport from "../libs/ImportExternalPage";
@@ -174,42 +183,56 @@ const Home = () => {
           },
         ]}
       />
-      <div className={styles.home}>
-        <div className={styles.container}>
+      <MainContainer>
+        <MainContent>
           <Navbar />
-          <Grid container justifyContent="center" className={styles.navbar}>
-            <Grid item xs={11} md={8} lg={10}>
-              <div className={styles.top}>
+        </MainContent>
+        <MainContent>
+          <Container
+            container
+            justifyContent="space-evenly"
+            style={{
+              marginTop: "1rem",
+            }}
+          >
+            <TopBar item xs={11} md={8} lg={7}>
+              <div>
                 <p>
                   Digite o seu texto abaixo e descubra, em tempo real, o{" "}
                   <span>nível de leitura</span>.
                 </p>
               </div>
-            </Grid>
-          </Grid>
-          <Grid container justifyContent="center" className={styles.content}>
-            <Grid item xs={11} md={8} lg={7} className={styles.left}>
-              <div className={styles.textarea}>
+            </TopBar>
+            <Content
+              item
+              xs={11}
+              md={8}
+              lg={3}
+              style={{
+                margin: "0",
+              }}
+            />
+          </Container>
+          <Container container justifyContent="center">
+            <Content item xs={11} md={8} lg={7} className="left">
+              <div className="textarea">
                 <TextEditor html={editorHtml} />
               </div>
-            </Grid>
-            <Grid item xs={11} md={8} lg={3} className={styles.rd_result}>
+            </Content>
+            <RdResult item xs={11} md={8} lg={3}>
               <p>
                 Seu texto está no nível de leitura de{" "}
                 <span id="rd_exmlp">{easeResultToExample(ease.index)}.</span>
               </p>
-              <div className={styles.ease_bar}>
-                <div
-                  className={styles.slider}
-                  style={{ left: `${sliderSize}px` }}
-                />
-                <div className={styles.cont}>
-                  <div className={styles.row} ref={sliderRef}>
-                    <div className={styles.col} />
-                    <div className={styles.col} />
-                    <div className={styles.col} />
-                    <div className={styles.col} />
-                    <div className={styles.col} />
+              <div className="ease_bar">
+                <div className="slider" style={{ left: `${sliderSize}px` }} />
+                <div className="cont">
+                  <div className="row" ref={sliderRef}>
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
                   </div>
                 </div>
               </div>
@@ -247,7 +270,7 @@ const Home = () => {
                 <br />
               </p>
               <br />
-              <div className={styles.importExternalPage}>
+              <div className="importExternalPage">
                 <h3>Deseja importar o conteúdo de uma página externa?</h3>
                 <input type="url" ref={externalPageUrlRef} />
                 <button onClick={handleImportClick} type="submit">
@@ -255,8 +278,8 @@ const Home = () => {
                 </button>
                 <p>* Serviços suportados: Notion, Google Docs</p>
               </div>
-            </Grid>
-          </Grid>
+            </RdResult>
+          </Container>
           <ToastContainer
             position="top-left"
             hideProgressBar={false}
@@ -265,10 +288,10 @@ const Home = () => {
             pauseOnHover={false}
             pauseOnFocusLoss={false}
           />
-          <div className={styles.infos}>
+          <Informations>
             <Grid container justifyContent="center">
-              <Grid item xs={11} className={styles.line} />
-              <Grid item xs={11} className={styles.texts} id="como-funciona">
+              <Grid item xs={11} className="line" />
+              <Grid item xs={11} className="texts" id="como-funciona">
                 <h2>Como funciona o Teste de Leitura?</h2>
                 <p>
                   Para testar o nível de leitura de um texto, nós utilizamos o{" "}
@@ -329,9 +352,9 @@ const Home = () => {
                 </ul>
               </Grid>
             </Grid>
-            <Grid container justifyContent="center">
-              <Grid item xs={12} className={styles.line} />
-              <Grid item xs={12} className={styles.footer}>
+            <Container container justifyContent="center">
+              <Grid item xs={12} className="line" />
+              <Footer item xs={12} className="footer">
                 Feito por{" "}
                 <a
                   href="https://jnaraujo.com/"
@@ -341,11 +364,12 @@ const Home = () => {
                   Jônatas Araújo
                 </a>{" "}
                 - 2021
-              </Grid>
-            </Grid>
+              </Footer>
+            </Container>
+
             <Modal open={open} onClose={closeModal} center>
-              <div className={styles.modal}>
-                <div className={styles.message}>
+              <ModalDiv>
+                <div className="message">
                   <h1>{modalMessage.title}</h1>
                   <p
                     dangerouslySetInnerHTML={{
@@ -353,8 +377,8 @@ const Home = () => {
                     }}
                   />
                 </div>
-                <div className={styles.line} />
-                <div className={styles.button}>
+                <div className="line" />
+                <div className="button">
                   <button onClick={closeModal} type="button">
                     Fechar
                   </button>
@@ -366,16 +390,15 @@ const Home = () => {
                     ""
                   )}
                 </div>
-              </div>
+              </ModalDiv>
             </Modal>
-          </div>
-        </div>
-        <div
-          className={isLoading === true ? styles.loading : styles.hideAndNone}
-        >
+          </Informations>
+        </MainContent>
+
+        <div className={isLoading === true ? "loading" : "hideAndNone"}>
           <AiOutlineLoading3Quarters />
         </div>
-      </div>
+      </MainContainer>
     </>
   );
 };

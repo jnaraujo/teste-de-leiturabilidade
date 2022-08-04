@@ -8,7 +8,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 const nextConfig = {
-  target: "experimental-serverless-trace",
   swcMinify: true,
 
   webpack: (config, { dev, isServer }) => {
@@ -23,6 +22,7 @@ const nextConfig = {
   pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
   compiler: {
     styledComponents: true,
+    emotion: true,
   },
   pwa: {
     dest: "public",
@@ -34,6 +34,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  reactStrictMode: true,
 };
 
 module.exports = withBundleAnalyzer(withPWA(nextConfig));

@@ -15,8 +15,6 @@ import { useWindowSize } from "react-use";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-// eslint-disable-next-line import/no-unresolved
-import styles from "@styles/Editor.module.scss";
 import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
 import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
 import handleImport from "../libs/ImportExternalPage";
@@ -24,6 +22,15 @@ import handleImport from "../libs/ImportExternalPage";
 // COMPONENTS
 import TextEditor from "../components/TextEditor/index";
 import Navbar from "../components/Navbar";
+import {
+  Container,
+  Content,
+  Footer,
+  MainContainer,
+  MainContent,
+  ModalDiv,
+  RdResult,
+} from "../styles/Home";
 
 function getCookie() {
   return nookies.get(null, {}).toastedInfo;
@@ -164,8 +171,8 @@ const Home = () => {
   return (
     <>
       <DefaultSeo
-        title="Teste de Leitura"
-        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importa arquivos do Google Docs, Notion, etc e faça o teste de Leiturabilidade."
+        title="Editor de Texto - Teste de Leitura"
+        description="Editor completo com teste de leitura integrado. Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importa arquivos do Google Docs, Notion, etc e faça o teste de Leiturabilidade."
         additionalLinkTags={[
           {
             rel: "icon",
@@ -173,81 +180,78 @@ const Home = () => {
           },
         ]}
       />
-      <div className={styles.home}>
-        <div className={styles.container}>
+      <MainContainer>
+        <MainContent>
           <Navbar />
-          <Grid container justifyContent="center" className={styles.content}>
-            <Grid item xs={11} md={8} lg={8} className={styles.left}>
-              <div className={styles.textarea}>
+        </MainContent>
+        <MainContent>
+          <Container container justifyContent="center">
+            <Content item xs={11} md={8} lg={7} className="left">
+              <div className="textarea">
                 <TextEditor html={editorHtml} />
               </div>
-            </Grid>
-            <Grid item xs={11} md={8} lg={3} className={styles.rd_result}>
-              <div className={styles.inner}>
-                <p>
-                  Seu texto está no nível de leitura de{" "}
-                  <span id="rd_exmlp">{easeResultToExample(ease.index)}.</span>
-                </p>
-                <div className={styles.ease_bar}>
-                  <div
-                    className={styles.slider}
-                    style={{ left: `${sliderSize}px` }}
-                  />
-                  <div className={styles.cont}>
-                    <div className={styles.row} ref={sliderRef}>
-                      <div className={styles.col} />
-                      <div className={styles.col} />
-                      <div className={styles.col} />
-                      <div className={styles.col} />
-                      <div className={styles.col} />
-                    </div>
+            </Content>
+            <RdResult item xs={11} md={8} lg={3}>
+              <p>
+                Seu texto está no nível de leitura de{" "}
+                <span id="rd_exmlp">{easeResultToExample(ease.index)}.</span>
+              </p>
+              <div className="ease_bar">
+                <div className="slider" style={{ left: `${sliderSize}px` }} />
+                <div className="cont">
+                  <div className="row" ref={sliderRef}>
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
+                    <div className="col" />
                   </div>
                 </div>
-                <ul>
-                  <li>
-                    Muito
-                    <br />
-                    <span>difícil</span>
-                  </li>
-                  <li>Médio</li>
-                  <li>
-                    Muito
-                    <br />
-                    <span>fácil</span>
-                  </li>
-                </ul>
-                <p>
-                  <br />
-                  <strong
-                    style={{
-                      fontSize: "20px",
-                    }}
-                  >
-                    Mais sobre seu texto:
-                  </strong>
-                  <br />
-                  Tempo de leitura:{" "}
-                  <strong>
-                    {secondsToHMS(getReadingTimeByWords(ease.words))}
-                  </strong>
-                  <br />
-                  Número de palavras: <strong>{ease.words}</strong>
-                  <br />
-                  Número de frases: <strong>{ease.sentences}</strong>
-                  <br />
-                </p>
-                <br />
-                <div className={styles.importExternalPage}>
-                  <h3>Deseja importar o conteúdo de uma página externa?</h3>
-                  <input type="url" ref={externalPageUrlRef} />
-                  <button onClick={handleImportClick} type="submit">
-                    Importar página
-                  </button>
-                  <p>* Serviços suportados: Notion, Google Docs</p>
-                </div>
               </div>
-            </Grid>
-          </Grid>
+              <ul>
+                <li>
+                  Muito
+                  <br />
+                  <span>difícil</span>
+                </li>
+                <li>Médio</li>
+                <li>
+                  Muito
+                  <br />
+                  <span>fácil</span>
+                </li>
+              </ul>
+              <p>
+                <br />
+                <strong
+                  style={{
+                    fontSize: "20px",
+                  }}
+                >
+                  Mais sobre seu texto:
+                </strong>
+                <br />
+                Tempo de leitura:{" "}
+                <strong>
+                  {secondsToHMS(getReadingTimeByWords(ease.words))}
+                </strong>
+                <br />
+                Número de palavras: <strong>{ease.words}</strong>
+                <br />
+                Número de frases: <strong>{ease.sentences}</strong>
+                <br />
+              </p>
+              <br />
+              <div className="importExternalPage">
+                <h3>Deseja importar o conteúdo de uma página externa?</h3>
+                <input type="url" ref={externalPageUrlRef} />
+                <button onClick={handleImportClick} type="submit">
+                  Importar página
+                </button>
+                <p>* Serviços suportados: Notion, Google Docs</p>
+              </div>
+            </RdResult>
+          </Container>
           <ToastContainer
             position="top-left"
             hideProgressBar={false}
@@ -256,54 +260,48 @@ const Home = () => {
             pauseOnHover={false}
             pauseOnFocusLoss={false}
           />
-          <div className={styles.infos}>
-            <Grid container justifyContent="center">
-              <Grid item xs={12} className={styles.line} />
-              <Grid item xs={12} className={styles.footer}>
-                Feito por{" "}
-                <a
-                  href="https://jnaraujo.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Jônatas Araújo
-                </a>{" "}
-                - 2021
-              </Grid>
-            </Grid>
-            <Modal open={open} onClose={closeModal} center>
-              <div className={styles.modal}>
-                <div className={styles.message}>
-                  <h1>{modalMessage.title}</h1>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: modalMessage.message,
-                    }}
-                  />
-                </div>
-                <div className={styles.line} />
-                <div className={styles.button}>
-                  <button onClick={closeModal} type="button">
-                    Fechar
-                  </button>
-                  {secondButton.value ? (
-                    <button onClick={secondButton.onClick} type="button">
-                      {secondButton.value}
-                    </button>
-                  ) : (
-                    ""
-                  )}
-                </div>
+          <Container container justifyContent="center">
+            <Grid item xs={12} className="line" />
+            <Footer item xs={12} className="footer">
+              Feito por{" "}
+              <a href="https://jnaraujo.com/" target="_blank" rel="noreferrer">
+                Jônatas Araújo
+              </a>{" "}
+              - 2021
+            </Footer>
+          </Container>
+
+          <Modal open={open} onClose={closeModal} center>
+            <ModalDiv>
+              <div className="message">
+                <h1>{modalMessage.title}</h1>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: modalMessage.message,
+                  }}
+                />
               </div>
-            </Modal>
-          </div>
-        </div>
-        <div
-          className={isLoading === true ? styles.loading : styles.hideAndNone}
-        >
+              <div className="line" />
+              <div className="button">
+                <button onClick={closeModal} type="button">
+                  Fechar
+                </button>
+                {secondButton.value ? (
+                  <button onClick={secondButton.onClick} type="button">
+                    {secondButton.value}
+                  </button>
+                ) : (
+                  ""
+                )}
+              </div>
+            </ModalDiv>
+          </Modal>
+        </MainContent>
+
+        <div className={isLoading === true ? "loading" : "hideAndNone"}>
           <AiOutlineLoading3Quarters />
         </div>
-      </div>
+      </MainContainer>
     </>
   );
 };

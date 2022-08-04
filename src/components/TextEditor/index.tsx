@@ -32,16 +32,6 @@ type ComponentPropsType = {
   html: string;
 };
 
-// function easeResultToTag(value) {
-//   if (value > 75) return "ease_easy";
-//   // if (value > 50) return "um estudante do 6º ao 9º ano";
-//   if (value > 25) return "ease_medium";
-
-//   return "ease_hard";
-// }
-
-// const ease_classes = ["ease_easy", "ease_medium", "ease_hard"];
-
 const handleContentEase = (text, setEase) => {
   const textAnalyses = ReadingEase.fleschReadingEaseBR(text);
 
@@ -111,12 +101,6 @@ const Component = ({ html, className }: ComponentPropsType) => {
 
       <EditorContent ref={editorRef} className="editor" editor={editor} />
 
-      {/* <div
-        contentEditable
-        className="editor"
-        ref={editorRef}
-        onInput={handleEditorChange}
-      /> */}
       {editor && <IntextMenu editor={editor} />}
     </EditorDiv>
   );

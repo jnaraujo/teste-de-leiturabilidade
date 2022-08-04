@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 import { Editor } from "@tiptap/react";
 
@@ -218,4 +219,4 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
   </Toolbar>
 );
 
-export default ToolbarComponent;
+export default memo(ToolbarComponent);

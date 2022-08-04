@@ -1,4 +1,5 @@
 import { Editor, BubbleMenu } from "@tiptap/react";
+import { memo } from "react";
 import {
   AiOutlineBold,
   AiOutlineItalic,
@@ -149,4 +150,4 @@ const IntextMenu = ({ editor }: { editor: Editor }) => (
     </ComponentDiv>
   </BubbleMenu>
 );
-export default IntextMenu;
+export default memo(IntextMenu);

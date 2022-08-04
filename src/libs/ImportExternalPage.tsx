@@ -28,7 +28,7 @@ async function importNotionPageByUrl(url: string) {
   try {
     const { data } = await axios.get(fetchUrl);
 
-    if (!data) {
+    if (!data || data.error) {
       return {
         status: "error",
         message: {
