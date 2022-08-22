@@ -1,23 +1,25 @@
 /* eslint-disable react/no-danger */
-import { useEffect, useRef, useState } from "react";
-import nookies from "nookies";
-
-import { ToastContainer, toast } from "react-toastify";
+import "react-responsive-modal/styles.css";
 import "react-toastify/dist/ReactToastify.css";
 
-import { DefaultSeo } from "next-seo";
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
+
 import { Grid } from "@mui/material";
 
-import { useRouter } from "next/router";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { useWindowSize } from "react-use";
+import nookies from "nookies";
+import { ToastContainer, toast } from "react-toastify";
+import { DefaultSeo } from "next-seo";
 
-import "react-responsive-modal/styles.css";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Modal } from "react-responsive-modal";
+
+// HOOKS
+import { useWindowSize } from "react-use";
 import useLeiturabilidade from "../hooks/useLeiturabilidade";
 
+// LIBS
 import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
-import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
 import handleImport from "../libs/ImportExternalPage";
 
 // COMPONENTS
