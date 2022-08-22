@@ -27,7 +27,7 @@ import {
   TopBar,
 } from "../styles/Home";
 import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
-import { useLeiturabilidade } from "../context/LeiturabilidadeContext";
+import useLeiturabilidade from "../hooks/useLeiturabilidade";
 import handleImport from "../libs/ImportExternalPage";
 
 // COMPONENTS

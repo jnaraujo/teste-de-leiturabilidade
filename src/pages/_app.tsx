@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 
 import { LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
-import LeiturabilidadeProvider from "../context/LeiturabilidadeContext";
+import { LeiturabilidadeProvider } from "../context/LeiturabilidadeContext";
 
 import { lightTheme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global";

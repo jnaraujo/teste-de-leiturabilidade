@@ -14,6 +14,7 @@ import { useWindowSize } from "react-use";
 
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import useLeiturabilidade from "../hooks/useLeiturabilidade";
 
 import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
 import { useLeiturabilidade } from "../context/LeiturabilidadeContext";

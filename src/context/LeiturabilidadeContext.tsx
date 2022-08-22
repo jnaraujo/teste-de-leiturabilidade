@@ -1,56 +1,37 @@
-import { useContext, createContext, useState, useEffect } from "react";
+import { createContext, useState, useMemo } from "react";
 
-type LeiturabilidadeContextType = {
-  ease: {
-    index: number;
-    syllables: number;
-    words: number;
-    sentences: number;
-  };
-  // eslint-disable-next-line no-unused-vars
-  setEase: (value: Number | any) => void;
-};
+interface IEase {
+  index: number;
+  syllables: number;
+  words: number;
+  sentences: number;
+}
+interface ILeiturabilidadeContext {
+  ease: IEase;
+  setEase: (value: IEase) => void;
+}
 
-const LeiturabilidadeContext = createContext<LeiturabilidadeContextType>({
-  ease: {
-    index: 0,
-    syllables: 0,
-    words: 0,
-    sentences: 0,
-  },
-  // eslint-disable-next-line no-unused-vars
-  setEase: (value: {
-    index: number;
-    syllables: number;
-    words: number;
-    sentences: number;
-  }) => {},
-});
+export const LeiturabilidadeContext = createContext<ILeiturabilidadeContext>(
+  {} as ILeiturabilidadeContext
+);
 
-const LeiturabilidadeProvider = ({ children }) => {
-  const [ease, setEase] = useState({
+export const LeiturabilidadeProvider = ({ children }) => {
+  const [ease, setEase] = useState<IEase>({
     index: 0,
     syllables: 0,
     words: 0,
     sentences: 0,
   });
 
-  useEffect(() => {}, []);
+  const handleSetEase = (newEase: IEase) => {
+    setEase(newEase);
+  };
+
+  const value = useMemo(() => ({ ease, setEase: handleSetEase }), [ease]);
 
   return (
-    <LeiturabilidadeContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{
-        ease,
-        setEase,
-      }}
-    >
+    <LeiturabilidadeContext.Provider value={value}>
       {children}
     </LeiturabilidadeContext.Provider>
   );
 };
-export function useLeiturabilidade() {
-  return useContext(LeiturabilidadeContext);
-}
-
-export default LeiturabilidadeProvider;
