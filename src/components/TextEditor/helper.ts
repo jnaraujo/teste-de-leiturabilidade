@@ -12,6 +12,8 @@ import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
 
+import * as ReadingEase from "../../libs/readability/ReadingEase.js";
+
 export const EditorExtensions = [
   Heading,
   Underline,
@@ -47,3 +49,14 @@ export const textExample = `
     Se quiser saber mais sobre como funciona o site, tem mais conteúdo logo abaixo!
   </p>
 `;
+
+export const handleContentEase = (text, setEase) => {
+  const textAnalyses = ReadingEase.fleschReadingEaseBR(text);
+
+  setEase({
+    index: textAnalyses.result,
+    syllables: textAnalyses.totalSyllables,
+    words: textAnalyses.totalWords,
+    sentences: textAnalyses.nTotalSentences,
+  });
+};

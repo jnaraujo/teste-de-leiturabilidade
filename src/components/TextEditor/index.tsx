@@ -7,8 +7,8 @@ import cx from "classnames";
 
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
 
-import { textExample, EditorExtensions } from "./helper";
-import * as ReadingEase from "../../libs/readability/ReadingEase.js";
+import { textExample, EditorExtensions, handleContentEase } from "./helper";
+
 import { EditorDiv } from "./styles";
 
 import Toolbar from "./Toolbar";
@@ -17,17 +17,6 @@ import InTextMenu from "./InTextMenu";
 type ComponentPropsType = {
   className?: string;
   html: string;
-};
-
-const handleContentEase = (text, setEase) => {
-  const textAnalyses = ReadingEase.fleschReadingEaseBR(text);
-
-  setEase({
-    index: textAnalyses.result,
-    syllables: textAnalyses.totalSyllables,
-    words: textAnalyses.totalWords,
-    sentences: textAnalyses.nTotalSentences,
-  });
 };
 
 const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
