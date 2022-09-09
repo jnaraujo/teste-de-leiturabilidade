@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 
 // RichText.tsx in your components folder
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -30,7 +30,7 @@ const handleContentEase = (text, setEase) => {
   });
 };
 
-const Component = ({ html, className }: ComponentPropsType) => {
+const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   const { setEase } = useLeiturabilidade();
   const [editorConfig] = useState({
     colors: true,
@@ -75,4 +75,4 @@ const Component = ({ html, className }: ComponentPropsType) => {
   );
 };
 
-export default Component;
+export default memo(TextEditorComponent);
