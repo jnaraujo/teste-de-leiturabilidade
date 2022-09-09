@@ -160,7 +160,6 @@ const Home = () => {
             pauseOnFocusLoss={false}
           />
           <Container container justifyContent="center">
-            <Grid item xs={12} className="line" />
             <Footer item xs={12} className="footer">
               Feito por{" "}
               <a href="https://jnaraujo.com/" target="_blank" rel="noreferrer">
