@@ -150,15 +150,12 @@ const Home = () => {
               marginTop: "1rem",
             }}
           >
-            <TopBar item xs={11} md={8} lg={7}>
-              <div>
-                <p>
-                  Digite o seu texto abaixo e descubra, em tempo real, o{" "}
-                  <span>nível de leitura</span>.
-                </p>
-              </div>
+            <TopBar item xs={12}>
+              <p>
+                Digite o seu texto abaixo e descubra, em tempo real, o{" "}
+                <span>nível de leitura</span>.
+              </p>
             </TopBar>
-            <Content item xs={11} md={8} lg={3} />
           </Container>
           <Container container justifyContent="center">
             <Content item xs={11} md={8} className="left">
