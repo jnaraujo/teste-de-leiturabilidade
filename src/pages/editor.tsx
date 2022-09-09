@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 
 import { Grid } from "@mui/material";
@@ -11,14 +11,8 @@ import { DefaultSeo } from "next-seo";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Modal } from "react-responsive-modal";
 
-// HOOKS
-import { useWindowSize } from "react-use";
-import useLeiturabilidade from "../hooks/useLeiturabilidade";
-
 // LIBS
-import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
 import handleImport from "../libs/ImportExternalPage";
-import { easeResultToExample } from "../utils/utils";
 
 // COMPONENTS
 import TextEditor from "../components/TextEditor/index";
@@ -30,8 +24,8 @@ import {
   MainContainer,
   MainContent,
   ModalDiv,
-  RdResult,
 } from "../styles/Home";
+import ResultBox from "../components/ResultBox";
 
 function getCookie() {
   return nookies.get(null, {}).toastedInfo;
@@ -44,12 +38,6 @@ function setCookie(value: string | boolean) {
 }
 
 const Home = () => {
-  const { ease } = useLeiturabilidade();
-
-  const sliderRef = useRef(null);
-
-  const { width, height } = useWindowSize();
-  const [sliderSize, setSliderSize] = useState(100);
   const [editorHtml, setEditorHtml] = useState("");
 
   const [modalMessage, setModalMessage] = useState(
@@ -68,8 +56,6 @@ const Home = () => {
   const closeModal = () => setOpen(false);
 
   const [isLoading, setLoading] = useState(false);
-
-  const externalPageUrlRef = useRef(null);
 
   const router = useRouter();
 
@@ -124,19 +110,9 @@ const Home = () => {
     importExternalPage(String(router.query.url));
   }, [router.query.url]);
 
-  const handleImportClick = () => {
-    const inputUrl = externalPageUrlRef.current?.value;
-    return importExternalPage(inputUrl);
-  };
-
-  function base100ToSlideBarSize(value) {
-    if (!sliderRef.current) return 0;
-
-    const sliderWidth = sliderRef.current.offsetWidth;
-    const formula = value * (sliderWidth / 100);
-
-    return Math.max(Math.min(formula, sliderWidth), 5);
-  }
+  const handleImportClick = useCallback((value: string) => {
+    importExternalPage(value);
+  }, []);
 
   useEffect(() => {
     if (!getCookie()) {
@@ -156,10 +132,6 @@ const Home = () => {
       setCookie(true);
     }
   }, []);
-
-  useEffect(() => {
-    setSliderSize(base100ToSlideBarSize(ease.index));
-  }, [width, height, ease]);
 
   return (
     <>
@@ -184,66 +156,10 @@ const Home = () => {
                 <TextEditor html={editorHtml} />
               </div>
             </Content>
-            <RdResult item xs={11} md={8} lg={3}>
-              <p>
-                Seu texto está no nível de leitura de{" "}
-                <span id="rd_exmlp">{easeResultToExample(ease.index)}.</span>
-              </p>
-              <div className="ease_bar">
-                <div className="slider" style={{ left: `${sliderSize}px` }} />
-                <div className="cont">
-                  <div className="row" ref={sliderRef}>
-                    <div className="col" />
-                    <div className="col" />
-                    <div className="col" />
-                    <div className="col" />
-                    <div className="col" />
-                  </div>
-                </div>
-              </div>
-              <ul>
-                <li>
-                  Muito
-                  <br />
-                  <span>difícil</span>
-                </li>
-                <li>Médio</li>
-                <li>
-                  Muito
-                  <br />
-                  <span>fácil</span>
-                </li>
-              </ul>
-              <p>
-                <br />
-                <strong
-                  style={{
-                    fontSize: "20px",
-                  }}
-                >
-                  Mais sobre seu texto:
-                </strong>
-                <br />
-                Tempo de leitura:{" "}
-                <strong>
-                  {secondsToHMS(getReadingTimeByWords(ease.words))}
-                </strong>
-                <br />
-                Número de palavras: <strong>{ease.words}</strong>
-                <br />
-                Número de frases: <strong>{ease.sentences}</strong>
-                <br />
-              </p>
-              <br />
-              <div className="importExternalPage">
-                <h3>Deseja importar o conteúdo de uma página externa?</h3>
-                <input type="url" ref={externalPageUrlRef} />
-                <button onClick={handleImportClick} type="submit">
-                  Importar página
-                </button>
-                <p>* Serviços suportados: Notion, Google Docs</p>
-              </div>
-            </RdResult>
+
+            <Content item xs={11} md={8} lg={3}>
+              <ResultBox onImportPage={handleImportClick} />
+            </Content>
           </Container>
           <ToastContainer
             position="top-left"
