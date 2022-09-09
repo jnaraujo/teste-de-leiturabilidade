@@ -145,7 +145,7 @@ const Home = () => {
         <MainContent>
           <Container
             container
-            justifyContent="space-evenly"
+            justifyContent="center"
             style={{
               marginTop: "1rem",
             }}
@@ -158,15 +158,7 @@ const Home = () => {
                 </p>
               </div>
             </TopBar>
-            <Content
-              item
-              xs={11}
-              md={8}
-              lg={3}
-              style={{
-                margin: "0",
-              }}
-            />
+            <Content item xs={11} md={8} lg={3} />
           </Container>
           <Container container justifyContent="center">
             <Content item xs={11} md={8} className="left">

@@ -62,7 +62,7 @@ export const MainContent = styled.div`
 `;
 
 export const TopBar = styled(Grid)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.onSecondary};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};
   font-family: "Inter", sans-serif;
 
   p {
@@ -77,6 +77,7 @@ export const TopBar = styled(Grid)`
     }
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    border-bottom: 0;
     // margin-top: 30px;
     p {
       /* width: 600px; */
@@ -106,6 +107,10 @@ export const Content = styled(Grid)`
     padding-bottom: 20px;
     width: 99% !important;
     min-height: 70vh;
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+      border-bottom: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};
+    }
   }
 `;
 
