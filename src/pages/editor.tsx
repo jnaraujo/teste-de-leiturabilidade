@@ -21,6 +21,7 @@ import useLeiturabilidade from "../hooks/useLeiturabilidade";
 // LIBS
 import { getReadingTimeByWords, secondsToHMS } from "../utils/readingTime";
 import handleImport from "../libs/ImportExternalPage";
+import { easeResultToExample } from "../utils/utils";
 
 // COMPONENTS
 import TextEditor from "../components/TextEditor/index";
