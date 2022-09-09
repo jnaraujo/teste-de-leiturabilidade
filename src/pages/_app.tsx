@@ -1,3 +1,6 @@
+import "react-responsive-modal/styles.css";
+import "react-toastify/dist/ReactToastify.css";
+
 import { useRouter } from "next/router";
 
 import { ThemeProvider } from "styled-components";
