@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 import { Grid } from "@mui/material";
 
-import nookies from "nookies";
 import { ToastContainer, toast } from "react-toastify";
 import { DefaultSeo } from "next-seo";
 
@@ -26,16 +25,7 @@ import {
   ModalDiv,
 } from "../styles/Home";
 import ResultBox from "../components/ResultBox";
-
-function getCookie() {
-  return nookies.get(null, {}).toastedInfo;
-}
-
-function setCookie(value: string | boolean) {
-  nookies.set(null, "toastedInfo", String(value), {
-    maxAge: 24 * 60 * 60,
-  });
-}
+import { getCookie, setCookie } from "../utils/utils";
 
 const Home = () => {
   const [editorHtml, setEditorHtml] = useState("");
