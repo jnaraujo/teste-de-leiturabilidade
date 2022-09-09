@@ -2,8 +2,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 
-import { Grid } from "@mui/material";
-
 import { ToastContainer, toast } from "react-toastify";
 import { DefaultSeo } from "next-seo";
 
