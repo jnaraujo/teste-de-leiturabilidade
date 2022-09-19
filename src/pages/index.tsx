@@ -6,7 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { DefaultSeo } from "next-seo";
 import { Grid } from "@mui/material";
 
-import { useRouter } from "next/router";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { Modal } from "react-responsive-modal";
@@ -21,97 +20,67 @@ import {
   ModalDiv,
   TopBar,
 } from "../styles/Home";
-import handleImport from "../libs/ImportExternalPage";
 import { getCookie, setCookie } from "../utils/utils";
 
 // COMPONENTS
 import TextEditor from "../components/TextEditor/index";
 import Navbar from "../components/Navbar";
 import ResultBox from "../components/ResultBox";
+import { useImportExternalPage } from "../hooks/useImportExternalPage";
 
 interface IModalMessage {
   title: string;
   message: string;
 }
 
-interface ISecondButton {
-  value: string;
-  onClick: () => void;
-}
-
 const Home = () => {
+  const { fetch, data, error } = useImportExternalPage();
+
   const [editorHtml, setEditorHtml] = useState("");
 
   const [modalMessage, setModalMessage] = useState<IModalMessage>(
     {} as IModalMessage
   );
-  const [secondButton, setSecondButton] = useState<ISecondButton>(
-    {} as ISecondButton
-  );
+
   const [open, setOpen] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
   const closeModal = () => setOpen(false);
 
-  const router = useRouter();
-
-  function changeModal(
-    message: {
-      title: string;
-      message: string;
-    },
-    secondButtonn?: {
-      value: string;
-      onClick: () => void;
-    }
-  ) {
+  function changeModal(message: { title: string; message: string }) {
     setModalMessage({
       title: message.title,
       message: message.message,
     });
-    if (secondButtonn) {
-      setSecondButton(secondButtonn);
-    }
-  }
 
-  async function importExternalPage(url: string) {
-    setLoading(true);
-
-    const data = await handleImport(url);
-
-    if (data.status === "error") {
-      changeModal(
-        {
-          title: data.message?.title ?? "Erro",
-          message: data.message?.description ?? "Erro ao importar página",
-        },
-        {
-          value: "Tentar novamente",
-          onClick: () => {
-            closeModal();
-            importExternalPage(url);
-          },
-        }
-      );
-      setLoading(false);
-      return setOpen(true);
-    }
-
-    setEditorHtml(data.html);
-
-    return setLoading(false);
+    setLoading(false);
+    setOpen(true);
   }
 
   useEffect(() => {
-    importExternalPage(String(router.query.url));
-  }, [router.query.url]);
+    if (data) {
+      setEditorHtml(data);
+    }
+    setLoading(false);
+  }, [data]);
+
+  useEffect(() => {
+    if (error) {
+      changeModal({
+        title: error.title,
+        message: error.message,
+      });
+    }
+  }, [error]);
 
   const handleImportClick = useCallback((value: string) => {
-    importExternalPage(value);
+    if (value) {
+      setLoading(true);
+      fetch(value);
+    }
   }, []);
 
   useEffect(() => {
-    // setEditorHtml(localStorage.getItem("text") ?? "");
     if (!getCookie()) {
       toast.info(
         "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
@@ -273,13 +242,6 @@ const Home = () => {
                   <button onClick={closeModal} type="button">
                     Fechar
                   </button>
-                  {secondButton.value ? (
-                    <button onClick={secondButton.onClick} type="button">
-                      {secondButton.value}
-                    </button>
-                  ) : (
-                    ""
-                  )}
                 </div>
               </ModalDiv>
             </Modal>
