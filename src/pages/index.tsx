@@ -29,25 +29,29 @@ import TextEditor from "../components/TextEditor/index";
 import Navbar from "../components/Navbar";
 import ResultBox from "../components/ResultBox";
 
+interface IModalMessage {
+  title: string;
+  message: string;
+}
+
+interface ISecondButton {
+  value: string;
+  onClick: () => void;
+}
+
 const Home = () => {
   const [editorHtml, setEditorHtml] = useState("");
 
-  const [modalMessage, setModalMessage] = useState(
-    {} as {
-      title: string;
-      message: string;
-    }
+  const [modalMessage, setModalMessage] = useState<IModalMessage>(
+    {} as IModalMessage
   );
-  const [secondButton, setSecondButton] = useState(
-    {} as {
-      value: string;
-      onClick: () => void;
-    }
+  const [secondButton, setSecondButton] = useState<ISecondButton>(
+    {} as ISecondButton
   );
   const [open, setOpen] = useState(false);
-  const closeModal = () => setOpen(false);
-
   const [isLoading, setLoading] = useState(false);
+
+  const closeModal = () => setOpen(false);
 
   const router = useRouter();
 
