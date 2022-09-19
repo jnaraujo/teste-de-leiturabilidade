@@ -7,10 +7,12 @@ import { MainContainer, Container, MainContent } from "../../styles/Blog";
 
 import MidCta from "../../components/MidCta";
 import Navbar from "../../components/Navbar";
-import { getBlogPosts } from "../../network/notion";
+import { BlogService, IBlogPost } from "../../services/BlogService";
+
+const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
 
 export async function getStaticProps() {
-  const posts = await getBlogPosts();
+  const posts = await blogService.getBlogPosts();
 
   return {
     props: {
@@ -20,7 +22,11 @@ export async function getStaticProps() {
   };
 }
 
-const BlogPage = ({ posts }) => (
+interface IProps {
+  posts: IBlogPost[];
+}
+
+const BlogPage = ({ posts }: IProps) => (
   <>
     <Head>
       <title>Blog - Teste de Leitura</title>
