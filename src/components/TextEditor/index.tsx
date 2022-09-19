@@ -43,7 +43,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   });
 
   useEffect(() => {
-    if (html) {
+    if (html && editor) {
       editor.commands.setContent(html);
     }
   }, [html]);
@@ -51,14 +51,12 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   return (
     <EditorDiv
       className={cx({
-        [className]: className,
+        [`${className}`]: className,
         editorColor: editorConfig.colors,
       })}
     >
-      <Toolbar editor={editor} />
-
+      {editor && <Toolbar editor={editor} />}
       <EditorContent ref={editorRef} className="editor" editor={editor} />
-
       {editor && <InTextMenu editor={editor} />}
     </EditorDiv>
   );
