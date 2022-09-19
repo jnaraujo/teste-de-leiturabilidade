@@ -38,7 +38,6 @@ yarn-error.log*
 .netlify
 netlify.toml
 
-
 # PWA files
 **/public/sw.js
 **/public/workbox-*.js
