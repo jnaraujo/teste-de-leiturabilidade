@@ -1,27 +1,28 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useState, useMemo, ReactNode } from "react";
 
-interface IEase {
+export interface IEase {
   index: number;
   syllables: number;
   words: number;
   sentences: number;
 }
-interface ILeiturabilidadeContext {
+export interface ILeiturabilidadeContext {
   ease: IEase;
-  setEase: (value: IEase) => void;
+  setEase(value: IEase): void;
+}
+
+interface ILeiturabilidadeProvider {
+  children: ReactNode;
 }
 
 export const LeiturabilidadeContext = createContext<ILeiturabilidadeContext>(
   {} as ILeiturabilidadeContext
 );
 
-export const LeiturabilidadeProvider = ({ children }) => {
-  const [ease, setEase] = useState<IEase>({
-    index: 0,
-    syllables: 0,
-    words: 0,
-    sentences: 0,
-  });
+export const LeiturabilidadeProvider = ({
+  children,
+}: ILeiturabilidadeProvider) => {
+  const [ease, setEase] = useState<IEase>({} as IEase);
 
   const handleSetEase = (newEase: IEase) => {
     setEase(newEase);
