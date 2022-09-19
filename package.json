@@ -33,7 +33,6 @@
     "@tiptap/extension-text-align": "^2.0.0-beta.31",
     "@tiptap/extension-underline": "^2.0.0-beta.25",
     "@tiptap/react": "^2.0.0-beta.114",
-    "add": "^2.0.6",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "eslint-config-prettier": "^8.5.0",
