@@ -21,12 +21,12 @@ async function getPublishedPosts() {
   return posts;
 }
 async function getPosts() {
-  const posts = (
-    await axios.get(
-      `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`
-    )
-  ).data
-    .filter((post) => post.Status == "Published" || post.Status == "Test")
+  const { data } = await axios.get(
+    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`
+  );
+
+  const filteredPosts = data
+    .filter((post) => post.Status === "Published" || post.Status === "Test")
     .map(({ id, Name, ...data }) => ({
       id: String(Name).toLowerCase().replace(/\s/g, "-"),
       notionId: id,
@@ -38,33 +38,31 @@ async function getPosts() {
       body: data.Description,
     }));
 
-  return posts;
+  return filteredPosts;
 }
 
-async function getPostById(postId) {
-  const postData = (
-    await axios.get(
-      `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`
-    )
-  ).data.filter((post) => {
-    if (post.Status == "Published" || post.Status == "Test") {
-      if (
-        String(post.Name).toLowerCase().replace(/\s/g, "-") ==
-        String(postId).toLowerCase().replace(/\s/g, "-")
-      ) {
-        return true;
-      }
-    }
-  })[0];
-  return {
-    id: String(postData.Name).toLowerCase().replace(/\s/g, "-"),
-    notionId: postData.id,
+async function getPostById(postId: any) {
+  const { data } = await axios.get(
+    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`
+  );
 
-    publishedAt: postData.Published,
-    status: postData.Status,
-    tags: postData.Tags,
-    title: postData.Name,
-    body: postData.Description,
+  const filteredPost = data.filter((post: any) => {
+    const id = post.Name.toLowerCase().replace(/\s/g, "-");
+    const notionId = postId.toLowerCase().replace(/\s/g, "-");
+    const isStatusValid = post.Status === "Published" || post.Status === "Test";
+
+    return id === notionId && isStatusValid;
+  })[0];
+
+  return {
+    id: String(filteredPost.Name).toLowerCase().replace(/\s/g, "-"),
+    notionId: filteredPost.id,
+
+    publishedAt: filteredPost.Published,
+    status: filteredPost.Status,
+    tags: filteredPost.Tags,
+    title: filteredPost.Name,
+    body: filteredPost.Description,
   };
 }
 
