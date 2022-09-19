@@ -1,5 +1,5 @@
-import axios from "axios";
 import sanitize from "sanitize-html-react";
+import { NotionService } from "src/services/NotionService";
 import { getDocs, getIdFromUrl } from "../services/docs";
 
 const sanitizeOptions = {
@@ -21,14 +21,14 @@ const sanitizeOptions = {
 };
 
 async function importNotionPageByUrl(url: string) {
-  const pageIdSplit = String(url).split("-");
-  const pageId = pageIdSplit[pageIdSplit.length - 1];
-  const fetchUrl = `https://potion-api.vercel.app/html?id=${pageId}`;
+  const notionService = new NotionService(url);
 
   try {
-    const { data } = await axios.get(fetchUrl);
+    const data = await notionService.execute();
 
-    if (!data || data.error) {
+    const isDataValid = data && !data.error;
+
+    if (!isDataValid) {
       return {
         status: "error",
         message: {
