@@ -14,26 +14,26 @@ interface ResultBoxProps {
 }
 
 const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
-  const sliderRef = useRef(null);
-  const externalPageUrlRef = useRef(null);
+  const sliderRef = useRef<any>(null);
+  const externalPageUrlRef = useRef<any>(null);
 
   const { width, height } = useWindowSize();
 
   const { ease } = useLeiturabilidade();
   const [sliderSize, setSliderSize] = useState(100);
 
-  function base100ToSlideBarSize(value) {
+  function base100ToSlideBarSize(value: number) {
     if (!sliderRef.current) return 0;
 
-    const sliderWidth = sliderRef.current.offsetWidth;
+    const sliderWidth = sliderRef.current?.offsetWidth;
     const formula = value * (sliderWidth / 100);
 
     return Math.max(Math.min(formula, sliderWidth), 5);
   }
 
   const handleImportClick = () => {
-    if (onImportPage) {
-      onImportPage(externalPageUrlRef.current?.value);
+    if (onImportPage && externalPageUrlRef.current) {
+      onImportPage(externalPageUrlRef.current?.value || "");
     }
   };
 

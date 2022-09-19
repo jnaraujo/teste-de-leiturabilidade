@@ -82,8 +82,8 @@ const Home = () => {
     if (data.status === "error") {
       changeModal(
         {
-          title: data.message.title,
-          message: data.message.description,
+          title: data.message?.title ?? "Erro",
+          message: data.message?.description ?? "Erro ao importar página",
         },
         {
           value: "Tentar novamente",

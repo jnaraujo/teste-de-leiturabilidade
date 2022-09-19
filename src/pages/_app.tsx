@@ -13,12 +13,12 @@ import { lightTheme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global";
 
 // eslint-disable-next-line react/prop-types
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: any) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
+    const handleRouteChange = (url: string) => {
       setLoading(false);
 
       (window as any).gtag("config", process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
