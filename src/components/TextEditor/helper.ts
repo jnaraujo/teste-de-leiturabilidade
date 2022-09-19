@@ -13,6 +13,8 @@ import TextAlign from "@tiptap/extension-text-align";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
 import Placeholder from "@tiptap/extension-placeholder";
 
+import { IEase } from "../../context/LeiturabilidadeContext";
+
 import * as ReadingEase from "../../libs/readability/ReadingEase.js";
 
 export const EditorExtensions = [
@@ -54,7 +56,10 @@ export const textExample = `
   </p>
 `;
 
-export const handleContentEase = (text, setEase) => {
+export const handleContentEase = (
+  text: string,
+  setEase: (obj: IEase) => void
+) => {
   const textAnalyses = ReadingEase.fleschReadingEaseBR(text);
 
   setEase({
