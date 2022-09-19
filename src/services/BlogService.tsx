@@ -87,8 +87,6 @@ export class BlogService {
 
     const body = await this.fetchPostDataById(post.notionId);
 
-    console.log(body);
-
     return {
       ...post,
       body,
