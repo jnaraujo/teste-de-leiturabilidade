@@ -1,5 +1,5 @@
 import sanitize from "sanitize-html-react";
-import { NotionService } from "src/services/NotionService";
+import { NotionService } from "../services/NotionService";
 import { getDocs, getIdFromUrl } from "../services/docs";
 
 const sanitizeOptions = {
