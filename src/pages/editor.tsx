@@ -72,10 +72,13 @@ const Home = () => {
     const data = await handleImport(url);
 
     if (data.status === "error") {
+      const title = data.message?.title || "Erro ao importar a página";
+      const description = data.message?.description || "Erro desconhecido";
+
       changeModal(
         {
-          title: data.message.title,
-          message: data.message.description,
+          title,
+          message: description,
         },
         {
           value: "Tentar novamente",
