@@ -107,12 +107,23 @@ const Home = () => {
         <MainContent>
           <Container
             container
-            justifyContent="center"
+            justifyContent={{
+              md: "center",
+              lg: "left",
+            }}
             style={{
               marginTop: "1rem",
             }}
           >
-            <TopBar item xs={12}>
+            <TopBar
+              item
+              xs={11}
+              md={8}
+              mx={{
+                xs: "auto",
+                md: 4,
+              }}
+            >
               <p>
                 Digite o seu texto abaixo e descubra, em tempo real, o{" "}
                 <span>nível de leitura</span>.
