@@ -2,7 +2,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 
-import { ToastContainer, toast } from "react-toastify";
 import { DefaultSeo } from "next-seo";
 
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -23,10 +22,13 @@ import {
   ModalDiv,
 } from "../styles/Home";
 import ResultBox from "../components/ResultBox";
-import { getCookie, setCookie } from "../utils/utils";
+import { useToast } from "../hooks/useToast";
 
 const Home = () => {
   const [editorHtml, setEditorHtml] = useState("");
+  const toast = useToast({
+    saveCookie: "savingMessage",
+  });
 
   const [modalMessage, setModalMessage] = useState(
     {} as {
@@ -106,22 +108,10 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (!getCookie()) {
-      toast.info(
-        "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
-        {
-          position: "top-left",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      );
-
-      setCookie(true);
-    }
+    toast.showToast(
+      "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
+      "info"
+    );
   }, []);
 
   return (
@@ -152,14 +142,6 @@ const Home = () => {
               <ResultBox onImportPage={handleImportClick} />
             </Content>
           </Container>
-          <ToastContainer
-            position="top-left"
-            hideProgressBar={false}
-            draggable
-            autoClose={1000}
-            pauseOnHover={false}
-            pauseOnFocusLoss={false}
-          />
           <Container container justifyContent="center">
             <Footer item xs={12} className="footer">
               Feito por{" "}
