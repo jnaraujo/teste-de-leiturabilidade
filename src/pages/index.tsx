@@ -1,8 +1,6 @@
 /* eslint-disable react/no-danger */
 import { useEffect, useState, useCallback } from "react";
 
-import { ToastContainer, toast } from "react-toastify";
-
 import { DefaultSeo } from "next-seo";
 import { Grid } from "@mui/material";
 
@@ -20,13 +18,13 @@ import {
   ModalDiv,
   TopBar,
 } from "../styles/Home";
-import { getCookie, setCookie } from "../utils/utils";
 
 // COMPONENTS
 import TextEditor from "../components/TextEditor/index";
 import Navbar from "../components/Navbar";
 import ResultBox from "../components/ResultBox";
 import { useImportExternalPage } from "../hooks/useImportExternalPage";
+import { useToast } from "../hooks/useToast";
 
 interface IModalMessage {
   title: string;
@@ -35,6 +33,9 @@ interface IModalMessage {
 
 const Home = () => {
   const { fetch, data, error } = useImportExternalPage();
+  const toast = useToast({
+    saveCookie: "savingMessage",
+  });
 
   const [editorHtml, setEditorHtml] = useState("");
 
@@ -81,22 +82,11 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (!getCookie()) {
-      toast.info(
-        "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
-        {
-          position: "top-left",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      );
-
-      setCookie(true);
-    }
+    console.log("a");
+    toast.showToast(
+      "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
+      "info"
+    );
   }, []);
 
   return (
@@ -140,14 +130,7 @@ const Home = () => {
               <ResultBox onImportPage={handleImportClick} />
             </Content>
           </Container>
-          <ToastContainer
-            position="top-left"
-            hideProgressBar={false}
-            draggable
-            autoClose={1000}
-            pauseOnHover={false}
-            pauseOnFocusLoss={false}
-          />
+
           <div className="line" />
           <Informations>
             <Grid container justifyContent="center">
