@@ -6,8 +6,6 @@ import { Grid } from "@mui/material";
 
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-import { Modal } from "react-responsive-modal";
-
 import {
   Container,
   Content,
@@ -15,7 +13,6 @@ import {
   Informations,
   MainContainer,
   MainContent,
-  ModalDiv,
   TopBar,
 } from "../styles/Home";
 
@@ -25,11 +22,7 @@ import Navbar from "../components/Navbar";
 import ResultBox from "../components/ResultBox";
 import { useImportExternalPage } from "../hooks/useImportExternalPage";
 import { useToast } from "../hooks/useToast";
-
-interface IModalMessage {
-  title: string;
-  message: string;
-}
+import useModal from "../hooks/useModal";
 
 const Home = () => {
   const { fetch, data, error } = useImportExternalPage();
@@ -37,26 +30,11 @@ const Home = () => {
     saveCookie: "savingMessage",
   });
 
+  const { showModal } = useModal();
+
   const [editorHtml, setEditorHtml] = useState("");
 
-  const [modalMessage, setModalMessage] = useState<IModalMessage>(
-    {} as IModalMessage
-  );
-
-  const [open, setOpen] = useState(false);
   const [isLoading, setLoading] = useState(false);
-
-  const closeModal = () => setOpen(false);
-
-  function changeModal(message: { title: string; message: string }) {
-    setModalMessage({
-      title: message.title,
-      message: message.message,
-    });
-
-    setLoading(false);
-    setOpen(true);
-  }
 
   useEffect(() => {
     if (data) {
@@ -67,10 +45,11 @@ const Home = () => {
 
   useEffect(() => {
     if (error) {
-      changeModal({
+      showModal({
         title: error.title,
         message: error.message,
       });
+      setLoading(false);
     }
   }, [error]);
 
@@ -219,25 +198,6 @@ const Home = () => {
                 - 2021
               </Footer>
             </Container>
-
-            <Modal open={open} onClose={closeModal} center>
-              <ModalDiv>
-                <div className="message">
-                  <h1>{modalMessage.title}</h1>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: modalMessage.message,
-                    }}
-                  />
-                </div>
-                <div className="line" />
-                <div className="button">
-                  <button onClick={closeModal} type="button">
-                    Fechar
-                  </button>
-                </div>
-              </ModalDiv>
-            </Modal>
           </Informations>
         </MainContent>
 
