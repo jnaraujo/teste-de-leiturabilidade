@@ -25,7 +25,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
