@@ -1,14 +1,10 @@
 /* eslint-disable react/no-danger */
 import { useEffect, useState, useCallback } from "react";
-import { useRouter } from "next/router";
 
 import { DefaultSeo } from "next-seo";
 
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Modal } from "react-responsive-modal";
-
-// LIBS
-import handleImport from "../libs/ImportExternalPage";
 
 // COMPONENTS
 import TextEditor from "../components/TextEditor/index";
@@ -23,88 +19,60 @@ import {
 } from "../styles/Home";
 import ResultBox from "../components/ResultBox";
 import { useToast } from "../hooks/useToast";
+import { useImportExternalPage } from "../hooks/useImportExternalPage";
+
+interface IModalMessage {
+  title: string;
+  message: string;
+}
 
 const Home = () => {
+  const { fetch, data, error } = useImportExternalPage();
   const [editorHtml, setEditorHtml] = useState("");
   const toast = useToast({
     saveCookie: "savingMessage",
   });
 
-  const [modalMessage, setModalMessage] = useState(
-    {} as {
-      title: string;
-      message: string;
-    }
+  const [modalMessage, setModalMessage] = useState<IModalMessage>(
+    {} as IModalMessage
   );
-  const [secondButton, setSecondButton] = useState(
-    {} as {
-      value: string;
-      onClick: () => void;
-    }
-  );
+
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 
   const [isLoading, setLoading] = useState(false);
 
-  const router = useRouter();
-
-  function changeModal(
-    message: {
-      title: string;
-      message: string;
-    },
-    secondButtonn?: {
-      value: string;
-      onClick: () => void;
-    }
-  ) {
+  function changeModal(message: { title: string; message: string }) {
     setModalMessage({
       title: message.title,
       message: message.message,
     });
-    if (secondButtonn) {
-      setSecondButton(secondButtonn);
-    }
-  }
 
-  async function importExternalPage(url: string) {
-    setLoading(true);
-
-    const data = await handleImport(url);
-
-    if (data.status === "error") {
-      const title = data.message?.title || "Erro ao importar a página";
-      const description = data.message?.description || "Erro desconhecido";
-
-      changeModal(
-        {
-          title,
-          message: description,
-        },
-        {
-          value: "Tentar novamente",
-          onClick: () => {
-            closeModal();
-            importExternalPage(url);
-          },
-        }
-      );
-      setLoading(false);
-      return setOpen(true);
-    }
-
-    setEditorHtml(data.html);
-
-    return setLoading(false);
+    setLoading(false);
+    setOpen(true);
   }
 
   useEffect(() => {
-    importExternalPage(String(router.query.url));
-  }, [router.query.url]);
+    if (data) {
+      setEditorHtml(data);
+    }
+    setLoading(false);
+  }, [data]);
+
+  useEffect(() => {
+    if (error) {
+      changeModal({
+        title: error.title,
+        message: error.message,
+      });
+    }
+  }, [error]);
 
   const handleImportClick = useCallback((value: string) => {
-    importExternalPage(value);
+    if (value) {
+      setLoading(true);
+      fetch(value);
+    }
   }, []);
 
   useEffect(() => {
@@ -167,13 +135,6 @@ const Home = () => {
                 <button onClick={closeModal} type="button">
                   Fechar
                 </button>
-                {secondButton.value ? (
-                  <button onClick={secondButton.onClick} type="button">
-                    {secondButton.value}
-                  </button>
-                ) : (
-                  ""
-                )}
               </div>
             </ModalDiv>
           </Modal>
