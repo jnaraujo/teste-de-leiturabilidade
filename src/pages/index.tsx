@@ -82,7 +82,6 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log("a");
     toast.showToast(
       "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
       "info"
