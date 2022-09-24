@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import { LeiturabilidadeProvider } from "../context/LeiturabilidadeContext";
 import { lightTheme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global";
+import { ModalProvider } from "src/context/ModalContext";
 
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }: any) => {
@@ -52,15 +53,17 @@ const MyApp = ({ Component, pageProps }: any) => {
       )}
       <ThemeProvider theme={lightTheme}>
         <LeiturabilidadeProvider>
-          <Component {...pageProps} />
-          <ToastContainer
-            position="top-left"
-            hideProgressBar={false}
-            draggable
-            autoClose={1000}
-            pauseOnHover={false}
-            pauseOnFocusLoss={false}
-          />
+          <ModalProvider>
+            <Component {...pageProps} />
+            <ToastContainer
+              position="top-left"
+              hideProgressBar={false}
+              draggable
+              autoClose={1000}
+              pauseOnHover={false}
+              pauseOnFocusLoss={false}
+            />
+          </ModalProvider>
         </LeiturabilidadeProvider>
       </ThemeProvider>
     </>
