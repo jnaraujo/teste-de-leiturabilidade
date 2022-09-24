@@ -8,12 +8,17 @@ export function easeResultToExample(value: number) {
   return "um estudante universitário";
 }
 
-export function getCookie() {
-  return nookies.get(null, {}).toastedInfo;
+export function getCookie(key: string) {
+  const cookies = nookies.get();
+  return cookies[key];
 }
 
-export function setCookie(value: string | boolean) {
-  nookies.set(null, "toastedInfo", String(value), {
-    maxAge: 24 * 60 * 60,
+export function setCookie(
+  key: string,
+  value: string,
+  maxAge: number = 24 * 60 * 60
+) {
+  nookies.set(null, key, String(value), {
+    maxAge,
   });
 }
