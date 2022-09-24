@@ -1,14 +1,11 @@
 /* eslint-disable react/no-danger */
-import { useEffect, useState, useCallback } from "react";
+import { useEffect } from "react";
 
 import { DefaultSeo } from "next-seo";
 import { Grid } from "@mui/material";
 
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
 import {
   Container,
-  Content,
   Footer,
   Informations,
   MainContainer,
@@ -17,48 +14,14 @@ import {
 } from "../styles/Home";
 
 // COMPONENTS
-import TextEditor from "../components/TextEditor/index";
 import Navbar from "../components/Navbar";
-import ResultBox from "../components/ResultBox";
-import { useImportExternalPage } from "../hooks/useImportExternalPage";
 import { useToast } from "../hooks/useToast";
-import useModal from "../hooks/useModal";
+import Editor from "../layout/Editor";
 
 const Home = () => {
-  const { fetch, data, error } = useImportExternalPage();
   const toast = useToast({
     saveCookie: "savingMessage",
   });
-
-  const { showModal } = useModal();
-
-  const [editorHtml, setEditorHtml] = useState("");
-
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (data) {
-      setEditorHtml(data);
-    }
-    setLoading(false);
-  }, [data]);
-
-  useEffect(() => {
-    if (error) {
-      showModal({
-        title: error.title,
-        message: error.message,
-      });
-      setLoading(false);
-    }
-  }, [error]);
-
-  const handleImportClick = useCallback((value: string) => {
-    if (value) {
-      setLoading(true);
-      fetch(value);
-    }
-  }, []);
 
   useEffect(() => {
     toast.showToast(
@@ -109,16 +72,8 @@ const Home = () => {
               </p>
             </TopBar>
           </Container>
-          <Container container justifyContent="center">
-            <Content item xs={11} md={8} className="left">
-              <div className="textarea">
-                <TextEditor html={editorHtml} />
-              </div>
-            </Content>
-            <Content item xs={11} md={8} lg={3}>
-              <ResultBox onImportPage={handleImportClick} />
-            </Content>
-          </Container>
+
+          <Editor />
 
           <div className="line" />
           <Informations>
@@ -200,10 +155,6 @@ const Home = () => {
             </Container>
           </Informations>
         </MainContent>
-
-        <div className={isLoading === true ? "loading" : "hideAndNone"}>
-          <AiOutlineLoading3Quarters />
-        </div>
       </MainContainer>
     </>
   );
