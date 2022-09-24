@@ -16,7 +16,7 @@ import {
 // COMPONENTS
 import Navbar from "../components/Navbar";
 import { useToast } from "../hooks/useToast";
-import Editor from "../layout/Editor";
+import Editor from "../layouts/Editor";
 
 const Home = () => {
   const toast = useToast({

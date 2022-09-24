@@ -7,7 +7,7 @@ import { DefaultSeo } from "next-seo";
 import Navbar from "../components/Navbar";
 import { Container, Footer, MainContainer, MainContent } from "../styles/Home";
 import { useToast } from "../hooks/useToast";
-import Editor from "../layout/Editor";
+import Editor from "../layouts/Editor";
 
 const Home = () => {
   const toast = useToast({
