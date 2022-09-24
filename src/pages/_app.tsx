@@ -1,14 +1,11 @@
 import "react-responsive-modal/styles.css";
 import "react-toastify/dist/ReactToastify.css";
-
 import { useRouter } from "next/router";
-
 import { ThemeProvider } from "styled-components";
-
 import { LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 import { LeiturabilidadeProvider } from "../context/LeiturabilidadeContext";
-
 import { lightTheme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global";
 
@@ -56,6 +53,14 @@ const MyApp = ({ Component, pageProps }: any) => {
       <ThemeProvider theme={lightTheme}>
         <LeiturabilidadeProvider>
           <Component {...pageProps} />
+          <ToastContainer
+            position="top-left"
+            hideProgressBar={false}
+            draggable
+            autoClose={1000}
+            pauseOnHover={false}
+            pauseOnFocusLoss={false}
+          />
         </LeiturabilidadeProvider>
       </ThemeProvider>
     </>
