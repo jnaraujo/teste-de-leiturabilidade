@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 import { LeiturabilidadeProvider } from "../context/LeiturabilidadeContext";
 import { lightTheme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global";
-import { ModalProvider } from "src/context/ModalContext";
+import { ModalProvider } from "../context/ModalContext";
 
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }: any) => {
