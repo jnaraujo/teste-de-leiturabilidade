@@ -1,14 +1,14 @@
 import "react-responsive-modal/styles.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
-import { ThemeProvider } from "styled-components";
 import { LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { LeiturabilidadeProvider } from "../context/LeiturabilidadeContext";
-import { lightTheme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global";
 import { ModalProvider } from "../context/ModalContext";
+import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
+import { UpdateThemeProvider } from "../context/UpdateThemeContext";
 
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }: any) => {
@@ -38,7 +38,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   return (
     <>
       <GlobalStyles />
-      {loading ? (
+      {loading && (
         <LinearProgress
           style={{
             position: "absolute",
@@ -48,24 +48,24 @@ const MyApp = ({ Component, pageProps }: any) => {
             zIndex: 999,
           }}
         />
-      ) : (
-        ""
       )}
-      <ThemeProvider theme={lightTheme}>
-        <LeiturabilidadeProvider>
-          <ModalProvider>
-            <Component {...pageProps} />
-            <ToastContainer
-              position="top-left"
-              hideProgressBar={false}
-              draggable
-              autoClose={1000}
-              pauseOnHover={false}
-              pauseOnFocusLoss={false}
-            />
-          </ModalProvider>
-        </LeiturabilidadeProvider>
-      </ThemeProvider>
+      <UpdateThemeProvider>
+        <ThemeProviderWrapper>
+          <LeiturabilidadeProvider>
+            <ModalProvider>
+              <Component {...pageProps} />
+              <ToastContainer
+                position="top-left"
+                hideProgressBar={false}
+                draggable
+                autoClose={1000}
+                pauseOnHover={false}
+                pauseOnFocusLoss={false}
+              />
+            </ModalProvider>
+          </LeiturabilidadeProvider>
+        </ThemeProviderWrapper>
+      </UpdateThemeProvider>
     </>
   );
 };
