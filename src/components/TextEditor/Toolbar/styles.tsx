@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Toolbar = styled.div`
   display: flex;
-  background-color: #f8f9fa;
+  background-color: transparent;
 
   width: 100%;
   height: fit-content;
@@ -13,8 +13,9 @@ export const Toolbar = styled.div`
   margin-bottom: 16px;
 
   padding: 8px 0;
-  border-bottom: 1px solid #e9ecef;
-  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  border-color: ${(props) => props.theme.colors.onBackground};
 
   .group {
     display: flex;
@@ -28,7 +29,7 @@ export const Toolbar = styled.div`
     gap: 8px;
 
     &:not(:first-child) {
-      border-left: 1px solid #e9ecef;
+      border-left: 1px solid ${(props) => props.theme.colors.onBackground};
     }
   }
   .control {
@@ -71,7 +72,7 @@ export const Toolbar = styled.div`
     justify-content: center;
     height: 100%;
 
-    color: #6c757d;
+    color: ${(props) => props.theme.colors.onBackground};
 
     padding: 0 8px;
     cursor: pointer;
