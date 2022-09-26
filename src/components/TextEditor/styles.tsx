@@ -72,6 +72,8 @@ export const EditorDiv = styled.div`
     resize: none;
     border: none;
 
+    color: ${(props) => props.theme.colors.onBackground};
+
     p.is-editor-empty:first-child::before {
       color: #adb5bd;
       content: attr(data-placeholder);
