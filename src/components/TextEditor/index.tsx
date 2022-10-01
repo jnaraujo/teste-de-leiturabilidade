@@ -30,7 +30,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   const editor = useEditor({
     extensions: EditorExtensions,
     onCreate: (state) => {
-      if (!!html) {
+      if (html) {
         state.editor.commands.setContent(html);
         return;
       }
