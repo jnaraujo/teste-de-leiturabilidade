@@ -4,8 +4,11 @@ import { useWindowSize } from "react-use";
 
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
 
-import { easeResultToExample } from "../../utils/utils";
-import { getReadingTimeByWords, secondsToHMS } from "../../utils/readingTime";
+import {
+  getReadingTimeByWords,
+  secondsToHMS,
+  easeResultToExample,
+} from "../../utils";
 
 import { RdResult } from "./styles";
 

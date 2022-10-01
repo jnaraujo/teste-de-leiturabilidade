@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { getReadingTime } from "../../utils/readingTime";
+import { getReadingTime } from "../../utils";
 
 import Navbar from "../../components/Navbar";
 
