@@ -33,8 +33,8 @@ const Home = () => {
   return (
     <>
       <DefaultSeo
-        title="Teste de Leitura"
-        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importa arquivos do Google Docs, Notion, etc e faça o teste de Leiturabilidade."
+        title="Teste de Leiturabilidade - Faça seu texto ser entendido por todos"
+        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importe arquivos do Google Docs, Notion, etc e faça o teste de ;eiturabilidade."
         additionalLinkTags={[
           {
             rel: "icon",
@@ -79,7 +79,7 @@ const Home = () => {
           <Informations>
             <Grid container justifyContent="center">
               <Grid item xs={11} className="texts" id="como-funciona">
-                <h2>Como funciona o Teste de Leitura?</h2>
+                <h2>Como funciona o Teste de Leiturabilidade?</h2>
                 <p>
                   Para testar o nível de leitura de um texto, nós utilizamos o{" "}
                   <a

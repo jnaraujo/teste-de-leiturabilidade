@@ -29,7 +29,7 @@ interface IProps {
 const BlogPage = ({ posts }: IProps) => (
   <>
     <Head>
-      <title>Blog - Teste de Leitura</title>
+      <title>Blog - Teste de Leiturabilidade</title>
       <meta
         name="description"
         content="Tudo sobre melhores práticas de escrita, teste de leitura e como escrever bons textos."
