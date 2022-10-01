@@ -69,3 +69,9 @@ export const handleContentEase = (
     sentences: textAnalyses.nTotalSentences,
   });
 };
+
+export const calculateReadingEase = (text: string) => {
+  const textAnalyses = ReadingEase.fleschReadingEaseBR(text);
+
+  return textAnalyses.result;
+};
