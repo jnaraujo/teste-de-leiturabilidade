@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+// import { BsLightbulb, BsLightbulbOffFill } from "react-icons/bs";
+// import useUpdateTheme from "../../hooks/useUpdateTheme";
 import { LINKS } from "./helper";
 import { Cta, Navbar } from "./styles";
 
@@ -34,7 +36,6 @@ const NavbarComponent = () => {
       <div className="openBtn" onClick={handleClick}>
         <AiOutlineMenu />
       </div>
-
       <div className="menu">
         <div className="top_close" onClick={handleClick}>
           <AiOutlineClose />
@@ -52,7 +53,7 @@ const NavbarComponent = () => {
           <li>
             <Cta>
               <Link href="/editor" passHref>
-                <a className="link">Analisar meu texto!</a>
+                <a className="link">Abrir o Editor</a>
               </Link>
             </Cta>
           </li>
