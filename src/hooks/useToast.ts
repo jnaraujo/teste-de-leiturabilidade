@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { toast } from "react-toastify";
-import { getCookie, setCookie } from "../utils/utils";
+import { getCookie, setCookie } from "../utils/readingEase";
 
 interface ToastProps {
   saveCookie?: string;
