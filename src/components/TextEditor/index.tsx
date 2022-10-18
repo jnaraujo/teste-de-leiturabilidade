@@ -48,7 +48,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
 
   useEffect(() => {
     if (html && editor) {
-      editor.commands.setContent(html);
+      editor.commands.setContent(html, true);
     }
   }, [html]);
 
