@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useImportExternalPage } from "../../hooks/useImportExternalPage";
 import { Container, Content, LoadingDiv } from "./styles";
@@ -9,23 +9,13 @@ import useModal from "../../hooks/useModal";
 const Editor: React.FC = () => {
   const { showModal } = useModal();
 
-  const [isLoading, setLoading] = useState(false);
-  const { fetch, data, error } = useImportExternalPage();
-  const [editorHtml, setEditorHtml] = useState("");
+  const { fetch, data: pageContent, error, loading } = useImportExternalPage();
 
   const handleImportClick = useCallback((value: string) => {
     if (value) {
-      setLoading(true);
       fetch(value);
     }
   }, []);
-
-  useEffect(() => {
-    if (data) {
-      setEditorHtml(data);
-    }
-    setLoading(false);
-  }, [data]);
 
   useEffect(() => {
     if (error) {
@@ -33,7 +23,6 @@ const Editor: React.FC = () => {
         title: error.title,
         message: error.message,
       });
-      setLoading(false);
     }
   }, [error]);
 
@@ -42,7 +31,7 @@ const Editor: React.FC = () => {
       <Container container justifyContent="center">
         <Content item xs={11} md={8} className="left">
           <div className="textarea">
-            <TextEditor html={editorHtml} />
+            <TextEditor html={pageContent} />
           </div>
         </Content>
 
@@ -51,7 +40,7 @@ const Editor: React.FC = () => {
         </Content>
       </Container>
 
-      {isLoading && (
+      {loading && (
         <LoadingDiv>
           <AiOutlineLoading3Quarters />
         </LoadingDiv>
