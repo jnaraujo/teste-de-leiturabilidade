@@ -12,6 +12,7 @@ import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import BubbleMenu from "@tiptap/extension-bubble-menu";
 import Placeholder from "@tiptap/extension-placeholder";
+import History from "@tiptap/extension-history";
 
 import { IEase } from "../../context/LeiturabilidadeContext";
 
@@ -29,6 +30,9 @@ export const EditorExtensions = [
   Italic,
   Paragraph,
   Document,
+  History.configure({
+    depth: 20,
+  }),
   Placeholder.configure({
     placeholder: "Digite aqui seu texto...",
   }),
