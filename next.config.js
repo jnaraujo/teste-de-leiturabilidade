@@ -19,7 +19,12 @@ const nextConfig = {
   },
   pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
   compiler: {
-    styledComponents: true,
+    styledComponents: {
+      ssr: true,
+      minify: true,
+    },
+    removeConsole: true,
+    reactRemoveProperties: true,
     emotion: true,
   },
   eslint: {
