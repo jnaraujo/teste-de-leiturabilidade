@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Toolbar = styled.div`
   display: flex;
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.colors.onPrimary};
 
   width: 100%;
   height: fit-content;
