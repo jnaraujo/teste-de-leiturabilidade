@@ -1,12 +1,13 @@
-export const getReadingTime = (text: string) => {
-  const readingTimeInMin = String(text).split(" ").length / 170;
-  return Math.ceil(Number(readingTimeInMin));
-};
-
 export function getReadingTimeByWords(words: number) {
   const readingTimeInMin = words / 170;
   return readingTimeInMin * 60;
 }
+
+export const getReadingTime = (text: string) => {
+  const words = text.split(" ").length;
+  const readingTimeInMin = getReadingTimeByWords(words) / 60;
+  return Math.ceil(Number(readingTimeInMin));
+};
 
 export function secondsToHMS(seconds: number) {
   const hours = Math.floor(seconds / 3600);

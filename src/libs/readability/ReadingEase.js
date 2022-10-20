@@ -38,7 +38,7 @@ module.exports = {
       totalWords,
       nTotalSentences,
       totalSyllables,
-      result: Math.max(Math.min(formula, 100), 0),
+      result: Math.max(Math.min(formula, 100), 0) || 0,
     };
   },
   fred(r) {

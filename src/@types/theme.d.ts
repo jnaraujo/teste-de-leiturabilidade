@@ -1,5 +1,5 @@
 import "styled-components";
-import { IColors } from "./@types/colors";
+import { IColors } from "./colors";
 
 declare module "styled-components" {
   export interface DefaultTheme {

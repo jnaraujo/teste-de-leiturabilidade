@@ -1,56 +1,38 @@
-import { useContext, createContext, useState, useEffect } from "react";
+import { createContext, useState, useMemo, ReactNode } from "react";
 
-type LeiturabilidadeContextType = {
-  ease: {
-    index: number;
-    syllables: number;
-    words: number;
-    sentences: number;
+export interface IEase {
+  index: number;
+  syllables: number;
+  words: number;
+  sentences: number;
+}
+export interface ILeiturabilidadeContext {
+  ease: IEase;
+  setEase(value: IEase): void;
+}
+
+interface ILeiturabilidadeProvider {
+  children: ReactNode;
+}
+
+export const LeiturabilidadeContext = createContext<ILeiturabilidadeContext>(
+  {} as ILeiturabilidadeContext
+);
+
+export const LeiturabilidadeProvider = ({
+  children,
+}: ILeiturabilidadeProvider) => {
+  const [ease, setEase] = useState<IEase>({} as IEase);
+
+  const handleSetEase = (newEase: IEase) => {
+    setEase(newEase);
   };
-  // eslint-disable-next-line no-unused-vars
-  setEase: (value: Number | any) => void;
-};
 
-const LeiturabilidadeContext = createContext<LeiturabilidadeContextType>({
-  ease: {
-    index: 0,
-    syllables: 0,
-    words: 0,
-    sentences: 0,
-  },
-  // eslint-disable-next-line no-unused-vars
-  setEase: (value: {
-    index: number;
-    syllables: number;
-    words: number;
-    sentences: number;
-  }) => {},
-});
-
-const LeiturabilidadeProvider = ({ children }) => {
-  const [ease, setEase] = useState({
-    index: 0,
-    syllables: 0,
-    words: 0,
-    sentences: 0,
-  });
-
-  useEffect(() => {}, []);
+  const value = useMemo(() => ({ ease, setEase: handleSetEase }), [ease]);
 
   return (
-    <LeiturabilidadeContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{
-        ease,
-        setEase,
-      }}
-    >
+    <LeiturabilidadeContext.Provider value={value}>
       {children}
     </LeiturabilidadeContext.Provider>
   );
 };
-export function useLeiturabilidade() {
-  return useContext(LeiturabilidadeContext);
-}
-
-export default LeiturabilidadeProvider;

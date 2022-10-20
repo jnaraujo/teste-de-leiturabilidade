@@ -1,21 +1,22 @@
+import "react-responsive-modal/styles.css";
+import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
-
-import { ThemeProvider } from "styled-components";
-
 import { LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
-import LeiturabilidadeProvider from "../context/LeiturabilidadeContext";
-
-import { lightTheme } from "../styles/theme";
+import { ToastContainer } from "react-toastify";
+import { LeiturabilidadeProvider } from "../context/LeiturabilidadeContext";
 import { GlobalStyles } from "../styles/global";
+import { ModalProvider } from "../context/ModalContext";
+import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
+import { UpdateThemeProvider } from "../context/UpdateThemeContext";
 
 // eslint-disable-next-line react/prop-types
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: any) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
+    const handleRouteChange = (url: string) => {
       setLoading(false);
 
       (window as any).gtag("config", process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
@@ -37,7 +38,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <GlobalStyles />
-      {loading ? (
+      {loading && (
         <LinearProgress
           style={{
             position: "absolute",
@@ -47,14 +48,24 @@ const MyApp = ({ Component, pageProps }) => {
             zIndex: 999,
           }}
         />
-      ) : (
-        ""
       )}
-      <ThemeProvider theme={lightTheme}>
-        <LeiturabilidadeProvider>
-          <Component {...pageProps} />
-        </LeiturabilidadeProvider>
-      </ThemeProvider>
+      <UpdateThemeProvider>
+        <ThemeProviderWrapper>
+          <LeiturabilidadeProvider>
+            <ModalProvider>
+              <Component {...pageProps} />
+              <ToastContainer
+                position="top-left"
+                hideProgressBar={false}
+                draggable
+                autoClose={1000}
+                pauseOnHover={false}
+                pauseOnFocusLoss={false}
+              />
+            </ModalProvider>
+          </LeiturabilidadeProvider>
+        </ThemeProviderWrapper>
+      </UpdateThemeProvider>
     </>
   );
 };

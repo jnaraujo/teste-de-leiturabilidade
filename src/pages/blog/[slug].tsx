@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { getReadingTime } from "../../utils/readingTime";
+import { getReadingTime } from "../../utils";
 
 import Navbar from "../../components/Navbar";
 
@@ -15,12 +15,13 @@ import {
   BlogText,
 } from "../../styles/Blog";
 
-import { getBlogPosts, getPost } from "../../network/notion";
-
 import MidCta from "../../components/MidCta";
+import { BlogService } from "../../services/BlogService";
+
+const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
 
 export async function getStaticPaths() {
-  const posts = await getBlogPosts();
+  const posts = await blogService.getBlogPosts();
 
   const paths = posts.map((post) => ({
     params: {
@@ -34,8 +35,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { slug } }) {
-  const post = await getPost(slug);
+export async function getStaticProps({ params: { slug } }: any) {
+  const post = await blogService.getBlogPostById(slug as string);
 
   if (!post) {
     return {

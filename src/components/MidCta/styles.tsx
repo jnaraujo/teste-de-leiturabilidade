@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
+  font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: row;
   align-items: left;

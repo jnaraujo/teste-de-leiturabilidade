@@ -9,6 +9,7 @@ module.exports = {
     "airbnb",
     "prettier",
     "plugin:@next/next/recommended",
+    "plugin:storybook/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -26,6 +27,20 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "react/require-default-props": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: [
+          "**/*.stories.*",
+          "**/.storybook/**/*.*",
+          "**/*.test.*",
+          "**/*.spec.*",
+        ],
+        peerDependencies: true,
+      },
+    ],
     "prettier/prettier": [
       "error",
       {
