@@ -14,8 +14,14 @@ export function getIdFromUrl(url: string) {
 }
 
 export async function getDocs(id: string) {
-  const url = `https://docs.google.com/feeds/download/documents/export/Export?id=${id}&exportFormat=html`;
-  return axios.get(url, {
-    maxRedirects: 0,
-  });
+  try {
+    const url = `https://docs.google.com/feeds/download/documents/export/Export?id=${id}&exportFormat=html`;
+    return (
+      await axios.get(url, {
+        maxRedirects: 0,
+      })
+    ).data;
+  } catch (error) {
+    throw new Error("O documento está privado ou não existe");
+  }
 }

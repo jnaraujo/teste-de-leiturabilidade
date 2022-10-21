@@ -14,7 +14,9 @@ export default async function handler(
   try {
     const EXTERNAL_HTML = await handleImport(URL as string);
 
-    return res.status(200).json(EXTERNAL_HTML);
+    return res.status(200).json({
+      html: EXTERNAL_HTML,
+    });
   } catch (error: any) {
     return res
       .status(500)
