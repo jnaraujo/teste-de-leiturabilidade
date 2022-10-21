@@ -15,5 +15,7 @@ export function getIdFromUrl(url: string) {
 
 export async function getDocs(id: string) {
   const url = `https://docs.google.com/feeds/download/documents/export/Export?id=${id}&exportFormat=html`;
-  return axios.get(url);
+  return axios.get(url, {
+    maxRedirects: 0,
+  });
 }
