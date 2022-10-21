@@ -24,7 +24,6 @@ const nextConfig = {
       ssr: true,
       minify: true,
     },
-    removeConsole: true,
     emotion: true,
   },
   eslint: {
