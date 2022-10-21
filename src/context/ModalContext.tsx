@@ -5,7 +5,10 @@ import {
   useMemo,
   useState,
 } from "react";
-import Modal from "../components/Modal";
+import dynamic from "next/dynamic";
+// import Modal from "../components/Modal";
+
+const Modal = dynamic(() => import("../components/Modal"), { ssr: false });
 
 export interface IModal {
   title: string;
@@ -41,13 +44,14 @@ export const ModalProvider = ({ children }: IModalProvider) => {
   return (
     <ModalContext.Provider value={value}>
       {children}
-
-      <Modal
-        title={modal.title}
-        description={modal.message}
-        onClose={onClose}
-        open={open}
-      />
+      {open && (
+        <Modal
+          title={modal.title}
+          description={modal.message}
+          onClose={onClose}
+          open={open}
+        />
+      )}
     </ModalContext.Provider>
   );
 };
