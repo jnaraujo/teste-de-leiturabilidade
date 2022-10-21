@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const TerserPlugin = require("terser-webpack-plugin");
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
@@ -19,11 +20,20 @@ const nextConfig = {
   },
   pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
   compiler: {
-    styledComponents: true,
+    styledComponents: {
+      ssr: true,
+      minify: true,
+    },
+    removeConsole: true,
     emotion: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  experimental: {
+    legacyBrowsers: false,
+    browsersListForSwc: true,
+    optimizeCss: true,
   },
   reactStrictMode: true,
 };

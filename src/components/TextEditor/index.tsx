@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // RichText.tsx in your components folder
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -66,4 +66,4 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   );
 };
 
-export default memo(TextEditorComponent);
+export default TextEditorComponent;

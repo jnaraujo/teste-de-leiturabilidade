@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { Editor, BubbleMenu } from "@tiptap/react";
 import EditButton from "../EditButton";
 
@@ -24,4 +24,4 @@ const InTextMenu = ({ editor }: { editor: Editor }) => (
     </ComponentDiv>
   </BubbleMenu>
 );
-export default memo(InTextMenu);
+export default InTextMenu;
