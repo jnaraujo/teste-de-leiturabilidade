@@ -23,88 +23,56 @@ const sanitizeOptions = {
 async function importNotionPageByUrl(url: string) {
   const notionService = new NotionService(url);
 
-  try {
-    const data = await notionService.execute();
+  const data = await notionService.execute();
 
-    const isDataValid = data && !data.error;
+  const isDataValid = data && !data.error;
 
-    if (!isDataValid) {
-      return {
-        status: "error",
-        message: {
-          title: "A sua página do Notion não está pública.",
-          description: `Na sua página do Notion, clique em "Share" no canto superior direito e depois em "Share to web".<br/><img src="/images/raw/notion_share_link.webp"/>`,
-        },
-      };
-    }
-
-    return {
-      status: "success",
-      html: sanitize(data, sanitizeOptions),
-    };
-  } catch (e) {
-    return {
-      status: "error",
-      message: {
-        title: "A sua página do Notion não foi encontrada.",
-        description: `Verifique se o link está correto e desative seu AdBlock.`,
-      },
-    };
+  if (!isDataValid) {
+    throw new Error("A página do Notion não está pública.");
   }
+
+  return {
+    unSanitazedHtml: data,
+  };
 }
 
 async function importGoogleDocsPage(url: string | any): Promise<{
-  status: string;
-  html?: string;
-  message?: {
-    title: string;
-    description: string;
-  };
+  unSanitazedHtml: string;
 }> {
   const id = getIdFromUrl(url);
 
   if (id === "") {
-    return {
-      status: "error",
-      message: {
-        title: "O id da sua página não foi encontrado.",
-        description: `Verifique se a URL indicada está correta.`,
-      },
-    };
+    throw new Error("O id da página não foi encontrado.");
   }
 
-  try {
-    const data = await getDocs(id);
-    const html = sanitize(data, sanitizeOptions);
+  const data = await getDocs(id);
 
-    return {
-      status: "success",
-      html,
-    };
-  } catch (e) {
-    return {
-      status: "error",
-      message: {
-        title: "Não foi possível importar seu documento.",
-        description:
-          "Para permitir a importação, você deve compartilhar seu documento. <br><ol><li>Abra seu documento.</li><li>No canto superior direito, clique em 'Compartilhar'.</li><li>Em 'Acesso geral', mude de 'Restrito' para 'Qualquer pessoa com o link'.</li><li>Clique em 'Concluído'.</li></ol>",
-      },
-    };
-  }
-}
-
-export default async function handleImport(url: string) {
-  const notionUrls = ["notion.so", "notion.com", "notion.site"];
-  const googleDocsUrls = ["docs.google.com", "drive.google.com"];
-
-  if (notionUrls.some((notion) => url.includes(notion))) {
-    return importNotionPageByUrl(url);
-  }
-  if (googleDocsUrls.some((googleDocs) => url.includes(googleDocs))) {
-    return importGoogleDocsPage(url);
+  if (data.status !== 200) {
+    throw new Error("O id da página não foi encontrado.");
   }
 
   return {
-    status: "service is not supported",
+    unSanitazedHtml: data.data,
   };
+}
+
+export default async function handleImport(url: string): Promise<string> {
+  const notionUrls = ["notion.so", "notion.com", "notion.site"];
+  const googleDocsUrls = ["docs.google.com", "drive.google.com"];
+
+  try {
+    let rawHTML = "";
+
+    if (notionUrls.some((notion) => url.includes(notion))) {
+      rawHTML = await (await importNotionPageByUrl(url)).unSanitazedHtml;
+    } else if (googleDocsUrls.some((googleDocs) => url.includes(googleDocs))) {
+      rawHTML = await (await importGoogleDocsPage(url)).unSanitazedHtml;
+    } else {
+      throw new Error("O link não é válido.");
+    }
+
+    return sanitize(rawHTML, sanitizeOptions);
+  } catch (error: any) {
+    throw new Error(error.message || "erro desconhecido");
+  }
 }
