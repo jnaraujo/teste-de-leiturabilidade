@@ -1,5 +1,5 @@
+import axios from "axios";
 import { useCallback, useState } from "react";
-import handleImport from "../libs/ImportExternalPage";
 
 interface IError {
   title: string;
@@ -14,22 +14,19 @@ export const useImportExternalPage = () => {
   const fetch = useCallback(async (value: string) => {
     setData("");
     setLoading(true);
-    handleImport(value)
-      .then((res) => {
-        if (res.status === "error") {
-          const errorMessage = {
-            title: res.message?.title ?? "Erro ao importar página",
-            message: res.message?.description ?? "Ocorreu um erro inesperado",
-          };
-          setError(errorMessage);
-        } else {
-          setData(res.html);
-        }
+    axios
+      .get("/api/external", {
+        params: {
+          url: value,
+        },
       })
-      .catch((errorData: any) => {
+      .then((res) => {
+        setData(res.data.html);
+      })
+      .catch((err) => {
         setError({
           title: "Erro ao importar página",
-          message: errorData.message,
+          message: err.response.data.message || "internal server error",
         });
       })
       .finally(() => {
