@@ -47,12 +47,8 @@ async function importGoogleDocsPage(url: string | any): Promise<{
 
   const data = await getDocs(id);
 
-  if (data.status !== 200) {
-    throw new Error("O id da página não foi encontrado.");
-  }
-
   return {
-    unSanitazedHtml: data.data,
+    unSanitazedHtml: data,
   };
 }
 
