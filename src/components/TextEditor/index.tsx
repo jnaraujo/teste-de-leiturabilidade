@@ -1,16 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-
-// RichText.tsx in your components folder
 import { useEditor, EditorContent } from "@tiptap/react";
-
 import cx from "classnames";
-
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
-
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
-
 import { EditorDiv } from "./styles";
-
 import Toolbar from "./Toolbar";
 import InTextMenu from "./InTextMenu";
 
@@ -59,7 +52,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
         editorColor: editorConfig.colors,
       })}
     >
-      {editor && <Toolbar editor={editor} />}
+      <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className="editor" editor={editor} />
       {editor && <InTextMenu editor={editor} />}
     </EditorDiv>
