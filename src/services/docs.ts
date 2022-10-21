@@ -15,5 +15,5 @@ export function getIdFromUrl(url: string) {
 
 export async function getDocs(id: string) {
   const url = `https://docs.google.com/feeds/download/documents/export/Export?id=${id}&exportFormat=html`;
-  return (await axios.get(url)).data;
+  return axios.get(url);
 }
