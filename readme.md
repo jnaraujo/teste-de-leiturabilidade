@@ -4,10 +4,13 @@
 
 <div align="center">
   
-  ![GitHub](https://img.shields.io/github/license/jnaraujo/teste_de_facilidade_de_leitura)
-  [![Website notes.jnaraujo.com](https://img.shields.io/website-up-down-green-red/http/leitura.jnaraujo.com.svg)](https://leitura.jnaraujo.com/)
-  ![Most used language](https://img.shields.io/github/languages/top/jnaraujo/teste_de_facilidade_de_leitura?style=flat-square)
-  
+![Most used language](https://img.shields.io/github/languages/top/jnaraujo/teste_de_facilidade_de_leitura?style=flat-square)
+![Netlify Status](https://api.netlify.com/api/v1/badges/345ef13c-3c4c-4809-8d67-f9ad2f23931b/deploy-status)
+![Netlify Status](https://github.com/jnaraujo/teste_de_facilidade_de_leitura/actions/workflows/node.js.yml/badge.svg)
+
+![GitHub](https://img.shields.io/github/license/jnaraujo/teste_de_facilidade_de_leitura)
+[![Website notes.jnaraujo.com](https://img.shields.io/website-up-down-green-red/http/leitura.jnaraujo.com.svg)](https://leitura.jnaraujo.com/)
+
 </div>
 
 Um teste de facilidade de leitura que funciona em textos em português. Utiliza a fórmula Flesch-Kincaid adaptada para a língua portuguesa em 1996 pelos pesquisadores Teresa B. F. Martins, Claudete M. Ghiraldelo, M. Graças V. Nunes e Osvaldo N. Oliveira Jr., do Instituto de Ciências Matemáticas e de Computação da USP de São Carlos;
