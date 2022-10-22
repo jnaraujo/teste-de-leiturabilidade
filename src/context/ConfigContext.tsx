@@ -15,10 +15,12 @@ export const ConfigContext = createContext<IConfigContext>(
 
 export const ConfigProvider = ({ children }: any) => {
   const [config, setConfig] = useState<IConfig>(() => {
-    const item = localStorage.getItem("config");
+    if (typeof localStorage !== "undefined") {
+      const item = localStorage.getItem("config");
 
-    if (item) {
-      return JSON.parse(item);
+      if (item) {
+        return JSON.parse(item);
+      }
     }
 
     return {} as IConfig;
