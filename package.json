@@ -12,9 +12,12 @@
     "netlify": "netlify build && netlify deploy",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "vitest",
+    "test:watch": "vitest",
+    "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "prepare": "husky install",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
