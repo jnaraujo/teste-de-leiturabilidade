@@ -1,7 +1,6 @@
 import "react-responsive-modal/styles.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
-import { LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { LeiturabilidadeProvider } from "../context/LeiturabilidadeContext";
@@ -9,6 +8,7 @@ import { GlobalStyles } from "../styles/global";
 import { ModalProvider } from "../context/ModalContext";
 import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
 import { UpdateThemeProvider } from "../context/UpdateThemeContext";
+import LinearProgress from "../components/LinearProgress";
 
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }: any) => {
@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: any) => {
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
-      setLoading(false);
+      // setLoading(false);
 
       (window as any).gtag("config", process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
         page_path: url,
@@ -38,17 +38,7 @@ const MyApp = ({ Component, pageProps }: any) => {
   return (
     <>
       <GlobalStyles />
-      {loading && (
-        <LinearProgress
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            zIndex: 999,
-          }}
-        />
-      )}
+      {loading && <LinearProgress />}
       <UpdateThemeProvider>
         <ThemeProviderWrapper>
           <LeiturabilidadeProvider>
