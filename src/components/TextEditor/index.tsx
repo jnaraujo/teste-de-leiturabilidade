@@ -7,7 +7,7 @@ import { textExample, EditorExtensions, handleContentEase } from "./helper";
 import { EditorDiv } from "./styles";
 import Toolbar from "./Toolbar";
 import useConfig from "@/hooks/useConfig";
-// import InTextMenu from "./InTextMenu";
+
 const InTextMenu = dynamic(() => import("./InTextMenu"), {
   ssr: false,
 });
