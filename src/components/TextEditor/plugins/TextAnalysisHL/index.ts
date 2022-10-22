@@ -39,7 +39,7 @@ const TextAnalysisHLProse = new Plugin({
   },
   props: {
     decorations(state) {
-      return this.getState(state);
+      return (this as any).getState(state);
     },
   },
 });
