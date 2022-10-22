@@ -12,9 +12,12 @@
     "netlify": "netlify build && netlify deploy",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "vitest",
+    "test:watch": "vitest",
+    "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "prepare": "husky install",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -96,6 +99,7 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.4",
+    "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "storybook-addon-next-router": "^4.0.0",
     "storybook-addon-styled-component-theme": "^2.0.0",
