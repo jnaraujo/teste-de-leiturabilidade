@@ -54,9 +54,6 @@ const Home = () => {
               md: "center",
               lg: "left",
             }}
-            style={{
-              marginTop: "1rem",
-            }}
           >
             <TopBar
               item
