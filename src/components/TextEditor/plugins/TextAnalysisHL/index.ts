@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Extension } from "@tiptap/core";
-import ReadingEase from "@/libs/readability/ReadingEase";
 import { Plugin } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
 import { Node } from "prosemirror-model";
+import ReadingEase from "@/libs/readability/ReadingEase.js";
 
 function easeToColor(ease: number) {
   if (ease < 20) return "hard";
