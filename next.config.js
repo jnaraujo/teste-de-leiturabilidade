@@ -33,12 +33,6 @@ const nextConfig = {
     legacyBrowsers: false,
     browsersListForSwc: true,
     optimizeCss: true,
-    swcMinifyDebugOptions: {
-      compress: {
-        defaults: true,
-        side_effects: false,
-      },
-    },
   },
   reactStrictMode: true,
 };
