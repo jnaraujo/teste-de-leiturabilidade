@@ -17,6 +17,7 @@ import History from "@tiptap/extension-history";
 import { IEase } from "../../context/LeiturabilidadeContext";
 
 import * as ReadingEase from "../../libs/readability/ReadingEase.js";
+import { TextAnalysisHL } from "./plugins/TextAnalysisHL";
 
 export const EditorExtensions = [
   Heading,
@@ -30,6 +31,7 @@ export const EditorExtensions = [
   Italic,
   Paragraph,
   Document,
+  TextAnalysisHL,
   History.configure({
     depth: 20,
   }),
