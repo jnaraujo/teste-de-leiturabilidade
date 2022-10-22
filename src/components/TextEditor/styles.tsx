@@ -51,18 +51,6 @@ export const EditorDiv = styled.div`
     margin: 0.5rem 0;
   }
 
-  &.editorColor {
-    .ease_hard {
-      background-color: #bd232364;
-    }
-    .ease_medium {
-      background-color: #fff4f4e0;
-    }
-    .ease_easy {
-      background-color: #97fba83a;
-    }
-  }
-
   .editor {
     width: 100%;
     height: 100%;
@@ -73,6 +61,18 @@ export const EditorDiv = styled.div`
     border: none;
 
     color: ${(props) => props.theme.colors.onBackground};
+
+    &.highlight {
+      .ease-hard {
+        background-color: #bd232364;
+      }
+      .ease-medium {
+        background-color: #fff4f4e0;
+      }
+      .ease-easy {
+        background-color: #97fba83a;
+      }
+    }
 
     p.is-editor-empty:first-child::before {
       color: #adb5bd;

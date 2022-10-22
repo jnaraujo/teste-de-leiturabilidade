@@ -6,6 +6,7 @@ import useLeiturabilidade from "../../hooks/useLeiturabilidade";
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 import { EditorDiv } from "./styles";
 import Toolbar from "./Toolbar";
+import useConfig from "@/hooks/useConfig";
 // import InTextMenu from "./InTextMenu";
 const InTextMenu = dynamic(() => import("./InTextMenu"), {
   ssr: false,
@@ -18,9 +19,7 @@ type ComponentPropsType = {
 
 const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   const { setEase } = useLeiturabilidade();
-  const [editorConfig] = useState({
-    colors: true,
-  });
+  const { config } = useConfig();
 
   const editorRef = useRef(null);
 
@@ -53,11 +52,17 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
     <EditorDiv
       className={cx({
         [`${className}`]: className,
-        editorColor: editorConfig.colors,
       })}
     >
       <Toolbar editor={editor as any} />
-      <EditorContent ref={editorRef} className="editor" editor={editor} />
+      <EditorContent
+        ref={editorRef}
+        className={cx({
+          editor: true,
+          highlight: config.highlight || false,
+        })}
+        editor={editor}
+      />
       {editor && <InTextMenu editor={editor} />}
     </EditorDiv>
   );
