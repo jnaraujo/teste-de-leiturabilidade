@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import dynamic from "next/dynamic";
 import { useImportExternalPage } from "../../hooks/useImportExternalPage";
 import { Container, Content, LoadingDiv } from "./styles";
 import ResultBox from "../../components/ResultBox";
-import TextEditor from "../../components/TextEditor";
 import useModal from "../../hooks/useModal";
+
+const TextEditor = dynamic(() => import("../../components/TextEditor"), {});
 
 const Editor: React.FC = () => {
   const { showModal } = useModal();
