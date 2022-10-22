@@ -6,7 +6,7 @@ export interface IConfig {
 
 export interface IConfigContext {
   config: IConfig;
-  setConfig(key: string, value: string): void;
+  setConfig(key: string, value: string | any): void;
 }
 
 export const ConfigContext = createContext<IConfigContext>(
@@ -24,7 +24,7 @@ export const ConfigProvider = ({ children }: any) => {
     return {} as IConfig;
   });
 
-  const handleSetConfig = (key: string, value: string) => {
+  const handleSetConfig = (key: string, value: string | any) => {
     const newConfig = {
       ...config,
       [key]: value,
