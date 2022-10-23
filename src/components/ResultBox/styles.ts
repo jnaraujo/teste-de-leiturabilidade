@@ -1,6 +1,21 @@
 import { Grid } from "@mui/material";
 import styled from "styled-components";
 
+export const Content = styled.div`
+  margin: 1rem 0;
+
+  .editor_config {
+    label {
+      cursor: pointer;
+    }
+    input[type="checkbox"] {
+      cursor: pointer;
+      position: relative;
+      margin: 0 0.5rem;
+    }
+  }
+`;
+
 export const RdResult = styled(Grid)`
   font-family: "Inter", sans-serif;
   // width: 90vw;
@@ -14,6 +29,12 @@ export const RdResult = styled(Grid)`
     span {
       font-weight: bold;
     }
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    margin: 0;
+    margin-bottom: 4px;
   }
 
   ul {

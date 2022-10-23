@@ -1,14 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import { useEditor, EditorContent } from "@tiptap/react";
 import cx from "classnames";
-import dynamic from "next/dynamic";
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
-import { EditorDiv } from "./styles";
 import Toolbar from "./Toolbar";
-// import InTextMenu from "./InTextMenu";
-const InTextMenu = dynamic(() => import("./InTextMenu"), {
+import InTextMenu from "./InTextMenu";
+// import EditorDiv from "./EditorDiv";
+const EditorDiv = dynamic(() => import("./EditorDiv"), {
   ssr: false,
+  loading: () => <div>Carregando o editor...</div>,
 });
 
 type ComponentPropsType = {
@@ -18,9 +19,6 @@ type ComponentPropsType = {
 
 const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   const { setEase } = useLeiturabilidade();
-  const [editorConfig] = useState({
-    colors: true,
-  });
 
   const editorRef = useRef(null);
 
@@ -53,11 +51,16 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
     <EditorDiv
       className={cx({
         [`${className}`]: className,
-        editorColor: editorConfig.colors,
       })}
     >
       <Toolbar editor={editor as any} />
-      <EditorContent ref={editorRef} className="editor" editor={editor} />
+      <EditorContent
+        ref={editorRef}
+        className={cx({
+          editor: true,
+        })}
+        editor={editor}
+      />
       {editor && <InTextMenu editor={editor} />}
     </EditorDiv>
   );
