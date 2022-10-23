@@ -1,15 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
+import { easeToLabel } from "@/libs/readability/ReadingEase";
 import useConfig from "@/hooks/useConfig";
 
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
 
-import {
-  getReadingTimeByWords,
-  secondsToHMS,
-  easeResultToExample,
-} from "../../utils";
+import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
 import { Content, RdResult } from "./styles";
 
@@ -50,7 +47,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
     <RdResult>
       <p>
         Seu texto está no nível de leitura de{" "}
-        <span id="rd_exmlp">{easeResultToExample(ease.index)}.</span>
+        <span id="rd_exmlp">{easeToLabel(ease.index)}.</span>
       </p>
 
       <Content>
