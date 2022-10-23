@@ -4,25 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "/src/*"
-      ],
-      "@components/*": [
-        "/src/components/*"
-      ],
-      "@styles/*": [
-        "/src/styles/*"
-      ],
-      "@libs/*": [
-        "/src/libs/*"
-      ],
-      "@hooks/*": [
-        "/src/hooks/*"
-      ],
-      "@services/*": [
-        "/src/services/*"
-      ],
-      "@context/*": [
-        "/src/context/*"
+        "src/*"
       ]
     },
     "target": "ESNext",
