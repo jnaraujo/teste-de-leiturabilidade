@@ -1,12 +1,16 @@
 import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import { useEditor, EditorContent } from "@tiptap/react";
 import cx from "classnames";
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
-import { EditorDiv } from "./styles";
 import Toolbar from "./Toolbar";
-import useConfig from "@/hooks/useConfig";
 import InTextMenu from "./InTextMenu";
+// import EditorDiv from "./EditorDiv";
+const EditorDiv = dynamic(() => import("./EditorDiv"), {
+  ssr: false,
+  loading: () => <div>Carregando o editor...</div>,
+});
 
 type ComponentPropsType = {
   className?: string;
@@ -15,7 +19,6 @@ type ComponentPropsType = {
 
 const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   const { setEase } = useLeiturabilidade();
-  const { config } = useConfig();
 
   const editorRef = useRef(null);
 
@@ -48,7 +51,6 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
     <EditorDiv
       className={cx({
         [`${className}`]: className,
-        highlight: config.highlight || false,
       })}
     >
       <Toolbar editor={editor as any} />
