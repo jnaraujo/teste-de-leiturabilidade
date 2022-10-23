@@ -5,9 +5,9 @@ import { Decoration, DecorationSet } from "prosemirror-view";
 import { Node } from "prosemirror-model";
 import ReadingEase from "@/libs/readability/ReadingEase.js";
 
-function easeToColor(ease: number) {
-  if (ease < 20) return "hard";
-  if (ease < 50) return "medium";
+function easeToLabel(ease: number) {
+  if (ease < 33) return "hard";
+  if (ease < 66) return "medium";
   return "easy";
 }
 
@@ -17,9 +17,8 @@ function textAlDeco(doc: Node) {
   doc.descendants((node, pos) => {
     if (node.isText) {
       const ease = ReadingEase.fleschReadingEaseBR(node.text).result;
-      const color = easeToColor(ease);
       const decoration = Decoration.inline(pos, pos + node.nodeSize, {
-        class: `ease-${color}`,
+        class: `ease-${easeToLabel(ease)}`,
       });
       decorations.push(decoration);
     }
