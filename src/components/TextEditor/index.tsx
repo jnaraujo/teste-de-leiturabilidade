@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import cx from "classnames";
 import dynamic from "next/dynamic";
@@ -52,6 +52,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
     <EditorDiv
       className={cx({
         [`${className}`]: className,
+        highlight: config.highlight || false,
       })}
     >
       <Toolbar editor={editor as any} />
@@ -59,7 +60,6 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
         ref={editorRef}
         className={cx({
           editor: true,
-          highlight: config.highlight || false,
         })}
         editor={editor}
       />
