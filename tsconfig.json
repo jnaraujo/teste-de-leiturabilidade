@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -13,6 +12,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "jsx": "preserve",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,7 +23,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "incremental": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noImplicitAny": true,
   },
   "include": [
     "next-env.d.ts",
