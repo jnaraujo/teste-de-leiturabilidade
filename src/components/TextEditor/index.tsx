@@ -6,7 +6,7 @@ import useLeiturabilidade from "../../hooks/useLeiturabilidade";
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 import Toolbar from "./Toolbar";
 import InTextMenu from "./InTextMenu";
-// import EditorDiv from "./EditorDiv";
+
 const EditorDiv = dynamic(() => import("./EditorDiv"), {
   ssr: false,
   loading: () => <div>Carregando o editor...</div>,
