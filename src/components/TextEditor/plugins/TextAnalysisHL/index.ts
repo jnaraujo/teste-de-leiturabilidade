@@ -6,9 +6,9 @@ import { Node } from "prosemirror-model";
 import { calculateFleschReading } from "@/libs/readability/ReadingEase";
 
 function easeToLabel(ease: number) {
-  if (ease < 33) return "hard";
-  if (ease < 66) return "medium";
-  return "easy";
+  if (ease > 50) return "easy";
+  if (ease > 25) return "medium";
+  return "hard";
 }
 
 function textAlDeco(doc: Node) {
