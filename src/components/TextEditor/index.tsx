@@ -1,16 +1,12 @@
 import { useEffect, useRef } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import cx from "classnames";
-import dynamic from "next/dynamic";
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 import { EditorDiv } from "./styles";
 import Toolbar from "./Toolbar";
 import useConfig from "@/hooks/useConfig";
-
-const InTextMenu = dynamic(() => import("./InTextMenu"), {
-  ssr: false,
-});
+import InTextMenu from "./InTextMenu";
 
 type ComponentPropsType = {
   className?: string;
