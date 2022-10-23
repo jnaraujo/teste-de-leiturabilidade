@@ -3,7 +3,7 @@ import { Extension } from "@tiptap/core";
 import { Plugin } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
 import { Node } from "prosemirror-model";
-import ReadingEase from "@/libs/readability/ReadingEase.js";
+import ReadingEase from "@libs/readability/ReadingEase.js";
 
 function easeToLabel(ease: number) {
   if (ease < 33) return "hard";
@@ -14,13 +14,14 @@ function easeToLabel(ease: number) {
 function textAlDeco(doc: Node) {
   const decorations: Decoration[] = [];
 
-  doc.descendants((node, pos) => {
-    if (node.isText) {
-      const ease = ReadingEase.fleschReadingEaseBR(node.text).result;
-      const decoration = Decoration.inline(pos, pos + node.nodeSize, {
-        class: `ease-${easeToLabel(ease)}`,
-      });
-      decorations.push(decoration);
+  doc.forEach((node, pos) => {
+    if (node.textContent && node.textContent.length > 0) {
+      const ease = ReadingEase.fleschReadingEaseBR(node.textContent).result;
+      decorations.push(
+        Decoration.inline(pos, pos + node.nodeSize, {
+          class: `ease-${easeToLabel(ease)}`,
+        })
+      );
     }
   });
 
