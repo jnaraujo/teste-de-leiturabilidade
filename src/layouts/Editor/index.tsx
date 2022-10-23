@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, Suspense } from "react";
+import React, { useCallback, useEffect } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import dynamic from "next/dynamic";
 import { useImportExternalPage } from "../../hooks/useImportExternalPage";
@@ -8,7 +8,9 @@ import useModal from "../../hooks/useModal";
 // import TextEditor from "../../components/TextEditor";
 const TextEditor = dynamic(() => import("../../components/TextEditor"), {
   ssr: false,
-  suspense: true,
+  loading() {
+    return <div>Carregando o editor...</div>;
+  },
 });
 
 const Editor: React.FC = () => {
@@ -36,9 +38,7 @@ const Editor: React.FC = () => {
       <Container container justifyContent="center">
         <Content item xs={11} md={8} className="left">
           <div className="textarea">
-            <Suspense fallback={<LoadingDiv />}>
-              <TextEditor html={pageContent} />
-            </Suspense>
+            <TextEditor html={pageContent} />
           </div>
         </Content>
 
