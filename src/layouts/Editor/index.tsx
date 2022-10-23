@@ -5,7 +5,6 @@ import { Container, Content, LoadingDiv } from "./styles";
 import ResultBox from "../../components/ResultBox";
 import useModal from "../../hooks/useModal";
 import TextEditor from "../../components/TextEditor";
-import useConfig from "@/hooks/useConfig";
 
 const Editor: React.FC = () => {
   const { showModal } = useModal();
