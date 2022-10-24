@@ -1,6 +1,6 @@
 import { expect, describe, it } from "vitest";
 
-import { calculateFleschReading, easeToLabel } from "./ReadingEase";
+import { calculateFleschReading, easeToLabel } from ".";
 
 describe("calculateFleschReading", () => {
   it("empty text", () => {

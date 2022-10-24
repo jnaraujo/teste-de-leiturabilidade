@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
-import { easeToLabel } from "@/libs/readability/ReadingEase";
+import { easeToLabel } from "@/libs/ReadingEase";
 import useConfig from "@/hooks/useConfig";
 
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";

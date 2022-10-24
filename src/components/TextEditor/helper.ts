@@ -16,7 +16,7 @@ import History from "@tiptap/extension-history";
 
 import { IEase } from "../../context/LeiturabilidadeContext";
 
-import * as ReadingEase from "../../libs/readability/ReadingEase";
+import * as ReadingEase from "../../libs/ReadingEase";
 import { TextAnalysisHL } from "./plugins/TextAnalysisHL";
 
 export const EditorExtensions = [

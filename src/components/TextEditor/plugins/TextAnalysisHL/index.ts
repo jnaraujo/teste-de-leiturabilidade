@@ -3,7 +3,7 @@ import { Extension } from "@tiptap/core";
 import { Plugin } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
 import { Node } from "prosemirror-model";
-import { calculateFleschReading } from "@/libs/readability/ReadingEase";
+import { calculateFleschReading } from "@/libs/ReadingEase";
 
 function easeToLabel(ease: number) {
   if (ease > 50) return "easy";
