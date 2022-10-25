@@ -22,7 +22,7 @@ const NavbarComponent = () => {
   }, [router.pathname]);
 
   return (
-    <Navbar as="nav" className={isOpen ? "open" : "closed"}>
+    <Navbar as="header" className={isOpen ? "open" : "closed"}>
       <div className="title">
         <Link href="/" passHref>
           <a>Teste de Leitura</a>
@@ -32,7 +32,7 @@ const NavbarComponent = () => {
       <div className="openBtn" onClick={handleClick}>
         <AiOutlineMenu />
       </div>
-      <div className="menu">
+      <nav className="menu">
         <div className="top_close" onClick={handleClick}>
           <AiOutlineClose />
         </div>
@@ -54,7 +54,7 @@ const NavbarComponent = () => {
             </Cta>
           </li>
         </ul>
-      </div>
+      </nav>
     </Navbar>
   );
 };
