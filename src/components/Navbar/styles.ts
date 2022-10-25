@@ -90,12 +90,13 @@ export const Navbar = styled.div`
   }
 
   .title {
+    margin: 24px 0;
+
     a {
       all: unset;
-
       font-size: 1.4rem;
       cursor: pointer;
-
+      font-weight: bolder;
       color: black;
     }
 

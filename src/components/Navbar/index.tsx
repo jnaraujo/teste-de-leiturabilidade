@@ -5,8 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-// import { BsLightbulb, BsLightbulbOffFill } from "react-icons/bs";
-// import useUpdateTheme from "../../hooks/useUpdateTheme";
 import { LINKS } from "./helper";
 import { Cta, Navbar } from "./styles";
 
@@ -24,13 +22,11 @@ const NavbarComponent = () => {
   }, [router.pathname]);
 
   return (
-    <Navbar className={isOpen ? "open" : "closed"}>
-      <div>
-        <h3 className="title">
-          <Link href="/" passHref>
-            <a>Teste de Leitura</a>
-          </Link>
-        </h3>
+    <Navbar as="nav" className={isOpen ? "open" : "closed"}>
+      <div className="title">
+        <Link href="/" passHref>
+          <a>Teste de Leitura</a>
+        </Link>
       </div>
 
       <div className="openBtn" onClick={handleClick}>
