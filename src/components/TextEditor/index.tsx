@@ -3,9 +3,12 @@ import dynamic from "next/dynamic";
 import { useEditor, EditorContent } from "@tiptap/react";
 import cx from "classnames";
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
-import { textExample, EditorExtensions, handleContentEase } from "./helper";
+import { textExample, handleContentEase } from "./helper";
+
 import Toolbar from "./Toolbar";
 import InTextMenu from "./InTextMenu";
+
+import { EditorExtensions } from "./pluginList";
 
 const EditorDiv = dynamic(() => import("./EditorDiv"), {
   ssr: false,
