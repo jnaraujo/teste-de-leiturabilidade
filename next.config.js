@@ -34,6 +34,7 @@ const nextConfig = {
     browsersListForSwc: true,
     optimizeCss: true,
   },
+  compress: false,
   reactStrictMode: true,
 };
 
