@@ -63,34 +63,4 @@ export const Toolbar = styled.div`
       padding: 8px 24px;
     }
   }
-
-  .editButton {
-    all: unset;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-
-    color: ${(props) => props.theme.colors.onBackground};
-
-    padding: 0 8px;
-    cursor: pointer;
-
-    border-radius: 8px;
-
-    transition: color 0.2s ease-in-out;
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .editButton:hover {
-    color: #adb5bd;
-  }
 `;
