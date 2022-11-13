@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { Editor } from "@tiptap/react";
 
 import {
