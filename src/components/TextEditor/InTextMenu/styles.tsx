@@ -13,6 +13,10 @@ export const ComponentDiv = styled.div`
   width: var(--vWidth);
   height: var(--vHeight);
 
+  :not(&.visible) {
+    display: none;
+  }
+
   background-color: #e9ecef;
 
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.11);

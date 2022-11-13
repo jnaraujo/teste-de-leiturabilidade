@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
 import { useEditor, EditorContent } from "@tiptap/react";
+import dynamic from "next/dynamic";
+import { useWindowSize } from "react-use";
 import cx from "classnames";
 import useLeiturabilidade from "../../hooks/useLeiturabilidade";
-import { textExample, EditorExtensions, handleContentEase } from "./helper";
 import Toolbar from "./Toolbar";
 import InTextMenu from "./InTextMenu";
+
+import { textExample, EditorExtensions, handleContentEase } from "./helper";
 
 const EditorDiv = dynamic(() => import("./EditorDiv"), {
   ssr: false,
@@ -19,6 +21,7 @@ type ComponentPropsType = {
 
 const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   const { setEase } = useLeiturabilidade();
+  const { width } = useWindowSize();
 
   const editorRef = useRef(null);
 
@@ -61,7 +64,8 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
         })}
         editor={editor}
       />
-      {editor && <InTextMenu editor={editor} />}
+
+      <InTextMenu isVisibile={width > 720} editor={editor} />
     </EditorDiv>
   );
 };
