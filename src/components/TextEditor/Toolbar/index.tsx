@@ -76,11 +76,7 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
           key={item.name + item.tooltip}
           onClick={item.onClick}
           tooltip={item.tooltip}
-          isActive={isActive(
-            editor,
-            item.isActive?.name,
-            item.isActive?.attributes
-          )}
+          isActive={false}
         >
           {item.icon ? <item.icon /> : item.name}
         </Button>
