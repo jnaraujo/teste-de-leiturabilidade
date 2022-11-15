@@ -174,11 +174,11 @@ export const EditingControlItems = (editor: Editor) => {
 };
 
 export const isActive = (editor: Editor, name?: string, attributes?: any) => {
-  if (!name && !attributes) return false;
+  if (!name && !attributes && !editor) return false;
 
   if (!name) {
-    return editor.isActive(attributes);
+    return editor?.isActive(attributes);
   }
 
-  return editor.isActive(name, attributes);
+  return editor?.isActive(name, attributes);
 };
