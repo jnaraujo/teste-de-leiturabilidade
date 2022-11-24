@@ -69,13 +69,3 @@ export const Informations = styled.div`
   max-width: 1200px;
   margin: 0 auto;
 `;
-
-export const Footer = styled(Grid)`
-  font-family: "Inter", sans-serif;
-  text-align: center;
-  padding: 20px;
-  font-size: 15px;
-  a {
-    text-decoration: none;
-  }
-`;

@@ -6,7 +6,6 @@ import { Grid } from "@mui/material";
 
 import {
   Container,
-  Footer,
   Informations,
   MainContainer,
   MainContent,
@@ -14,10 +13,12 @@ import {
 } from "../styles/Home";
 
 // COMPONENTS
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { useToast } from "../hooks/useToast";
 import Editor from "../layouts/Editor";
 import HowItWorks from "../layouts/HowItWorks";
+
+import { useToast } from "../hooks/useToast";
 
 const Home = () => {
   const toast = useToast({
@@ -79,17 +80,7 @@ const Home = () => {
             <HowItWorks />
             <Container container justifyContent="center">
               <Grid item xs={12} className="line" />
-              <Footer item xs={12} className="footer">
-                Feito por{" "}
-                <a
-                  href="https://jnaraujo.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Jônatas Araújo
-                </a>{" "}
-                - 2021
-              </Footer>
+              <Footer />
             </Container>
           </Informations>
         </MainContent>

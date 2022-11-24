@@ -5,7 +5,8 @@ import { DefaultSeo } from "next-seo";
 
 // COMPONENTS
 import Navbar from "../components/Navbar";
-import { Container, Footer, MainContainer, MainContent } from "../styles/Home";
+import Footer from "../components/Footer";
+import { MainContainer, MainContent } from "../styles/Home";
 import { useToast } from "../hooks/useToast";
 import Editor from "../layouts/Editor";
 
@@ -39,15 +40,7 @@ const Home = () => {
         </MainContent>
         <MainContent>
           <Editor />
-          <Container container justifyContent="center">
-            <Footer item xs={12} className="footer">
-              Feito por{" "}
-              <a href="https://jnaraujo.com/" target="_blank" rel="noreferrer">
-                Jônatas Araújo
-              </a>{" "}
-              - 2021
-            </Footer>
-          </Container>
+          <Footer />
         </MainContent>
       </MainContainer>
     </>
