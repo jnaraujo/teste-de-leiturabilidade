@@ -1,6 +1,17 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 16px;
+`;
+
+export const Container = styled.section`
+  * {
+    margin: 0;
+  }
+
   font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: row;
@@ -19,17 +30,6 @@ export const MainContainer = styled.div`
     padding: 42px;
   }
 
-  .left {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    gap: 16px;
-  }
-
-  * {
-    margin: 0;
-  }
-
   h2 {
     font-size: 1.6rem;
     color: #f8f9fa;
@@ -39,37 +39,5 @@ export const MainContainer = styled.div`
   p {
     color: #ced4da;
     line-height: 150%;
-  }
-
-  .button {
-    /* margin-top: 16px; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    a {
-      all: unset;
-      text-align: center;
-      width: 100%;
-    }
-
-    cursor: pointer;
-    background: #06d6a0;
-
-    padding: 2px 24px;
-    min-height: 35px;
-    min-width: fit-content;
-
-    border-radius: 4px;
-
-    font-size: 1rem;
-    font-weight: 600;
-
-    color: #212529;
-
-    transition: background 0.3s ease-in-out;
-  }
-
-  .button:hover {
-    background: #05b586;
   }
 `;
