@@ -10,7 +10,7 @@ import {
   MainContainer,
   MainContent,
   TopBar,
-} from "../styles/Home";
+} from "../styles/pages/Home";
 
 // COMPONENTS
 import Footer from "../components/Footer";

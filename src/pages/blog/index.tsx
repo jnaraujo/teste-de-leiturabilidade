@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Head from "next/head";
 
-import { MainContainer, Container, MainContent } from "../../styles/Blog";
+import { MainContainer, Container, MainContent } from "../../styles/pages/Blog";
 
 import MidCta from "../../components/MidCta";
 import Navbar from "../../components/Navbar";

@@ -13,7 +13,7 @@ import {
   Container,
   MainContent,
   BlogText,
-} from "../../styles/Blog";
+} from "../../styles/pages/Blog";
 
 import MidCta from "../../components/MidCta";
 import { BlogService } from "../../services/BlogService";

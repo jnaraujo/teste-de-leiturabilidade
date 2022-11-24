@@ -6,7 +6,7 @@ import { DefaultSeo } from "next-seo";
 // COMPONENTS
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { MainContainer, MainContent } from "../styles/Home";
+import { MainContainer, MainContent } from "../styles/pages/Home";
 import { useToast } from "../hooks/useToast";
 import Editor from "../layouts/Editor";
 
