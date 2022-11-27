@@ -1,6 +1,6 @@
 import React from "react";
 import { Editor, BubbleMenu } from "@tiptap/react";
-import EditButton from "../EditButton";
+import Button from "./Button";
 
 import { ComponentDiv } from "./styles";
 import { InTextEditorItems } from "./helper";
@@ -19,7 +19,7 @@ const InTextMenu = ({ editor, isVisibile }: Props) => {
         <ul>
           {InTextEditorItems(editor).map((item) => (
             <li>
-              <EditButton
+              <Button
                 key={item.name || item.tooltip}
                 onClick={item.onClick}
                 tooltip={item.tooltip}
