@@ -9,7 +9,7 @@ import InTextMenu from "./InTextMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 
-const EditorDiv = dynamic(() => import("./EditorDiv"), {
+const EditorContainer = dynamic(() => import("./EditorContainer"), {
   ssr: false,
   loading: () => <div>Carregando o editor...</div>,
 });
@@ -51,7 +51,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   }, [html]);
 
   return (
-    <EditorDiv
+    <EditorContainer
       className={cx({
         [`${className}`]: className,
       })}
@@ -60,7 +60,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
       <EditorContent ref={editorRef} className="editor" editor={editor} />
 
       <InTextMenu isVisibile={width > 720} editor={editor} />
-    </EditorDiv>
+    </EditorContainer>
   );
 };
 

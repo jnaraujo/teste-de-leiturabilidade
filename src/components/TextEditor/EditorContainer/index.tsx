@@ -2,12 +2,15 @@ import React from "react";
 import useConfig from "@/hooks/useConfig";
 import { Container } from "./styles";
 
-interface EditorDivProps {
+interface EditorContainerProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const EditorDiv: React.FC<EditorDivProps> = ({ children, className }) => {
+const EditorContainer: React.FC<EditorContainerProps> = ({
+  children,
+  className,
+}) => {
   const { config } = useConfig();
   return (
     <Container className={`${className} ${config.highlight && "highlight"}`}>
@@ -16,4 +19,4 @@ const EditorDiv: React.FC<EditorDivProps> = ({ children, className }) => {
   );
 };
 
-export default EditorDiv;
+export default EditorContainer;
