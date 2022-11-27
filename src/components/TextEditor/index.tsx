@@ -57,13 +57,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
       })}
     >
       <Toolbar editor={editor as any} />
-      <EditorContent
-        ref={editorRef}
-        className={cx({
-          editor: true,
-        })}
-        editor={editor}
-      />
+      <EditorContent ref={editorRef} className="editor" editor={editor} />
 
       <InTextMenu isVisibile={width > 720} editor={editor} />
     </EditorDiv>
