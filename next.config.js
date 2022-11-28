@@ -2,7 +2,7 @@
 const TerserPlugin = require("terser-webpack-plugin");
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
+  enabled: String(process.env.ANALYZE).trim() === "true",
 });
 
 /**
