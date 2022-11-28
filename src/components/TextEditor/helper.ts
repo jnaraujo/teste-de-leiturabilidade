@@ -14,10 +14,9 @@ import BubbleMenu from "@tiptap/extension-bubble-menu";
 import Placeholder from "@tiptap/extension-placeholder";
 import History from "@tiptap/extension-history";
 
-import { IEase } from "../../context/LeiturabilidadeContext";
-
 import * as ReadingEase from "../../libs/ReadingEase";
 import { TextAnalysisHL } from "./plugins/TextAnalysisHL";
+import { IEase } from "@/store/readingStore";
 
 export const EditorExtensions = [
   Heading,

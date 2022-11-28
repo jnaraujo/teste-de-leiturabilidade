@@ -10,6 +10,10 @@ module.exports = {
     "prettier",
     "plugin:@next/next/recommended",
     "plugin:storybook/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/javascript",
+    "plugin:import/typescript",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {

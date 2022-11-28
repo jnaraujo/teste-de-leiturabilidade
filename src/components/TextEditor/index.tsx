@@ -3,7 +3,9 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import dynamic from "next/dynamic";
 import { useWindowSize } from "react-use";
 import cx from "classnames";
-import useLeiturabilidade from "../../hooks/useLeiturabilidade";
+
+import { useReadingStore } from "@/store/readingStore";
+
 import Toolbar from "./Toolbar";
 import InTextMenu from "./InTextMenu";
 
@@ -20,7 +22,8 @@ type ComponentPropsType = {
 };
 
 const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
-  const { setEase } = useLeiturabilidade();
+  const setEase = useReadingStore((state) => state.setEase);
+
   const { width } = useWindowSize();
 
   const editorRef = useRef(null);

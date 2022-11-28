@@ -2,9 +2,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import { easeToLabel } from "@/libs/ReadingEase";
-import useConfig from "@/hooks/useConfig";
 
-import useLeiturabilidade from "../../hooks/useLeiturabilidade";
+import useConfig from "@/hooks/useConfig";
+import { useReadingStore } from "@/store/readingStore";
 
 import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
@@ -21,7 +21,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
 
   const { width, height } = useWindowSize();
 
-  const { ease } = useLeiturabilidade();
+  const ease = useReadingStore((state) => state.ease);
   const [sliderSize, setSliderSize] = useState(100);
 
   function base100ToSlideBarSize(value: number) {
