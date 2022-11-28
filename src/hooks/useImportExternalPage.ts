@@ -1,4 +1,4 @@
-import axios from "axios";
+import fetcher from "@/libs/fetcher";
 import { useCallback, useState } from "react";
 
 interface IError {
@@ -14,24 +14,20 @@ export const useImportExternalPage = () => {
   const fetch = useCallback(async (value: string) => {
     setData("");
     setLoading(true);
-    axios
-      .get("/api/external", {
-        params: {
-          url: value,
-        },
-      })
-      .then((res) => {
-        setData(res.data.html);
-      })
-      .catch((err) => {
-        setError({
-          title: "Erro ao importar página",
-          message: err.response.data.message || "internal server error",
-        });
-      })
-      .finally(() => {
-        setLoading(false);
+
+    const fetchUrl = new URLSearchParams({ url: value });
+
+    try {
+      const res = await fetcher(`/api/external?${fetchUrl}`);
+      setData(res.html);
+    } catch (err: any) {
+      setError({
+        title: "Error",
+        message: err?.message || "Something went wrong",
       });
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   return { fetch, data, error, loading };
