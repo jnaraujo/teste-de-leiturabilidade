@@ -65,7 +65,8 @@
     "styled-components": "^5.3.5",
     "styled-jsx": "5.0.2",
     "terser-webpack-plugin": "^5.3.3",
-    "tiptap": "^1.32.2"
+    "tiptap": "^1.32.2",
+    "zustand": "^4.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
