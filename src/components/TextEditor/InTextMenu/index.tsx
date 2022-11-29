@@ -6,7 +6,7 @@ import { ComponentDiv } from "./styles";
 import { InTextEditorItems } from "./helper";
 
 interface Props {
-  editor?: Editor | null;
+  editor: Editor | null;
   isVisibile: boolean;
 }
 
@@ -18,9 +18,8 @@ const InTextMenu = ({ editor, isVisibile }: Props) => {
       <ComponentDiv className={isVisibile ? "visible" : ""}>
         <ul>
           {InTextEditorItems(editor).map((item) => (
-            <li>
+            <li key={item.tooltip}>
               <Button
-                key={item.name || item.tooltip}
                 onClick={item.onClick}
                 tooltip={item.tooltip}
                 name={item?.name}
