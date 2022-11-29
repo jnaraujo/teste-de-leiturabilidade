@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import dynamic from "next/dynamic";
 import { useWindowSize } from "react-use";
-import cx from "classnames";
 
 import { useReadingStore } from "@/store/readingStore";
 
@@ -21,7 +20,7 @@ type ComponentPropsType = {
   html: string;
 };
 
-const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
+const TextEditor = ({ html, className }: ComponentPropsType) => {
   const setEase = useReadingStore((state) => state.setEase);
 
   const { width } = useWindowSize();
@@ -54,11 +53,7 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   }, [html]);
 
   return (
-    <EditorContainer
-      className={cx({
-        [`${className}`]: className,
-      })}
-    >
+    <EditorContainer className={className}>
       <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className="editor" editor={editor} />
 
@@ -67,4 +62,4 @@ const TextEditorComponent = ({ html, className }: ComponentPropsType) => {
   );
 };
 
-export default TextEditorComponent;
+export default TextEditor;
