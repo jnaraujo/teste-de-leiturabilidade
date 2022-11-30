@@ -15,7 +15,6 @@
     "test:watch": "vitest",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "cypress": "cypress open",
     "prepare": "husky install",
     "postinstall": "husky install"
   },
@@ -91,7 +90,6 @@
     "babel-loader": "^8.2.5",
     "babel-plugin-styled-components": "^2.0.7",
     "critters": "^0.0.16",
-    "cypress": "^10.10.0",
     "eslint": "^8.21.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^12.2.3",
