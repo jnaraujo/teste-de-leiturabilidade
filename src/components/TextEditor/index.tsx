@@ -7,7 +7,7 @@ import { getLocalStorage, setLocalStorage } from "@/libs/localstorage";
 import { useReadingStore } from "@/store/readingStore";
 
 import Toolbar from "./Toolbar";
-import InTextMenu from "./InTextMenu";
+import InlineMenu from "./InlineMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 
@@ -60,7 +60,7 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
       <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className="editor" editor={editor} />
 
-      <InTextMenu isVisibile={width > 720} editor={editor} />
+      <InlineMenu isVisibile={width > 720} editor={editor} />
     </EditorContainer>
   );
 };

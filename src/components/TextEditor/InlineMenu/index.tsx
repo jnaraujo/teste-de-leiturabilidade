@@ -1,4 +1,3 @@
-import React from "react";
 import { Editor, BubbleMenu } from "@tiptap/react";
 import Button from "./Button";
 
@@ -10,7 +9,7 @@ interface Props {
   isVisibile: boolean;
 }
 
-const InTextMenu = ({ editor, isVisibile }: Props) => {
+const InlineMenu = ({ editor, isVisibile }: Props) => {
   if (!editor) return null;
 
   return (
@@ -32,4 +31,4 @@ const InTextMenu = ({ editor, isVisibile }: Props) => {
     </BubbleMenu>
   );
 };
-export default InTextMenu;
+export default InlineMenu;
