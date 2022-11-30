@@ -1,3 +1,4 @@
+import { getLocalStorage, setLocalStorage } from "@/libs/localstorage";
 import create from "zustand";
 
 export interface IConfig {
@@ -12,15 +13,6 @@ export interface IConfigStore {
 const defaultConfig: IConfig = {
   highlight: true,
 };
-
-const getLocalStorage = (key: string) => {
-  if (typeof window === "undefined" || !window.localStorage.getItem(key))
-    return defaultConfig;
-
-  return JSON.parse(window.localStorage.getItem(key) || "");
-};
-const setLocalStorage = (key: string, value: object) =>
-  window.localStorage.setItem(key, JSON.stringify(value));
 
 export const useConfigStore = create<IConfigStore>((set, get) => ({
   config: getLocalStorage("config-store") || defaultConfig,

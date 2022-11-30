@@ -3,6 +3,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import dynamic from "next/dynamic";
 import { useWindowSize } from "react-use";
 
+import { getLocalStorage, setLocalStorage } from "@/libs/localstorage";
 import { useReadingStore } from "@/store/readingStore";
 
 import Toolbar from "./Toolbar";
@@ -34,13 +35,15 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
         state.editor.commands.setContent(html);
         return;
       }
-      if (localStorage.getItem("text")) {
-        state.editor.commands.setContent(localStorage.getItem("text"));
+      if (getLocalStorage("text").text) {
+        state.editor.commands.setContent(getLocalStorage("text").text);
       }
       handleContentEase(state.editor.getText(), setEase);
     },
     onUpdate: (state) => {
-      localStorage.setItem("text", state.editor.getHTML());
+      setLocalStorage("text", {
+        text: state.editor.getText(),
+      });
       handleContentEase(state.editor.getText(), setEase);
     },
     content: textExample,
