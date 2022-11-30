@@ -1,5 +1,5 @@
 import React from "react";
-import useConfig from "@/hooks/useConfig";
+import { useConfigStore } from "@/store/configStore";
 import { Container } from "./styles";
 
 interface EditorContainerProps {
@@ -11,7 +11,7 @@ const EditorContainer: React.FC<EditorContainerProps> = ({
   children,
   className,
 }) => {
-  const { config } = useConfig();
+  const { config } = useConfigStore();
   return (
     <Container className={`${className} ${config.highlight && "highlight"}`}>
       {children}

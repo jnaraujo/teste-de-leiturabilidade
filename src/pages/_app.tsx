@@ -7,7 +7,6 @@ import { GlobalStyles } from "../styles/global";
 import { ModalProvider } from "../context/ModalContext";
 import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
 import { UpdateThemeProvider } from "../context/UpdateThemeContext";
-import { ConfigProvider } from "../context/ConfigContext";
 import LinearProgress from "../components/LinearProgress";
 
 // eslint-disable-next-line react/prop-types
@@ -41,19 +40,17 @@ const MyApp = ({ Component, pageProps }: any) => {
       {loading && <LinearProgress />}
       <UpdateThemeProvider>
         <ThemeProviderWrapper>
-          <ConfigProvider>
-            <ModalProvider>
-              <Component {...pageProps} />
-              <ToastContainer
-                position="top-left"
-                hideProgressBar={false}
-                draggable
-                autoClose={1000}
-                pauseOnHover={false}
-                pauseOnFocusLoss={false}
-              />
-            </ModalProvider>
-          </ConfigProvider>
+          <ModalProvider>
+            <Component {...pageProps} />
+            <ToastContainer
+              position="top-left"
+              hideProgressBar={false}
+              draggable
+              autoClose={1000}
+              pauseOnHover={false}
+              pauseOnFocusLoss={false}
+            />
+          </ModalProvider>
         </ThemeProviderWrapper>
       </UpdateThemeProvider>
     </>

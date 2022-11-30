@@ -3,8 +3,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import { easeToLabel } from "@/libs/ReadingEase";
 
-import useConfig from "@/hooks/useConfig";
 import { useReadingStore } from "@/store/readingStore";
+import { useConfigStore } from "@/store/configStore";
 
 import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
@@ -17,7 +17,7 @@ interface ResultBoxProps {
 const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
   const sliderRef = useRef<any>(null);
   const externalPageUrlRef = useRef<any>(null);
-  const { config, setConfig } = useConfig();
+  const { config, setConfig } = useConfigStore();
 
   const { width, height } = useWindowSize();
 
