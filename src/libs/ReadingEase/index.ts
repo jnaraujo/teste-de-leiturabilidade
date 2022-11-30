@@ -1,7 +1,27 @@
 import SilabaJS from "./silaba.js";
 
 export function calculateFleschReading(text: string) {
-  const words = String(text)
+  const words = getWords(text);
+  const totalSentences = getSentences(text).length;
+  const totalSyllables = getSyllablesCount(words);
+
+  return {
+    words: words.length,
+    sentences: totalSentences,
+    syllables: totalSyllables,
+    result:
+      Math.max(
+        Math.min(
+          calculateFleschEase(words.length, totalSentences, totalSyllables),
+          100
+        ),
+        0
+      ) || 0,
+  };
+}
+
+function getWords(text: string) {
+  return String(text)
     .replace(/\n/g, " ")
     .replace(/,/g, "")
     .replace(/!/g, "")
@@ -10,32 +30,33 @@ export function calculateFleschReading(text: string) {
     .replace(/\r/g, "")
     .split(" ")
     .filter((word) => word !== "");
+}
 
-  const totalSentences = String(text)
+function getSentences(text: string) {
+  return String(text)
     .replace(/\n/g, ".")
     .replace(/\r/g, "")
     .split(".")
     .filter((word) => word !== "." && word !== "");
+}
 
+function getSyllablesCount(words: string[]) {
   let totalSyllables = 0;
 
   for (let i = 0; i < words.length; i += 1) {
     const word = words[i];
-    const ts = (SilabaJS.getSilabas(word) as any).numeroSilaba;
-    totalSyllables += ts;
+    totalSyllables += (SilabaJS.getSilabas(word) as any).numeroSilaba;
   }
 
-  const formula =
-    248.835 -
-    1.015 * (words.length / totalSentences.length) -
-    84.6 * (totalSyllables / words.length);
+  return totalSyllables;
+}
 
-  return {
-    words: words.length,
-    sentences: totalSentences.length,
-    syllables: totalSyllables,
-    result: Math.max(Math.min(formula, 100), 0) || 0,
-  };
+function calculateFleschEase(
+  words: number,
+  sentences: number,
+  syllables: number
+) {
+  return 206.835 - 1.015 * (words / sentences) - 84.6 * (syllables / words);
 }
 
 export function easeToLabel(ease: number) {
