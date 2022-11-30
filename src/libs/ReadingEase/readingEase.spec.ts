@@ -1,6 +1,7 @@
 import { expect, describe, it } from "vitest";
 
 import { calculateFleschReading, easeToLabel } from ".";
+import { countSyllables, getSentences, getWords } from "./helper";
 
 describe("calculateFleschReading", () => {
   it("empty text", () => {
@@ -44,6 +45,69 @@ describe("calculateFleschReading", () => {
     expect(multipleSentencesTest.words).toEqual(14);
     expect(multipleSentencesTest.syllables).toEqual(24);
     expect(multipleSentencesTest.result).toBeCloseTo(96.5, 0);
+  });
+
+  describe("getWords", () => {
+    it("empty text", () => {
+      const words = getWords("");
+      expect(words.length).toEqual(0);
+    });
+
+    it("text with only one word", () => {
+      const words = getWords("teste");
+      expect(words.length).toEqual(1);
+    });
+
+    it("text with multiple words", () => {
+      const words = getWords("teste teste");
+      expect(words.length).toEqual(2);
+    });
+
+    it("text with multiple words and special characters", () => {
+      const words = getWords("teste teste teste!");
+      expect(words.length).toEqual(3);
+    });
+  });
+
+  describe("getSentences", () => {
+    it("empty text", () => {
+      const sentences = getSentences("");
+      expect(sentences.length).toEqual(0);
+    });
+
+    it("text with only one sentence", () => {
+      const sentences = getSentences("Eu amo o Vitest.");
+      expect(sentences.length).toEqual(1);
+    });
+
+    it("text with multiple sentences", () => {
+      const sentences = getSentences(
+        "Eu amo o Brasil! É o melhor país do mundo."
+      );
+      expect(sentences.length).toEqual(2);
+    });
+  });
+
+  describe("countSyllables", () => {
+    it("empty text", () => {
+      const syllables = countSyllables([]);
+      expect(syllables).toEqual(0);
+    });
+
+    it("text with only one word", () => {
+      const syllables = countSyllables(["abacate"]);
+      expect(syllables).toEqual(4);
+    });
+
+    it("text with multiple words", () => {
+      const syllables = countSyllables(["abacate", "melancia"]);
+      expect(syllables).toEqual(7);
+    });
+
+    it("text with multiple words and special characters", () => {
+      const syllables = countSyllables(["abacate", "melancia!"]);
+      expect(syllables).toEqual(7);
+    });
   });
 });
 
