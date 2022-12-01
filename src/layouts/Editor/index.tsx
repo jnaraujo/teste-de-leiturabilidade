@@ -4,8 +4,7 @@ import { useImportExternalPage } from "../../hooks/useImportExternalPage";
 import { Container, Content, LoadingDiv } from "./styles";
 import ResultBox from "../../components/ResultBox";
 import useModal from "../../hooks/useModal";
-import dynamic from "next/dynamic";
-const TextEditor = dynamic(() => import("../../components/TextEditor"));
+import TextEditor from "../../components/TextEditor";
 
 const Editor: React.FC = () => {
   const { showModal } = useModal();

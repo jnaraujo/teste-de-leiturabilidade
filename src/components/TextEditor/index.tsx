@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
-import dynamic from "next/dynamic";
 import { useWindowSize } from "react-use";
 
 import { getLocalStorage, setLocalStorage } from "@/libs/localstorage";
@@ -11,9 +10,11 @@ import InlineMenu from "./InlineMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 
+// import EditorContainer from "./EditorContainer";
+import dynamic from "next/dynamic";
 const EditorContainer = dynamic(() => import("./EditorContainer"), {
   ssr: false,
-  loading: () => <div>Carregando o editor...</div>,
+  loading: () => <p>Carregando o editor...</p>,
 });
 
 type ComponentPropsType = {
