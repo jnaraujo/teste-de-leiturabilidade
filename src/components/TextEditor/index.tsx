@@ -43,7 +43,7 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
     },
     onUpdate: (state) => {
       setLocalStorage("text", {
-        text: state.editor.getText(),
+        text: state.editor.getHTML(),
       });
       handleContentEase(state.editor.getText(), setEase);
     },
