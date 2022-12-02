@@ -43,12 +43,6 @@ export const Navbar = styled.div`
   margin: 0 auto;
   height: fit-content;
 
-  .top_close {
-    display: none;
-
-    font-size: 1.6rem;
-  }
-
   @media (max-width: 768px) {
     .menu {
       display: none;
@@ -56,12 +50,6 @@ export const Navbar = styled.div`
 
     &.open {
       .menu {
-        .top_close {
-          display: block;
-          position: absolute;
-          top: 16px;
-          right: 16px;
-        }
         z-index: 99999;
         display: flex;
         align-items: center;

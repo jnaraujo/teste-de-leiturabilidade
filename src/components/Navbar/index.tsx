@@ -8,6 +8,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { LINKS } from "./helper";
 import HamburgerButton from "./HamburgerButton";
 import { Cta, Navbar } from "./styles";
+import { CloseModalButton } from "./CloseModalButton";
 
 const NavbarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,9 +34,8 @@ const NavbarComponent = () => {
       <HamburgerButton onClick={handleClick} />
 
       <nav className="menu">
-        <div className="top_close" onClick={handleClick}>
-          <AiOutlineClose />
-        </div>
+        <CloseModalButton onClick={handleClick} />
+
         <ul>
           {LINKS.map((link) => (
             <li key={link.title}>
