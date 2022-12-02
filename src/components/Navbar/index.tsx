@@ -9,6 +9,7 @@ import { LINKS } from "./helper";
 import HamburgerButton from "./HamburgerButton";
 import { Cta, Navbar } from "./styles";
 import { CloseModalButton } from "./CloseModalButton";
+import { Title } from "./TitleComponent";
 
 const NavbarComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,12 +26,7 @@ const NavbarComponent = () => {
 
   return (
     <Navbar as="header" className={isOpen ? "open" : "closed"}>
-      <div className="title">
-        <Link href="/" passHref>
-          <a>Teste de Leitura</a>
-        </Link>
-      </div>
-
+      <Title />
       <HamburgerButton onClick={handleClick} />
 
       <nav className="menu">
