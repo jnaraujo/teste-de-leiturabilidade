@@ -4,8 +4,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { LINKS } from "./helper";
+import HamburgerButton from "./HamburgerButton";
 import { Cta, Navbar } from "./styles";
 
 const NavbarComponent = () => {
@@ -29,9 +30,8 @@ const NavbarComponent = () => {
         </Link>
       </div>
 
-      <div className="openBtn" onClick={handleClick}>
-        <AiOutlineMenu />
-      </div>
+      <HamburgerButton onClick={handleClick} />
+
       <nav className="menu">
         <div className="top_close" onClick={handleClick}>
           <AiOutlineClose />

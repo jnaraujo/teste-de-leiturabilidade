@@ -43,7 +43,6 @@ export const Navbar = styled.div`
   margin: 0 auto;
   height: fit-content;
 
-  .openBtn,
   .top_close {
     display: none;
 
@@ -51,9 +50,6 @@ export const Navbar = styled.div`
   }
 
   @media (max-width: 768px) {
-    .openBtn {
-      display: block;
-    }
     .menu {
       display: none;
     }
