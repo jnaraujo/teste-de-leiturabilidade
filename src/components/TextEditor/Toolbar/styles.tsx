@@ -33,21 +33,17 @@ export const Toolbar = styled.div`
   .control {
     display: none;
   }
+
+  .arrow {
+    display: none;
+  }
   @media (max-width: 720px) {
-    z-index: 100;
-
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
     justify-content: left;
-    width: 100vw;
-    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.31);
+
+    width: 90vw;
 
     overflow-x: scroll;
-
-    border: none;
+    overflow-y: hidden;
     margin-bottom: 0;
 
     .group {
