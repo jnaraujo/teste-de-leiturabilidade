@@ -39,8 +39,6 @@ export const Toolbar = styled.div`
   @media (max-width: 720px) {
     justify-content: left;
 
-    width: 90vw;
-
     overflow-x: scroll;
     overflow-y: hidden;
     margin-bottom: 0;
