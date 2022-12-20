@@ -17,11 +17,16 @@ export const Content = styled(Grid)`
   }
 
   .textarea {
+    background-color: #edede9;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+
     margin: 0;
     padding: 0;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
     width: 99% !important;
-    min-height: 70vh;
+    min-height: 75vh;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
       border-bottom: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};

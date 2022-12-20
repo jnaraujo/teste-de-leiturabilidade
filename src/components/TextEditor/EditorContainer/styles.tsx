@@ -64,13 +64,16 @@ export const Container = styled.div`
   }
 
   .editor {
-    width: 100%;
     height: 100%;
     background-color: transparent;
     overflow: hidden;
 
+    max-width: 100%;
+
     resize: none;
     border: none;
+
+    padding: 0 8px;
 
     color: ${(props) => props.theme.colors.onBackground};
 

@@ -11,11 +11,10 @@ export const Toolbar = styled.div`
   height: fit-content;
 
   padding: 8px 0;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 
   border-bottom: 1px solid;
-  border-top: 1px solid;
-  border-color: ${(props) => props.theme.colors.onBackground};
+  border-color: ${(props) => props.theme.colors.onSecondary};
 
   .group {
     display: flex;
