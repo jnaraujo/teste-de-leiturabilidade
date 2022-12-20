@@ -35,7 +35,6 @@ export const MainContent = styled.div`
 `;
 
 export const TopBar = styled(Grid)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};
   font-family: "Inter", sans-serif;
 
   p {
