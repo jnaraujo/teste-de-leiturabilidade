@@ -12,9 +12,11 @@ import { textExample, EditorExtensions, handleContentEase } from "./helper";
 
 // import EditorContainer from "./EditorContainer";
 import dynamic from "next/dynamic";
+import Loading from "./Loading";
+
 const EditorContainer = dynamic(() => import("./EditorContainer"), {
   ssr: false,
-  loading: () => <p>Carregando o editor...</p>,
+  loading: () => <Loading />,
 });
 
 type ComponentPropsType = {
