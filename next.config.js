@@ -21,7 +21,6 @@ const nextConfig = {
   compiler: {
     styledComponents: {
       ssr: true,
-      minify: true,
     },
     emotion: true,
   },
