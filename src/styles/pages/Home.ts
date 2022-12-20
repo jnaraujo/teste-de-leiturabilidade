@@ -51,9 +51,7 @@ export const TopBar = styled(Grid)`
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin-top: 1rem;
     border-bottom: 0;
-    // margin-top: 30px;
     p {
-      /* width: 600px; */
       font-size: 20px;
     }
   }
