@@ -29,7 +29,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    browsersListForSwc: true,
     legacyBrowsers: false,
     optimizeCss: true,
   },
