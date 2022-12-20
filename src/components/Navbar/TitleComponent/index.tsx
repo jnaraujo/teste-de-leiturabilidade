@@ -7,7 +7,7 @@ const Title: React.FC = () => {
   return (
     <Container>
       <Link href="/" passHref>
-        <a>Teste de Leitura</a>
+        Teste de Leitura
       </Link>
     </Container>
   );

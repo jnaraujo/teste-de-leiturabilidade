@@ -6,7 +6,7 @@ import { Container } from "./styles";
 const Button: React.FC = () => (
   <Container>
     <Link href="/" passHref>
-      <a>Testar meu texto gratuitamente!</a>
+      Testar meu texto gratuitamente!
     </Link>
   </Container>
 );

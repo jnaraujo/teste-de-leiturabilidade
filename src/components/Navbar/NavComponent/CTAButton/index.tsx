@@ -6,8 +6,8 @@ import { Container } from "./styles";
 const CTAButton: React.FC = () => {
   return (
     <Container>
-      <Link href="/editor" passHref>
-        <a className="link">Abrir o Editor</a>
+      <Link href="/editor" passHref className="link">
+        Abrir o Editor
       </Link>
     </Container>
   );

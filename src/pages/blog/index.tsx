@@ -45,7 +45,7 @@ const BlogPage = ({ posts }: IProps) => (
               <div key={post.slug}>
                 <h3>
                   <Link href={`/blog/${post.slug}`}>
-                    <a>{post.title}</a>
+                    {post.title}
                   </Link>
                 </h3>
                 <p>{post.description}</p>

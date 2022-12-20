@@ -27,10 +27,13 @@ const Nav: React.FC<Props> = ({ onClose, isOpen }) => {
       <UlList>
         {LINKS.map((link) => (
           <li key={link.title}>
-            <Link href={link.url} passHref>
-              <a className={path === link.url.split("/")[1] ? "active" : ""}>
-                {link.title}
-              </a>
+            <Link
+              href={link.url}
+              passHref
+              className={path === link.url.split("/")[1] ? "active" : ""}>
+
+              {link.title}
+
             </Link>
           </li>
         ))}
