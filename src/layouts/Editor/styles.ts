@@ -30,7 +30,7 @@ export const Content = styled(Grid)`
       border-bottom: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};
     }
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
       margin: 0 8px 20px 8px;
     }
   }
