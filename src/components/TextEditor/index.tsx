@@ -9,8 +9,6 @@ import Toolbar from "./Toolbar";
 import InlineMenu from "./InlineMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
-
-// import EditorContainer from "./EditorContainer";
 import dynamic from "next/dynamic";
 import Loading from "./Loading";
 
