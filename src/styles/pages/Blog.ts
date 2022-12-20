@@ -19,7 +19,7 @@ export const MainContent = styled.div`
   max-width: 1050px;
 `;
 
-export const Container = styled.div`
+export const Container = styled.article`
   display: flex;
   flex-direction: column;
   width: 100%;
