@@ -30,8 +30,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
       ))}
     </div>
 
-    <div className="line" />
-
     <div className="group">
       {TextFormattingItems(editor).map((item) => (
         <Button
@@ -49,8 +47,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
       ))}
     </div>
 
-    <div className="line" />
-
     <div className="group">
       {TextAlignItems(editor).map((item) => (
         <Button
@@ -67,8 +63,6 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
         </Button>
       ))}
     </div>
-
-    <div className="line" />
 
     <div className="group">
       {EditingControlItems(editor).map((item) => (
