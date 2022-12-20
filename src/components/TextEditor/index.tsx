@@ -57,7 +57,7 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
   }, [html]);
 
   return (
-    <EditorContainer className={className}>
+    <EditorContainer className={className ? className : ""}>
       <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className="editor" editor={editor} />
 
