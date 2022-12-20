@@ -24,11 +24,14 @@ export const Content = styled(Grid)`
     margin: 0;
     padding: 0;
     margin-bottom: 20px;
-    width: 99% !important;
     min-height: 75vh;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
       border-bottom: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};
+    }
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+      margin: 0 8px 20px 8px;
     }
   }
 `;

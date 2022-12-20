@@ -29,7 +29,7 @@ const Editor: React.FC = () => {
   return (
     <>
       <Container container justifyContent="center">
-        <Content item xs={11} md={8} className="left">
+        <Content item xs={12} md={8} className="left">
           <div className="textarea">
             <TextEditor html={pageContent} />
           </div>
