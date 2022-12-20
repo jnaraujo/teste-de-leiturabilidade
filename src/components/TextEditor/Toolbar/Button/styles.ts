@@ -18,7 +18,7 @@ export const Button = styled.button<{
 
   color: ${({ theme, isActive }) => {
     if (isActive) {
-      return theme.colors.onSecondary;
+      return theme.colors.onPrimary;
     }
 
     return theme.colors.onBackground;
