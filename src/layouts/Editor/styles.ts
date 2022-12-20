@@ -7,7 +7,6 @@ export const Container = styled(Grid)`
 `;
 
 export const Content = styled(Grid)`
-  max-width: 1200px;
   margin: 0 auto;
 
   &.left {
