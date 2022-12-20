@@ -9,7 +9,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  swcMinify: true,
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       // eslint-disable-next-line no-param-reassign
@@ -30,8 +29,8 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    legacyBrowsers: false,
     browsersListForSwc: true,
+    legacyBrowsers: false,
     optimizeCss: true,
   },
   compress: false,
