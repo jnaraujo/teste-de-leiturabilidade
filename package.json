@@ -21,7 +21,6 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
-    "@hcaptcha/react-hcaptcha": "^1.4.4",
     "@mui/material": "^5.9.3",
     "@tiptap/core": "^2.0.0-beta.182",
     "@tiptap/extension-blockquote": "^2.0.0-beta.29",
@@ -46,7 +45,6 @@
     "markdown-it": "^13.0.1",
     "next": "^12.2.4",
     "next-seo": "^5.5.0",
-    "next-transpile-modules": "^9.0.0",
     "nookies": "^2.5.2",
     "notion-client": "^6.12.12",
     "prismjs": "^1.28.0",
@@ -69,8 +67,6 @@
     "zustand": "^4.1.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.1",
-    "@emotion/babel-plugin": "^11.10.0",
     "@next/bundle-analyzer": "^12.3.1",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
@@ -87,8 +83,6 @@
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
     "@vitest/coverage-c8": "^0.23.4",
-    "babel-loader": "^8.2.5",
-    "babel-plugin-styled-components": "^2.0.7",
     "critters": "^0.0.16",
     "eslint": "^8.21.0",
     "eslint-config-airbnb": "^19.0.4",
