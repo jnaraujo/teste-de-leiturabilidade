@@ -1,8 +1,8 @@
-import { Tooltip } from "@mui/material";
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { MdFeedback } from "react-icons/md";
 const FeedbackModal = dynamic(() => import("./FeedbackModal"));
+const Tooltip = dynamic(() => import("@mui/material/Tooltip"));
 
 import { Widget } from "./styles";
 

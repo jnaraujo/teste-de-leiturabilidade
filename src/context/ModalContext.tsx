@@ -6,9 +6,8 @@ import {
   useState,
 } from "react";
 import dynamic from "next/dynamic";
-// import Modal from "../components/Modal";
 
-const Modal = dynamic(() => import("../components/Modal"), { ssr: false });
+const Modal = dynamic(() => import("../components/Modal"));
 
 export interface IModal {
   title: string;
