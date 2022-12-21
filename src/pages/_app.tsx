@@ -1,8 +1,7 @@
 import "react-responsive-modal/styles.css";
-import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 import { GlobalStyles } from "../styles/global";
 import { ModalProvider } from "../context/ModalContext";
 import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
@@ -44,13 +43,14 @@ const MyApp = ({ Component, pageProps }: any) => {
           <ModalProvider>
             <Component {...pageProps} />
             <FeedbackWidget />
-            <ToastContainer
-              position="top-left"
-              hideProgressBar={false}
-              draggable
-              autoClose={1000}
-              pauseOnHover={false}
-              pauseOnFocusLoss={false}
+            <Toaster
+              toastOptions={{
+                duration: 5000,
+                style: {
+                  fontFamily: "Inter",
+                },
+              }}
+              position="top-center"
             />
           </ModalProvider>
         </ThemeProviderWrapper>

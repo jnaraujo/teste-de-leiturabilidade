@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { getCookie, setCookie } from "../utils/cookies";
 
 interface ToastProps {
@@ -12,17 +12,12 @@ export const useToast = ({ saveCookie }: ToastProps) => {
   const cookie = getCookie(saveCookie || "");
 
   const showToast = useCallback((message: string, status: IStatus) => {
-    if (cookie) return;
+    // if (cookie) return;
 
-    toast[status](message, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    if (status === "success") toast.success(message, { position: "top-left" });
+    if (status === "error") toast.error(message, { position: "top-left" });
+    if (status === "info") toast(message, { position: "top-left" });
+
     setCookie(saveCookie || "", "true");
   }, []);
 

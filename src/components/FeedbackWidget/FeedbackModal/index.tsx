@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md";
 import Confetti from "react-confetti";
 import { useForm } from "react-hook-form";
 import { useWindowSize } from "react-use";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 import { Container, ModalWrap, Header, Content } from "./styles";
 
