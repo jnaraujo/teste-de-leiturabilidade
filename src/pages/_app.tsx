@@ -8,6 +8,7 @@ import { ModalProvider } from "../context/ModalContext";
 import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
 import { UpdateThemeProvider } from "../context/UpdateThemeContext";
 import LinearProgress from "../components/LinearProgress";
+import FeedbackWidget from "@/components/FeedbackWidget";
 
 // eslint-disable-next-line react/prop-types
 const MyApp = ({ Component, pageProps }: any) => {
@@ -42,6 +43,7 @@ const MyApp = ({ Component, pageProps }: any) => {
         <ThemeProviderWrapper>
           <ModalProvider>
             <Component {...pageProps} />
+            <FeedbackWidget />
             <ToastContainer
               position="top-left"
               hideProgressBar={false}
