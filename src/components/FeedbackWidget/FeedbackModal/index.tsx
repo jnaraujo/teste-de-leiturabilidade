@@ -12,40 +12,42 @@ type Props = {
   onClose(): void;
 };
 const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState } = useForm();
+  const { isSubmitting } = formState;
 
   const { width, height } = useWindowSize();
   const [confetti, setConfetti] = useState(false);
 
-  const onSubmit = (data: any) => {
-    fetch(`https://submit-form.com/${process.env.NEXT_PUBLIC_FORMSPARK}`, {
-      method: "POST",
-      body: JSON.stringify(data),
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        toast("Mensagem enviada!", {
-          icon: "🎉",
-          position: "top-center",
-        });
-        setConfetti(true);
-
-        setTimeout(() => {
-          setConfetti(false);
-        }, 5000);
-        onClose();
-      })
-      .catch(() => {
-        toast.error("Ops! Ocorreu um erro ao enviar a mensagem.", {
-          position: "top-center",
-        });
-      })
-      .finally(() => {
-        reset();
+  const onSubmit = async (data: any) => {
+    try {
+      await fetch(
+        `https://submit-form.com/${process.env.NEXT_PUBLIC_FORMSPARK}`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      toast("Mensagem enviada!", {
+        icon: "🎉",
+        position: "top-center",
       });
+      setConfetti(true);
+
+      setTimeout(() => {
+        setConfetti(false);
+      }, 5000);
+    } catch (error) {
+      toast.error("Ops! Ocorreu um erro ao enviar a mensagem.", {
+        position: "top-center",
+      });
+    } finally {
+      reset();
+      onClose();
+    }
   };
   return (
     <>
@@ -68,7 +70,9 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
                 required
                 placeholder="Escreva sua ideia, crítica, sugestão... O que você quiser!"
               />
-              <button type="submit">Enviar</button>
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Enviando..." : "Enviar"}
+              </button>
             </form>
           </Content>
         </Container>

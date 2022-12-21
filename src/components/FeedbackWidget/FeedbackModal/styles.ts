@@ -76,6 +76,11 @@ export const Content = styled.div`
       &:hover {
         background-color: ${({ theme }) => theme.colors.secondary};
       }
+
+      &:disabled {
+        background-color: ${({ theme }) => theme.colors.onSecondary};
+        cursor: not-allowed;
+      }
     }
   }
 `;
