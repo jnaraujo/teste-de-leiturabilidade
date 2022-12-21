@@ -1,27 +1,12 @@
-/* eslint-disable react/no-danger */
-import { useEffect } from "react";
-
 import { DefaultSeo } from "next-seo";
 
-// COMPONENTS
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { MainContainer, MainContent } from "../styles/pages/Home";
-import { useToast } from "../hooks/useToast";
 import Editor from "../layouts/Editor";
 
+import { MainContainer, MainContent } from "../styles/pages/Home";
+
 const Home = () => {
-  const toast = useToast({
-    saveCookie: "savingMessage",
-  });
-
-  useEffect(() => {
-    toast.showToast(
-      "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
-      "info"
-    );
-  }, []);
-
   return (
     <>
       <DefaultSeo

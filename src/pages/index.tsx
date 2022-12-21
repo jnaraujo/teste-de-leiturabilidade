@@ -18,20 +18,7 @@ import Navbar from "../components/Navbar";
 import Editor from "../layouts/Editor";
 import HowItWorks from "../layouts/HowItWorks";
 
-import { useToast } from "../hooks/useToast";
-
 const Home = () => {
-  const toast = useToast({
-    saveCookie: "savingMessage",
-  });
-
-  useEffect(() => {
-    toast.showToast(
-      "Ei! Sabia que seu texto é automaticamente salvo no seu navegador?",
-      "info"
-    );
-  }, []);
-
   return (
     <>
       <DefaultSeo
