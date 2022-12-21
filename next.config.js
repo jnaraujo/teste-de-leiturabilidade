@@ -9,6 +9,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  reactStrictMode: true,
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       // eslint-disable-next-line no-param-reassign
@@ -32,7 +33,6 @@ const nextConfig = {
     optimizeCss: true,
   },
   compress: false,
-  reactStrictMode: true,
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
