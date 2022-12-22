@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
 export const Widget = styled.div`
+  --width: 56px;
+
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+
+  width: var(--width);
+  height: var(--width);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,17 +17,8 @@ export const Widget = styled.div`
 
   cursor: pointer;
 
-  --width: 56px;
-
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  width: var(--width);
-  height: var(--width);
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.primary};
-
-  transition: background-color 0.2s;
+  background-color: ${({ theme }) => theme.colors.secondary};
 
   svg {
     width: calc(var(--width) * 0.5);
@@ -28,16 +28,16 @@ export const Widget = styled.div`
     transition: scale ease-in-out 0.2s;
   }
 
+  &:hover {
+    scale: 1.05;
+    svg {
+      scale: 0.9;
+    }
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     bottom: 8px;
     right: 8px;
     --width: 48px;
-  }
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
-    svg {
-      scale: 0.9;
-    }
   }
 `;
