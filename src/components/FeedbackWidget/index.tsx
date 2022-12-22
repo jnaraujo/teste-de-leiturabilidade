@@ -10,17 +10,13 @@ const FeedbackWidget: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleModal = () => {
-    setOpenModal(false);
-  };
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
+    setOpenModal((prev) => !prev);
   };
 
   return (
     <>
       <Tooltip title="Deixe seu Feedback!" placement="top">
-        <Widget onClick={handleOpenModal}>
+        <Widget onClick={handleModal}>
           <MdFeedback />
         </Widget>
       </Tooltip>

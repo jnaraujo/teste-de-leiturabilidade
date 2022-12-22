@@ -5,7 +5,14 @@ import { useForm } from "react-hook-form";
 import { useWindowSize } from "react-use";
 import { toast } from "react-hot-toast";
 
-import { Container, ModalWrap, Header, Content } from "./styles";
+import {
+  Container,
+  ModalWrap,
+  Header,
+  Content,
+  ConfettiContainer,
+} from "./styles";
+import { sendFeedback } from "./helper";
 
 type Props = {
   open: boolean;
@@ -20,21 +27,13 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
 
   const onSubmit = async (data: any) => {
     try {
-      await fetch(
-        `https://submit-form.com/${process.env.NEXT_PUBLIC_FORMSPARK}`,
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
+      await sendFeedback(data);
+
       toast("Mensagem enviada!", {
         icon: "🎉",
         position: "top-center",
       });
+
       setConfetti(true);
 
       setTimeout(() => {
@@ -77,25 +76,16 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
           </Content>
         </Container>
       </ModalWrap>
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-        }}
-      >
-        {confetti && (
+      {confetti && (
+        <ConfettiContainer>
           <Confetti
             width={width}
             height={height}
             numberOfPieces={200}
             recycle={false}
           />
-        )}
-      </div>
+        </ConfettiContainer>
+      )}
     </>
   );
 };
