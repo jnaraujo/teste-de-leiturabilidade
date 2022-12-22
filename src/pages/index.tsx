@@ -1,6 +1,3 @@
-/* eslint-disable react/no-danger */
-import { useEffect } from "react";
-
 import { DefaultSeo } from "next-seo";
 import { Grid } from "@mui/material";
 
