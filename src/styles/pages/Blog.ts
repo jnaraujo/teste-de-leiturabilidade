@@ -27,6 +27,18 @@ export const Container = styled.article`
 
   margin: 32px;
 
+  @media (min-width: 768px) {
+    max-width: 750px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 800px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 900px;
+  }
+
   .share {
     display: flex;
     flex-direction: column;
@@ -44,21 +56,14 @@ export const Container = styled.article`
 
   .information {
     margin: 16px 0;
-
-    /* padding-bottom: 16px; */
     p {
       margin: 0;
-
       letter-spacing: 2px;
       font-size: 1rem;
       font-weight: 500;
       color: ${(props) => props.theme.colors.onBackground};
       line-height: 150%;
     }
-  }
-
-  @media (min-width: 768px) {
-    max-width: 900px;
   }
 
   h1 {

@@ -76,6 +76,7 @@ const BlogPage = ({
       router.push("/blog");
     }
   }, []);
+
   return (
     <>
       <Head>
