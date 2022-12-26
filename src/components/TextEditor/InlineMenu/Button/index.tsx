@@ -14,18 +14,18 @@ const Button = ({
 
   onClick: () => void;
 }) => (
-  <button
-    key={name}
-    onMouseDown={() => {
-      onClick();
-    }}
-    className="editButton"
-    type="button"
-  >
-    <Tooltip title={tooltip} placement="top">
+  <Tooltip title={tooltip} placement="top">
+    <button
+      key={name}
+      onMouseDown={() => {
+        onClick();
+      }}
+      className="editButton"
+      type="button"
+    >
       {icon ? <div>{icon}</div> : <p>{name}</p>}
-    </Tooltip>
-  </button>
+    </button>
+  </Tooltip>
 );
 
 export default Button;
