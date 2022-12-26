@@ -8,6 +8,7 @@ import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
 import { UpdateThemeProvider } from "../context/UpdateThemeContext";
 import LinearProgress from "../components/LinearProgress";
 import FeedbackWidget from "@/components/FeedbackWidget";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 import "react-responsive-modal/styles.css";
 
@@ -18,11 +19,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       setLoading(false);
-
-      if (typeof window !== "undefined") {
-        (window as any).galite("set", "page", url);
-        (window as any).galite("send", "pageview");
-      }
     };
     function handleRouteChangeStart() {
       setLoading(true);
@@ -43,6 +39,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <UpdateThemeProvider>
         <ThemeProviderWrapper>
           <ModalProvider>
+            <GoogleAnalytics
+              trackPageViews
+              strategy="afterInteractive"
+              gaMeasurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}
+            />
             <Component {...pageProps} />
             <FeedbackWidget />
             <Toaster

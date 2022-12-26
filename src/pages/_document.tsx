@@ -1,9 +1,5 @@
-/* eslint-disable react/no-danger */
-/* eslint-disable no-undef */
-/* eslint-disable react/react-in-jsx-scope */
 import { ServerStyleSheet } from "styled-components";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-// import { renderStaticOptimized } from '@emotion/server'
 
 export default class MyDocument extends Document {
   render() {
@@ -27,18 +23,6 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function(e,t,n,i,s,a,c){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)}
-              ;a=t.createElement(i);c=t.getElementsByTagName(i)[0];a.async=true;a.src=s
-              ;c.parentNode.insertBefore(a,c)
-              })(window,document,"galite","script","https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js");
-              
-              galite('create', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', 'auto');
-              galite('send', 'pageview');
-            `,
-            }}
-          />
           <meta name="theme-color" content="#317EFB" />
         </Head>
         <body>
