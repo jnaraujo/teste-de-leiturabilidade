@@ -10,7 +10,6 @@ import Italic from "@tiptap/extension-italic";
 import Document from "@tiptap/extension-document";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
-import BubbleMenu from "@tiptap/extension-bubble-menu";
 import Placeholder from "@tiptap/extension-placeholder";
 import History from "@tiptap/extension-history";
 
@@ -37,7 +36,6 @@ export const EditorExtensions = [
   Placeholder.configure({
     placeholder: "Digite aqui seu texto...",
   }),
-  BubbleMenu.configure({}),
   TextAlign.configure({
     types: ["heading", "paragraph"],
   }),

@@ -1,6 +1,5 @@
 import { Editor, BubbleMenu } from "@tiptap/react";
 import Button from "./Button";
-
 import { ComponentDiv } from "./styles";
 import { InTextEditorItems } from "./helper";
 
