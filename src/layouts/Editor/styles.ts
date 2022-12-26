@@ -9,6 +9,10 @@ export const Container = styled(Grid)`
 export const Content = styled(Grid)`
   margin: 0 auto;
 
+  aside {
+    all: unset;
+  }
+
   &.left {
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       padding-right: 32px;

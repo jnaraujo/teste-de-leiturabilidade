@@ -36,7 +36,9 @@ const Editor: React.FC = () => {
         </Content>
 
         <Content item xs={11} sm={8} md={10} lg={3}>
-          <ResultBox onImportPage={handleImportClick} />
+          <aside>
+            <ResultBox onImportPage={handleImportClick} />
+          </aside>
         </Content>
       </Container>
 
