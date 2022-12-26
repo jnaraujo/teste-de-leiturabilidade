@@ -1,4 +1,4 @@
-import type { AppProps } from "next/app";
+import type { AppProps, NextWebVitalsMetric } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
@@ -8,9 +8,27 @@ import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
 import { UpdateThemeProvider } from "../context/UpdateThemeContext";
 import LinearProgress from "../components/LinearProgress";
 import FeedbackWidget from "@/components/FeedbackWidget";
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import { GoogleAnalytics, event } from "nextjs-google-analytics";
 
 import "react-responsive-modal/styles.css";
+
+export function reportWebVitals({
+  id,
+  name,
+  label,
+  value,
+}: NextWebVitalsMetric) {
+  event(
+    name,
+    {
+      category: label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
+      value: Math.round(name === "CLS" ? value * 1000 : value), // values must be integers
+      label: id, // id unique to current page load
+      nonInteraction: true, // avoids affecting bounce rate.
+    },
+    process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
+  );
+}
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
