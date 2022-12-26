@@ -22,7 +22,7 @@ const Button = ({
     className="editButton"
     type="button"
   >
-    <Tooltip title={tooltip}>
+    <Tooltip title={tooltip} placement="top">
       {icon ? <div>{icon}</div> : <p>{name}</p>}
     </Tooltip>
   </button>
