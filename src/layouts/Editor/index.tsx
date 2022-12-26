@@ -7,7 +7,6 @@ import useModal from "../../hooks/useModal";
 import dynamic from "next/dynamic";
 const TextEditor = dynamic(() => import("../../components/TextEditor"), {
   loading: () => <p>Carregando...</p>,
-  ssr: false,
 });
 
 const Editor: React.FC = () => {
