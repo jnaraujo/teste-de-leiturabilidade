@@ -1,4 +1,4 @@
-import "react-responsive-modal/styles.css";
+import type { AppProps, NextWebVitalsMetric } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
@@ -9,8 +9,9 @@ import { UpdateThemeProvider } from "../context/UpdateThemeContext";
 import LinearProgress from "../components/LinearProgress";
 import FeedbackWidget from "@/components/FeedbackWidget";
 
-// eslint-disable-next-line react/prop-types
-const MyApp = ({ Component, pageProps }: any) => {
+import "react-responsive-modal/styles.css";
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
