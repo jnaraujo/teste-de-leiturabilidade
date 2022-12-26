@@ -20,7 +20,7 @@ const Home = () => {
     <>
       <DefaultSeo
         title="Teste de Leiturabilidade - Faça seu texto ser entendido por todos"
-        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importe arquivos do Google Docs, Notion, etc e faça o teste de ;eiturabilidade."
+        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importe arquivos do Google Docs, Notion, etc e faça o teste de leiturabilidade."
         additionalLinkTags={[
           {
             rel: "icon",
