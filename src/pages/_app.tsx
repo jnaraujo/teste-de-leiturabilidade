@@ -19,9 +19,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     const handleRouteChange = (url: string) => {
       setLoading(false);
 
-      (window as any).gtag("config", process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
-        page_path: url,
-      });
+      if (typeof window !== "undefined") {
+        (window as any).galite("set", "page", url);
+        (window as any).galite("send", "pageview");
+      }
     };
     function handleRouteChangeStart() {
       setLoading(true);

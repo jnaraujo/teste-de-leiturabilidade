@@ -28,20 +28,15 @@ export default class MyDocument extends Document {
           />
 
           <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-          />
-          <script
-            type="text/javascript"
             dangerouslySetInnerHTML={{
-              __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-              page_path: window.location.pathname,
-            });
-          `,
+              __html: `(function(e,t,n,i,s,a,c){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)}
+              ;a=t.createElement(i);c=t.getElementsByTagName(i)[0];a.async=true;a.src=s
+              ;c.parentNode.insertBefore(a,c)
+              })(window,document,"galite","script","https://cdn.jsdelivr.net/npm/ga-lite@2/dist/ga-lite.min.js");
+              
+              galite('create', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', 'auto');
+              galite('send', 'pageview');
+            `,
             }}
           />
           <meta name="theme-color" content="#317EFB" />
