@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 
@@ -10,8 +10,11 @@ import InlineMenu from "./InlineMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 import Loading from "./Loading";
+import dynamic from "next/dynamic";
 
-const EditorContainer = lazy(() => import("./EditorContainer"));
+const EditorContainer = dynamic(() => import("./EditorContainer"), {
+  ssr: false,
+});
 
 type ComponentPropsType = {
   className?: string;
