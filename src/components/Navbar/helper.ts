@@ -9,10 +9,6 @@ export const LINKS: ILink[] = [
     url: "/blog",
   },
   {
-    title: "Editor",
-    url: "/editor",
-  },
-  {
     title: "Como funciona?",
     url: "/#como-funciona",
   },
