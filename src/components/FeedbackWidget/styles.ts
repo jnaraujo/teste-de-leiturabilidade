@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Widget = styled.div`
+export const Widget = styled.button`
+  all: unset;
   --width: 56px;
 
   position: fixed;
