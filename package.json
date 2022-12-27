@@ -19,7 +19,9 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@emotion/css": "^11.10.5",
     "@emotion/react": "^11.10.0",
+    "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mui/material": "^5.9.3",
     "@tiptap/core": "^2.0.0-beta.182",
