@@ -89,7 +89,7 @@ export const RdResult = styled(Grid)`
     .row {
       margin: 8px 0;
       display: flex;
-      flex-direction: col;
+      flex-direction: column;
       .col {
         width: 100%;
       }
