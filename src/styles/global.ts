@@ -1,22 +1,35 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-body,
+
 html {
-  padding: 0;
-  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   font-size: 18px;
   @media (max-width: 720px) {
     font-size: 16px;
   }
-
   line-height: 1.5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
   overflow-x: hidden;
   scroll-behavior: smooth;
+  position: relative;
 }
 
 h1,
