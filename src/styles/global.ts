@@ -1,22 +1,9 @@
-import { Inter, Merriweather } from "@next/font/google";
 import { createGlobalStyle } from "styled-components";
-
-const inter = Inter({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  fallback: ["sans-serif"],
-});
-
-const merriweather = Merriweather({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  fallback: ["serif"],
-});
 
 const GlobalStyles = createGlobalStyle`
 html {
-  --merriweather-font: ${merriweather.style.fontFamily};
-  --inter-font: ${inter.style.fontFamily};
+  --merriweather-font: "Merriweather", serif;
+  --inter-font: "Inter", sans-serif;
 
   box-sizing: border-box;
   scroll-behavior: smooth;

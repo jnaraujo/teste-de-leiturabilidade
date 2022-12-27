@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  font-weight: 400;
-
   line-height: 1.75;
 
   width: 100%;
@@ -115,10 +113,6 @@ export const Container = styled.div`
       margin: 0 !important;
       padding: 0 !important;
     }
-  }
-
-  strong {
-    font-weight: 700;
   }
 
   img,
