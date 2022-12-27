@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const Container = styled(Grid)`
   .texts {
-    font-family: "Inter", sans-serif;
     padding-top: 40px;
     padding-bottom: 30px;
     h2 {

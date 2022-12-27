@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  font-family: "Merriweather", serif;
+  font-family: var(--merriweather-font);
 
   font-weight: 400;
 
@@ -129,7 +129,6 @@ export const Container = styled.div`
     padding-right: 0;
     margin: 16px 0;
     border-left: 4px solid #495057;
-    font-weight: 500;
     line-height: 150%;
     font-size: 1rem;
   }

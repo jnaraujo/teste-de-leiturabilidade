@@ -17,11 +17,6 @@ export const Content = styled.article`
 `;
 
 export const RdResult = styled(Grid)`
-  font-family: "Inter", sans-serif;
-  // width: 90vw;
-
-  // padding: 10px 10px;
-
   p {
     margin: 0;
     padding: 0;

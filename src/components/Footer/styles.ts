@@ -2,7 +2,6 @@ import { Grid } from "@mui/material";
 import styled from "styled-components";
 
 export const Content = styled(Grid)`
-  font-family: "Inter", sans-serif;
   text-align: center;
   padding: 20px;
   font-size: 15px;

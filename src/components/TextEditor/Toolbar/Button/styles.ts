@@ -8,7 +8,6 @@ export const Button = styled.button<{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Inter";
   font-weight: 600;
 
   font-size: 18px;

@@ -5,8 +5,6 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  font-family: "Inter", sans-serif;
-
   background-color: ${({ theme }) => theme.colors.background};
   min-height: 100vh;
 `;

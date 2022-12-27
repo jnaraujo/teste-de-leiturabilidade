@@ -4,7 +4,6 @@ export const ModalDiv = styled.div`
   padding: 16px 8px;
   max-width: 500px;
   .message {
-    font-family: "Montserrat", sans-serif;
     color: ${({ theme }) => theme.colors.primary};
     h1 {
       margin-top: 16px;
@@ -38,7 +37,6 @@ export const ModalDiv = styled.div`
     margin: 16px 0;
   }
   .button {
-    font-family: "Montserrat", sans-serif;
     margin-top: 24px;
     display: flex;
     justify-content: space-between;

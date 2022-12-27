@@ -6,8 +6,6 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  font-family: "Inter", sans-serif;
-
   background-color: ${({ theme }) => theme.colors.background};
   min-height: 100vh;
 
@@ -35,8 +33,6 @@ export const MainContent = styled.div`
 `;
 
 export const TopBar = styled(Grid)`
-  font-family: "Inter", sans-serif;
-
   p {
     font-size: 16px;
     margin: 0;

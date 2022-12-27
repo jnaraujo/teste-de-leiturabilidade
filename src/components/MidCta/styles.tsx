@@ -11,8 +11,6 @@ export const Container = styled.section`
   * {
     margin: 0;
   }
-
-  font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: row;
   align-items: left;

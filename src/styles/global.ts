@@ -4,8 +4,8 @@ const GlobalStyles = createGlobalStyle`
 
 html {
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
+  scroll-behavior: smooth;
+  
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,8 +28,10 @@ html {
 
 body {
   overflow-x: hidden;
-  scroll-behavior: smooth;
   position: relative;
+
+  font-family: var(--inter-font);
+  font-weight: 500;
 }
 
 h1,
