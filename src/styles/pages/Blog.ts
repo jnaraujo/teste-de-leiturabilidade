@@ -23,10 +23,11 @@ export const Container = styled.article`
   width: 100%;
   max-width: 90vw;
 
-  margin: 32px;
+  margin: 0;
 
   @media (min-width: 768px) {
     max-width: 750px;
+    margin: 32px;
   }
 
   @media (min-width: 1280px) {
