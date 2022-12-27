@@ -45,7 +45,6 @@ export const Toolbar = styled.div`
 
     .group {
       gap: 12px;
-      height: 20px;
       padding: 8px 24px;
     }
   }
