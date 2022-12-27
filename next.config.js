@@ -40,12 +40,6 @@ const nextConfig = {
     return config;
   },
   pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
-  compiler: {
-    styledComponents: {
-      ssr: true,
-    },
-    emotion: true,
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
