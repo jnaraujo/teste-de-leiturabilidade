@@ -33,7 +33,7 @@ body {
   position: relative;
 
   font-family: var(--inter-font) !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
 }
 
 h1,
