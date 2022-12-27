@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import styled from "styled-components";
 
-export const Content = styled.div`
+export const Content = styled.article`
   margin: 1rem 0;
 
   .editor_config {
@@ -31,7 +31,7 @@ export const RdResult = styled(Grid)`
     }
   }
 
-  h4 {
+  h2 {
     font-size: 1.1rem;
     margin: 0;
     margin-bottom: 4px;
@@ -119,7 +119,7 @@ export const RdResult = styled(Grid)`
     border: 2px dashed ${({ theme }) => theme.colors.onBackground};
     border-radius: 10px;
     padding: 10px;
-    h3 {
+    h2 {
       font-size: 18px;
       font-weight: 700;
       padding: 0;

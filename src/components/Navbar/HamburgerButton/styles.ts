@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const Button = styled.button`
   all: unset;
   display: none;
   font-size: 1.6rem;
