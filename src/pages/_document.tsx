@@ -2,6 +2,7 @@ import { ServerStyleSheet } from "styled-components";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import createEmotionCache from "@/libs/createEmotionCache";
+import Script from "next/script";
 
 export default class MyDocument extends Document {
   render() {
@@ -9,7 +10,7 @@ export default class MyDocument extends Document {
       <Html lang="pt-BR">
         <Head>
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-
+          <meta name="theme-color" content="#317EFB" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
@@ -21,13 +22,18 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <script
-            defer
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon={`{"token": "${process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN}"}`}
-          ></script>
-
-          <meta name="theme-color" content="#317EFB" />
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+            `}
+          </Script>
         </Head>
         <body>
           <Main />
