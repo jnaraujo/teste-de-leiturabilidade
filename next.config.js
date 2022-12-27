@@ -31,7 +31,6 @@ const nextConfig = {
         "@emotion/weak-memoize",
         "prosemirror-state",
         "react-is",
-        "@emotion/cache",
       ];
 
       moduleList.forEach((moduleName) => {
@@ -43,6 +42,10 @@ const nextConfig = {
   pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  experimental: {
+    optimizeCss: true,
+    legacyBrowsers: false,
   },
   compress: false,
 };
