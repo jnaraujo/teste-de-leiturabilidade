@@ -5,8 +5,6 @@ body,
 html {
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
 
   font-size: 18px;
   @media (max-width: 720px) {
@@ -14,6 +12,11 @@ html {
   }
 
   line-height: 1.5;
+}
+
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 h1,
