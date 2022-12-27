@@ -73,7 +73,7 @@ export const Container = styled.div`
     resize: none;
     border: none;
 
-    padding: 0 8px;
+    padding: 8px;
 
     color: ${(props) => props.theme.colors.onBackground};
 
