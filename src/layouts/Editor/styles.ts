@@ -14,9 +14,7 @@ export const Content = styled(Grid)`
   }
 
   &.left {
-    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-      padding-right: 32px;
-    }
+    margin: 0;
   }
 
   .textarea {

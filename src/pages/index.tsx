@@ -42,11 +42,12 @@ const Home = () => {
           >
             <TopBar
               item
-              xs={11}
-              md={8}
-              mx={{
-                xs: "auto",
-                md: 4,
+              xs={12}
+              md={10}
+              lg={8}
+              pl={{
+                xs: 1,
+                md: 0,
               }}
             >
               <p>
