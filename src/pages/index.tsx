@@ -24,7 +24,7 @@ const Home = () => {
         additionalLinkTags={[
           {
             rel: "icon",
-            href: "/images/minified/favicon.webp",
+            href: "/favicon.ico",
           },
         ]}
       />
