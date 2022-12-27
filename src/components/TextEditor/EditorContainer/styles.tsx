@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  font-family: var(--merriweather-font);
-
   font-weight: 400;
 
   line-height: 1.75;
@@ -21,6 +19,7 @@ export const Container = styled.div`
   h5,
   h6 {
     line-height: 175%;
+    font-weight: 700;
   }
 
   h1 {
@@ -64,6 +63,8 @@ export const Container = styled.div`
   }
 
   .editor {
+    font-family: var(--merriweather-font);
+
     height: 100%;
     background-color: transparent;
     overflow: hidden;
@@ -114,6 +115,10 @@ export const Container = styled.div`
       margin: 0 !important;
       padding: 0 !important;
     }
+  }
+
+  strong {
+    font-weight: 700;
   }
 
   img,
