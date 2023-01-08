@@ -1,4 +1,4 @@
-import type { AppProps } from "next/app";
+import type { AppProps, NextWebVitalsMetric } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
@@ -12,9 +12,22 @@ import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
 import LinearProgress from "../components/LinearProgress";
 import FeedbackWidget from "@/components/FeedbackWidget";
 
+import * as gtag from "@/libs/gtag";
+
 import "react-responsive-modal/styles.css";
 
 const clientSideEmotionCache = createEmotionCache();
+
+export const reportWebVitals = (metric: NextWebVitalsMetric) => {
+  if (metric.label === "web-vital") {
+    gtag.event({
+      action: metric.name,
+      category: "Web Vitals",
+      label: metric.id,
+      value: String(Math.round(metric.value)),
+    });
+  }
+};
 
 const MyApp = ({
   Component,
@@ -26,15 +39,7 @@ const MyApp = ({
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
-      if (typeof window !== "undefined") {
-        (window as any).gtag(
-          "config",
-          process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
-          {
-            page_path: url,
-          }
-        );
-      }
+      gtag.pageview(url);
       setLoading(false);
     };
     function handleRouteChangeStart() {
