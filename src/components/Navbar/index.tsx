@@ -4,7 +4,7 @@
 import { useState } from "react";
 
 import HamburgerButton from "./HamburgerButton";
-import { Navbar } from "./styles";
+import { Container } from "./styles";
 import { Title } from "./TitleComponent";
 import { Nav } from "./NavComponent";
 
@@ -16,11 +16,11 @@ const NavbarComponent = () => {
   };
 
   return (
-    <Navbar as="header" className={isOpen ? "open" : "closed"}>
+    <Container className={isOpen ? "open" : "closed"}>
       <Title />
       <HamburgerButton onClick={handleClick} />
       <Nav onClose={handleClick} isOpen={isOpen} />
-    </Navbar>
+    </Container>
   );
 };
 export default NavbarComponent;
