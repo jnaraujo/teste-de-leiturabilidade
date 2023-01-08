@@ -13,11 +13,17 @@ const EditorContainer: React.FC<EditorContainerProps> = ({
   className,
 }) => {
   const { config } = useConfigStore();
+  const [isHighlight, setIsHighlight] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsHighlight(config.highlight);
+  }, [config.highlight]);
+
   return (
     <Container
       className={cx({
         [String(className)]: className,
-        highlight: config.highlight,
+        highlight: isHighlight,
       })}
     >
       {children}

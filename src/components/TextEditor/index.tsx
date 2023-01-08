@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 
@@ -9,8 +9,7 @@ import Toolbar from "./Toolbar";
 import InlineMenu from "./InlineMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
-import Loading from "./Loading";
-const EditorContainer = lazy(() => import("./EditorContainer"));
+import EditorContainer from "./EditorContainer";
 
 type ComponentPropsType = {
   className?: string;
@@ -52,14 +51,12 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
   }, [html]);
 
   return (
-    <Suspense fallback={<Loading />}>
-      <EditorContainer className={className ? className : ""}>
-        <Toolbar editor={editor as any} />
-        <EditorContent ref={editorRef} className="editor" editor={editor} />
+    <EditorContainer className={className ? className : ""}>
+      <Toolbar editor={editor as any} />
+      <EditorContent ref={editorRef} className="editor" editor={editor} />
 
-        <InlineMenu isVisibile={width > 720} editor={editor} />
-      </EditorContainer>
-    </Suspense>
+      <InlineMenu isVisibile={width > 720} editor={editor} />
+    </EditorContainer>
   );
 };
 
