@@ -63,6 +63,13 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
           <Content>
             <form onSubmit={handleSubmit(onSubmit)} method="post">
               <h1>Deixe seu Feedback</h1>
+              <input
+                id="name"
+                {...register("name")}
+                type="text"
+                required
+                placeholder="Seu nome"
+              />
               <textarea
                 id="text"
                 {...register("message")}
