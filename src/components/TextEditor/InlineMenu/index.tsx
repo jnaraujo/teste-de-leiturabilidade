@@ -1,19 +1,32 @@
-import { Editor, BubbleMenu } from "@tiptap/react";
+import { BubbleMenu, Editor } from "@tiptap/react";
 import Button from "./Button";
 import { ComponentDiv } from "./styles";
 import { InTextEditorItems } from "./helper";
+import cx from "classnames";
 
 interface Props {
   editor: Editor | null;
-  isVisibile: boolean;
+  isActive: boolean;
 }
 
-const InlineMenu = ({ editor, isVisibile }: Props) => {
+const InlineMenu = ({ editor, isActive }: Props) => {
   if (!editor) return null;
 
   return (
-    <BubbleMenu editor={editor}>
-      <ComponentDiv className={isVisibile ? "visible" : ""}>
+    <BubbleMenu
+      updateDelay={250}
+      tippyOptions={{
+        duration: 100,
+        delay: 250,
+        offset: [0, 15],
+      }}
+      editor={editor}
+    >
+      <ComponentDiv
+        className={cx("bubble-menu-container", {
+          visible: isActive,
+        })}
+      >
         <ul>
           {InTextEditorItems(editor).map((item) => (
             <li key={item.tooltip}>

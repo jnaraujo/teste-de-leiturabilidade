@@ -22,6 +22,9 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
   const { width } = useWindowSize();
 
   const editorRef = useRef(null);
+  const isMouseDown = useRef(false);
+
+  const isInlineMenuActive = width > 720;
 
   const editor = useEditor({
     extensions: EditorExtensions,
@@ -55,7 +58,7 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
       <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className="editor" editor={editor} />
 
-      <InlineMenu isVisibile={width > 720} editor={editor} />
+      <InlineMenu isActive={isInlineMenuActive} editor={editor} />
     </EditorContainer>
   );
 };
