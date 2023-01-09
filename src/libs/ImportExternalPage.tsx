@@ -60,9 +60,9 @@ export default async function handleImport(url: string): Promise<string> {
     let rawHTML = "";
 
     if (notionUrls.some((notion) => url.includes(notion))) {
-      rawHTML = await (await importNotionPageByUrl(url)).unSanitazedHtml;
+      rawHTML = (await importNotionPageByUrl(url)).unSanitazedHtml;
     } else if (googleDocsUrls.some((googleDocs) => url.includes(googleDocs))) {
-      rawHTML = await (await importGoogleDocsPage(url)).unSanitazedHtml;
+      rawHTML = (await importGoogleDocsPage(url)).unSanitazedHtml;
     } else {
       throw new Error("O link não é válido.");
     }

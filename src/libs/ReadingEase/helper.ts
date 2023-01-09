@@ -16,15 +16,14 @@ export function getSentences(text: string) {
   return String(text)
     .replace(/\n/g, ".")
     .replace(/\r/g, "")
-    .split(/\.|\?|!/)
+    .split(/[.!?]/)
     .filter((word) => word !== "." && word !== "");
 }
 
 export function countSyllables(words: string[]) {
   let totalSyllables = 0;
 
-  for (let i = 0; i < words.length; i += 1) {
-    const word = words[i];
+  for (let word of words) {
     totalSyllables += (silabaJS.getSilabas(word) as any).numeroSilaba;
   }
 
