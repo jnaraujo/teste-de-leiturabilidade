@@ -14,11 +14,10 @@ const InlineMenu = ({ editor, isActive }: Props) => {
 
   return (
     <BubbleMenu
-      updateDelay={250}
       tippyOptions={{
         duration: 100,
         delay: 250,
-        offset: [0, 15],
+        offset: [0, 25],
       }}
       editor={editor}
     >
