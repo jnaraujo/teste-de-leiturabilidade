@@ -12,7 +12,7 @@ type EventProps = {
   action: string;
   category: string;
   label: string;
-  value: string;
+  value: number;
 };
 export const event = ({ action, category, label, value }: EventProps) => {
   if (typeof window === "undefined") return;

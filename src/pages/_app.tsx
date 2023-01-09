@@ -18,17 +18,6 @@ import "react-responsive-modal/styles.css";
 
 const clientSideEmotionCache = createEmotionCache();
 
-export const reportWebVitals = (metric: NextWebVitalsMetric) => {
-  if (metric.label === "web-vital") {
-    gtag.event({
-      action: metric.name,
-      category: "Web Vitals",
-      label: metric.id,
-      value: String(Math.round(metric.value)),
-    });
-  }
-};
-
 const MyApp = ({
   Component,
   pageProps,
@@ -83,5 +72,20 @@ const MyApp = ({
     </>
   );
 };
-
 export default MyApp;
+
+export const reportWebVitals = ({
+  label,
+  name,
+  value,
+  id,
+}: NextWebVitalsMetric) => {
+  if (label === "web-vital") {
+    gtag.event({
+      action: name,
+      category: "Web Vitals",
+      label: id,
+      value: Math.round(name === "CLS" ? value * 1000 : value),
+    });
+  }
+};
