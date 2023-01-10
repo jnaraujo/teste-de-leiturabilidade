@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ComponentDiv = styled.div`
+export const Content = styled.div`
   position: relative;
   --vWidth: 300px;
   --vHeight: 30px;

@@ -13,7 +13,7 @@ interface ToolbarItem {
   onClick: () => void;
 }
 
-export const InTextEditorItems = (editor: Editor) => {
+export const getMenuItems = (editor: Editor) => {
   const items: ToolbarItem[] = [
     {
       tooltip: "Itálico",

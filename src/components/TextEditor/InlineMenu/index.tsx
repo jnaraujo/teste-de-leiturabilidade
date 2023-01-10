@@ -1,7 +1,7 @@
 import { BubbleMenu, Editor } from "@tiptap/react";
 import Button from "./Button";
-import { ComponentDiv } from "./styles";
-import { InTextEditorItems } from "./helper";
+import { Content } from "./styles";
+import { getMenuItems } from "./helper";
 import cx from "classnames";
 
 interface Props {
@@ -21,13 +21,13 @@ const InlineMenu = ({ editor, isActive }: Props) => {
       }}
       editor={editor}
     >
-      <ComponentDiv
+      <Content
         className={cx("bubble-menu-container", {
           visible: isActive,
         })}
       >
         <ul>
-          {InTextEditorItems(editor).map((item) => (
+          {getMenuItems(editor).map((item) => (
             <li key={item.tooltip}>
               <Button
                 onClick={item.onClick}
@@ -38,7 +38,7 @@ const InlineMenu = ({ editor, isActive }: Props) => {
             </li>
           ))}
         </ul>
-      </ComponentDiv>
+      </Content>
     </BubbleMenu>
   );
 };
