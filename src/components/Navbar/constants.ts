@@ -3,13 +3,13 @@ type ILink = {
   url: string;
 };
 
-export const LINKS: ILink[] = [
+export const NAVBAR_LINKS: ILink[] = [
   {
     title: "Blog",
-    url: "/blog",
+    url: "blog",
   },
   {
     title: "Como funciona?",
-    url: "/#como-funciona",
+    url: "#como-funciona",
   },
 ];
