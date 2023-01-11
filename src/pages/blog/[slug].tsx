@@ -15,7 +15,7 @@ import {
   BlogText,
 } from "../../styles/pages/Blog";
 
-import MidCta from "../../components/MidCta";
+import { BannerCTA } from "../../components/BannerCTA";
 import { BlogService } from "../../services/BlogService";
 
 const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
@@ -116,7 +116,7 @@ const BlogPage = ({
               </p>
             </div>
             <BlogText dangerouslySetInnerHTML={{ __html: body }} />
-            <MidCta />
+            <BannerCTA />
           </Container>
         </MainContent>
       </MainContainer>

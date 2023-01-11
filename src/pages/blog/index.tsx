@@ -5,7 +5,7 @@ import Head from "next/head";
 
 import { MainContainer, Container, MainContent } from "../../styles/pages/Blog";
 
-import MidCta from "../../components/MidCta";
+import { BannerCTA } from "../../components/BannerCTA";
 import Navbar from "../../components/Navbar";
 import { BlogService, IBlogPost } from "../../services/BlogService";
 
@@ -52,7 +52,7 @@ const BlogPage = ({ posts }: IProps) => (
               </div>
             ))}
           </div>
-          <MidCta />
+          <BannerCTA />
         </Container>
       </MainContent>
     </MainContainer>
