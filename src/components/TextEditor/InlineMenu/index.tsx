@@ -19,6 +19,7 @@ const InlineMenu = ({ editor, isActive }: Props) => {
         delay: 250,
         offset: [0, 25],
       }}
+      updateDelay={0}
       editor={editor}
     >
       <Content
