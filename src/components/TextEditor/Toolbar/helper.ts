@@ -75,28 +75,6 @@ export const TextTagsItems = (editor: Editor) => {
   return items;
 };
 
-export const ListFormattingItems = (editor: Editor) => {
-  const items: ToolbarItem[] = [
-    {
-      onClick: () => editor.chain().focus().toggleBulletList().run(),
-      tooltip: "Lista com Marcadores",
-      icon: MdFormatListBulleted,
-      isActive: {
-        name: "bulletList",
-      },
-    },
-    {
-      onClick: () => editor.chain().focus().toggleOrderedList().run(),
-      tooltip: "Lista Numerada",
-      icon: MdOutlineFormatListNumbered,
-      isActive: {
-        name: "orderedList",
-      },
-    },
-  ];
-  return items;
-};
-
 export const TextFormattingItems = (editor: Editor) => {
   const items: ToolbarItem[] = [
     {
@@ -182,3 +160,10 @@ export const isActive = (editor: Editor, name?: string, attributes?: any) => {
 
   return editor?.isActive(name, attributes);
 };
+
+export const ToolbarGroups = [
+  TextTagsItems,
+  TextFormattingItems,
+  TextAlignItems,
+  EditingControlItems,
+];
