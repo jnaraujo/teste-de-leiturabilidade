@@ -152,13 +152,15 @@ export const EditingControlItems = (editor: Editor) => {
 };
 
 export const isActive = (editor: Editor, name?: string, attributes?: any) => {
-  if (!name && !attributes && !editor) return false;
-
-  if (!name) {
-    return editor?.isActive(attributes);
+  if (!name && !attributes && !editor) {
+    return false;
   }
 
-  return editor?.isActive(name, attributes);
+  if (name) {
+    return editor?.isActive(name, attributes);
+  }
+
+  return editor?.isActive(attributes);
 };
 
 export const ToolbarGroups = [
