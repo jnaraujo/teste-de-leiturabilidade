@@ -125,22 +125,10 @@ export const Container = styled(Grid)`
       font-size: 16px;
     }
     input {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background-color: transparent;
-      outline: none;
-      border: 1px solid ${({ theme }) => theme.colors.primary};
-      border-radius: 8px;
-      padding-left: 4px;
-      width: calc(100% - 4px);
-      height: 30px;
-      margin-top: 8px;
+      margin: 8px 0;
     }
     button {
       width: 100%;
-
-      margin-top: 8px;
 
       font-weight: 600;
       font-size: 15px;

@@ -9,6 +9,7 @@ import { useConfigStore } from "@/store/configStore";
 import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
 import { Content, Container } from "./styles";
+import Input from "../Input";
 
 interface ResultBoxProps {
   onImportPage?: (value: string) => void;
@@ -109,10 +110,11 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
       </Content>
       <Content className="importExternalPage">
         <h2>Deseja importar o conteúdo de uma página externa?</h2>
-        <input
+        <Input
           type="url"
           ref={externalPageUrlRef}
           aria-label="Insira o link da página que deseja importar"
+          placeholder="Insira o link da página que deseja importar"
         />
         <button onClick={handleImportClick} type="submit">
           Importar página
