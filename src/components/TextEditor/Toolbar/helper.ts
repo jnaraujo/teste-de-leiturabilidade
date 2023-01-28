@@ -167,5 +167,4 @@ export const ToolbarGroups = [
   TextTagsItems,
   TextFormattingItems,
   TextAlignItems,
-  EditingControlItems,
 ];

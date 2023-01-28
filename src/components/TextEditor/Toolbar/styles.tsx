@@ -22,7 +22,7 @@ export const Toolbar = styled.div`
     height: 30px;
 
     padding: 0 16px;
-    gap: 8px;
+    gap: 16px;
 
     &:not(:first-child) {
       border-left: 1px solid ${(props) => props.theme.colors.onBackground};
