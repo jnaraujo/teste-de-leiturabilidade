@@ -127,35 +127,6 @@ export const Container = styled(Grid)`
     input {
       margin: 8px 0;
     }
-    button {
-      width: 100%;
-
-      font-weight: 600;
-      font-size: 15px;
-      cursor: pointer;
-      padding: 10px 10px;
-
-      height: 40px;
-      border-radius: 5px;
-
-      color: ${({ theme }) => theme.colors.background};
-
-      border: none;
-
-      transition: background 0.3s ease-in-out;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background-color: ${({ theme }) => theme.colors.primary};
-
-      &:hover {
-        color: ${({ theme }) => theme.colors.primary};
-        background-color: ${({ theme }) => theme.colors.onPrimary};
-        border: 2px solid ${({ theme }) => theme.colors.primary};
-      }
-    }
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     position: relative;

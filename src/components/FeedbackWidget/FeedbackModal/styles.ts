@@ -57,32 +57,6 @@ export const Content = styled.div`
       resize: none;
       border: 1px solid ${({ theme }) => theme.colors.onBackground};
     }
-
-    button {
-      cursor: pointer;
-
-      width: 100%;
-      height: 40px;
-      border-radius: 8px;
-
-      background-color: ${({ theme }) => theme.colors.primary};
-      color: ${({ theme }) => theme.colors.onPrimary};
-      font-weight: 500;
-      font-size: 1rem;
-
-      border: none;
-
-      transition: background-color 0.2s;
-
-      &:hover {
-        background-color: ${({ theme }) => theme.colors.secondary};
-      }
-
-      &:disabled {
-        background-color: ${({ theme }) => theme.colors.onSecondary};
-        cursor: not-allowed;
-      }
-    }
   }
 `;
 

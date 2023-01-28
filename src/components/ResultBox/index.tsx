@@ -10,6 +10,7 @@ import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
 import { Content, Container } from "./styles";
 import Input from "../Input";
+import Button from "../Button";
 
 interface ResultBoxProps {
   onImportPage?: (value: string) => void;
@@ -116,9 +117,12 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
           aria-label="Insira o link da página que deseja importar"
           placeholder="Insira o link da página que deseja importar"
         />
-        <button onClick={handleImportClick} type="submit">
+        <Button
+          onClick={handleImportClick}
+          type="submit"
+        >
           Importar página
-        </button>
+        </Button>
         <p>* Serviços suportados: Notion, Google Docs</p>
       </Content>
     </Container>

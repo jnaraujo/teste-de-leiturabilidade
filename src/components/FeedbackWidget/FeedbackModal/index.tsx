@@ -14,6 +14,7 @@ import {
 } from "./styles";
 import { sendFeedback } from "./helper";
 import Input from "@/components/Input";
+import Button from "@/components/Button";
 
 type Props = {
   open: boolean;
@@ -77,9 +78,9 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
                 required
                 placeholder="Escreva sua ideia, crítica, sugestão... O que você quiser!"
               />
-              <button type="submit" disabled={isSubmitting}>
+              <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Enviando..." : "Enviar"}
-              </button>
+              </Button>
             </form>
           </Content>
         </Container>
