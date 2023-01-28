@@ -49,23 +49,12 @@ export const Content = styled.div`
       margin-bottom: 8px;
     }
 
-    input[type="text"] {
-      height: 35px;
-      border-radius: 8px;
-      padding: 8px;
-      margin-bottom: 8px;
-    }
-
     textarea {
       height: 100px;
       border-radius: 8px;
       padding: 8px;
       margin-bottom: 8px;
       resize: none;
-    }
-
-    input[type="text"],
-    textarea {
       border: 1px solid ${({ theme }) => theme.colors.onBackground};
     }
 

@@ -13,6 +13,7 @@ import {
   ConfettiContainer,
 } from "./styles";
 import { sendFeedback } from "./helper";
+import Input from "@/components/Input";
 
 type Props = {
   open: boolean;
@@ -63,7 +64,7 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
           <Content>
             <form onSubmit={handleSubmit(onSubmit)} method="post">
               <h1>Deixe seu Feedback</h1>
-              <input
+              <Input
                 id="name"
                 {...register("name")}
                 type="text"
