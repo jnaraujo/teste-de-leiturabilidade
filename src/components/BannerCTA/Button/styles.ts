@@ -5,31 +5,28 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  a {
-    all: unset;
-    text-align: center;
-    width: 100%;
-  }
-
-  max-width: 300px;
+  max-width: 450px;
   margin: 0;
-
-  cursor: pointer;
-  background: #06d6a0;
-
   padding: 2px 24px;
-  min-height: 35px;
-
+  min-height: 40px;
   border-radius: 4px;
 
   font-size: 1rem;
   font-weight: 600;
 
+  cursor: pointer;
+  background: #06d6a0;
   color: #212529;
 
   transition: background 0.3s ease-in-out;
 
   &:hover {
     background: #05b586;
+  }
+
+  a {
+    all: unset;
+    text-align: center;
+    width: 100%;
   }
 `;
