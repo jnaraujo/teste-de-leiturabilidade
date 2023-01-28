@@ -8,7 +8,7 @@ import { useConfigStore } from "@/store/configStore";
 
 import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
-import { Content, RdResult } from "./styles";
+import { Content, Container } from "./styles";
 
 interface ResultBoxProps {
   onImportPage?: (value: string) => void;
@@ -44,7 +44,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
   }, [width, height, ease]);
 
   return (
-    <RdResult>
+    <Container>
       <p>
         Seu texto está no nível de leitura de{" "}
         <span id="rd_exmlp">{easeToLabel(ease.index)}.</span>
@@ -107,7 +107,6 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
           Número de frases: <strong>{ease.sentences}</strong>
         </p>
       </Content>
-      <br />
       <Content className="importExternalPage">
         <h2>Deseja importar o conteúdo de uma página externa?</h2>
         <input
@@ -120,7 +119,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
         </button>
         <p>* Serviços suportados: Notion, Google Docs</p>
       </Content>
-    </RdResult>
+    </Container>
   );
 };
 

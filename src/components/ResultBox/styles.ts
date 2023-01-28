@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import styled from "styled-components";
 
-export const Content = styled.article`
+export const Content = styled.div`
   margin: 1rem 0;
 
   .editor_config {
@@ -16,7 +16,7 @@ export const Content = styled.article`
   }
 `;
 
-export const RdResult = styled(Grid)`
+export const Container = styled(Grid)`
   p {
     margin: 0;
     padding: 0;
