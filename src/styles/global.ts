@@ -32,8 +32,8 @@ body {
   overflow-x: hidden;
   position: relative;
 
-  font-family: var(--inter-font) !important;
-  font-weight: 400 !important;
+  font-family: var(--inter-font);
+  font-weight: 400;
 }
 
 h1,

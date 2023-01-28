@@ -38,6 +38,10 @@ export const Content = styled.div`
     justify-content: center;
     gap: 4px;
 
+    *::placeholder {
+      font-family: "Inter", sans-serif;
+    }
+
     h1 {
       margin: 0;
       font-size: 1.5rem;
