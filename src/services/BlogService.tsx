@@ -2,7 +2,7 @@ import axios from "axios";
 import { NotionAPI } from "notion-client";
 import { NotionRenderer } from "react-notion";
 import { renderToString } from "react-dom/server";
-import { slugfy } from "./utils/slugfy";
+import { slugfy } from "../utils";
 
 export interface IBlogPost {
   notionId: string;
