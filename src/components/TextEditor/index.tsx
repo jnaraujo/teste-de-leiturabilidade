@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 
-import { getLocalStorage, setLocalStorage } from "@/libs/localstorage";
 import { useReadingStore } from "@/store/readingStore";
 
 import Toolbar from "./Toolbar";
@@ -10,6 +9,7 @@ import InlineMenu from "./InlineMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 import EditorContainer from "./EditorContainer";
+import { useContentStore } from "@/store/contentStore";
 
 type ComponentPropsType = {
   className?: string;
@@ -18,6 +18,8 @@ type ComponentPropsType = {
 
 const TextEditor = ({ html, className }: ComponentPropsType) => {
   const setEase = useReadingStore((state) => state.setEase);
+  const { content, setContent } = useContentStore();
+
   const { width } = useWindowSize();
   const editorRef = useRef(null);
 
@@ -28,15 +30,13 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
         state.editor.commands.setContent(html);
         return;
       }
-      if (getLocalStorage("text").text) {
-        state.editor.commands.setContent(getLocalStorage("text").text);
+      if (content) {
+        state.editor.commands.setContent(content);
       }
       handleContentEase(state.editor.getText(), setEase);
     },
     onUpdate: (state) => {
-      setLocalStorage("text", {
-        text: state.editor.getHTML(),
-      });
+      setContent(state.editor.getHTML());
       handleContentEase(state.editor.getText(), setEase);
     },
     content: textExample,
