@@ -111,18 +111,8 @@ export const Container = styled(Grid)`
     }
   }
   .importExternalPage {
-    border: 2px dashed ${({ theme }) => theme.colors.onBackground};
-    border-radius: 10px;
-    padding: 10px;
     h2 {
-      font-size: 18px;
-      font-weight: 700;
-      padding: 0;
-      margin: 0;
-    }
-    p {
-      margin-top: 4px;
-      font-size: 16px;
+      margin-bottom: 8px;
     }
     input {
       margin: 8px 0;
