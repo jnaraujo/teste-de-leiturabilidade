@@ -1,5 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "@/libs/localstorage";
-import create from "zustand";
+import { create } from "zustand";
 
 export interface IConfig {
   highlight: boolean;
