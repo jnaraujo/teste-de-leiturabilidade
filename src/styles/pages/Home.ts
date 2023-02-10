@@ -34,7 +34,7 @@ export const MainContent = styled.div`
 
 export const TopBar = styled(Grid)`
   p {
-    font-size: 16px;
+    font-size: 1rem;
     margin: 0;
     padding-bottom: 15px;
     color: ${({ theme }) => theme.colors.onBackground};
@@ -46,9 +46,6 @@ export const TopBar = styled(Grid)`
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     border-bottom: 0;
-    p {
-      font-size: 20px;
-    }
   }
 `;
 
