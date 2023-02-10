@@ -54,11 +54,10 @@ export const Container = styled.article`
   }
 
   .information {
-    margin: 16px 0;
+    margin: 8px 0;
     p {
       margin: 0;
       letter-spacing: 2px;
-      font-size: 1rem;
       font-weight: 500;
       color: ${(props) => props.theme.colors.onBackground};
       line-height: 150%;
@@ -101,7 +100,6 @@ export const Container = styled.article`
       }
     }
     p {
-      font-size: 1rem;
       color: ${(props) => props.theme.colors.onBackground};
     }
   }
@@ -145,7 +143,6 @@ export const BlogText = styled.div`
   }
   p {
     color: ${(props) => props.theme.colors.onBackground};
-    font-size: 1.1rem;
     line-height: 150%;
     font-weight: 400;
     margin: 8px 0;
