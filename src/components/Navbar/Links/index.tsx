@@ -12,7 +12,7 @@ interface Props {
   isOpen: boolean;
 }
 
-export const Nav: React.FC<Props> = ({ onClose, isOpen }) => {
+export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
   const [currentPath, setCurrentPath] = useState("");
   const router = useRouter();
 
