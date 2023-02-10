@@ -1,2 +1,2 @@
-export * from "./readingTime";
+export * from "./ReadingTime";
 export * from "./slugfy";
