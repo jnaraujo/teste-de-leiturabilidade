@@ -8,6 +8,8 @@ export const Container = styled(Grid)`
     ul {
       padding: 0;
       li {
+        max-width: 80vw;
+        display: inline-block;
         padding-bottom: 10px;
         word-wrap: break-word;
         list-style: none;
