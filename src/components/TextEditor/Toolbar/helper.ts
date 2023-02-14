@@ -7,12 +7,9 @@ import {
   MdFormatAlignRight,
   MdFormatBold,
   MdFormatItalic,
-  MdFormatListBulleted,
   MdFormatUnderlined,
-  MdOutlineFormatListNumbered,
   MdFormatQuote,
-  MdUndo,
-  MdRedo,
+  MdFormatClear,
 } from "react-icons/md";
 
 interface ToolbarItem {
@@ -26,8 +23,9 @@ interface ToolbarItem {
     attributes?: any;
   };
 }
-export const TextTagsItems = (editor: Editor) => {
-  const items: ToolbarItem[] = [
+
+export function getToolbarGroups(editor: Editor) {
+  const TextTagsItems: ToolbarItem[] = [
     {
       onClick: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
       name: "H1",
@@ -72,11 +70,7 @@ export const TextTagsItems = (editor: Editor) => {
       },
     },
   ];
-  return items;
-};
-
-export const TextFormattingItems = (editor: Editor) => {
-  const items: ToolbarItem[] = [
+  const TextFormattingItems: ToolbarItem[] = [
     {
       onClick: () => editor.chain().focus().toggleItalic().run(),
       tooltip: "Itálico",
@@ -102,11 +96,7 @@ export const TextFormattingItems = (editor: Editor) => {
       },
     },
   ];
-  return items;
-};
-
-export const TextAlignItems = (editor: Editor) => {
-  const items: ToolbarItem[] = [
+  const TextAlignItems: ToolbarItem[] = [
     {
       onClick: () => editor.chain().focus().setTextAlign("left").run(),
       tooltip: "Alinhar à Esquerda",
@@ -132,24 +122,24 @@ export const TextAlignItems = (editor: Editor) => {
       },
     },
   ];
-  return items;
-};
-
-export const EditingControlItems = (editor: Editor) => {
-  const items: ToolbarItem[] = [
+  const EditingControlItems: ToolbarItem[] = [
     {
-      onClick: () => editor.chain().focus().undo().run(),
-      tooltip: "Desfazer",
-      icon: MdUndo,
-    },
-    {
-      onClick: () => editor.chain().focus().redo().run(),
-      tooltip: "Refazer",
-      icon: MdRedo,
+      onClick: () => editor.chain().focus().clearNodes().unsetAllMarks().run(),
+      tooltip: "Limpar formatação",
+      icon: MdFormatClear,
+      isActive: {
+        name: "never",
+      },
     },
   ];
-  return items;
-};
+
+  return [
+    TextTagsItems,
+    TextFormattingItems,
+    TextAlignItems,
+    EditingControlItems,
+  ];
+}
 
 export const isActive = (editor: Editor, name?: string, attributes?: any) => {
   if (!name && !attributes && !editor) {
@@ -162,9 +152,3 @@ export const isActive = (editor: Editor, name?: string, attributes?: any) => {
 
   return editor?.isActive(attributes);
 };
-
-export const ToolbarGroups = [
-  TextTagsItems,
-  TextFormattingItems,
-  TextAlignItems,
-];

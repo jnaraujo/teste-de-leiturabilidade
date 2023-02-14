@@ -1,8 +1,8 @@
 import { Editor } from "@tiptap/react";
 
 import {
+  getToolbarGroups,
   isActive,
-  ToolbarGroups,
 } from "./helper";
 
 import { Toolbar } from "./styles";
@@ -10,9 +10,9 @@ import Button from "./Button";
 
 const ToolbarComponent = ({ editor }: { editor: Editor }) => (
   <Toolbar>
-    {ToolbarGroups.map((group, index) => (
+    {getToolbarGroups(editor).map((items, index) => (
       <div key={`group ${index}`} className="group">
-        {group(editor).map((item) => (
+        {items.map((item) => (
           <Button
             key={item.name + item.tooltip}
             onClick={item.onClick}
