@@ -5,11 +5,13 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  width: 1050px;
-
   max-width: 95vw;
 
-  @media (min-width: ${(props) => props.theme.breakpoints.xl}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: 1050px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
     max-width: 1200px;
   }
   margin: 0 auto;
