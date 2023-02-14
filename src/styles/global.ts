@@ -34,6 +34,8 @@ const GlobalStyles = createGlobalStyle`
 
     font-family: var(--inter-font);
     font-weight: 400;
+
+    background-color: #fafafa;
   }
 
   h1,

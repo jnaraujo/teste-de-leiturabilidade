@@ -5,7 +5,6 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background-color: ${({ theme }) => theme.colors.background};
   min-height: 100vh;
 `;
 

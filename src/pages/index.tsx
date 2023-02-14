@@ -10,7 +10,6 @@ import {
 
 // COMPONENTS
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import Editor from "../layouts/Editor";
 import HowItWorks from "../layouts/HowItWorks";
 
@@ -28,9 +27,6 @@ const Home = () => {
         ]}
       />
       <MainContainer>
-        <MainContent>
-          <Navbar />
-        </MainContent>
         <MainContent>
           <Editor />
           <div className="line" />

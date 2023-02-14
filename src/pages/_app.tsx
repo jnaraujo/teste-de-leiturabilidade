@@ -15,6 +15,7 @@ import FeedbackWidget from "@/components/FeedbackWidget";
 import * as gtag from "@/libs/gtag";
 
 import "react-responsive-modal/styles.css";
+import Navbar from "@/components/Navbar";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -52,6 +53,7 @@ const MyApp = ({
           <ModalProvider>
             <CacheProvider value={emotionCache}>
               <CssBaseline />
+              <Navbar />
               <main>
                 <Component {...pageProps} />
               </main>

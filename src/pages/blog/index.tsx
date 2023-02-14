@@ -6,7 +6,6 @@ import Head from "next/head";
 import { MainContainer, Container, MainContent } from "../../styles/pages/Blog";
 
 import { BannerCTA } from "../../components/BannerCTA";
-import Navbar from "../../components/Navbar";
 import { BlogService, IBlogPost } from "../../services/BlogService";
 
 const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
@@ -37,7 +36,6 @@ const BlogPage = ({ posts }: IProps) => (
     </Head>
     <MainContainer>
       <MainContent>
-        <Navbar />
         <Container>
           <h1>Blog</h1>
           <div className="postList">

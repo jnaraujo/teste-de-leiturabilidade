@@ -1,6 +1,5 @@
 import { DefaultSeo } from "next-seo";
 
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Editor from "../layouts/Editor";
 
@@ -20,9 +19,6 @@ const Home = () => {
         ]}
       />
       <MainContainer>
-        <MainContent>
-          <Navbar />
-        </MainContent>
         <MainContent>
           <Editor />
           <Footer />

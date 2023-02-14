@@ -3,10 +3,7 @@
 import { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-
 import { getReadingTime } from "../../utils";
-
-import Navbar from "../../components/Navbar";
 
 import {
   MainContainer,
@@ -102,7 +99,6 @@ const BlogPage = ({
       </Head>
       <MainContainer>
         <MainContent>
-          <Navbar />
           <Container>
             <h1>{title}</h1>
             <div className="information">
