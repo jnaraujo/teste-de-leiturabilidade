@@ -1,4 +1,4 @@
-import { BubbleMenu, Editor } from "@tiptap/react";
+import { BubbleMenu as TiptapBubbleMenu, Editor } from "@tiptap/react";
 import Button from "./Button";
 import { Content } from "./styles";
 import { getMenuItems } from "./helper";
@@ -9,11 +9,11 @@ interface Props {
   shouldBeVisible: boolean;
 }
 
-const InlineMenu = ({ editor, shouldBeVisible }: Props) => {
+export const BubbleMenu = ({ editor, shouldBeVisible }: Props) => {
   if (!editor) return null;
 
   return (
-    <BubbleMenu
+    <TiptapBubbleMenu
       tippyOptions={{
         duration: 100,
         delay: 250,
@@ -40,7 +40,6 @@ const InlineMenu = ({ editor, shouldBeVisible }: Props) => {
           ))}
         </ul>
       </Content>
-    </BubbleMenu>
+    </TiptapBubbleMenu>
   );
 };
-export default InlineMenu;

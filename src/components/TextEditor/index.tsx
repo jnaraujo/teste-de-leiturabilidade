@@ -5,7 +5,7 @@ import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
 
 import Toolbar from "./Toolbar";
-import InlineMenu from "./InlineMenu";
+import { BubbleMenu } from "./BubbleMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
 import EditorContainer from "./EditorContainer";
@@ -81,7 +81,7 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
       <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className="editor" editor={editor} />
 
-      <InlineMenu shouldBeVisible={shouldBeVisible} editor={editor} />
+      <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} />
     </EditorContainer>
   );
 };
