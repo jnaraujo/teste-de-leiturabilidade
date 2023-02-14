@@ -43,28 +43,26 @@ const HowItWorks: React.FC = () => (
       </Text>
 
       <Heading isSubHeading>Quer saber mais? Dá uma olhada nas fontes:</Heading>
-      <Text>
-        <ul>
-          <li>
-            <a
-              href="http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests"
-              target="_blank"
-              rel="noreferrer"
-            >
-              https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests
-            </a>
-          </li>
-        </ul>
-      </Text>
+      <ul>
+        <li>
+          <a
+            href="http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests"
+            target="_blank"
+            rel="noreferrer"
+          >
+            https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests
+          </a>
+        </li>
+      </ul>
     </Grid>
   </Container>
 );
