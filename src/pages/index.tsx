@@ -6,7 +6,6 @@ import {
   Informations,
   MainContainer,
   MainContent,
-  TopBar,
 } from "../styles/pages/Home";
 
 // COMPONENTS
@@ -33,34 +32,8 @@ const Home = () => {
           <Navbar />
         </MainContent>
         <MainContent>
-          <Container
-            container
-            justifyContent={{
-              md: "center",
-              lg: "left",
-            }}
-          >
-            <TopBar
-              item
-              xs={12}
-              md={10}
-              lg={8}
-              pl={{
-                xs: 1,
-                md: 0,
-              }}
-            >
-              <p>
-                Digite o seu texto abaixo e descubra, em tempo real, o{" "}
-                <span>nível de leitura</span>.
-              </p>
-            </TopBar>
-          </Container>
-
           <Editor />
-
           <div className="line" />
-
           <Informations>
             <HowItWorks />
             <Container container justifyContent="center">

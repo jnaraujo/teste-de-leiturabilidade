@@ -32,23 +32,6 @@ export const MainContent = styled.div`
   max-width: 1050px;
 `;
 
-export const TopBar = styled(Grid)`
-  p {
-    font-size: 1rem;
-    margin: 0;
-    padding-bottom: 15px;
-    color: ${({ theme }) => theme.colors.onBackground};
-    font-weight: 400;
-
-    span {
-      font-weight: 600;
-    }
-  }
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    border-bottom: 0;
-  }
-`;
-
 export const Container = styled(Grid)`
   max-width: 1200px;
   margin: 0 auto;
