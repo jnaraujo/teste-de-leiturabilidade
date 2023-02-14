@@ -48,16 +48,25 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
           didMouseDown.current = true;
           setShouldShowBubbleMenu(false)
         },
-        mouseup() {
-          if (didMouseDown.current) {
-            setShouldShowBubbleMenu(true)
-          }
-          didMouseDown.current = false;
-        }
       }
     },
     content: textExample,
   });
+
+  useEffect(() => {
+    function handleMouseUp() {
+      if (didMouseDown.current) {
+        setShouldShowBubbleMenu(true)
+      }
+      didMouseDown.current = false;
+    }
+
+    document.addEventListener("mouseup", handleMouseUp)
+
+    return () => {
+      document.removeEventListener("mouseup", handleMouseUp)
+    }
+  }, []);
 
   useEffect(() => {
     if (html && editor) {
