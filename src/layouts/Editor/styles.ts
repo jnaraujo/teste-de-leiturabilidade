@@ -2,7 +2,6 @@ import { Grid } from "@mui/material";
 import styled from "styled-components";
 
 export const Container = styled(Grid)`
-  max-width: 1200px;
   margin: 0 auto;
 `;
 
@@ -26,7 +25,7 @@ export const Content = styled(Grid)`
     margin: 0;
     padding: 0;
     margin-bottom: 20px;
-    min-height: 75vh;
+    min-height: 85vh;
 
     @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
       border-bottom: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};

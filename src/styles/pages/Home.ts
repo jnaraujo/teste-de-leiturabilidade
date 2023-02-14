@@ -27,8 +27,14 @@ export const MainContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 8px;
+
   width: 100%;
   max-width: 1050px;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.xl}) {
+    max-width: 1200px;
+  }
 `;
 
 export const Container = styled(Grid)`
