@@ -30,26 +30,6 @@ export const getMenuItems = (editor: Editor) => {
       onClick: () => editor.chain().focus().toggleUnderline().run(),
       icon: AiOutlineUnderline,
     },
-    {
-      tooltip: "H1",
-      onClick: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
-      name: "H1",
-    },
-    {
-      tooltip: "H2",
-      onClick: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
-      name: "H2",
-    },
-    {
-      tooltip: "H3",
-      onClick: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
-      name: "H3",
-    },
-    {
-      tooltip: "Parágrafo",
-      onClick: () => editor.chain().focus().setParagraph().run(),
-      name: "P",
-    },
   ];
   return items;
 };

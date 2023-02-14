@@ -6,10 +6,10 @@ import cx from "classnames";
 
 interface Props {
   editor: Editor | null;
-  isActive: boolean;
+  shouldBeVisible: boolean;
 }
 
-const InlineMenu = ({ editor, isActive }: Props) => {
+const InlineMenu = ({ editor, shouldBeVisible }: Props) => {
   if (!editor) return null;
 
   return (
@@ -24,7 +24,7 @@ const InlineMenu = ({ editor, isActive }: Props) => {
     >
       <Content
         className={cx("bubble-menu-container", {
-          visible: isActive,
+          visible: shouldBeVisible,
         })}
       >
         <ul>

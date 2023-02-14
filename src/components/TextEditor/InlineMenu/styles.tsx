@@ -2,13 +2,8 @@ import styled from "styled-components";
 
 export const Content = styled.div`
   position: relative;
-  --vWidth: 300px;
+  --vWidth: 150px;
   --vHeight: 30px;
-
-  @media (max-width: 768px) {
-    --vHeight: 40px;
-    --vWidth: 320px;
-  }
 
   width: var(--vWidth);
   height: var(--vHeight);
@@ -16,7 +11,7 @@ export const Content = styled.div`
   :not(&.visible) {
     display: none;
   }
-
+  
   background-color: #e9ecef;
 
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.11);

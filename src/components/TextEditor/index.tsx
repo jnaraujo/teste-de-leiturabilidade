@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEffect, useRef, useState } from "react";
+import { useEditor, EditorContent, PureEditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 
 import { useReadingStore } from "@/store/readingStore";
@@ -21,7 +21,10 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
   const { content, setContent } = useContentStore();
 
   const { width } = useWindowSize();
-  const editorRef = useRef(null);
+  const editorRef = useRef<PureEditorContent | null>(null);
+
+  const didMouseDown = useRef(false);
+  const [shouldShowBubbleMenu, setShouldShowBubbleMenu] = useState(false);
 
   const editor = useEditor({
     extensions: EditorExtensions,
@@ -39,6 +42,20 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
       setContent(state.editor.getHTML());
       handleContentEase(state.editor.getText(), setEase);
     },
+    editorProps: {
+      handleDOMEvents: {
+        mousedown() {
+          didMouseDown.current = true;
+          setShouldShowBubbleMenu(false)
+        },
+        mouseup() {
+          if (didMouseDown.current) {
+            setShouldShowBubbleMenu(true)
+          }
+          didMouseDown.current = false;
+        }
+      }
+    },
     content: textExample,
   });
 
@@ -48,12 +65,14 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
     }
   }, [html]);
 
+  const shouldBeVisible = width > 720 && shouldShowBubbleMenu;
+
   return (
     <EditorContainer className={className ? className : ""}>
       <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className="editor" editor={editor} />
 
-      <InlineMenu isActive={width > 720} editor={editor} />
+      <InlineMenu shouldBeVisible={shouldBeVisible} editor={editor} />
     </EditorContainer>
   );
 };
