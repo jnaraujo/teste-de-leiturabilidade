@@ -43,9 +43,11 @@ export const Container = styled.div`
     font-size: 1rem;
     width: 100%;
     min-height: 1rem;
-    line-height: 175%;
-
-    margin: 0.5rem 0;
+    line-height: 1.75;
+    margin: 1rem 0;
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   &.highlight {
