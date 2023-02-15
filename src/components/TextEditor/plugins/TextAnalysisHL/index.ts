@@ -11,11 +11,57 @@ function easeToLabel(ease: number) {
   return "hard";
 }
 
-function textAlDeco(doc: Node) {
+function highlightWordsEase(doc: Node) {
   const decorations: Decoration[] = [];
 
   doc.forEach((node, pos) => {
-    if (node.textContent && node.textContent.length > 0) {
+    if (node.textContent.length > 0) {
+      let totalPos = 0;
+      node.textContent.split(" ").forEach((word) => {
+        totalPos += word.length + 1;
+        if (word.length > 0) {
+          const ease = calculateFleschReading(word).result;
+          decorations.push(
+            Decoration.inline(pos + totalPos - word.length, pos + totalPos, {
+              class: `ease-${easeToLabel(ease)}`,
+            })
+          );
+        }
+      });
+    }
+  });
+
+  return DecorationSet.create(doc, decorations);
+}
+
+function highlightPhrasesEase(doc: Node) {
+  const decorations: Decoration[] = [];
+
+  doc.forEach((node, pos) => {
+    if (node.textContent.length > 0) {
+      let totalPos = 0;
+      node.textContent.split(".").forEach((word) => {
+        totalPos += word.length + 1;
+        if (word.length > 0) {
+          const ease = calculateFleschReading(word).result;
+          decorations.push(
+            Decoration.inline(pos + totalPos - word.length, pos + totalPos, {
+              class: `ease-${easeToLabel(ease)}`,
+            })
+          );
+        }
+      });
+    }
+  });
+
+  return DecorationSet.create(doc, decorations);
+}
+
+function highlightParagraphEase(doc: Node) {
+  const decorations: Decoration[] = [];
+
+  doc.forEach((node, pos) => {
+    if (node.textContent.length > 0) {
       const ease = calculateFleschReading(node.textContent).result;
       decorations.push(
         Decoration.inline(pos, pos + node.nodeSize, {
@@ -31,10 +77,10 @@ function textAlDeco(doc: Node) {
 const TextAnalysisHLProse = new Plugin({
   state: {
     init(_, { doc }) {
-      return textAlDeco(doc);
+      return highlightPhrasesEase(doc);
     },
     apply(tr, old) {
-      return tr.docChanged ? textAlDeco(tr.doc) : old;
+      return tr.docChanged ? highlightPhrasesEase(tr.doc) : old;
     },
   },
   props: {
