@@ -31,6 +31,7 @@ const nextConfig = {
         "@emotion/weak-memoize",
         "prosemirror-state",
         "react-is",
+        "prosemirror-view",
       ];
 
       moduleList.forEach((moduleName) => {
