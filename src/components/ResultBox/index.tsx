@@ -112,10 +112,10 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
             <strong>{secondsToHMS(getReadingTimeByWords(ease.words))}</strong>
           </p>
           <p>
-            Número de palavras: <strong>{ease.words}</strong>
+            Quantidade de palavras: <strong>{ease.words}</strong>
           </p>
           <p>
-            Número de frases: <strong>{ease.sentences}</strong>
+            Quantidade de frases: <strong>{ease.sentences}</strong>
           </p>
         </Content>
         <Content className="importExternalPage">
