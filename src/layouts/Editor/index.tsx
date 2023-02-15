@@ -35,7 +35,7 @@ const Editor: React.FC = () => {
           </div>
         </Content>
 
-        <Content item xs={11} sm={8} md={10} lg={3}>
+        <Content item xs={11} sm={8} md={10} lg={3} className="right">
           <aside>
             <ResultBox onImportPage={handleImportClick} />
           </aside>

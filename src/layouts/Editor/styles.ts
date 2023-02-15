@@ -16,6 +16,13 @@ export const Content = styled(Grid)`
     margin: 0;
   }
 
+  &.right {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 75px;
+    height: fit-content;
+  }
+
   .textarea {
     background-color: #edede9;
     border-radius: 8px;
