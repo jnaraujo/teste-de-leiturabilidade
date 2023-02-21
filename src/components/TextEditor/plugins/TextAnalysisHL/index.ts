@@ -55,8 +55,6 @@ function highlightPhrasesEase(doc: Node) {
     );
   }
 
-  console.clear();
-
   doc.forEach((node, pos) => {
     if (node.textContent.length > 0) {
       let endOfPhrase = 0;
