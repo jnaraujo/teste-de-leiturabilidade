@@ -37,20 +37,37 @@ function highlightWordsEase(doc: Node) {
 function highlightPhrasesEase(doc: Node) {
   const decorations: Decoration[] = [];
 
+  function addDecoration(start: number, end: number, ease: number) {
+    decorations.push(
+      Decoration.inline(start, end, {
+        class: `ease-${easeToLabel(ease)}`,
+      })
+    );
+  }
+
+  console.clear();
+
   doc.forEach((node, pos) => {
     if (node.textContent.length > 0) {
-      let totalPos = 0;
-      node.textContent.split(".").forEach((word) => {
-        totalPos += word.length + 1;
-        if (word.length > 0) {
-          const ease = calculateFleschReading(word).result;
-          decorations.push(
-            Decoration.inline(pos + totalPos - word.length, pos + totalPos, {
-              class: `ease-${easeToLabel(ease)}`,
-            })
-          );
-        }
-      });
+      let endOfPhrase = 0;
+
+      if (node.type.name === "blockquote") {
+        const ease = calculateFleschReading(node.textContent).result;
+        addDecoration(pos, pos + node.nodeSize, ease);
+      } else {
+        node.textContent.split(".").forEach((phrase) => {
+          if (phrase.length > 0) {
+            endOfPhrase += phrase.length + 1;
+
+            const from = pos + endOfPhrase - phrase.length;
+            const to = pos + endOfPhrase;
+
+            const ease = calculateFleschReading(phrase).result;
+
+            addDecoration(from, to, ease);
+          }
+        });
+      }
     }
   });
 
