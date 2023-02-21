@@ -11,6 +11,16 @@ function easeToLabel(ease: number) {
   return "hard";
 }
 
+/**
+ * Split by punctuation followed by space. Supports: . ! ?
+ * @param text
+ * @returns
+ */
+function splitPhrases(text: string) {
+  const regex = /(?<=[.?!])\s/g;
+  return text.split(regex);
+}
+
 function highlightWordsEase(doc: Node) {
   const decorations: Decoration[] = [];
 
@@ -55,7 +65,7 @@ function highlightPhrasesEase(doc: Node) {
         const ease = calculateFleschReading(node.textContent).result;
         addDecoration(pos, pos + node.nodeSize, ease);
       } else {
-        node.textContent.split(".").forEach((phrase) => {
+        splitPhrases(node.textContent).forEach((phrase) => {
           if (phrase.length > 0) {
             endOfPhrase += phrase.length + 1;
 
