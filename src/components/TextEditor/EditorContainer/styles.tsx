@@ -63,6 +63,7 @@ export const Container = styled.div`
   }
 
   .editor {
+    text-rendering: optimizeLegibility;
     font-family: var(--merriweather-font);
 
     height: 100%;
