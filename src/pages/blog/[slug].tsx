@@ -37,9 +37,9 @@ export async function getStaticProps({ params: { slug } }: any) {
 
   if (!post) {
     return {
-      props: {
-        notFound: true,
-      },
+      redirect: {
+        destination: "/blog",
+      }
     };
   }
 
