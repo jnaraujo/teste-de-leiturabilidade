@@ -2,7 +2,7 @@ function isPunctuation(char: string) {
   return /[.?!]/.test(char);
 }
 
-function doesBrowserSupportLookbehind() {
+function checkBLookbehindSupport() {
   try {
     new RegExp("(?<=a)b");
     return true;
@@ -11,19 +11,15 @@ function doesBrowserSupportLookbehind() {
   }
 }
 
-/**
- * Split by punctuation followed by space. Supports: . ! ?
- * @param text
- * @returns
- */
-export function splitPhrases(text: string) {
-  // lookbehind is not supported in Safari
-  if (doesBrowserSupportLookbehind()) {
-    const regex = /(?<=[.?!])\s/g;
-    const tokens = text.split(regex);
-    return tokens.filter((phrase) => phrase.length > 0);
-  }
+const DOES_BROWSER_SUPPORT_LOOKBEHIND = checkBLookbehindSupport();
 
+function lookbehindSplit(text: string) {
+  const regex = /(?<=[.?!])\s/g;
+  const tokens = text.split(regex);
+  return tokens.filter((phrase) => phrase.length > 0);
+}
+
+function bruteSplit(text: string) {
   const regex = /([.?!])/g;
   const tokens = text.split(regex);
   const phrases: string[] = [];
@@ -46,4 +42,18 @@ export function splitPhrases(text: string) {
   if (phrase.length > 0) phrases.push(phrase.trim());
 
   return phrases;
+}
+
+/**
+ * Split by punctuation followed by space. Supports: . ! ?
+ * @param text
+ * @returns
+ */
+export function splitPhrases(text: string) {
+  // lookbehind is not supported in Safari
+  if (DOES_BROWSER_SUPPORT_LOOKBEHIND) {
+    return lookbehindSplit(text);
+  }
+
+  return bruteSplit(text);
 }
