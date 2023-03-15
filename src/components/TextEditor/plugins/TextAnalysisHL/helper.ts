@@ -2,7 +2,7 @@ function isPunctuation(char: string) {
   return /[.?!]/.test(char);
 }
 
-function checkBLookbehindSupport() {
+function checkLookbehindSupport() {
   try {
     new RegExp("(?<=a)b");
     return true;
@@ -11,7 +11,7 @@ function checkBLookbehindSupport() {
   }
 }
 
-const DOES_BROWSER_SUPPORT_LOOKBEHIND = checkBLookbehindSupport();
+const DOES_BROWSER_SUPPORT_LOOKBEHIND = checkLookbehindSupport();
 
 function lookbehindSplit(text: string) {
   const regex = /(?<=[.?!])\s/g;
