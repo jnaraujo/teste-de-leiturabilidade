@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  line-height: 1.75;
-
   width: 100%;
   height: 100%;
 
   padding: 0;
 
   font-size: 18px;
+  line-height: 1.75;
 
   h1,
   h2,
@@ -18,6 +17,10 @@ export const Container = styled.div`
   h6 {
     line-height: 175%;
     font-weight: 700;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 1rem 0;
   }
 
   h1 {
@@ -43,11 +46,6 @@ export const Container = styled.div`
     font-size: 1rem;
     width: 100%;
     min-height: 1rem;
-    line-height: 1.75;
-    margin: 1rem 0;
-    &:first-child {
-      margin-top: 0;
-    }
   }
 
   &.highlight {
@@ -75,7 +73,7 @@ export const Container = styled.div`
     resize: none;
     border: none;
 
-    padding: 8px;
+    padding: 8px 12px;
 
     color: ${(props) => props.theme.colors.onBackground};
 
@@ -127,9 +125,9 @@ export const Container = styled.div`
   }
 
   blockquote {
-    padding: 12px;
+    padding: 8px;
     padding-right: 0;
-    margin: 16px 0;
+    margin: 8px 0;
     border-left: 4px solid #495057;
     line-height: 150%;
     font-size: 1rem;
