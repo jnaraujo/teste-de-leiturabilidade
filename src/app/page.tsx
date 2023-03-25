@@ -1,3 +1,4 @@
+"use client";
 import { DefaultSeo } from "next-seo";
 import { Grid } from "@mui/material";
 
