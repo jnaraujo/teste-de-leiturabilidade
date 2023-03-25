@@ -32,7 +32,6 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
             <li key={title}>
               <Link
                 href={url}
-                passHref
                 className={currentPath === url ? "active" : ""}
               >
                 {title}
