@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { CTAButton } from "./CTAButton";
 import { CloseModalButton } from "../CloseModalButton";
@@ -14,12 +14,13 @@ interface Props {
 
 export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
   const [currentPath, setCurrentPath] = useState("");
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const currentPath = router.pathname.split("/")[1];
+    if (!pathname) return;
+    const currentPath = pathname.split("/")[1];
     setCurrentPath(currentPath);
-  }, [router.pathname]);
+  }, []);
 
   return (
     <Container className={isOpen ? "open" : "closed"}>

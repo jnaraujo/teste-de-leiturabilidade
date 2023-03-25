@@ -2,7 +2,7 @@
 /* eslint-disable react/no-danger */
 import { useEffect } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { getReadingTime } from "../../utils";
 
 import {
