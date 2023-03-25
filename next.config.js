@@ -53,6 +53,7 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     legacyBrowsers: false,
+    appDir: true,
   },
   compress: false,
 };
