@@ -1,3 +1,4 @@
+"use client";
 import React, { useCallback, useEffect } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useImportExternalPage } from "../../hooks/useImportExternalPage";
