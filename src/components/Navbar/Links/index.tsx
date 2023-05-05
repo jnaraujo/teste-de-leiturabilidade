@@ -40,7 +40,8 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
                 href={url}
                 passHref
                 className={
-                  cx({
+                  cx(
+                    styles.link, {
                     [styles.active]: currentPath === url,
                   })
                 }
@@ -51,7 +52,7 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
           );
         })}
         <li>
-          <Button className={styles.openEditor}>
+          <Button asChild className={styles.openEditor}>
             <Link href="/editor" >
               Abrir o Editor
             </Link>

@@ -13,11 +13,9 @@ const Navbar = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.title}>
-        <Link href="/" passHref>
-          Teste de Leitura
-        </Link>
-      </div>
+      <Link href="/" passHref className={styles.title}>
+        Teste de Leitura
+      </Link>
       <Links onClose={handleClick} isOpen={isOpen} />
       <button className={styles.menuButton} type="button" onClick={handleClick} aria-label="Abrir menu">
         <AiOutlineMenu />

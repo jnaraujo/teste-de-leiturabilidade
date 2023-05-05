@@ -37,12 +37,12 @@
     justify-content: center;
 
     &.active {
-      a {
+      .link {
         border-bottom: 3px solid #06d6a0;
       }
     }
 
-    a {
+    .link {
       all: unset;
       font-size: 1rem;
       font-weight: 500;
@@ -50,7 +50,7 @@
       cursor: pointer;
     }
 
-    a:hover {
+    .link:hover {
       color: #495057;
     }
   }
@@ -58,9 +58,12 @@
 
 .openEditor {
   padding: 0 24px !important;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
 
   a {
-    all: unset;
+    text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
     color: $on-primary !important;
