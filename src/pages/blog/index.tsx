@@ -3,14 +3,13 @@
 import Link from "next/link";
 import Head from "next/head";
 
-import { MainContainer, Container, MainContent } from "../../styles/pages/Blog";
+import styles from "../../styles/pages/Blog.module.scss";
 
 import { BannerCTA } from "../../components/BannerCTA";
 import { BlogService, IBlogPost } from "../../services/BlogService";
 
-const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
-
 export async function getStaticProps() {
+  const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
   const posts = await blogService.getBlogPosts();
 
   return {
@@ -34,11 +33,11 @@ const BlogPage = ({ posts }: IProps) => (
         content="Tudo sobre melhores práticas de escrita, teste de leitura e como escrever bons textos."
       />
     </Head>
-    <MainContainer>
-      <MainContent>
-        <Container>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <div className={styles.article}>
           <h1>Blog</h1>
-          <div className="postList">
+          <div className={styles.postList}>
             {posts.map((post) => (
               <div key={post.slug}>
                 <h3>
@@ -51,9 +50,9 @@ const BlogPage = ({ posts }: IProps) => (
             ))}
           </div>
           <BannerCTA />
-        </Container>
-      </MainContent>
-    </MainContainer>
+        </div>
+      </div>
+    </div>
   </>
 );
 

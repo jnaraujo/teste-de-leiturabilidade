@@ -5,19 +5,14 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { getReadingTime } from "../../utils";
 
-import {
-  MainContainer,
-  Container,
-  MainContent,
-  BlogText,
-} from "../../styles/pages/Blog";
+import styles from "../../styles/pages/Blog.module.scss";
 
 import { BannerCTA } from "../../components/BannerCTA";
 import { BlogService } from "../../services/BlogService";
 
-const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
 
 export async function getStaticPaths() {
+  const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
   const posts = await blogService.getBlogPosts();
 
   const paths = posts.map((post) => ({
@@ -33,6 +28,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }: any) {
+  const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
   const post = await blogService.getBlogPostById(slug as string);
 
   if (!post) {
@@ -97,11 +93,11 @@ const BlogPage = ({
         <meta property="twitter:description" content={description} />
         {picture && <meta property="twitter:image" content={picture} />}
       </Head>
-      <MainContainer>
-        <MainContent>
-          <Container>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <article className={styles.article}>
             <h1>{title}</h1>
-            <div className="information">
+            <div className={styles.information}>
               <p>
                 {new Date(publishedAt).toLocaleDateString("pt-BR", {
                   year: "numeric",
@@ -111,11 +107,11 @@ const BlogPage = ({
                 • Leitura: {getReadingTime(body)} minutos
               </p>
             </div>
-            <BlogText dangerouslySetInnerHTML={{ __html: body }} />
+            <div className={styles.blogText} dangerouslySetInnerHTML={{ __html: body }} />
             <BannerCTA />
-          </Container>
-        </MainContent>
-      </MainContainer>
+          </article>
+        </div>
+      </div>
     </>
   );
 };
