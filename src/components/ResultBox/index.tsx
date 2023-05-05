@@ -2,15 +2,17 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import { easeToLabel } from "@/libs/ReadingEase";
+import cx from "classnames";
 
 import { useReadingStore } from "@/store/readingStore";
 import { useConfigStore } from "@/store/configStore";
 
 import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
-import { Content, Container } from "./styles";
+import styles from "./styles.module.scss";
 import Button from "../Button";
 import ImportPageModal from "./ImportPageModal";
+import { Grid } from "@mui/material";
 
 interface ResultBoxProps {
   onImportPage?: (value: string) => void;
@@ -55,22 +57,22 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
 
   return (
     <>
-      <Container>
+      <Grid className={styles.container}>
         <p>
           Seu texto está no nível de leitura de{" "}
           <span id="rd_exmlp">{easeToLabel(ease.index)}.</span>
         </p>
 
-        <Content>
-          <div className="ease_bar">
-            <div className="slider" style={{ left: `${sliderSize}px` }} />
-            <div className="cont">
-              <div className="row" ref={sliderRef}>
-                <div className="col" />
-                <div className="col" />
-                <div className="col" />
-                <div className="col" />
-                <div className="col" />
+        <div className={styles.content}>
+          <div className={styles.ease_bar}>
+            <div className={styles.slider} style={{ left: `${sliderSize}px` }} />
+            <div className={styles.cont}>
+              <div className={styles.row} ref={sliderRef}>
+                <div className={styles.col} />
+                <div className={styles.col} />
+                <div className={styles.col} />
+                <div className={styles.col} />
+                <div className={styles.col} />
               </div>
             </div>
           </div>
@@ -87,11 +89,11 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
               <span>fácil</span>
             </li>
           </ul>
-        </Content>
+        </div>
 
-        <Content>
+        <div className={styles.content}>
           <h2>Configurações do editor:</h2>
-          <div className="editor_config">
+          <div className={styles.editor_config}>
             <label htmlFor="highlight">
               <input
                 id="highlight"
@@ -104,8 +106,8 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
               Destacar dificuldade de leitura das frases
             </label>
           </div>
-        </Content>
-        <Content>
+        </div>
+        <div className={styles.content}>
           <h2>Mais sobre seu texto:</h2>
           <p>
             Tempo de leitura:{" "}
@@ -117,8 +119,11 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
           <p>
             Quantidade de frases: <strong>{ease.sentences}</strong>
           </p>
-        </Content>
-        <Content className="importExternalPage">
+        </div>
+        <div className={cx(
+          styles.content,
+          styles.contentImportExternalPage
+        )}>
           <h2>Deseja importar o conteúdo de uma página externa?</h2>
           <Button
             onClick={handleOpenModal}
@@ -126,8 +131,8 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
           >
             Importar página externa
           </Button>
-        </Content>
-      </Container>
+        </div>
+      </Grid>
       <ImportPageModal open={isModalOpen} onClose={closeModal} onImportPage={handleImportPage} />
     </>
   );

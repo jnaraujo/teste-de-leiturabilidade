@@ -3,7 +3,7 @@ import { DefaultSeo } from "next-seo";
 import Footer from "../components/Footer";
 import Editor from "../layouts/Editor";
 
-import { MainContainer, MainContent } from "../styles/pages/Home";
+import styles from "../styles/pages/Editor.module.scss";
 
 const Home = () => {
   return (
@@ -18,12 +18,12 @@ const Home = () => {
           },
         ]}
       />
-      <MainContainer>
-        <MainContent>
+      <div className={styles.container}>
+        <div className={styles.content}>
           <Editor />
           <Footer />
-        </MainContent>
-      </MainContainer>
+        </div>
+      </div>
     </>
   );
 };

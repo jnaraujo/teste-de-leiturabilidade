@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Container } from "./styles";
+import styles from "./styles.module.scss";
 
-const LinearProgress: React.FC = () => <Container />;
+const LinearProgress: React.FC = () => <div className={styles.linear} />;
 
 export default LinearProgress;

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Tooltip } from "@mui/material";
-import { Button } from "./styles";
+import styles from "./styles.module.scss";
+import cx from "classnames";
 
 interface ButtonProps {
   isActive?: boolean;
@@ -22,9 +23,16 @@ const ButtonComponent = ({
   };
   return (
     <Tooltip title={tooltip}>
-      <Button onClick={handleClick} isActive={isActive}>
+      <button onClick={handleClick} className={
+        cx(
+          styles.button,
+          {
+            [styles.active]: isActive,
+          }
+        )
+      }>
         {children}
-      </Button>
+      </button>
     </Tooltip>
   );
 };

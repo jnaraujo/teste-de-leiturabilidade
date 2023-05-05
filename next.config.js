@@ -21,6 +21,11 @@ function resolveModule(moduleName) {
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  sassOptions: {
+    prependData: `
+      @import "./src/styles/variables.scss";
+    `,
+  },
   reactStrictMode: true,
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent, PureEditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
+import styles from "./styles.module.scss";
 
 import { useReadingStore } from "@/store/readingStore";
 
@@ -12,11 +13,10 @@ import EditorContainer from "./EditorContainer";
 import { useContentStore } from "@/store/contentStore";
 
 type ComponentPropsType = {
-  className?: string;
   html: string;
 };
 
-const TextEditor = ({ html, className }: ComponentPropsType) => {
+export default function TextEditor({ html }: ComponentPropsType) {
   const setEase = useReadingStore((state) => state.setEase);
   const { content, setContent } = useContentStore();
 
@@ -77,13 +77,11 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
   const shouldBeVisible = width > 720 && shouldShowBubbleMenu;
 
   return (
-    <EditorContainer className={className ? className : ""}>
+    <EditorContainer>
       <Toolbar editor={editor as any} />
-      <EditorContent ref={editorRef} className="editor" editor={editor} />
+      <EditorContent ref={editorRef} className={styles.editor} editor={editor} />
 
       <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} />
     </EditorContainer>
   );
 };
-
-export default TextEditor;

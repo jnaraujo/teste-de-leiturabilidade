@@ -1,6 +1,6 @@
 import React from "react";
 import { useConfigStore } from "@/store/configStore";
-import { Container } from "./styles";
+import styles from "./styles.module.scss";
 import cx from "classnames";
 
 interface EditorContainerProps {
@@ -20,14 +20,17 @@ const EditorContainer: React.FC<EditorContainerProps> = ({
   }, [config.highlight]);
 
   return (
-    <Container
-      className={cx({
-        [String(className)]: className,
-        highlight: isHighlight,
-      })}
+    <div
+      className={cx(
+        styles.container,
+        {
+          [String(className)]: className,
+          [styles.highlight]: isHighlight,
+        }
+      )}
     >
       {children}
-    </Container>
+    </div>
   );
 };
 

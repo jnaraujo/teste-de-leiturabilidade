@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect } from "react";
+import { Grid } from "@mui/material";
+import cx from "classnames";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useImportExternalPage } from "../../hooks/useImportExternalPage";
-import { Container, Content, LoadingDiv } from "./styles";
+import styles from "./styles.module.scss";
 import ResultBox from "../../components/ResultBox";
 import useModal from "../../hooks/useModal";
 import TextEditor from "../../components/TextEditor";
@@ -28,24 +30,34 @@ const Editor: React.FC = () => {
 
   return (
     <>
-      <Container container justifyContent="center">
-        <Content item xs={12} md={10} lg={8} className="left">
-          <div className="textarea">
+      <Grid container justifyContent="center" className={styles.container}>
+        <Grid item xs={12} md={10} lg={8} className={
+          cx(
+            styles.content,
+            styles.left
+          )
+        }>
+          <div className={styles.textarea}>
             <TextEditor html={pageContent} />
           </div>
-        </Content>
+        </Grid>
 
-        <Content item xs={11} sm={8} md={10} lg={3} className="right">
+        <Grid item xs={11} sm={8} md={10} lg={3} className={
+          cx(
+            styles.content,
+            styles.right
+          )
+        }>
           <aside>
             <ResultBox onImportPage={handleImportClick} />
           </aside>
-        </Content>
-      </Container>
+        </Grid>
+      </Grid>
 
       {loading && (
-        <LoadingDiv>
+        <div className={styles.loading}>
           <AiOutlineLoading3Quarters />
-        </LoadingDiv>
+        </div>
       )}
     </>
   );

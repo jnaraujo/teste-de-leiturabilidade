@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
 import { MdClose } from "react-icons/md";
-import {
-  Container,
-  ModalWrap,
-  Header,
-  Content,
-} from "./styles";
+import { Modal } from "@mui/material";
+
+import styles from "./styles.module.scss";
+
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
@@ -26,17 +24,18 @@ const ImportPageModal: React.FC<Props> = ({ open, onClose, onImportPage }) => {
   }
   return (
     <>
-      <ModalWrap
+      <Modal
+        className={styles.modal}
         open={open}
         onClose={onClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Container>
-          <Header>
+        <section className={styles.container}>
+          <header className={styles.header}>
             <MdClose onClick={onClose} />
-          </Header>
-          <Content>
+          </header>
+          <div className={styles.content}>
             <form method="post" onSubmit={handleSubmit}>
               <h1>Importar página externa</h1>
               <Input
@@ -50,9 +49,9 @@ const ImportPageModal: React.FC<Props> = ({ open, onClose, onImportPage }) => {
                 Importar página externa
               </Button>
             </form>
-          </Content>
-        </Container>
-      </ModalWrap>
+          </div>
+        </section>
+      </Modal>
     </>
   );
 };

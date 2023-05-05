@@ -1,4 +1,3 @@
-import { ServerStyleSheet } from "styled-components";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import createEmotionCache from "@/libs/createEmotionCache";
@@ -47,7 +46,6 @@ export default class MyDocument extends Document {
 }
 
 MyDocument.getInitialProps = async (ctx) => {
-  const sheet = new ServerStyleSheet();
   const originalRenderPage = ctx.renderPage;
 
   const cache = createEmotionCache();
@@ -57,7 +55,7 @@ MyDocument.getInitialProps = async (ctx) => {
     ctx.renderPage = () =>
       originalRenderPage({
         enhanceApp: (App: any) => (props) => {
-          return sheet.collectStyles(<App emotionCache={cache} {...props} />);
+          return <App emotionCache={cache} {...props} />;
         },
       });
 
@@ -78,11 +76,10 @@ MyDocument.getInitialProps = async (ctx) => {
         <>
           {initialProps.styles}
           {emotionStyleTags}
-          {sheet.getStyleElement()}
         </>
       ),
     };
   } finally {
-    sheet.seal();
+
   }
 };

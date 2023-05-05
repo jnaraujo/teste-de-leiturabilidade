@@ -1,0 +1,48 @@
+.editor {
+  text-rendering: optimizeLegibility;
+  font-family: var(--merriweather-font);
+
+  height: 100%;
+  background-color: transparent;
+  overflow: hidden;
+
+  max-width: 100%;
+
+  resize: none;
+  border: none;
+
+  padding: 8px 12px;
+
+  color: $on-background;
+
+  p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+
+  * {
+    outline: none;
+  }
+
+  &:focus {
+    outline: none !important;
+    border: none;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor: pointer;
+  }
+}

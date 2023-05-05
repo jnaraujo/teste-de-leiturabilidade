@@ -5,12 +5,11 @@ import { Toaster } from "react-hot-toast";
 import { CssBaseline } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "@/libs/createEmotionCache";
-import { GlobalStyles } from "../styles/global";
 import { ModalProvider } from "../context/ModalContext";
-import { UpdateThemeProvider } from "../context/UpdateThemeContext";
-import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
 import LinearProgress from "../components/LinearProgress";
 import FeedbackWidget from "@/components/FeedbackWidget";
+
+import "../styles/globals.scss";
 
 import * as gtag from "@/libs/gtag";
 
@@ -46,31 +45,26 @@ const MyApp = ({
 
   return (
     <>
-      <GlobalStyles />
       {loading && <LinearProgress />}
-      <UpdateThemeProvider>
-        <ThemeProviderWrapper>
-          <ModalProvider>
-            <CacheProvider value={emotionCache}>
-              <CssBaseline />
-              <Navbar />
-              <main>
-                <Component {...pageProps} />
-              </main>
-              <FeedbackWidget />
-              <Toaster
-                toastOptions={{
-                  duration: 5000,
-                  style: {
-                    fontFamily: "Inter",
-                  },
-                }}
-                position="top-center"
-              />
-            </CacheProvider>
-          </ModalProvider>
-        </ThemeProviderWrapper>
-      </UpdateThemeProvider>
+      <ModalProvider>
+        <CacheProvider value={emotionCache}>
+          <CssBaseline />
+          <Navbar />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <FeedbackWidget />
+          <Toaster
+            toastOptions={{
+              duration: 5000,
+              style: {
+                fontFamily: "Inter",
+              },
+            }}
+            position="top-center"
+          />
+        </CacheProvider>
+      </ModalProvider>
     </>
   );
 };

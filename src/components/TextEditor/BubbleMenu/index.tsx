@@ -1,6 +1,6 @@
 import { BubbleMenu as TiptapBubbleMenu, Editor } from "@tiptap/react";
 import Button from "./Button";
-import { Content } from "./styles";
+import styles from "./styles.module.scss";
 import { getMenuItems } from "./helper";
 import cx from "classnames";
 
@@ -22,10 +22,14 @@ export const BubbleMenu = ({ editor, shouldBeVisible }: Props) => {
       updateDelay={0}
       editor={editor}
     >
-      <Content
-        className={cx("bubble-menu-container", {
-          visible: shouldBeVisible,
-        })}
+      <div
+        className={cx(
+          styles.content,
+          {
+            [styles.visible]: shouldBeVisible,
+          }
+        )
+        }
       >
         <ul>
           {getMenuItems(editor).map((item) => (
@@ -39,7 +43,7 @@ export const BubbleMenu = ({ editor, shouldBeVisible }: Props) => {
             </li>
           ))}
         </ul>
-      </Content>
+      </div>
     </TiptapBubbleMenu>
   );
 };

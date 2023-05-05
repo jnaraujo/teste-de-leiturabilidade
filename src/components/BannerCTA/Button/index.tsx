@@ -1,14 +1,14 @@
 import Link from "next/link";
 import React from "react";
 
-import { Container } from "./styles";
+import styles from "./styles.module.scss";
 
 const Button: React.FC = () => (
-  <Container>
+  <button className={styles.button}>
     <Link href="/" passHref>
       Testar meu texto gratuitamente!
     </Link>
-  </Container>
+  </button>
 );
 
 export default Button;
