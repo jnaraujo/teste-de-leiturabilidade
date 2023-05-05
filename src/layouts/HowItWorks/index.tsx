@@ -1,13 +1,15 @@
 import { Grid } from "@mui/material";
 import React from "react";
 
-import { Container, Heading, Text } from "./styles";
+import styles from "./styles.module.scss";
 
 const HowItWorks: React.FC = () => (
-  <Container container justifyContent="center">
-    <Grid item xs={11} className="texts" id="como-funciona">
-      <Heading>Como funciona o Teste de Leiturabilidade?</Heading>
-      <Text>
+  <Grid className={styles.container} container justifyContent="center">
+    <Grid item xs={11} className={styles.texts} id="como-funciona">
+      <h3>
+        Como funciona o Teste de Leiturabilidade?
+      </h3>
+      <p>
         Para testar o nível de leitura de um texto, nós utilizamos o{" "}
         <a
           href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests"
@@ -17,32 +19,38 @@ const HowItWorks: React.FC = () => (
           Teste de Legibilidade de Flesch-Kincaid
         </a>{" "}
         (artigo da Wikipedia em inglês).
-      </Text>
-      <Text>
+      </p>
+      <p>
         O teste original foi feito para a língua inglesa. Porém, a fórmula foi
         adaptada para a língua portuguesa em 1996 pelos pesquisadores Teresa B.
         F. Martins, Claudete M. Ghiraldelo, M. Graças V. Nunes e Osvaldo N.
         Oliveira Jr., do Instituto de Ciências Matemáticas e de Computação da
         USP de São Carlos;
-      </Text>
+      </p>
 
-      <Heading>O que o Teste de Leitura leva em conta?</Heading>
-      <Text>
+      <h3>
+        O que o Teste de Leitura leva em conta?
+      </h3>
+      <p>
         Tanto a versão original do <strong>Teste de Flesch-Kincaid</strong>{" "}
         quando a versão brasileira levam em conta o{" "}
         <strong>tamanho da frase</strong> e o{" "}
         <strong>tamanho das palavras</strong>: quanto maior, mais difícil de
         ler.
-      </Text>
+      </p>
 
-      <Heading>Quão preciso é o Teste de Leitura?</Heading>
-      <Text>
+      <h3>
+        Quão preciso é o Teste de Leitura?
+      </h3>
+      <p>
         A versão original do <strong>Teste de Flesch-Kincaid</strong> tem
         precisão de quase 90% - o que, para uso comum, é um valor bastante
         considerável.
-      </Text>
+      </p>
 
-      <Heading isSubHeading>Quer saber mais? Dá uma olhada nas fontes:</Heading>
+      <h3>
+        Quer saber mais? Dá uma olhada nas fontes:
+      </h3>
       <ul>
         <li>
           <a
@@ -64,7 +72,7 @@ const HowItWorks: React.FC = () => (
         </li>
       </ul>
     </Grid>
-  </Container>
+  </Grid>
 );
 
 export default HowItWorks;
