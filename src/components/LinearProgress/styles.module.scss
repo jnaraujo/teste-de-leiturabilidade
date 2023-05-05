@@ -1,6 +1,5 @@
-import styled, { keyframes } from "styled-components";
-
-const LoadingAnimation = keyframes`
+// generate animation of linear progress bar
+@keyframes LoadingAnimation {
   0% {
     left: -35%;
     right: 100%;
@@ -13,9 +12,9 @@ const LoadingAnimation = keyframes`
     left: 100%;
     right: -90%;
   }
-`;
+}
 
-export const Container = styled.div`
+.linear {
   position: fixed;
   top: 0;
   left: 0;
@@ -30,9 +29,9 @@ export const Container = styled.div`
     left: 0;
     bottom: 0;
     background-color: #fff;
-    animation: ${LoadingAnimation} cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: LoadingAnimation cubic-bezier(0.4, 0, 0.2, 1) infinite;
     animation-duration: 2s;
     animation-delay: 0.5s;
     will-change: left, right;
   }
-`;
+}
