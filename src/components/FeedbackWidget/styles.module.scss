@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const Widget = styled.button`
+.widget {
   all: unset;
   --width: 56px;
 
@@ -19,12 +17,12 @@ export const Widget = styled.button`
   cursor: pointer;
 
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: $secondary;
 
   svg {
     width: calc(var(--width) * 0.5);
     height: calc(var(--width) * 0.5);
-    color: ${({ theme }) => theme.colors.onPrimary};
+    color: $on-primary;
 
     transition: scale ease-in-out 0.2s;
   }
@@ -36,9 +34,9 @@ export const Widget = styled.button`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (max-width: $breakpoint-md) {
     bottom: 8px;
     right: 8px;
     --width: 48px;
   }
-`;
+}
