@@ -6,6 +6,7 @@ import { NAVBAR_LINKS } from "../constants";
 
 import styles from "./styles.module.scss";
 import { AiOutlineClose } from "react-icons/ai";
+import Button from "@/components/Button";
 
 interface Props {
   onClose: () => void;
@@ -50,9 +51,11 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
           );
         })}
         <li>
-          <Link href="/editor" className={styles.openEditor}>
-            Abrir o Editor
-          </Link>
+          <Button className={styles.openEditor}>
+            <Link href="/editor" >
+              Abrir o Editor
+            </Link>
+          </Button>
         </li>
       </ul>
     </nav>
