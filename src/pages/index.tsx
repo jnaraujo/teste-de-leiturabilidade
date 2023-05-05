@@ -1,12 +1,5 @@
 import { DefaultSeo } from "next-seo";
-import { Grid } from "@mui/material";
-
-import {
-  Container,
-  Informations,
-  MainContainer,
-  MainContent,
-} from "../styles/pages/Home";
+import styles from "../styles/pages/Home.module.scss"
 
 // COMPONENTS
 import Footer from "../components/Footer";
@@ -26,19 +19,19 @@ const Home = () => {
           },
         ]}
       />
-      <MainContainer>
-        <MainContent>
+      <div className={styles.container}>
+        <div className={styles.content}>
           <Editor />
-          <div className="line" />
-          <Informations>
+          <div className={styles.line} />
+          <div className={styles.inner}>
             <HowItWorks />
-            <Container container justifyContent="center">
-              <Grid item xs={12} className="line" />
+            <div className={styles.footer}>
+              <div className={styles.line} />
               <Footer />
-            </Container>
-          </Informations>
-        </MainContent>
-      </MainContainer>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
