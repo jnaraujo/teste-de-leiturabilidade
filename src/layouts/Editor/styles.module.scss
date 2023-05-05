@@ -1,11 +1,8 @@
-import { Grid } from "@mui/material";
-import styled from "styled-components";
-
-export const Container = styled(Grid)`
+.container {
   margin: 0 auto;
-`;
+}
 
-export const Content = styled(Grid)`
+.content {
   margin: 0 auto;
 
   aside {
@@ -35,13 +32,13 @@ export const Content = styled(Grid)`
     min-height: 85vh;
 
     @media (max-width: $breakpoint-md) {
-      border-bottom: 1px solid ${({ theme }) => theme.colors.onSurfaceSecondary};
+      border-bottom: 1px solid $on-surface-secondary;
       margin: 0 8px 20px 8px;
     }
   }
-`;
+}
 
-export const LoadingDiv = styled.div`
+.loading {
   position: fixed;
   top: 0;
   left: 0;
@@ -68,4 +65,4 @@ export const LoadingDiv = styled.div`
       transform: rotate(360deg);
     }
   }
-`;
+}
