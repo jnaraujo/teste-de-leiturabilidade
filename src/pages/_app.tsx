@@ -12,6 +12,8 @@ import ThemeProviderWrapper from "../components/ThemeProviderWrapper";
 import LinearProgress from "../components/LinearProgress";
 import FeedbackWidget from "@/components/FeedbackWidget";
 
+import "../styles/globals.scss";
+
 import * as gtag from "@/libs/gtag";
 
 import "react-responsive-modal/styles.css";
