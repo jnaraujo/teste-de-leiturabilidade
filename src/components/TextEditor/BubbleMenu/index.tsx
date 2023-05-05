@@ -26,7 +26,7 @@ export const BubbleMenu = ({ editor, shouldBeVisible }: Props) => {
         className={cx(
           styles.content,
           {
-            visible: shouldBeVisible,
+            [styles.visible]: shouldBeVisible,
           }
         )
         }

@@ -81,7 +81,7 @@ export default function TextEditor({ html }: ComponentPropsType) {
       <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className={styles.editor} editor={editor} />
 
-      {/* <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} /> */}
+      <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} />
     </EditorContainer>
   );
 };
