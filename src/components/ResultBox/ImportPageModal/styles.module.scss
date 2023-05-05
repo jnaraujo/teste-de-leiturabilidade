@@ -1,22 +1,18 @@
-import { Modal } from "@mui/material";
-import styled from "styled-components";
-
-export const ModalWrap = styled(Modal)`
+.modal {
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+}
 
-export const Container = styled.section`
+.container {
   width: 350px;
   max-width: 90vw;
   height: fit-content;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: $background;
   border-radius: 8px;
   padding: 16px 12px;
-`;
-
-export const Header = styled.header`
+}
+.header {
   display: flex;
   justify-content: flex-end;
   padding-right: 4px;
@@ -26,9 +22,9 @@ export const Header = styled.header`
     width: 24px;
     cursor: pointer;
   }
-`;
+}
 
-export const Content = styled.div`
+.content {
   display: flex;
   flex-direction: column;
 
@@ -55,7 +51,7 @@ export const Content = styled.div`
       padding: 8px;
       margin-bottom: 8px;
       resize: none;
-      border: 1px solid ${({ theme }) => theme.colors.onBackground};
+      border: 1px solid $on-background;
     }
   }
-`;
+}
