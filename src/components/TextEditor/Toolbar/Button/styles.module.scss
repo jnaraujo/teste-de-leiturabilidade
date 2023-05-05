@@ -22,15 +22,11 @@
   background-color: transparent;
 
   &:hover {
-    background-color: $secondary;
+    background-color: $on-secondary;
   }
 
   &.active {
     color: $on-primary;
     background-color: $secondary;
-
-    &:hover {
-      background-color: $on-surface-secondary;
-    }
   }
 }
