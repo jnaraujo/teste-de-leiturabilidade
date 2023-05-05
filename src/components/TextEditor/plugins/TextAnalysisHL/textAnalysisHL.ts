@@ -5,11 +5,17 @@ import { Decoration, DecorationSet } from "prosemirror-view";
 import { Node } from "prosemirror-model";
 import { calculateFleschReading } from "@/libs/ReadingEase";
 import { splitPhrases } from "./helper";
+import styles from "../../EditorContainer/styles.module.scss";
 
 function easeToLabel(ease: number) {
   if (ease > 50) return "easy";
   if (ease > 25) return "medium";
   return "hard";
+}
+
+function mountLabel(ease: number) {
+  const label = easeToLabel(ease);
+  return styles[`ease-${label}`];
 }
 
 function highlightWordsEase(doc: Node) {
@@ -24,7 +30,7 @@ function highlightWordsEase(doc: Node) {
           const ease = calculateFleschReading(word).result;
           decorations.push(
             Decoration.inline(pos + totalPos - word.length, pos + totalPos, {
-              class: `ease-${easeToLabel(ease)}`,
+              class: mountLabel(ease),
             })
           );
         }
@@ -41,7 +47,7 @@ function highlightPhrasesEase(doc: Node) {
   function addDecoration(start: number, end: number, ease: number) {
     decorations.push(
       Decoration.inline(start, end, {
-        class: `ease-${easeToLabel(ease)}`,
+        class: mountLabel(ease),
       })
     );
   }
@@ -81,7 +87,7 @@ function highlightParagraphEase(doc: Node) {
       const ease = calculateFleschReading(node.textContent).result;
       decorations.push(
         Decoration.inline(pos, pos + node.nodeSize, {
-          class: `ease-${easeToLabel(ease)}`,
+          class: mountLabel(ease),
         })
       );
     }
