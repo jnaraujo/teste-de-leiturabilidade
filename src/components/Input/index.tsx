@@ -1,14 +1,12 @@
 import React, { forwardRef, InputHTMLAttributes } from 'react';
 
-import { Container } from './styles';
+import styles from './styles.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> { }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(({ ...rest }, ref) => {
   return (
-    <Container>
-      <input ref={ref} {...rest} />
-    </Container>
+    <input className={styles.input} ref={ref} {...rest} />
   );
 });
 

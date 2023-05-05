@@ -1,0 +1,14 @@
+input {
+  height: 35px;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 8px;
+
+  border: 1px solid $on-background;
+
+  width: 100%;
+
+  &::placeholder {
+    font-family: "Inter", sans-serif;
+  }
+}
