@@ -1,9 +1,9 @@
 import Button from "./Button";
-import { Content, Container } from "./styles";
+import styles from "./styles.module.scss";
 
 export const BannerCTA = () => (
-  <Container>
-    <Content>
+  <div className={styles.container}>
+    <article className={styles.content}>
       <h2>Teste a facilidade de leitura do seu texto!</h2>
       <p>
         Crie, edite e importe seu texto de forma fácil e rápida.
@@ -11,6 +11,6 @@ export const BannerCTA = () => (
         Descubra em tempo real o nível de facilidade de leitura do seu texto.
       </p>
       <Button />
-    </Content>
-  </Container>
+    </article>
+  </div>
 );

@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const Container = styled.div`
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,4 +27,4 @@ export const Container = styled.div`
     text-align: center;
     width: 100%;
   }
-`;
+}
