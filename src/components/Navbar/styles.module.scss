@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 95vw;
+
+  @media (min-width: $breakpoint-md) {
+    max-width: 1050px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    max-width: 1200px;
+  }
+  margin: 0 auto;
+  height: fit-content;
+}
+
+.title {
+  all: unset;
+  margin: 24px 0;
+
+  a {
+    all: unset;
+    font-size: 1.4rem;
+    cursor: pointer;
+    font-weight: bolder;
+    color: black;
+  }
+
+  .blog {
+    color: #06d6a0;
+    font-size: 1.2rem;
+    margin-left: 4px;
+  }
+}
+
+.menuButton {
+  all: unset;
+  display: none;
+  font-size: 1.6rem;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}

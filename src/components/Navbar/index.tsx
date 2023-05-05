@@ -1,11 +1,10 @@
 import { useState } from "react";
-
-import { MenuButton } from "./MenuButton";
-import { Container } from "./styles";
-import { Title } from "./Title";
+import Link from "next/link";
+import styles from "./styles.module.scss";
 import { Links } from "./Links";
+import { AiOutlineMenu } from "react-icons/ai";
 
-const NavbarComponent = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -13,11 +12,17 @@ const NavbarComponent = () => {
   };
 
   return (
-    <Container className={isOpen ? "open" : "closed"}>
-      <Title />
+    <header className={styles.header}>
+      <div className={styles.title}>
+        <Link href="/" passHref>
+          Teste de Leitura
+        </Link>
+      </div>
       <Links onClose={handleClick} isOpen={isOpen} />
-      <MenuButton onClick={handleClick} />
-    </Container>
+      <button className={styles.menuButton} type="button" onClick={handleClick} aria-label="Abrir menu">
+        <AiOutlineMenu />
+      </button>
+    </header>
   );
 };
-export default NavbarComponent;
+export default Navbar;

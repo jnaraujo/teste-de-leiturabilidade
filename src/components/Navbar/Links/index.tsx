@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import { CTAButton } from "./CTAButton";
-import { CloseModalButton } from "../CloseModalButton";
+import Link from "next/link";
+import cx from "classnames";
+import { useRouter } from "next/router";
 import { NAVBAR_LINKS } from "../constants";
 
-import { Container, UlList } from "./styles";
+import styles from "./styles.module.scss";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface Props {
   onClose: () => void;
@@ -22,17 +22,27 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
   }, [router.pathname]);
 
   return (
-    <Container className={isOpen ? "open" : "closed"}>
-      <CloseModalButton onClick={onClose} />
+    <nav className={
+      cx(styles.navbar, {
+        [styles.open]: isOpen,
+      })
+    }>
+      <button className={styles.closeModalButton} onClick={onClose}>
+        <AiOutlineClose />
+      </button>
 
-      <UlList>
+      <ul className={styles.list}>
         {NAVBAR_LINKS.map(({ title, url }) => {
           return (
             <li key={title}>
               <Link
                 href={url}
                 passHref
-                className={currentPath === url ? "active" : ""}
+                className={
+                  cx({
+                    [styles.active]: currentPath === url,
+                  })
+                }
               >
                 {title}
               </Link>
@@ -40,9 +50,11 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
           );
         })}
         <li>
-          <CTAButton />
+          <Link href="/editor" className={styles.openEditor}>
+            Abrir o Editor
+          </Link>
         </li>
-      </UlList>
-    </Container>
+      </ul>
+    </nav>
   );
 };

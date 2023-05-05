@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const Container = styled.nav`
+.navbar {
   @media (max-width: 768px) {
     display: none;
 
@@ -26,9 +24,9 @@ export const Container = styled.nav`
       }
     }
   }
-`;
+}
 
-export const UlList = styled.ul`
+.list {
   margin: 0;
   display: flex;
   gap: 32px;
@@ -56,4 +54,31 @@ export const UlList = styled.ul`
       color: #495057;
     }
   }
-`;
+}
+
+.openEditor {
+  all: unset;
+  &:hover {
+    all: unset;
+    cursor: pointer;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 24px;
+}
+
+.closeModalButton {
+  all: unset;
+  display: none;
+  font-size: 1.6rem;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+}
