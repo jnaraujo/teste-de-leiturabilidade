@@ -16,7 +16,7 @@ type ComponentPropsType = {
   html: string;
 };
 
-const TextEditor = ({ html, className }: ComponentPropsType) => {
+export default function TextEditor({ html, className }: ComponentPropsType) {
   const setEase = useReadingStore((state) => state.setEase);
   const { content, setContent } = useContentStore();
 
@@ -85,5 +85,3 @@ const TextEditor = ({ html, className }: ComponentPropsType) => {
     </EditorContainer>
   );
 };
-
-export default TextEditor;

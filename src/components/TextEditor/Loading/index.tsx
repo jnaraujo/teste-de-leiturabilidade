@@ -1,17 +1,19 @@
 import React from "react";
-
-import { Container } from "./styles";
+import cx from "classnames";
+import styles from "./styles.module.scss";
 
 const Loading: React.FC = () => {
   return (
-    <Container>
-      <div className="container">
-        <div className="dot dot1"></div>
-        <div className="dot dot2"></div>
-        <div className="dot dot3"></div>
+    <div className={styles.container}>
+      <div className={styles.container}>
+        {
+          Array.from({ length: 3 }).map((_, index) => (
+            <div key={index} className={cx(styles.dot, styles[`dot${index}`])}></div>
+          ))
+        }
       </div>
-      <p className="text">Carregando o editor...</p>
-    </Container>
+      <p className={styles.text}>Carregando o editor...</p>
+    </div>
   );
 };
 

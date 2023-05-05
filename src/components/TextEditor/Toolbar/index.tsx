@@ -5,13 +5,13 @@ import {
   isActive,
 } from "./helper";
 
-import { Toolbar } from "./styles";
+import styles from "./styles.module.scss";
 import Button from "./Button";
 
-const ToolbarComponent = ({ editor }: { editor: Editor }) => (
-  <Toolbar>
+const Toolbar = ({ editor }: { editor: Editor }) => (
+  <div className={styles.toolbar}>
     {getToolbarGroups(editor).map((items, index) => (
-      <div key={`group ${index}`} className="group">
+      <div key={`group ${index}`} className={styles.group}>
         {items.map((item) => (
           <Button
             key={item.name + item.tooltip}
@@ -28,7 +28,7 @@ const ToolbarComponent = ({ editor }: { editor: Editor }) => (
         ))}
       </div>
     ))}
-  </Toolbar>
+  </div>
 );
 
-export default ToolbarComponent;
+export default Toolbar;

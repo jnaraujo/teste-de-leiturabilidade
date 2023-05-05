@@ -1,12 +1,10 @@
-import styled, { keyframes } from "styled-components";
-
-const LoadingAnimation = keyframes`
-   50%{
-    transform: translate(0,15px);
+@keyframes LoadingAnimation {
+  50% {
+    transform: translate(0, 15px);
   }
-`;
+}
 
-export const Container = styled.div`
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,14 +34,14 @@ export const Container = styled.div`
   }
   .dot1 {
     background-color: #1abc9c;
-    animation: ${LoadingAnimation} 0.6s 0.1s linear infinite;
+    animation: LoadingAnimation 0.6s 0.1s linear infinite;
   }
   .dot2 {
     background-color: #ffd64a;
-    animation: ${LoadingAnimation} 0.6s 0.2s linear infinite;
+    animation: LoadingAnimation 0.6s 0.2s linear infinite;
   }
   .dot3 {
     background-color: #e867af;
-    animation: ${LoadingAnimation} 0.6s 0.3s linear infinite;
+    animation: LoadingAnimation 0.6s 0.3s linear infinite;
   }
-`;
+}
