@@ -45,8 +45,3 @@ netlify.toml
 **/public/sw.js.map
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
-# Sentry
-.sentryclirc
-
-# Sentry
-next.config.original.js
