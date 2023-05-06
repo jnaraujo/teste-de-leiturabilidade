@@ -1,11 +1,10 @@
-import { Grid } from "@mui/material";
 import React from "react";
-
 import styles from "./styles.module.scss";
+import { Grid } from "@mui/material";
 
 const HowItWorks: React.FC = () => (
-  <Grid className={styles.container} container justifyContent="center">
-    <Grid item xs={11} className={styles.texts} id="como-funciona">
+  <section className={styles.container}>
+    <div className={styles.texts} id="como-funciona">
       <h3>
         Como funciona o Teste de Leiturabilidade?
       </h3>
@@ -71,8 +70,8 @@ const HowItWorks: React.FC = () => (
           </a>
         </li>
       </ul>
-    </Grid>
-  </Grid>
+    </div>
+  </section>
 );
 
 export default HowItWorks;
