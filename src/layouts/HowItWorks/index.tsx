@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { Grid } from "@mui/material";
 
 const HowItWorks: React.FC = () => (
   <section className={styles.container}>
