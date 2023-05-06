@@ -20,6 +20,10 @@
         }
       }
     }
+
+    @media (min-width: $breakpoint-lg) {
+      width: 100%;
+    }
   }
 
   h3 {
