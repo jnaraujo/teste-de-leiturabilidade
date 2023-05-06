@@ -43,6 +43,7 @@ const nextConfig = {
         "prosemirror-state",
         "react-is",
         "prosemirror-view",
+        "@babel/runtime",
       ];
 
       moduleList.forEach((moduleName) => {

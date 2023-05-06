@@ -12,7 +12,6 @@ import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 import styles from "./styles.module.scss";
 import Button from "../Button";
 import ImportPageModal from "./ImportPageModal";
-import { Grid } from "@mui/material";
 
 interface ResultBoxProps {
   onImportPage?: (value: string) => void;
@@ -57,7 +56,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
 
   return (
     <>
-      <Grid className={styles.container}>
+      <div className={styles.container}>
         <p>
           Seu texto está no nível de leitura de{" "}
           <span id="rd_exmlp">{easeToLabel(ease.index)}.</span>
@@ -132,7 +131,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
             Importar página externa
           </Button>
         </div>
-      </Grid>
+      </div>
       <ImportPageModal open={isModalOpen} onClose={closeModal} onImportPage={handleImportPage} />
     </>
   );
