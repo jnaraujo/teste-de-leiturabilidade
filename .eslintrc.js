@@ -7,12 +7,11 @@ module.exports = {
   extends: [
     "plugin:react/recommended",
     "airbnb",
-    "prettier",
+    "plugin:prettier/recommended",
     "plugin:@next/next/recommended",
     "plugin:storybook/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/javascript",
     "plugin:import/typescript",
   ],
   parser: "@typescript-eslint/parser",
@@ -25,6 +24,15 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        printWidth: 80,
+        tabWidth: 2,
+        singleQuote: false,
+        endOfLine: "auto",
+      },
+    ],
     "linebreak-style": "off",
     "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
@@ -43,12 +51,6 @@ module.exports = {
           "**/*.spec.*",
         ],
         peerDependencies: true,
-      },
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
       },
     ],
     "react/function-component-definition": [
