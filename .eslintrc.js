@@ -6,7 +6,8 @@ module.exports = {
   },
   extends: [
     "plugin:react/recommended",
-    "airbnb",
+    "airbnb-base",
+    'airbnb-typescript',
     "plugin:prettier/recommended",
     "plugin:@next/next/recommended",
     "plugin:storybook/recommended",
@@ -21,8 +22,9 @@ module.exports = {
     },
     ecmaVersion: "latest",
     sourceType: "module",
+    project: ["./tsconfig.json"]
   },
-  plugins: ["react", "@typescript-eslint", "prettier"],
+  plugins: ["react", "@typescript-eslint"],
   rules: {
     "prettier/prettier": [
       "error",
@@ -33,47 +35,9 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
-    "linebreak-style": "off",
-    "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": [1, { extensions: [".jsx", ".tsx"] }],
     "react/prop-types": "off",
-    "react/require-default-props": "off",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        devDependencies: [
-          "**/*.stories.*",
-          "**/.storybook/**/*.*",
-          "**/*.test.*",
-          "**/*.spec.*",
-        ],
-        peerDependencies: true,
-      },
-    ],
-    "react/function-component-definition": [
-      "error",
-      {
-        namedComponents: "arrow-function",
-        unnamedComponents: "arrow-function",
-      },
-    ],
-    "react/jsx-filename-extension": [
-      2,
-      {
-        extensions: [".ts", ".tsx"],
-      },
-    ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        ts: "never",
-        tsx: "never",
-      },
-    ],
   },
   settings: {
     "import/resolver": {
