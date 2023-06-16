@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar"
 import "./globals.css"
 import { Inter, Merriweather } from "next/font/google"
 
@@ -20,7 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br" className={`${merriweather.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body className="bg-zinc-50 text-zinc-900">
+        <Navbar />
+        {children}
+      </body>
     </html>
   )
 }
