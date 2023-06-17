@@ -4,6 +4,7 @@ import Link from "next/link"
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
 import { useState } from "react"
 import clsx from "clsx"
+import Button from "../ui/Button"
 
 const LINKS = [
   {
@@ -59,7 +60,7 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        <button
+        <Button
           aria-label="Fechar menu"
           onClick={handleOpen}
           className={clsx({
@@ -68,7 +69,7 @@ export default function Navbar() {
           })}
         >
           <AiOutlineClose size={25} />
-        </button>
+        </Button>
       </div>
 
       <button
