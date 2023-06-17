@@ -2,6 +2,8 @@ import Navbar from "@/components/Layouts/Navbar"
 import "./globals.css"
 import { Inter, Merriweather } from "next/font/google"
 import Footer from "@/components/Layouts/Footer"
+import FeedbackWidget from "@/components/FeedbackWidget"
+import Providers from "@/components/Providers"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const merriweather = Merriweather({
@@ -23,10 +25,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br" className={`${merriweather.variable} ${inter.variable}`}>
-      <body className="bg-zinc-50 text-zinc-900">
-        <Navbar />
-        {children}
-        <Footer />
+      <body className="min-h-screen bg-zinc-50 text-zinc-900">
+        <Providers>
+          <Navbar />
+          {children}
+          <FeedbackWidget />
+          <Footer />
+        </Providers>
       </body>
     </html>
   )
