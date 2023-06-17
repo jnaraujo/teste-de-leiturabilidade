@@ -19,6 +19,15 @@ module.exports = {
       sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
       serif: ["var(--font-merriweather)", ...defaultTheme.fontFamily.serif],
     },
+    animation: {
+      "fade-in": "fade-in 0.4s ease-in-out",
+    },
+    keyframes: {
+      "fade-in": {
+        "0%": { opacity: 0 },
+        "100%": { opacity: 1 },
+      },
+    }
   },
   plugins: [require("@tailwindcss/typography")],
 }
