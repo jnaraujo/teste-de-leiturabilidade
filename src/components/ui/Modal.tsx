@@ -33,10 +33,13 @@ export default function Modal({
   return (
     <Dialog.Root open={open} onOpenChange={onClose}>
       <Dialog.Trigger className="hidden" />
-      <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-60" />
+      <Dialog.Overlay className="fixed inset-0 z-20 bg-black bg-opacity-60" />
       <Dialog.Content
         className={clsx(
-          "fixed left-1/2 top-1/2 w-[500px] -translate-x-1/2 -translate-y-1/2 transform rounded-lg border border-zinc-500 bg-zinc-950 p-6",
+          "fixed left-1/2 top-1/2 z-30 w-[500px] -translate-x-1/2 -translate-y-1/2 transform rounded-lg",
+          {
+            "border border-zinc-500 bg-zinc-950 p-6": children === undefined,
+          },
           className,
         )}
       >
