@@ -1,6 +1,7 @@
 import Navbar from "@/components/Layouts/Navbar"
 import "./globals.css"
 import { Inter, Merriweather } from "next/font/google"
+import Footer from "@/components/Layouts/Footer"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const merriweather = Merriweather({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className="bg-zinc-50 text-zinc-900">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )
