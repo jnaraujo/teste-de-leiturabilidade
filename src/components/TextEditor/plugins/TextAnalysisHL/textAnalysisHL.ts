@@ -52,29 +52,39 @@ function highlightPhrasesEase(doc: Node) {
     );
   }
 
-  doc.forEach((node, pos) => {
+  let pos = 0;
+  for (let i = 0; i < doc.childCount; i++) {
+    const node = doc.child(i);
+
     if (node.textContent.length > 0) {
       let endOfPhrase = 0;
 
       if (node.type.name === "blockquote") {
         const ease = calculateFleschReading(node.textContent).result;
         addDecoration(pos, pos + node.nodeSize, ease);
-      } else {
-        splitPhrases(node.textContent).forEach((phrase) => {
-          if (phrase.length > 0) {
-            endOfPhrase += phrase.length + 1;
+        pos += node.nodeSize;
+        continue;
+      }
 
-            const from = pos + endOfPhrase - phrase.length;
-            const to = pos + endOfPhrase;
+      const phrases = splitPhrases(node.textContent)
 
-            const ease = calculateFleschReading(phrase).result;
+      for (let j = 0; j < phrases.length; j++) {
+        const phrase = phrases[j];
+        if (phrase.length > 0) {
+          endOfPhrase += phrase.length + 1;
 
-            addDecoration(from, to, ease);
-          }
-        });
+          const from = pos + endOfPhrase - phrase.length;
+          const to = pos + endOfPhrase;
+
+          const ease = calculateFleschReading(phrase).result;
+
+          addDecoration(from, to, ease);
+        }
       }
     }
-  });
+
+    pos += node.nodeSize;
+  }
 
   return DecorationSet.create(doc, decorations);
 }
@@ -102,6 +112,7 @@ const TextAnalysisHLProse = new Plugin({
       return highlightPhrasesEase(doc);
     },
     apply(tr, old) {
+      const a = tr.docChanged ? highlightPhrasesEase(tr.doc) : old;
       return tr.docChanged ? highlightPhrasesEase(tr.doc) : old;
     },
   },

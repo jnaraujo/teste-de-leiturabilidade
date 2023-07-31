@@ -1,22 +1,57 @@
+import { splitPhrases } from "../../components/TextEditor/plugins/TextAnalysisHL/helper";
 import {
   calculateFleschEase,
   calculateResult,
   countSyllables,
-  getSentences,
   getWords,
 } from "./helper";
 
-export function calculateFleschReading(text: string) {
-  const words = getWords(text);
-  const totalSentences = getSentences(text).length;
+/**
+ * Calculate the Flesch Reading score for a given text
+ * @param phrase - text to be analyzed
+ * @return Flesch Reading score
+ * @example
+ * const result = calculateFleschReading("A vida é bela.");
+ * console.log(result);
+ * // {
+ * //   words: 4,
+ * //   sentences: 1,
+ * //   syllables: 6,
+ * //   result: 100
+ * // }
+**/
+export function calculateFleschReading(phrase: string) {
+  if(!phrase) return {
+    words: 0,
+    sentences: 0,
+    syllables: 0,
+    result: 0,
+  }
+
+  const words = getWords(phrase);
   const totalSyllables = countSyllables(words);
 
   return {
     words: words.length,
-    sentences: totalSentences,
+    sentences: 1,
     syllables: totalSyllables,
     result: calculateResult(
-      calculateFleschEase(words.length, totalSentences, totalSyllables)
+      calculateFleschEase(words.length, 1, totalSyllables)
+    ),
+  };
+}
+
+export function calculateFleschReadingFromText(text: string) {
+  const words = getWords(text);
+  const totalSyllables = countSyllables(words);
+  const sentences = splitPhrases(text).length
+
+  return {
+    words: words.length,
+    sentences: sentences,
+    syllables: totalSyllables,
+    result: calculateResult(
+      calculateFleschEase(words.length, sentences, totalSyllables)
     ),
   };
 }

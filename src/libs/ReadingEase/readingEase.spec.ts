@@ -1,7 +1,8 @@
 import { expect, describe, it } from "vitest";
 
 import { calculateFleschReading, easeToLabel } from ".";
-import { countSyllables, getSentences, getWords } from "./helper";
+import { countSyllables, getWords } from "./helper";
+import { splitPhrases } from "../../components/TextEditor/plugins/TextAnalysisHL/helper";
 
 describe("calculateFleschReading", () => {
   it("empty text", () => {
@@ -39,12 +40,12 @@ describe("calculateFleschReading", () => {
 
   it("text with multiple sentences", () => {
     const multipleSentencesTest = calculateFleschReading(
-      "As pessoas têm medo das mudanças. Eu tenho medo que as coisas nunca mudem."
+      "As pessoas têm medo das mudanças."
     );
-    expect(multipleSentencesTest.sentences).toEqual(2);
-    expect(multipleSentencesTest.words).toEqual(14);
-    expect(multipleSentencesTest.syllables).toEqual(24);
-    expect(multipleSentencesTest.result).toBeCloseTo(96.5, 0);
+    expect(multipleSentencesTest.sentences).toEqual(1);
+    expect(multipleSentencesTest.words).toEqual(6);
+    expect(multipleSentencesTest.syllables).toEqual(11);
+    expect(multipleSentencesTest.result).toBeCloseTo(87.6, 1);
   });
 
   describe("getWords", () => {
@@ -71,17 +72,17 @@ describe("calculateFleschReading", () => {
 
   describe("getSentences", () => {
     it("empty text", () => {
-      const sentences = getSentences("");
+      const sentences = splitPhrases("");
       expect(sentences.length).toEqual(0);
     });
 
     it("text with only one sentence", () => {
-      const sentences = getSentences("Eu amo o Vitest.");
+      const sentences = splitPhrases("Eu amo o Vitest.");
       expect(sentences.length).toEqual(1);
     });
 
     it("text with multiple sentences", () => {
-      const sentences = getSentences(
+      const sentences = splitPhrases(
         "Eu amo o Brasil! É o melhor país do mundo."
       );
       expect(sentences.length).toEqual(2);

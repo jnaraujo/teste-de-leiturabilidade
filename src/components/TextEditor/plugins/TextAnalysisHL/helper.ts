@@ -45,7 +45,7 @@ function bruteSplit(text: string) {
 }
 
 /**
- * Split by punctuation followed by space. Supports: . ! ?
+ * Split by punctuation followed by space. Supports: . ! ? \r \n
  * @param text
  * @returns
  */

@@ -16,6 +16,8 @@ import History from "@tiptap/extension-history";
 import * as ReadingEase from "../../libs/ReadingEase";
 import { TextAnalysisHL } from "./plugins/TextAnalysisHL/textAnalysisHL";
 import { IEase } from "@/store/readingStore";
+import { splitPhrases } from "./plugins/TextAnalysisHL/helper";
+import { calculateFleschEase } from "@/libs/ReadingEase/helper";
 
 export const EditorExtensions = [
   Heading,
@@ -63,10 +65,24 @@ export const handleContentEase = (
   text: string,
   setEase: (obj: IEase) => void
 ) => {
-  const textAnalyses = ReadingEase.calculateFleschReading(text);
+  const phrases = splitPhrases(text);
+
+  let textAnalyses = {
+    result: 0,
+    syllables: 0,
+    words: 0,
+    sentences: 0,
+  };
+
+  phrases.forEach((phrase) => {
+    const phraseAnalyses = ReadingEase.calculateFleschReading(phrase);
+      textAnalyses.syllables += phraseAnalyses.syllables;
+      textAnalyses.words += phraseAnalyses.words;
+      textAnalyses.sentences += phraseAnalyses.sentences;
+  })  
 
   setEase({
-    index: textAnalyses.result,
+    index: calculateFleschEase(textAnalyses.words, textAnalyses.sentences, textAnalyses.syllables),
     syllables: textAnalyses.syllables,
     words: textAnalyses.words,
     sentences: textAnalyses.sentences,
