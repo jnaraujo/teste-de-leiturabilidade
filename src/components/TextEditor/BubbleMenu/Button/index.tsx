@@ -1,4 +1,4 @@
-import { Tooltip } from "@mui/material";
+import Tooltip from "@/components/Tooltip";
 import React from "react";
 
 const Button = ({
@@ -14,7 +14,7 @@ const Button = ({
 
   onClick: () => void;
 }) => (
-  <Tooltip title={tooltip} placement="top">
+  <Tooltip text={tooltip} placement="top">
     <button
       key={name}
       onMouseDown={() => {

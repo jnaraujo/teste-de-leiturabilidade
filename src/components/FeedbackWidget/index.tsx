@@ -2,9 +2,9 @@ import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
 import { MdFeedback } from "react-icons/md";
 const FeedbackModal = dynamic(() => import("./FeedbackModal"));
-const Tooltip = dynamic(() => import("@mui/material/Tooltip"));
 
 import styles from "./styles.module.scss";
+import Tooltip from "../Tooltip";
 
 const FeedbackWidget: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -19,7 +19,7 @@ const FeedbackWidget: React.FC = () => {
 
   return (
     <>
-      <Tooltip title="Deixe seu Feedback!" placement="top">
+      <Tooltip text="Deixe seu Feedback!" placement="top">
         <button className={styles.widget} onClick={handleModal}>
           <MdFeedback />
         </button>
