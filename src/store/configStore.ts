@@ -3,6 +3,7 @@ import { create } from "zustand";
 
 export interface IConfig {
   highlight: boolean;
+  tips: boolean;
 }
 
 export interface IConfigStore {
@@ -12,6 +13,7 @@ export interface IConfigStore {
 
 const defaultConfig: IConfig = {
   highlight: true,
+  tips: true,
 };
 
 export const useConfigStore = create<IConfigStore>((set, get) => ({

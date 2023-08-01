@@ -97,12 +97,24 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
               <input
                 id="highlight"
                 type="checkbox"
-                checked={config.highlight || false}
+                checked={config.highlight}
                 onChange={(e) => {
                   setConfig("highlight", e.target.checked);
                 }}
               />
               Destacar dificuldade de leitura das frases
+            </label>
+
+            <label htmlFor="tips">
+              <input
+                id="tips"
+                type="checkbox"
+                checked={config.tips}
+                onChange={(e) => {
+                  setConfig("tips", e.target.checked);
+                }}
+              />
+              Mostrar dicas de como melhorar o texto
             </label>
           </div>
         </div>

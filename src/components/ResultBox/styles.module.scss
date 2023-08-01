@@ -2,6 +2,10 @@
   margin: 1rem 0;
 
   .editor_config {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
     label {
       cursor: pointer;
     }

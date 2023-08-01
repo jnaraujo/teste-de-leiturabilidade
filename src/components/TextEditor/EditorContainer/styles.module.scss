@@ -64,6 +64,31 @@
     }
   }
 
+  &.allowTips {
+    [data-tip] {
+      position: relative;
+    }
+  
+    [data-tip]::before {
+      content: attr(data-tip);
+      font-size: 12px;
+      display: none;
+      position: absolute;
+      padding: 4px 6px;
+      background-color: $on-background;
+      color: $on-primary;
+      font-family: "Inter", sans-serif;
+      border-radius: 6px 6px 6px 0px;
+      white-space: nowrap;
+  
+      top: -35px;
+    }
+    
+    [data-tip]:hover::before {
+      display: block;
+    }
+  }
+
   figure {
     div {
       margin: 0 !important;

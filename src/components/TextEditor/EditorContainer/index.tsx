@@ -26,6 +26,7 @@ const EditorContainer: React.FC<EditorContainerProps> = ({
         {
           [String(className)]: className,
           [styles.highlight]: isHighlight,
+          [styles.allowTips]: config.tips,
         }
       )}
     >

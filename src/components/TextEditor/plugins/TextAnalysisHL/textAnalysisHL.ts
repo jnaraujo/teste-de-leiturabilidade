@@ -13,41 +13,42 @@ function easeToLabel(ease: number) {
   return "hard";
 }
 
-function mountLabel(ease: number) {
-  const label = easeToLabel(ease);
-  return styles[`ease-${label}`];
+interface FleschReadingResult {
+  words: number;
+  sentences: number;
+  syllables: number;
+  result: number;
 }
 
-function highlightWordsEase(doc: Node) {
-  const decorations: Decoration[] = [];
+/**
+ * Essa função gera dicas para a frase de acordo com o resultado do teste
+ */
+function generateTip({
+  result,
+  sentences,
+  syllables,
+  words
+}: FleschReadingResult) {
+  const a = 1.015 * (words / sentences)
+  const b = 84.6 * (syllables / words)
 
-  doc.forEach((node, pos) => {
-    if (node.textContent.length > 0) {
-      let totalPos = 0;
-      node.textContent.split(" ").forEach((word) => {
-        totalPos += word.length + 1;
-        if (word.length > 0) {
-          const ease = calculateFleschReading(word).result;
-          decorations.push(
-            Decoration.inline(pos + totalPos - word.length, pos + totalPos, {
-              class: mountLabel(ease),
-            })
-          );
-        }
-      });
+  if (result <= 50) {
+    if (a > 10 && b > 12) {
+      return "A frase é muito longa. Tente dividi-la em duas ou mais frases."
+    } else {
+      return "A frase é muito complexa. Tenta usar palavras mais simples."
     }
-  });
-
-  return DecorationSet.create(doc, decorations);
+  }
 }
 
 function highlightPhrasesEase(doc: Node) {
   const decorations: Decoration[] = [];
 
-  function addDecoration(start: number, end: number, ease: number) {
+  function addDecoration(start: number, end: number, data: FleschReadingResult) {
     decorations.push(
       Decoration.inline(start, end, {
-        class: mountLabel(ease),
+        class: styles[`ease-${easeToLabel(data.result)}`],
+        "data-tip": generateTip(data),
       })
     );
   }
@@ -60,7 +61,7 @@ function highlightPhrasesEase(doc: Node) {
       let endOfPhrase = 0;
 
       if (node.type.name === "blockquote") {
-        const ease = calculateFleschReading(node.textContent).result;
+        const ease = calculateFleschReading(node.textContent);
         addDecoration(pos, pos + node.nodeSize, ease);
         pos += node.nodeSize;
         continue;
@@ -76,7 +77,7 @@ function highlightPhrasesEase(doc: Node) {
           const from = pos + endOfPhrase - phrase.length;
           const to = pos + endOfPhrase;
 
-          const ease = calculateFleschReading(phrase).result;
+          const ease = calculateFleschReading(phrase);
 
           addDecoration(from, to, ease);
         }
@@ -85,23 +86,6 @@ function highlightPhrasesEase(doc: Node) {
 
     pos += node.nodeSize;
   }
-
-  return DecorationSet.create(doc, decorations);
-}
-
-function highlightParagraphEase(doc: Node) {
-  const decorations: Decoration[] = [];
-
-  doc.forEach((node, pos) => {
-    if (node.textContent.length > 0) {
-      const ease = calculateFleschReading(node.textContent).result;
-      decorations.push(
-        Decoration.inline(pos, pos + node.nodeSize, {
-          class: mountLabel(ease),
-        })
-      );
-    }
-  });
 
   return DecorationSet.create(doc, decorations);
 }
