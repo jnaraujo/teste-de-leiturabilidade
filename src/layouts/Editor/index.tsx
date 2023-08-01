@@ -6,10 +6,7 @@ import styles from "./styles.module.scss";
 import ResultBox from "../../components/ResultBox";
 import useModal from "../../hooks/useModal";
 import dynamic from "next/dynamic";
-const TextEditor = dynamic(() => import("../../components/TextEditor"), {
-  ssr: false,
-  loading: () => <div>Loading...</div>,
-});
+const TextEditor = dynamic(() => import("../../components/TextEditor"));
 
 const Editor: React.FC = () => {
   const { showModal } = useModal();
