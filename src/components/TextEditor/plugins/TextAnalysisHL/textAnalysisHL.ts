@@ -90,14 +90,17 @@ function highlightPhrasesEase(doc: Node) {
   return DecorationSet.create(doc, decorations);
 }
 
+
 const TextAnalysisHLProse = new Plugin({
   state: {
     init(_, { doc }) {
       return highlightPhrasesEase(doc);
     },
     apply(tr, old) {
-      const a = tr.docChanged ? highlightPhrasesEase(tr.doc) : old;
-      return tr.docChanged ? highlightPhrasesEase(tr.doc) : old;
+      console.time("highlightPhrasesEase");
+      const decorationSet = tr.docChanged ? highlightPhrasesEase(tr.doc) : old;
+      console.timeEnd("highlightPhrasesEase");
+      return decorationSet;
     },
   },
   props: {

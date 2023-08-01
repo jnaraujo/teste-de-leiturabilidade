@@ -20,20 +20,12 @@ export function getSentences(text: string) {
     .filter((word) => word !== "." && word !== "");
 }
 
-const cache = new Map<string, number>();
-
 export function countSyllables(words: string[]) {
   let totalSyllables = 0;
 
   for (let word of words) {
-    const cached = cache.get(word);
-    if (cached) {
-      totalSyllables += cached;
-      continue;
-    }
     const silabas = (silabaJS.getSilabas(word) as any).numeroSilaba;
     totalSyllables += silabas;
-    cache.set(word, silabas);
   }
 
   return totalSyllables;
