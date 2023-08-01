@@ -35,12 +35,6 @@ const nextConfig = {
       config.plugins.push(new DuplicatePackageCheckerPlugin());
 
       const moduleList = [
-        "@emotion/cache",
-        "@emotion/is-prop-valid",
-        "@emotion/memoize",
-        "@emotion/sheet",
-        "@emotion/unitless",
-        "@emotion/weak-memoize",
         "prosemirror-state",
         "react-is",
         "prosemirror-view",

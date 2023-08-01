@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { MdClose } from "react-icons/md";
 import Confetti from "react-confetti";
 import { useForm } from "react-hook-form";
 import { useWindowSize } from "react-use";
 import { toast } from "react-hot-toast";
-import { Modal } from "@mui/material";
 
 import styles from "./styles.module.scss";
 import { sendFeedback } from "./helper";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import Modal from "react-responsive-modal";
 
 type Props = {
   open: boolean;
@@ -48,16 +47,16 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
   return (
     <>
       <Modal
-        className={styles.modal}
         open={open}
         onClose={onClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        center
+        styles={{
+          modal: {
+            backgroundColor: "#fafafa"
+          }
+        }}
       >
         <section className={styles.container}>
-          <header className={styles.header}>
-            <MdClose onClick={onClose} />
-          </header>
           <div className={styles.content}>
             <form onSubmit={handleSubmit(onSubmit)} method="post">
               <h1>Deixe seu Feedback</h1>
