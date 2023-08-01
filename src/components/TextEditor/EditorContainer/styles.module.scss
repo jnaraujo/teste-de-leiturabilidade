@@ -81,6 +81,9 @@
       font-family: "Inter", sans-serif;
       border-radius: 6px 6px 6px 0px;
       white-space: nowrap;
+
+      left: 50%;
+      transform: translateX(-50%);
   
       top: -35px;
     }
