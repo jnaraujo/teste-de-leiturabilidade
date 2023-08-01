@@ -35,6 +35,7 @@ const nextConfig = {
       config.plugins.push(new DuplicatePackageCheckerPlugin());
 
       const moduleList = [
+        "@emotion/cache",
         "@emotion/is-prop-valid",
         "@emotion/memoize",
         "@emotion/sheet",
@@ -44,6 +45,8 @@ const nextConfig = {
         "react-is",
         "prosemirror-view",
         "@babel/runtime",
+        "@radix-ui/react-compose-refs",
+        "@radix-ui/react-slot"
       ];
 
       moduleList.forEach((moduleName) => {
