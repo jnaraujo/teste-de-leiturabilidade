@@ -97,10 +97,7 @@ const TextAnalysisHLProse = new Plugin({
       return highlightPhrasesEase(doc);
     },
     apply(tr, old) {
-      console.time("highlightPhrasesEase");
-      const decorationSet = tr.docChanged ? highlightPhrasesEase(tr.doc) : old;
-      console.timeEnd("highlightPhrasesEase");
-      return decorationSet;
+      return tr.docChanged ? highlightPhrasesEase(tr.doc) : old;;
     },
   },
   props: {
