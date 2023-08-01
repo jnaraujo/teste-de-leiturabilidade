@@ -36,7 +36,7 @@ function generateTip({
     if (a > 10 && b > 12) {
       return "A frase é muito longa. Tente dividi-la em duas ou mais frases."
     } else {
-      return "A frase é muito complexa. Tenta usar palavras mais simples."
+      return "A frase é muito complexa. Tente usar palavras mais simples."
     }
   }
 }
