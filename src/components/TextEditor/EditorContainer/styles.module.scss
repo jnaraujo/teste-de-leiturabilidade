@@ -69,12 +69,17 @@
       position: relative;
       border-bottom: 3px dashed $on-background;
     }
+
+    [data-tip]:hover {
+      border-color: $secondary;
+    }
   
     [data-tip]::before {
       content: attr(data-tip);
+      position: absolute;
+      
       font-size: 12px;
       display: none;
-      position: absolute;
       padding: 4px 6px;
       background-color: $on-background;
       color: $on-primary;
@@ -86,6 +91,9 @@
       transform: translateX(-50%);
   
       top: -35px;
+
+      z-index: 9999;
+      width: max-content;
     }
     
     [data-tip]:hover::before {
