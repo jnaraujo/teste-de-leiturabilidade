@@ -73,13 +73,12 @@ export const handleContentEase = (
     words: 0,
     sentences: 0,
   };
-
-  phrases.forEach((phrase) => {
-    const phraseAnalyses = ReadingEase.calculateFleschReading(phrase);
-      textAnalyses.syllables += phraseAnalyses.syllables;
-      textAnalyses.words += phraseAnalyses.words;
-      textAnalyses.sentences += phraseAnalyses.sentences;
-  })  
+  for (let i = 0; i < phrases.length; i++) {
+    const phraseAnalyses = ReadingEase.calculateFleschReading(phrases[i]);
+    textAnalyses.syllables += phraseAnalyses.syllables;
+    textAnalyses.words += phraseAnalyses.words;
+    textAnalyses.sentences += phraseAnalyses.sentences;
+  }
 
   setEase({
     index: calculateFleschEase(textAnalyses.words, textAnalyses.sentences, textAnalyses.syllables),

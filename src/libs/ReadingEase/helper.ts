@@ -1,23 +1,25 @@
 import silabaJS from "./silaba";
 
 export function getWords(text: string) {
-  return String(text)
-    .replace(/\n/g, " ")
-    .replace(/,/g, "")
-    .replace(/!/g, "")
-    .replace(/\?/g, "")
-    .replace(/;/g, "")
-    .replace(/\r/g, "")
-    .split(" ")
-    .filter((word) => word !== "");
-}
+  const words: string[] = [];
+  let start = 0;
+  const textLength = text.length;
 
-export function getSentences(text: string) {
-  return String(text)
-    .replace(/\n/g, ".")
-    .replace(/\r/g, "")
-    .split(/[.!?]/)
-    .filter((word) => word !== "." && word !== "");
+  for (let i = 0; i < textLength; i++) {
+    const char = text[i]
+    if (char === " " || char === "\n" || char === "\r" || char === "," || char === "!" || char === "?" || char === ";") {
+      if (i > start) {
+        words.push(text.slice(start, i));
+      }
+      start = i + 1;
+    }
+  }
+
+  if (start < textLength) {
+    words.push(text.slice(start));
+  }
+
+  return words;
 }
 
 export function countSyllables(words: string[]) {

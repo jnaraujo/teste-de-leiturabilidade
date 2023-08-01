@@ -70,25 +70,6 @@ describe("calculateFleschReading", () => {
     });
   });
 
-  describe("getSentences", () => {
-    it("empty text", () => {
-      const sentences = splitPhrases("");
-      expect(sentences.length).toEqual(0);
-    });
-
-    it("text with only one sentence", () => {
-      const sentences = splitPhrases("Eu amo o Vitest.");
-      expect(sentences.length).toEqual(1);
-    });
-
-    it("text with multiple sentences", () => {
-      const sentences = splitPhrases(
-        "Eu amo o Brasil! É o melhor país do mundo."
-      );
-      expect(sentences.length).toEqual(2);
-    });
-  });
-
   describe("countSyllables", () => {
     it("empty text", () => {
       const syllables = countSyllables([]);
