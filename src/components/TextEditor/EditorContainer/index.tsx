@@ -1,4 +1,3 @@
-import React from "react";
 import { useConfigStore } from "@/store/configStore";
 import styles from "./styles.module.scss";
 import cx from "classnames";
@@ -12,12 +11,7 @@ const EditorContainer: React.FC<EditorContainerProps> = ({
   children,
   className,
 }) => {
-  const { config } = useConfigStore();
-  const [isHighlight, setIsHighlight] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsHighlight(config.highlight);
-  }, [config.highlight]);
+  const { config } = useConfigStore(); 
 
   return (
     <div
@@ -25,7 +19,7 @@ const EditorContainer: React.FC<EditorContainerProps> = ({
         styles.container,
         {
           [String(className)]: className,
-          [styles.highlight]: isHighlight,
+          [styles.highlight]: config.highlight,
           [styles.allowTips]: config.tips,
         }
       )}

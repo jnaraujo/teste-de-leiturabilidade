@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import dynamic from 'next/dynamic'
 import { useEditor, EditorContent, PureEditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 import styles from "./styles.module.scss";
@@ -9,7 +10,7 @@ import Toolbar from "./Toolbar";
 import { BubbleMenu } from "./BubbleMenu";
 
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
-import EditorContainer from "./EditorContainer";
+const EditorContainer = dynamic(() => import("./EditorContainer"), { ssr: false })
 import { useContentStore } from "@/store/contentStore";
 
 type ComponentPropsType = {

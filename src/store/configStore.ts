@@ -12,12 +12,14 @@ export interface IConfigStore {
 }
 
 const defaultConfig: IConfig = {
-  highlight: true,
+  highlight: false,
   tips: true,
 };
 
+const config = Object.assign(defaultConfig, getLocalStorage("config-store"))
+
 export const useConfigStore = create<IConfigStore>((set, get) => ({
-  config: getLocalStorage("config-store") || defaultConfig,
+  config: config,
   setConfig: (key: keyof IConfig, value: any) => {
     const config = get().config;
     config[key] = value;
