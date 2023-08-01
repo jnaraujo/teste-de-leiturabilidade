@@ -67,6 +67,7 @@
   &.allowTips {
     [data-tip] {
       position: relative;
+      border-bottom: 3px dashed $on-background;
     }
   
     [data-tip]::before {
