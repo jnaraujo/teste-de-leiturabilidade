@@ -1,10 +1,18 @@
 import silabaJS from "./silaba";
 
 export function getWords(text: string) {
-  return text
+  const words = text
     .replace(/\n\r,!?;/g, " ")
     .split(" ")
-    .filter((word) => word !== "");
+
+  for(let i = 0; i < words.length; i++){
+    if(words[i] === ""){
+      words.splice(i, 1);
+      i--;
+    }
+  }
+
+  return words;
 }
 
 export function countSyllables(words: string[]) {
