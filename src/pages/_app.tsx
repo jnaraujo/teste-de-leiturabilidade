@@ -1,4 +1,5 @@
 import type { AppProps, NextWebVitalsMetric } from "next/app";
+import { GoogleAnalytics, event } from "nextjs-google-analytics";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
@@ -7,8 +8,6 @@ import LinearProgress from "../components/LinearProgress";
 import FeedbackWidget from "@/components/FeedbackWidget";
 
 import "../styles/globals.scss";
-
-import * as gtag from "@/libs/gtag";
 
 import "react-responsive-modal/styles.css";
 import Navbar from "@/components/Navbar";
@@ -22,7 +21,6 @@ const MyApp = ({
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
-      gtag.pageview(url);
       setLoading(false);
     };
     function handleRouteChangeStart() {
@@ -40,6 +38,7 @@ const MyApp = ({
   return (
     <>
       {loading && <LinearProgress />}
+      <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
       <ModalProvider>
         <Navbar />
         <main>
@@ -61,18 +60,11 @@ const MyApp = ({
 };
 export default MyApp;
 
-export const reportWebVitals = ({
-  label,
-  name,
-  value,
-  id,
-}: NextWebVitalsMetric) => {
-  if (label === "web-vital") {
-    gtag.event({
-      action: name,
-      category: "Web Vitals",
-      label: id,
-      value: Math.round(name === "CLS" ? value * 1000 : value),
-    });
-  }
-};
+export function reportWebVitals({ id, name, label, value } : NextWebVitalsMetric) {
+  event(name, {
+    category: label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
+    value: Math.round(name === "CLS" ? value * 1000 : value),
+    label: id,
+    nonInteraction: true,
+  });
+}
