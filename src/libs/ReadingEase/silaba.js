@@ -1,3 +1,6 @@
+// codigo fonte de https://github.com/nicofrem/silabajs/
+// licença MIT
+
 /* eslint-disable-line */
 // Objeto con metodo que se utilizará globalmente
 const silabaJS = {
