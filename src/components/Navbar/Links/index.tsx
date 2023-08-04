@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import cx from "classnames";
+import cx from "clsx";
 import { useRouter } from "next/router";
 import { NAVBAR_LINKS } from "../constants";
 

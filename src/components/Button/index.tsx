@@ -1,5 +1,5 @@
 import React from 'react';
-import cx from 'classnames';
+import cx from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 
 import styles from './styles.module.scss';

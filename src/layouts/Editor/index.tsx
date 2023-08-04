@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import cx from "classnames";
+import cx from "clsx";
 import dynamic from "next/dynamic";
 import { Loader2 } from "lucide-react"
 import { useImportExternalPage } from "../../hooks/useImportExternalPage";

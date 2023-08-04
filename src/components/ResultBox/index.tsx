@@ -2,7 +2,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useWindowSize } from "react-use";
 import { easeToLabel } from "@/libs/ReadingEase";
-import cx from "classnames";
+import cx from "clsx";
 
 import { useReadingStore } from "@/store/readingStore";
 import { useConfigStore } from "@/store/configStore";

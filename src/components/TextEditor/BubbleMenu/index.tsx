@@ -2,7 +2,7 @@ import { BubbleMenu as TiptapBubbleMenu, Editor } from "@tiptap/react";
 import Button from "./Button";
 import styles from "./styles.module.scss";
 import { getMenuItems } from "./helper";
-import cx from "classnames";
+import cx from "clsx";
 
 interface Props {
   editor: Editor | null;

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styles from "./styles.module.scss";
-import cx from "classnames";
+import cx from "clsx";
 import Tooltip from "@/components/Tooltip";
 
 interface ButtonProps {
