@@ -93,19 +93,19 @@ const BlogPage = ({
         <meta property="twitter:description" content={description} />
         {picture && <meta property="twitter:image" content={picture} />}
       </Head>
-      <div className={styles.container}>
+      <div className={styles.container} itemScope itemType="https://schema.org/NewsArticle">
         <div className={styles.content}>
           <article className={styles.article}>
-            <h1>{title}</h1>
+            <h1 itemProp="headline">{title}</h1>
             <div className={styles.information}>
-              <p>
+              <span itemProp="datePublished" content={publishedAt}>
                 {new Date(publishedAt).toLocaleDateString("pt-BR", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}{" "}
                 • Leitura: {getReadingTime(body)} minutos
-              </p>
+              </span>
             </div>
             <div className={styles.blogText} dangerouslySetInnerHTML={{ __html: body }} />
             <BannerCTA />
