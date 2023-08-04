@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { Links } from "./Links";
-import { AiOutlineMenu } from "react-icons/ai";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ const Navbar = () => {
       </Link>
       <Links onClose={handleClick} isOpen={isOpen} />
       <button className={styles.menuButton} type="button" onClick={handleClick} aria-label="Abrir menu">
-        <AiOutlineMenu />
+        <Menu />
       </button>
     </header>
   );

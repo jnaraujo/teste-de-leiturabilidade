@@ -23,7 +23,7 @@ const Toolbar = ({ editor }: { editor: Editor }) => (
               item.isActive?.attributes
             )}
           >
-            {item.icon ? <item.icon /> : item.name}
+            {item.icon ? <item.icon size={18} /> : item.name}
           </Button>
         ))}
       </div>

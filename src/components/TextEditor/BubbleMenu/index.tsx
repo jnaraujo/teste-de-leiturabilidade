@@ -37,9 +37,9 @@ export const BubbleMenu = ({ editor, shouldBeVisible }: Props) => {
               <Button
                 onClick={item.onClick}
                 tooltip={item.tooltip}
-                name={item?.name}
-                icon={item.icon && <item.icon />}
-              />
+              >
+                {item.icon ? <item.icon size={18} /> : item.name}
+              </Button>
             </li>
           ))}
         </ul>

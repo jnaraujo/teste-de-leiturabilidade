@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import cx from "classnames";
 import dynamic from "next/dynamic";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { Loader2 } from "lucide-react"
 import { useImportExternalPage } from "../../hooks/useImportExternalPage";
 import styles from "./styles.module.scss";
 import ResultBox from "../../components/ResultBox";
@@ -59,7 +59,7 @@ const Editor: React.FC = () => {
 
       {loading && (
         <div className={styles.loading}>
-          <AiOutlineLoading3Quarters />
+          <Loader2 stroke="white" />
         </div>
       )}
     </>

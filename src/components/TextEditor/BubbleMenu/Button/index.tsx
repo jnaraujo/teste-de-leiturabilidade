@@ -3,28 +3,23 @@ const Tooltip = dynamic(() => import("@/components/Tooltip"), {});
 import React from "react";
 
 const Button = ({
-  icon,
-  name,
   tooltip,
   onClick,
+  children
 }: {
   tooltip: string;
-
-  name?: string;
-  icon?: React.ReactElement;
-
+  children?: React.ReactNode;
   onClick: () => void;
 }) => (
   <Tooltip text={tooltip} placement="top">
     <button
-      key={name}
       onMouseDown={() => {
         onClick();
       }}
       className="editButton"
       type="button"
     >
-      {icon ? <div>{icon}</div> : <p>{name}</p>}
+      {children}
     </button>
   </Tooltip>
 );

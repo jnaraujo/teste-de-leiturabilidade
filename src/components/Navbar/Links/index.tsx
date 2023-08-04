@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 import { NAVBAR_LINKS } from "../constants";
 
 import styles from "./styles.module.scss";
-import { AiOutlineClose } from "react-icons/ai";
 import Button from "@/components/Button";
+import { X } from "lucide-react";
 
 interface Props {
   onClose: () => void;
@@ -29,7 +29,7 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
       })
     }>
       <button className={styles.closeModalButton} onClick={onClose}>
-        <AiOutlineClose />
+        <X />
       </button>
 
       <ul className={styles.list}>
