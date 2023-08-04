@@ -7,10 +7,11 @@ const HowItWorks: React.FC = () => (
       Algumas perguntas que você pode ter sobre o Teste de Leiturabilidade:
     </h1>
     <div className={styles.texts} id="como-funciona">
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">Como funciona o Teste de Leiturabilidade?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+      
+      <div>
+        <h2>Como funciona o Teste de Leiturabilidade?</h2>
+        <div>
+          <p>
             Para testar o nível de leitura de um texto, nós utilizamos o{" "}
             <a
               href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests"
@@ -32,10 +33,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">Como é calculado o Teste de Leiturabilidade?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+      <div>
+        <h2>Como é calculado o Teste de Leiturabilidade?</h2>
+        <div>
+          <p>
             O <strong>Teste de Flesch-Kincaid</strong> é calculado com base no{" "}
             <strong>número de sílabas</strong> e no <strong>número de palavras</strong>{" "}
             de um texto. A fórmula é a seguinte:
@@ -47,10 +48,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">Como interpretar o resultado do Teste de Leiturabilidade?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+      <div>
+        <h2>Como interpretar o resultado do Teste de Leiturabilidade?</h2>
+        <div>
+          <p>
             O resultado do <strong>Teste de Flesch-Kincaid</strong> é um número que
             varia de 0 a 100. Quanto maior o número, mais fácil de ler é o texto.
 
@@ -65,10 +66,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">Como melhorar o resultado do Teste de Leiturabilidade?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+      <div>
+        <h2>Como melhorar o resultado do Teste de Leiturabilidade?</h2>
+        <div>
+          <p>
             Para melhorar o resultado do <strong>Teste de Flesch-Kincaid</strong>,
             você pode:
 
@@ -87,10 +88,10 @@ const HowItWorks: React.FC = () => (
           </p>
         </div>
       </div>
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">O que o Teste de Leitura leva em conta?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+      <div>
+        <h2>O que o Teste de Leitura leva em conta?</h2>
+        <div>
+          <p>
             Tanto a versão original do <strong>Teste de Flesch-Kincaid</strong>{" "}
             quando a versão brasileira levam em conta o{" "}
             <strong>tamanho da frase</strong> e o{" "}
@@ -100,10 +101,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">Quão preciso é o Teste de Leitura?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+      <div>
+        <h2>Quão preciso é o Teste de Leitura?</h2>
+        <div>
+          <p>
             A versão original do <strong>Teste de Flesch-Kincaid</strong> tem
             precisão de quase 90% - o que, para uso comum, é um valor bastante
             considerável.
@@ -112,11 +113,11 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">Quais são as principais métricas utilizadas no Teste de Leiturabilidade?
+      <div>
+        <h2>Quais são as principais métricas utilizadas no Teste de Leiturabilidade?
         </h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+        <div>
+          <p>
             No Teste de Leiturabilidade, algumas das principais métricas utilizadas
             incluem o número médio de sílabas por palavra, o número médio de
             palavras por frase e o índice de facilidade de leitura. Essas métricas
@@ -126,11 +127,11 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">O Teste de Leiturabilidade é amplamente utilizado na criação de conteúdo
+      <div>
+        <h2>O Teste de Leiturabilidade é amplamente utilizado na criação de conteúdo
           online?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+        <div>
+          <p>
             Sim, o Teste de Leiturabilidade é amplamente utilizado na criação de
             conteúdo online para avaliar a adequação do texto ao público-alvo. Ao
             considerar a leiturabilidade, os escritores podem ajustar seu estilo de
@@ -141,10 +142,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name"> O Teste de Leiturabilidade leva em consideração a estrutura do texto?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+      <div>
+        <h2> O Teste de Leiturabilidade leva em consideração a estrutura do texto?</h2>
+        <div>
+          <p>
             O Teste de Leiturabilidade geralmente não leva em consideração a
             estrutura do texto. Ele se concentra principalmente em aspectos como o
             tamanho das palavras e das frases. No entanto, a estrutura do texto,
@@ -155,11 +156,11 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-        <h2 itemProp="name">O Teste de Leiturabilidade é igualmente eficaz para avaliar a
+      <div>
+        <h2>O Teste de Leiturabilidade é igualmente eficaz para avaliar a
           legibilidade de diferentes gêneros de texto?</h2>
-        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
-          <p itemProp="text">
+        <div>
+          <p>
             O Teste de Leiturabilidade pode fornecer uma indicação geral da
             legibilidade de diferentes gêneros de texto, mas sua eficácia pode
             variar. Alguns gêneros, como textos científicos ou técnicos, podem ter
@@ -172,7 +173,7 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <h2 itemProp="name">Quer saber mais? Dá uma olhada nas fontes:</h2>
+      <h2>Quer saber mais? Dá uma olhada nas fontes:</h2>
       <ul>
         <li>
           <a
