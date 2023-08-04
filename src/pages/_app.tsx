@@ -1,5 +1,4 @@
-import type { AppProps, NextWebVitalsMetric } from "next/app";
-import { GoogleAnalytics, event } from "nextjs-google-analytics";
+import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
@@ -38,7 +37,6 @@ const MyApp = ({
   return (
     <>
       {loading && <LinearProgress />}
-      <GoogleAnalytics trackPageViews gaMeasurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
       <ModalProvider>
         <Navbar />
         <main>
@@ -59,12 +57,3 @@ const MyApp = ({
   );
 };
 export default MyApp;
-
-export function reportWebVitals({ id, name, label, value } : NextWebVitalsMetric) {
-  event(name, {
-    category: label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
-    value: Math.round(name === "CLS" ? value * 1000 : value),
-    label: id,
-    nonInteraction: true,
-  });
-}

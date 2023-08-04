@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default class MyDocument extends Document {
   render() {
@@ -15,6 +16,12 @@ export default class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500&display=swap"
             rel="stylesheet"
+          />
+          <Script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={`{"token": "${process.env.NEXT_PUBLIC_CLOUDFLARE_TOKEN}"}`}
+            strategy="afterInteractive"
           />
         </Head>
         <body>
