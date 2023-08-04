@@ -91,7 +91,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
         </div>
 
         <div className={styles.content}>
-          <h2>Configurações do editor:</h2>
+          <strong>Configurações do editor:</strong>
           <div className={styles.editor_config}>
             <label htmlFor="highlight">
               <input
@@ -119,7 +119,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
           </div>
         </div>
         <div className={styles.content}>
-          <h2>Mais sobre seu texto:</h2>
+          <strong>Mais sobre seu texto:</strong>
           <p>
             Tempo de leitura:{" "}
             <strong>{secondsToHMS(getReadingTimeByWords(ease.words))}</strong>
@@ -135,7 +135,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
           styles.content,
           styles.contentImportExternalPage
         )}>
-          <h2>Deseja importar o conteúdo de uma página externa?</h2>
+          <strong>Deseja importar o conteúdo de uma página externa?</strong>
           <Button
             onClick={handleOpenModal}
             type="submit"

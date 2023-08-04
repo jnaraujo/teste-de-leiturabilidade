@@ -24,6 +24,49 @@ const HowItWorks: React.FC = () => (
         USP de São Carlos;
       </p>
 
+      <h3>Como é calculado o Teste de Leiturabilidade?</h3>
+      <p>
+        O <strong>Teste de Flesch-Kincaid</strong> é calculado com base no{" "}
+        <strong>número de sílabas</strong> e no <strong>número de palavras</strong>{" "}
+        de um texto. A fórmula é a seguinte:
+      </p>
+      <p>
+        <strong>
+          248.835 - 1.015 x (número médio de palavras por frase) - 84.6 x
+          (número médio de sílabas por palavra)
+        </strong>
+      </p>
+
+      <h3>Como interpretar o resultado do Teste de Leiturabilidade?</h3>
+      <p>
+        O resultado do <strong>Teste de Flesch-Kincaid</strong> é um número que
+        varia de 0 a 100. Quanto maior o número, mais fácil de ler é o texto.
+      </p>
+      <p>
+        Por exemplo, um texto com resultado 100 é muito fácil de ler. Já um
+        texto com resultado 0 é muito difícil de ler.
+      </p>
+      <p>
+        Claro que o contexo também importa. Um texto com objetivos acadêmicos
+        pode ter um resultado mais baixo, mesmo sendo bem escrito.
+      </p>
+
+      <h3>Como melhorar o resultado do Teste de Leiturabilidade?</h3>
+      <p>
+        Para melhorar o resultado do <strong>Teste de Flesch-Kincaid</strong>,
+        você pode:
+      </p>
+      <ul>
+        <li><strong>1)</strong> Utilizar palavras mais simples e curtas;</li>
+        <li><strong>2)</strong> Utilizar frases mais curtas;</li>
+        <li><strong>3)</strong> Utilizar parágrafos mais curtos;</li>
+        <li><strong>4)</strong> Utilizar mais pontuação.</li>
+      </ul>
+      <p>
+        Além disso, você pode visualizar dicas de como melhorar o seu texto
+        clicando no botão <strong>Mostrar dicas de como melhorar o texto</strong>.
+      </p>
+
       <h3>O que o Teste de Leitura leva em conta?</h3>
       <p>
         Tanto a versão original do <strong>Teste de Flesch-Kincaid</strong>{" "}

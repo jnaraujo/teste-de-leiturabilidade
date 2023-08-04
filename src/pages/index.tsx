@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <DefaultSeo
         title="Teste de Leiturabilidade - Faça seu texto ser entendido por todos"
-        description="Saiba em tempo real e de graça o quão fácil de ser lido seu texto é. Importe arquivos do Google Docs, Notion, etc e faça o teste de leiturabilidade."
+        description="Teste a leiturabilidade do seu texto e saiba se ele é de fácil de entender. O teste analisa a legibilidade do seu texto e te dá dicas de como melhorá-lo utlizando o Flesch Reading Ease."
         additionalLinkTags={[
           {
             rel: "icon",
