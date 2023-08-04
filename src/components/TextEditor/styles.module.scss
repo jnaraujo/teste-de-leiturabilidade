@@ -14,8 +14,8 @@
 
   color: $on-background;
 
-  p.is-editor-empty:first-child::before {
-    color: #adb5bd;
+  p.emptyNodeClass::before {
+    color: #aeb0b3;
     content: attr(data-placeholder);
     float: left;
     height: 0;

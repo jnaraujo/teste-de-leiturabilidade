@@ -12,6 +12,7 @@ import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import Placeholder from "@tiptap/extension-placeholder";
 import History from "@tiptap/extension-history";
+import styles from "./styles.module.scss";
 
 import * as ReadingEase from "../../libs/ReadingEase";
 import { TextAnalysisHL } from "./plugins/TextAnalysisHL/textAnalysisHL";
@@ -37,6 +38,7 @@ export const EditorExtensions = [
   }),
   Placeholder.configure({
     placeholder: "Digite aqui seu texto...",
+    emptyNodeClass: styles.emptyNodeClass,
   }),
   TextAlign.configure({
     types: ["heading", "paragraph"],
