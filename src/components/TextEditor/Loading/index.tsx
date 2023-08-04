@@ -5,14 +5,16 @@ import styles from "./styles.module.scss";
 const Loading: React.FC = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.container}>
-        {
-          Array.from({ length: 3 }).map((_, index) => (
-            <div key={index} className={cx(styles.dot, styles[`dot${index}`])}></div>
-          ))
-        }
+      <div className={styles.content}>
+        <div className={styles.dots}>
+          {
+            Array.from({ length: 3 }).map((_, index) => (
+              <div key={index} className={cx(styles.dot, styles[`dot${index+1}`])}></div>
+            ))
+          }
+        </div>
+        <p className={styles.text}>Carregando o editor...</p>
       </div>
-      <p className={styles.text}>Carregando o editor...</p>
     </div>
   );
 };

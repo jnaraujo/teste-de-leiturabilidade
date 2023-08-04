@@ -5,7 +5,7 @@ import { Decoration, DecorationSet } from "prosemirror-view";
 import { Node } from "prosemirror-model";
 import { calculateFleschReading } from "@/libs/ReadingEase";
 import { splitPhrases } from "./helper";
-import styles from "../../EditorContainer/styles.module.scss";
+import styles from "../../styles.module.scss";
 
 function easeToLabel(ease: number) {
   if (ease > 50) return "easy";

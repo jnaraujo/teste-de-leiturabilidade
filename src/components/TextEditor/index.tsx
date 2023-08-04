@@ -1,23 +1,21 @@
+import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
-import dynamic from 'next/dynamic'
 import { useEditor, EditorContent, PureEditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
-import styles from "./styles.module.scss";
-
 import { useReadingStore } from "@/store/readingStore";
-
 import Toolbar from "./Toolbar";
 import { BubbleMenu } from "./BubbleMenu";
-
 import { textExample, EditorExtensions, handleContentEase } from "./helper";
-const EditorContainer = dynamic(() => import("./EditorContainer"), { ssr: false })
 import { useContentStore } from "@/store/contentStore";
+import { useConfigStore } from "@/store/configStore";
+import clsx from "clsx";
 
 type ComponentPropsType = {
   html: string;
 };
 
 export default function TextEditor({ html }: ComponentPropsType) {
+  const { config } = useConfigStore();
   const setEase = useReadingStore((state) => state.setEase);
   const { content, setContent } = useContentStore();
 
@@ -77,12 +75,18 @@ export default function TextEditor({ html }: ComponentPropsType) {
 
   const shouldBeVisible = width > 720 && shouldShowBubbleMenu;
 
-  return (
-    <EditorContainer>
+  return (  
+    <section className={clsx(
+      styles.container,
+      {
+        [styles.highlight]: config.highlight,
+        [styles.allowTips]: config.tips,
+      }
+    )}>
       <Toolbar editor={editor as any} />
       <EditorContent ref={editorRef} className={styles.editor} editor={editor} />
 
       <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} />
-    </EditorContainer>
+    </section>
   );
 };
