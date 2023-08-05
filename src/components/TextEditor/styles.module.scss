@@ -115,7 +115,7 @@
   &.allowTips {
     [data-tip] {
       position: relative;
-      border-bottom: 3px dashed $on-background;
+      border-bottom: 3px dashed $on-secondary;
     }
 
     [data-tip]:hover {
