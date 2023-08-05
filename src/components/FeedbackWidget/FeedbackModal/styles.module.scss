@@ -36,7 +36,7 @@
     gap: 4px;
 
     *::placeholder {
-      font-family: "Inter", sans-serif;
+      font-family: var(--font-inter), sans-serif;
     }
 
     h1 {

@@ -8,15 +8,6 @@ export default class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
           <meta name="theme-color" content="#317EFB" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;500&display=swap"
-            rel="stylesheet"
-          />
           <Script
             defer
             src="https://static.cloudflareinsights.com/beacon.min.js"

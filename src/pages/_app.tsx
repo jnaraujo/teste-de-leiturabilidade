@@ -1,3 +1,4 @@
+import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -5,11 +6,21 @@ import { Toaster } from "react-hot-toast";
 import { ModalProvider } from "../context/ModalContext";
 import LinearProgress from "../components/LinearProgress";
 import FeedbackWidget from "@/components/FeedbackWidget";
-
-import "../styles/globals.scss";
-
+import { Inter, Merriweather } from 'next/font/google'
 import "react-responsive-modal/styles.css";
 import Navbar from "@/components/Navbar";
+
+const inter = Inter({
+  subsets: ['latin'], display: 'swap', weight: [
+    "400", "500", "600", "700"
+  ],
+})
+
+const merriweather = Merriweather({
+  subsets: ['latin'], display: 'swap', weight: [
+    "400"
+  ],
+})
 
 const MyApp = ({
   Component,
@@ -36,6 +47,12 @@ const MyApp = ({
 
   return (
     <>
+      <style jsx global>{`
+        :root {
+          --font-merriweather: ${merriweather.style.fontFamily};
+          --font-inter: ${inter.style.fontFamily};
+        }
+      `}</style>
       {loading && <LinearProgress />}
       <ModalProvider>
         <Navbar />

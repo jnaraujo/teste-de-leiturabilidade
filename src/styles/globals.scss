@@ -1,7 +1,4 @@
 html {
-  --merriweather-font: "Merriweather", serif;
-  --inter-font: "Inter", sans-serif;
-
   box-sizing: border-box;
   scroll-behavior: smooth;
 
@@ -31,7 +28,7 @@ body {
   overflow-x: hidden;
   position: relative;
 
-  font-family: var(--inter-font);
+  font-family: var(--font-inter);
   font-weight: 400;
 
   background-color: #fafafa;
