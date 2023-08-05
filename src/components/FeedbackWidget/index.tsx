@@ -23,7 +23,9 @@ const FeedbackWidget: React.FC = () => {
           <MessageSquarePlus />
         </button>
       </Tooltip>
-      <FeedbackModal onClose={handleModal} open={openModal} />
+      {
+        openModal && <FeedbackModal onClose={handleModal} open={openModal} />
+      }
     </>
   );
 };

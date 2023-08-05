@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-const Tooltip = dynamic(() => import("@/components/Tooltip"), {});
+const Tooltip = dynamic(() => import("@/components/Tooltip"));
 import React from "react";
 
 const Button = ({
