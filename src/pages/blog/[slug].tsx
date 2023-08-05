@@ -73,13 +73,13 @@ const BlogPage = ({
   return (
     <>
       <Head>
-        <title>{title} - Teste de Leitura</title>
+        <title>{title} - Teste de Leiturabilidade</title>
         <meta name="description" content={description} />
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://leitura.jnaraujo.com/" />
-        <meta property="og:title" content={`${title} - Teste de Leitura`} />
+        <meta property="og:title" content={`${title} - Teste de Leiturabilidade`} />
         <meta property="og:description" content={description} />
         {picture && <meta property="og:image" content={picture} />}
 
@@ -88,7 +88,7 @@ const BlogPage = ({
         <meta property="twitter:url" content="https://leitura.jnaraujo.com/" />
         <meta
           property="twitter:title"
-          content={`${title} - Teste de Leitura`}
+          content={`${title} - Teste de Leiturabilidade`}
         />
         <meta property="twitter:description" content={description} />
         {picture && <meta property="twitter:image" content={picture} />}

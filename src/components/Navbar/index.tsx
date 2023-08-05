@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <header className={styles.header}>
       <Link href="/" passHref className={styles.title}>
-        Teste de Leitura
+        Teste de Leiturabilidade
       </Link>
       <Links onClose={handleClick} isOpen={isOpen} />
       <button className={styles.menuButton} type="button" onClick={handleClick} aria-label="Abrir menu">
