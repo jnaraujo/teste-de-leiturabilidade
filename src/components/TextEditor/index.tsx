@@ -5,7 +5,7 @@ import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
 import Toolbar from "./Toolbar";
 import { BubbleMenu } from "./BubbleMenu";
-import { textExample, EditorExtensions, handleContentEase } from "./helper";
+import { EditorExtensions, handleContentEase } from "./helper";
 import { useContentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
@@ -32,9 +32,6 @@ export default function TextEditor({ html }: ComponentPropsType) {
         state.editor.commands.setContent(html);
         return;
       }
-      if (content) {
-        state.editor.commands.setContent(content);
-      }
       handleContentEase(state.editor.getText(), setEase);
     },
     onUpdate: (state) => {
@@ -49,7 +46,7 @@ export default function TextEditor({ html }: ComponentPropsType) {
         },
       }
     },
-    content: textExample,
+    content: content,
   });
 
   useEffect(() => {
