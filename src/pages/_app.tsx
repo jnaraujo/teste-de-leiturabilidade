@@ -64,7 +64,7 @@ const MyApp = ({
           toastOptions={{
             duration: 5000,
             style: {
-              fontFamily: "Inter",
+              fontFamily: "var(--font-inter)",
             },
           }}
           position="top-center"
