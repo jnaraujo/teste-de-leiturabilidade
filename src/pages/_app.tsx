@@ -9,6 +9,7 @@ import FeedbackWidget from "@/components/FeedbackWidget";
 import { Inter, Merriweather } from 'next/font/google'
 import "react-responsive-modal/styles.css";
 import Navbar from "@/components/Navbar";
+import "default-passive-events"
 
 const inter = Inter({
   subsets: ['latin'], display: 'swap', weight: [
