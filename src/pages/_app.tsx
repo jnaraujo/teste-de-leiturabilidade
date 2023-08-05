@@ -12,19 +12,15 @@ import Navbar from "@/components/Navbar";
 import "default-passive-events"
 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap', 
-  weight: [
+  subsets: ['latin'], display: 'swap', weight: [
     "400", "500", "600", "700"
   ],
-  preload: false
 })
 
 const merriweather = Merriweather({
   subsets: ['latin'], display: 'swap', weight: [
     "400"
   ],
-  preload: false
 })
 
 const MyApp = ({
