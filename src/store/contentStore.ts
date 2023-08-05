@@ -6,16 +6,6 @@ export interface IContentStore {
   setContent: (content: string) => void;
 }
 
-export const useContentStore = create<IContentStore>((set) => ({
-  content: getLocalStorage("content-store").content || textExample,
-  setContent: (content: string) => {
-    set({ content });
-    setLocalStorage("content-store", {
-      content,
-    });
-  },
-}));
-
 const textExample = `
   <h1>Ei! Esse é um exemplo de título.</h1> 
   <p>
@@ -33,3 +23,13 @@ const textExample = `
     Se quiser saber mais sobre como funciona o site, tem mais conteúdo logo abaixo!
   </p>
 `;
+
+export const useContentStore = create<IContentStore>((set) => ({
+  content: getLocalStorage("content-store").content || textExample,
+  setContent: (content: string) => {
+    set({ content });
+    setLocalStorage("content-store", {
+      content,
+    });
+  },
+}));
