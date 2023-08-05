@@ -11,7 +11,8 @@ import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
 import styles from "./styles.module.scss";
 import Button from "../Button";
-import ImportPageModal from "./ImportPageModal";
+import dynamic from "next/dynamic";
+const ImportPageModal  = dynamic(() => import("./ImportPageModal"));
 
 interface ResultBoxProps {
   onImportPage?: (value: string) => void;
@@ -144,7 +145,9 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
           </Button>
         </div>
       </div>
-      <ImportPageModal open={isModalOpen} onClose={closeModal} onImportPage={handleImportPage} />
+      {
+        isModalOpen && <ImportPageModal open={isModalOpen} onClose={closeModal} onImportPage={handleImportPage} />
+      }
     </>
   );
 };
