@@ -1,20 +1,20 @@
 import { Editor } from "@tiptap/react";
 
+import type { IconType } from "react-icons/lib";
 import {
-  type LucideIcon,
-  Italic,
-  Underline,
-  Bold,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
-  Quote,
-  RemoveFormatting
-} from "lucide-react"
+  MdFormatAlignCenter,
+  MdFormatAlignLeft,
+  MdFormatAlignRight,
+  MdFormatBold,
+  MdFormatItalic,
+  MdFormatUnderlined,
+  MdFormatQuote,
+  MdFormatClear,
+} from "react-icons/md";
 
 interface ToolbarItem {
   name?: string;
-  icon?: LucideIcon;
+  icon?: any;
   tooltip: string;
   onClick: () => void;
 
@@ -62,7 +62,7 @@ export function getToolbarGroups(editor: Editor) {
       },
     },
     {
-      icon: Quote,
+      icon: MdFormatQuote,
       tooltip: "Citação",
       onClick: () => editor.chain().focus().setBlockquote().run(),
       isActive: {
@@ -72,25 +72,25 @@ export function getToolbarGroups(editor: Editor) {
   ];
   const TextFormattingItems: ToolbarItem[] = [
     {
+      icon: MdFormatItalic,
       onClick: () => editor.chain().focus().toggleItalic().run(),
       tooltip: "Itálico",
-      icon: Italic,
       isActive: {
         name: "italic",
       },
     },
     {
+      icon: MdFormatBold,
       onClick: () => editor.chain().focus().toggleBold().run(),
       tooltip: "Negrito",
-      icon: Bold,
       isActive: {
         name: "bold",
       },
     },
     {
+      icon: MdFormatUnderlined,
       onClick: () => editor.chain().focus().toggleUnderline().run(),
       tooltip: "Sublinhado",
-      icon: Underline,
       isActive: {
         name: "underline",
       },
@@ -98,25 +98,25 @@ export function getToolbarGroups(editor: Editor) {
   ];
   const TextAlignItems: ToolbarItem[] = [
     {
+      icon: MdFormatAlignLeft,
       onClick: () => editor.chain().focus().setTextAlign("left").run(),
       tooltip: "Alinhar à Esquerda",
-      icon: AlignLeft,
       isActive: {
         attributes: { textAlign: "left" },
       },
     },
     {
+      icon: MdFormatAlignCenter,
       onClick: () => editor.chain().focus().setTextAlign("center").run(),
       tooltip: "Alinhar ao Centro",
-      icon: AlignCenter,
       isActive: {
         attributes: { textAlign: "center" },
       },
     },
     {
+      icon: MdFormatAlignRight,
       onClick: () => editor.chain().focus().setTextAlign("right").run(),
       tooltip: "Alinhar à Direita",
-      icon: AlignRight,
       isActive: {
         attributes: { textAlign: "right" },
       },
@@ -124,9 +124,9 @@ export function getToolbarGroups(editor: Editor) {
   ];
   const EditingControlItems: ToolbarItem[] = [
     {
+      icon: MdFormatClear,
       onClick: () => editor.chain().focus().clearNodes().unsetAllMarks().run(),
       tooltip: "Limpar formatação",
-      icon: RemoveFormatting,
       isActive: {
         name: "never",
       },

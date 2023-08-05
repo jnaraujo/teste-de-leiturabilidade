@@ -1,9 +1,9 @@
-import { MessageSquarePlus } from "lucide-react";
+import { MdFeedback } from "react-icons/md";
 import styles from "./styles.module.scss";
 import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
 const FeedbackModal = dynamic(() => import("./FeedbackModal"));
-const Tooltip = dynamic(() => import("@/components/Tooltip"), {});
+const Tooltip = dynamic(() => import("@/components/Tooltip"));
 
 const FeedbackWidget: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -20,7 +20,7 @@ const FeedbackWidget: React.FC = () => {
     <>
       <Tooltip text="Deixe seu Feedback!" placement="top">
         <button className={styles.widget} onClick={handleModal}>
-          <MessageSquarePlus />
+          <MdFeedback />
         </button>
       </Tooltip>
       {
