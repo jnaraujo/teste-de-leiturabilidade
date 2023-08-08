@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
 const FeedbackModal = dynamic(() => import("./FeedbackModal"));
-const Tooltip = dynamic(() => import("@/components/Tooltip"));
+import Tooltip from "../Tooltip";
 
 const FeedbackWidget: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
