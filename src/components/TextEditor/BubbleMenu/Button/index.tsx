@@ -1,5 +1,4 @@
 import Tooltip from "@/components/Tooltip";
-import dynamic from "next/dynamic";
 import React from "react";
 
 const Button = ({
