@@ -60,7 +60,7 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
       <div className={styles.container}>
         <p>
           Seu texto está no nível de leitura de{" "}
-          <span id="rd_exmlp">{easeToLabel(ease.index)}.</span>
+          <strong>{easeToLabel(ease.index)}.</strong>
         </p>
 
         <div className={styles.content}>
