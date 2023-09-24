@@ -49,7 +49,6 @@ const nextConfig = {
   },
   experimental: {
     optimizeCss: true,
-    legacyBrowsers: false,
   },
   compress: false,
 };

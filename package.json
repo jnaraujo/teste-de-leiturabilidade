@@ -19,7 +19,6 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "@next/font": "^13.1.1",
     "@radix-ui/react-slot": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.6",
     "@tiptap/core": "^2.0.4",
@@ -44,7 +43,7 @@
     "default-passive-events": "^2.0.0",
     "gray-matter": "^4.0.3",
     "markdown-it": "^13.0.1",
-    "next": "^13.4.12",
+    "next": "^13.5.2",
     "next-seo": "^5.5.0",
     "nookies": "^2.5.2",
     "notion-client": "^6.12.12",
