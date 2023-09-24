@@ -1,115 +1,79 @@
-import axios from "axios";
-import { NotionAPI } from "notion-client";
+import { getReadingTime, slugfy } from "@/utils";
 import { NotionRenderer } from "react-notion";
-import { renderToString } from "react-dom/server";
-import { slugfy } from "../utils";
 
-export interface IBlogPost {
-  notionId: string;
-  slug: string;
-  publishedAt: string;
-  title: string;
-  description: string;
-  picture: string;
+interface Post {
+  id: string;
+  Author: string;
+  "Published at": string;
+  Status: string;
+  Tags: string[];
+  Description: string;
+  Title: string;
+  Slug: string;
+}
+export type PostResponse = Post[];
+
+export async function fetchPosts(limit = 10) {
+  const response = await fetch(
+    `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`,
+  );
+
+  let posts: PostResponse = [];
+
+  if (!response.ok) {
+    posts = [];
+  } else {
+    posts = await response.json();
+  }
+
+  posts = posts
+    .filter((post) => post.Status === "Published")
+    .sort((a, b) => {
+      const dateA = new Date(a["Published at"]);
+      const dateB = new Date(b["Published at"]);
+
+      return dateB.getTime() - dateA.getTime();
+    })
+    .slice(0, limit)
+    .map((post) => ({
+      ...post,
+      Slug: slugfy(post.Title),
+    }));
+
+  return posts;
 }
 
-export class BlogService {
-  private readonly url;
+export async function fetchPost(id: string) {
+  const response = await fetch(`https://notion-api.splitbee.io/v1/page/${id}`);
 
-  private readonly pageUrl = `https://notion-api.splitbee.io/v1/page`;
-
-  private readonly notionId: string;
-
-  private limit: number = 5;
-
-  private rawFetch: any;
-
-  private notion: NotionAPI;
-
-  private posts: IBlogPost[] = [];
-
-  constructor(notionId: string) {
-    this.notionId = notionId;
-    this.url = `https://notion-api.splitbee.io/v1/table/${notionId}`;
-
-    this.notion = new NotionAPI();
+  let post;
+  if (response.ok) {
+    post = await response.json();
   }
 
-  async getBlogPosts(limit?: number) {
-    if (limit) this.limit = limit;
+  return post;
+}
 
-    await this.fetchData();
-    this.filterPosts();
-    this.mapPosts();
-    this.sortPosts();
+export async function fetchPostBySlug(slug: string) {
+  const posts = await fetchPosts(Infinity);
 
-    return this.posts;
-  }
+  const post = posts.find((post) => slugfy(post.Title) === slug);
 
-  private async fetchData() {
-    const { data } = await axios.get(`${this.url}`);
+  if (!post) return null;
 
-    const posts = data.slice(0, this.limit);
+  const blockMap = await fetchPost(post.id);
 
-    this.rawFetch = posts;
-  }
+  const ReactDOMServer = (await import("react-dom/server")).default;
 
-  private filterPosts() {
-    this.rawFetch = this.rawFetch.filter(
-      (post: any) => post.Status === "Published" || post.Status === "Test"
-    );
-  }
+  const html = ReactDOMServer.renderToString(
+    <NotionRenderer blockMap={blockMap} />,
+  );
 
-  private mapPosts() {
-    this.posts = this.rawFetch.map(({ id, Title, ...postData }: any) => ({
-      slug: slugfy(Title),
-      notionId: id,
-      publishedAt: postData["Published at"],
-      tags: postData.Tags || [],
-      description: postData.Description,
-      title: Title,
-      picture: postData?.Picture || "",
-    }));
-  }
+  const time = getReadingTime(html);
 
-  private sortPosts() {
-    this.posts.sort(
-      (a: any, b: any) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    );
-  }
-
-  async getBlogPostById(postId: string) {
-    await this.getBlogPosts();
-    const post = this.findPostById(postId);
-
-    if (!post) return null;
-
-    const body = await this.fetchPostDataById(post.notionId);
-
-    return {
-      ...post,
-      body,
-    };
-  }
-
-  private findPostById(postId: string) {
-    return this.posts.find(
-      ({ slug }) => slug.toLowerCase() === postId.toLowerCase()
-    );
-  }
-
-  async fetchPostDataById(id: string): Promise<string | null> {
-    const { data } = await axios.get(`${this.pageUrl}/${id}`);
-
-    if (!data) {
-      return null;
-    }
-
-    const render = <NotionRenderer blockMap={data} />;
-
-    const html = renderToString(render);
-
-    return html;
-  }
+  return {
+    ...post,
+    readingTime: time,
+    html,
+  };
 }
