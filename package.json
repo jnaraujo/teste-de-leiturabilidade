@@ -40,7 +40,7 @@
     "@tiptap/react": "^2.0.4",
     "axios": "^0.27.2",
     "clsx": "^2.0.0",
-    "next": "^13.5.2",
+    "next": "13.4.19",
     "notion-client": "^6.12.12",
     "react": "^18.2.0",
     "react-confetti": "^6.1.0",
