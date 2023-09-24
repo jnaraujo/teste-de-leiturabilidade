@@ -1,3 +1,5 @@
+"use client";
+
 import { MdFeedback } from "react-icons/md";
 import styles from "./styles.module.scss";
 import dynamic from "next/dynamic";

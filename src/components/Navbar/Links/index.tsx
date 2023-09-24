@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import cx from "clsx";
-import { useRouter } from "next/router";
 import { NAVBAR_LINKS } from "../constants";
 
 import styles from "./styles.module.scss";
 import Button from "@/components/Button";
 import { AiOutlineClose } from "react-icons/ai";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   onClose: () => void;
@@ -16,11 +16,12 @@ interface Props {
 export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
   const [currentPath, setCurrentPath] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const currentPath = router.pathname.split("/")[1];
+    const currentPath = pathname!.split("/")[1];
     setCurrentPath(currentPath);
-  }, [router.pathname]);
+  }, [pathname]);
 
   return (
     <nav className={
