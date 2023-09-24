@@ -1,12 +1,10 @@
-import { BlogService } from "src/services/BlogService";
-
-const blogService = new BlogService(process.env.NOTION_BLOG_ID as string);
+import { fetchPosts } from "@/services/BlogService";
 
 export default async function Posts(req: any, res: any) {
-  const posts = await blogService.getBlogPosts();
+  const posts = await fetchPosts(Infinity);
   const urls = [];
   for (let post of posts) {
-    urls.push(`https://www.leitura.jnaraujo.com/blog/${post.slug}`);
+    urls.push(`https://www.leitura.jnaraujo.com/blog/${post.Slug}`);
   }
 
   res.status(200).send(urls.join("\n"));
