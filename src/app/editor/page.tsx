@@ -1,4 +1,4 @@
-import Editor from "../../layouts/Editor";
+import Editor from "@/components/layouts/Editor";
 import styles from "../../styles/pages/Editor.module.scss";
 
 import type { Metadata } from 'next'
