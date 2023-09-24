@@ -4,12 +4,12 @@ import React, { useCallback, useEffect } from "react";
 import cx from "clsx";
 import dynamic from "next/dynamic";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { useImportExternalPage } from "../../hooks/useImportExternalPage";
 import styles from "./styles.module.scss";
-import ResultBox from "../../components/ResultBox";
-import useModal from "../../hooks/useModal";
 import Loading from "@/components/TextEditor/Loading";
-const TextEditor = dynamic(() => import("../../components/TextEditor"), {
+import { useImportExternalPage } from "@/hooks/useImportExternalPage";
+import useModal from "@/hooks/useModal";
+import ResultBox from "@/components/ResultBox";
+const TextEditor = dynamic(() => import("../../TextEditor"), {
   ssr: false,
   loading: () => <Loading />,
 });
