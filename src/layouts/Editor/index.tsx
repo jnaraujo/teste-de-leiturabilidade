@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, useEffect } from "react";
 import cx from "clsx";
 import dynamic from "next/dynamic";
