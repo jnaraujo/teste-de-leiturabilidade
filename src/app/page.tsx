@@ -2,8 +2,8 @@ import styles from "../styles/pages/Home.module.scss"
 
 // COMPONENTS
 import Footer from "../components/Footer";
-import Editor from "../layouts/Editor";
-import HowItWorks from "../layouts/HowItWorks";
+import Editor from "@/components/layouts/Editor";
+import HowItWorks from "@/components/layouts/HowItWorks";
 
 export default function Page(){
   return (
