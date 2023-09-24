@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import cx from "clsx";
 import Tooltip from "@/components/Tooltip";
 
-interface ButtonProps {
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   isActive?: boolean;
   children: ReactNode;
   tooltip: string;
@@ -15,6 +15,7 @@ const ButtonComponent = ({
   children,
   tooltip,
   onClick,
+  ...rest
 }: ButtonProps) => {
   const handleClick = () => {
     if (onClick) {
@@ -30,7 +31,9 @@ const ButtonComponent = ({
             [styles.active]: isActive,
           }
         )
-      }>
+      }
+        {...rest}
+      >
         {children}
       </button>
     </Tooltip>

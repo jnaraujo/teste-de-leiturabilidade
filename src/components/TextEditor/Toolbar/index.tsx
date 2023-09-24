@@ -15,6 +15,7 @@ const Toolbar = ({ editor }: { editor: Editor }) => (
         {items.map((item) => (
           <Button
             key={item.name + item.tooltip}
+            aria-label={item.name}
             onClick={item.onClick}
             tooltip={item.tooltip}
             isActive={isActive(
