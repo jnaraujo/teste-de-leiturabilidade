@@ -6,7 +6,7 @@ import { NAVBAR_LINKS } from "../constants";
 import styles from "./styles.module.scss";
 import Button from "@/components/Button";
 import { AiOutlineClose } from "react-icons/ai";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 interface Props {
   onClose: () => void;
@@ -15,7 +15,6 @@ interface Props {
 
 export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
   const [currentPath, setCurrentPath] = useState("");
-  const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -46,6 +45,7 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
                     [styles.active]: currentPath === url,
                   })
                 }
+                onClick={onClose}
               >
                 {title}
               </Link>
