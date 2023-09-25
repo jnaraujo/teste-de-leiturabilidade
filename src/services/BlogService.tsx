@@ -16,6 +16,11 @@ export type PostResponse = Post[];
 export async function fetchPosts(limit = 10) {
   const response = await fetch(
     `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`,
+    {
+      next: {
+        revalidate: 120 // 2 minutes
+      }
+    }
   );
 
   let posts: PostResponse = [];
@@ -44,7 +49,11 @@ export async function fetchPosts(limit = 10) {
 }
 
 export async function fetchPost(id: string) {
-  const response = await fetch(`https://notion-api.splitbee.io/v1/page/${id}`);
+  const response = await fetch(`https://notion-api.splitbee.io/v1/page/${id}`, {
+    next: {
+      revalidate: 120 // 2 minutes
+    }
+  });
 
   let post;
   if (response.ok) {

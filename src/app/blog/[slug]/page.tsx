@@ -51,5 +51,3 @@ export async function generateMetadata({ params: { slug } }: Props) {
     image: (post as any).Picture ?? null,
   };
 }
-
-export const revalidate = 60; // 1 minute
