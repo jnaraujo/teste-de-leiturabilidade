@@ -19,10 +19,14 @@
 .title {
   all: unset;
   margin: 24px 0;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  font-weight: bolder;
+  font-weight: 600;
   color: black;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 1.2rem;
+  }
 }
 
 .menuButton {
