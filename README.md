@@ -4,11 +4,8 @@
 
 <div align="center">
   
-![Most used language](https://img.shields.io/github/languages/top/jnaraujo/teste_de_facilidade_de_leitura?style=flat-square)
-![Netlify Status](https://api.netlify.com/api/v1/badges/345ef13c-3c4c-4809-8d67-f9ad2f23931b/deploy-status)
-![Netlify Status](https://github.com/jnaraujo/teste_de_facilidade_de_leitura/actions/workflows/node.js.yml/badge.svg)
-
-![GitHub](https://img.shields.io/github/license/jnaraujo/teste_de_facilidade_de_leitura)
+![Most used language](https://img.shields.io/github/languages/top/jnaraujo/teste-de-leiturabilidade?style=flat-square)
+![GitHub](https://img.shields.io/github/license/jnaraujo/teste-de-leiturabilidade)
 [![Website notes.jnaraujo.com](https://img.shields.io/website-up-down-green-red/http/leitura.jnaraujo.com.svg)](https://leitura.jnaraujo.com/)
 
 </div>
