@@ -17,9 +17,6 @@ export default async function Page({ params }: Props) {
     return redirect("/blog");
   }
 
-  console.log(post.blocks);
-
-
   return (
     <div className={styles.container} itemScope itemType="https://schema.org/NewsArticle">
       <div className={styles.content}>
