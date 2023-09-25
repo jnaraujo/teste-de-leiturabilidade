@@ -1,5 +1,4 @@
-import { getReadingTime, slugfy } from "@/utils";
-import { NotionRenderer } from "react-notion";
+import { slugfy } from "@/utils";
 
 interface Post {
   id: string;
@@ -68,22 +67,12 @@ export async function fetchPostBySlug(slug: string) {
 
   const post = posts.find((post) => slugfy(post.Title) === slug);
 
-  if (!post) return null;
+  if(!post) return null;
 
-  const blockMap = await fetchPost(post.id);
+  const blocks = await fetchPost(post.id);
 
-  const ReactDOMServer = (await import("react-dom/server")).default;
-
-  const html = ReactDOMServer.renderToString(
-    <NotionRenderer blockMap={blockMap} />,
-  );
-
-  const time = getReadingTime(html);
-  const result = {
+  return {
     ...post,
-    readingTime: time,
-    html,
-  };
-
-  return result;
+    blocks,
+  }
 }

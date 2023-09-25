@@ -1,8 +1,8 @@
 import { BannerCTA } from "@/components/BannerCTA";
 import styles from "../../../styles/pages/Blog.module.scss";
 import { fetchPostBySlug } from "@/services/BlogService";
-import { getReadingTime } from "@/utils";
 import { redirect } from "next/navigation";
+import Post from "@/components/Post";
 
 interface Props {
   params: {
@@ -17,22 +17,24 @@ export default async function Page({ params }: Props) {
     return redirect("/blog");
   }
 
+  console.log(post.blocks);
+
+
   return (
     <div className={styles.container} itemScope itemType="https://schema.org/NewsArticle">
       <div className={styles.content}>
         <article className={styles.article}>
           <h1 itemProp="headline">{post.Title}</h1>
-          <div className={styles.information}>
+          <div className={styles.info}>
             <span itemProp="datePublished" content={post["Published at"]}>
               {new Date(post["Published at"]).toLocaleDateString("pt-BR", {
                 year: "numeric",
-                month: "long",
+                month: "short",
                 day: "numeric",
-              })}{" "}
-              • Leitura: {getReadingTime(post.html)} minutos
+              })}
             </span>
           </div>
-          <div className={styles.blogText} dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Post blocks={post.blocks} className={styles.blogText} />
           <BannerCTA />
         </article>
       </div>
