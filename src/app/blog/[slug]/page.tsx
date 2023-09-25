@@ -1,6 +1,6 @@
 import { BannerCTA } from "@/components/BannerCTA";
 import styles from "../../../styles/pages/Blog.module.scss";
-import { fetchPostBySlug } from "@/services/BlogService";
+import { fetchPostBySlug, fetchPosts } from "@/services/BlogService";
 import { redirect } from "next/navigation";
 import Post from "@/components/Post";
 
@@ -8,6 +8,16 @@ interface Props {
   params: {
     slug: string;
   };
+}
+
+export async function generateStaticParams() {
+  const posts = await fetchPosts();
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.Slug,
+    },
+  }));
 }
 
 export default async function Page({ params }: Props) {
