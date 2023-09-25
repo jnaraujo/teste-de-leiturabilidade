@@ -63,12 +63,23 @@ export async function fetchPost(id: string) {
   return post;
 }
 
+interface PostWithHtml extends Post {
+  html: string;
+  readingTime: number;
+}
+
+const cache = new Map<string, PostWithHtml>();
+
 export async function fetchPostBySlug(slug: string) {
   const posts = await fetchPosts(Infinity);
 
   const post = posts.find((post) => slugfy(post.Title) === slug);
 
   if (!post) return null;
+
+  if(cache.has(post.id)) {    
+    return cache.get(post.id);
+  }
 
   const blockMap = await fetchPost(post.id);
 
@@ -79,10 +90,13 @@ export async function fetchPostBySlug(slug: string) {
   );
 
   const time = getReadingTime(html);
-
-  return {
+  const result = {
     ...post,
     readingTime: time,
     html,
   };
+
+  cache.set(post.id, result);
+
+  return result;
 }
