@@ -1,17 +1,10 @@
 import "../styles/globals.scss";
 import FeedbackWidget from "@/components/FeedbackWidget"
-import Navbar from "@/components/Navbar"
 import Providers from "@/components/Providers"
-import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google"
 import Script from "next/script";
 
 import "react-responsive-modal/styles.css";
-
-export const metadata: Metadata = {
-  title: 'Teste de Leiturabilidade - Faça seu texto ser entendido por todos',
-  description: 'Teste a leiturabilidade do seu texto e saiba se ele é de fácil de entender. O teste analisa a legibilidade do seu texto e te dá dicas de como melhorá-lo utlizando o Flesch Reading Ease.',
-}
 
 const inter = Inter({
   subsets: ['latin'], display: 'swap', weight: [
@@ -48,7 +41,6 @@ export default function RootLayout({
       </head>
       <body>
         <Providers>
-          <Navbar />
           {children}
           <FeedbackWidget />
         </Providers>

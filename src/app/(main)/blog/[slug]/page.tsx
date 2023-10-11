@@ -1,5 +1,5 @@
 import { BannerCTA } from "@/components/BannerCTA";
-import styles from "../../../styles/pages/Blog.module.scss";
+import styles from "@/styles/pages/Blog.module.scss";
 import { fetchPostBySlug, fetchPosts } from "@/services/BlogService";
 import { redirect } from "next/navigation";
 import Post from "@/components/Post";

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import styles from "../../styles/pages/Blog.module.scss";
-import { BannerCTA } from "../../components/BannerCTA";
-import { Metadata } from "next";
+import styles from "@/styles/pages/Blog.module.scss";
+import { BannerCTA } from "@/components/BannerCTA";
+import type { Metadata } from "next";
 import { fetchPosts } from "@/services/BlogService";
 
 export const metadata: Metadata = {

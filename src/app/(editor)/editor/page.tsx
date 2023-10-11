@@ -1,5 +1,5 @@
 import Editor from "@/components/layouts/Editor";
-import styles from "../../styles/pages/Editor.module.scss";
+import styles from "@/styles/pages/Editor.module.scss";
 
 import type { Metadata } from 'next'
 
