@@ -15,7 +15,7 @@ export default function Page() {
       <header className="container flex justify-center py-2">
         <Pomodoro />
       </header>
-      <section className="container">
+      <section className="">
         <Editor />
       </section>
     </>
