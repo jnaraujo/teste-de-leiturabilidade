@@ -2,21 +2,24 @@
 
 import { ModalProvider } from "@/context/ModalContext";
 import { Toaster } from "react-hot-toast";
+import { TooltipProvider } from "./ui/tooltip";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ModalProvider>
-      {children}
+    <TooltipProvider delayDuration={250}>
+      <ModalProvider>
+        {children}
 
-      <Toaster
-        toastOptions={{
-          duration: 5000,
-          style: {
-            fontFamily: "var(--font-inter)",
-          },
-        }}
-        position="top-center"
-      />
-    </ModalProvider>
+        <Toaster
+          toastOptions={{
+            duration: 5000,
+            style: {
+              fontFamily: "var(--font-inter)",
+            },
+          }}
+          position="top-center"
+        />
+      </ModalProvider>
+    </TooltipProvider>
   );
 }
