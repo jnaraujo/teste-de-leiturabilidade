@@ -3,3 +3,9 @@ from="https://leitura.jnaraujo.com/*"
 to="https://leiturabilidade.jnaraujo.com/:splat"
 status=301
 force=true
+
+[[redirects]]
+from="https://www.leitura.jnaraujo.com/*"
+to="https://leiturabilidade.jnaraujo.com/:splat"
+status=301
+force=true
