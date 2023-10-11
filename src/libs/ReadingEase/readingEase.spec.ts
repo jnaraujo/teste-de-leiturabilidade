@@ -25,7 +25,7 @@ describe("calculateFleschReading", () => {
 
   it("text with only one sentence", () => {
     const oneSentenceTest = calculateFleschReading(
-      "A mentira é muita vezes tão involuntária como a respiração."
+      "A mentira é muita vezes tão involuntária como a respiração.",
     );
     expect(oneSentenceTest.sentences).toEqual(1);
     expect(oneSentenceTest.words).toEqual(10);
@@ -40,7 +40,7 @@ describe("calculateFleschReading", () => {
 
   it("text with multiple sentences", () => {
     const multipleSentencesTest = calculateFleschReading(
-      "As pessoas têm medo das mudanças."
+      "As pessoas têm medo das mudanças.",
     );
     expect(multipleSentencesTest.sentences).toEqual(1);
     expect(multipleSentencesTest.words).toEqual(6);

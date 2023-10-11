@@ -7,11 +7,12 @@ const Loading: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.dots}>
-          {
-            Array.from({ length: 3 }).map((_, index) => (
-              <div key={index} className={cx(styles.dot, styles[`dot${index+1}`])}></div>
-            ))
-          }
+          {Array.from({ length: 3 }).map((_, index) => (
+            <div
+              key={index}
+              className={cx(styles.dot, styles[`dot${index + 1}`])}
+            ></div>
+          ))}
         </div>
         <p className={styles.text}>Carregando o editor...</p>
       </div>

@@ -8,6 +8,6 @@ export const sendFeedback = async (feedback: object) => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    }
+    },
   );
 };

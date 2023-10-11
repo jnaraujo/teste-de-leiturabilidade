@@ -19,14 +19,15 @@ import {
  * //   syllables: 6,
  * //   result: 100
  * // }
-**/
+ **/
 export function calculateFleschReading(phrase: string) {
-  if(!phrase) return {
-    words: 0,
-    sentences: 0,
-    syllables: 0,
-    result: 0,
-  }
+  if (!phrase)
+    return {
+      words: 0,
+      sentences: 0,
+      syllables: 0,
+      result: 0,
+    };
 
   const words = getWords(phrase);
   const totalSyllables = countSyllables(words);
@@ -36,7 +37,7 @@ export function calculateFleschReading(phrase: string) {
     sentences: 1,
     syllables: totalSyllables,
     result: calculateResult(
-      calculateFleschEase(words.length, 1, totalSyllables)
+      calculateFleschEase(words.length, 1, totalSyllables),
     ),
   };
 }
@@ -44,14 +45,14 @@ export function calculateFleschReading(phrase: string) {
 export function calculateFleschReadingFromText(text: string) {
   const words = getWords(text);
   const totalSyllables = countSyllables(words);
-  const sentences = splitPhrases(text).length
+  const sentences = splitPhrases(text).length;
 
   return {
     words: words.length,
     sentences: sentences,
     syllables: totalSyllables,
     result: calculateResult(
-      calculateFleschEase(words.length, sentences, totalSyllables)
+      calculateFleschEase(words.length, sentences, totalSyllables),
     ),
   };
 }

@@ -7,7 +7,7 @@ const prebuildScripts = async () => {
   const file = path.join(
     baseDir,
     "/node_modules",
-    "next/dist/server/require-hook.js"
+    "next/dist/server/require-hook.js",
   );
 
   const content = await fs.promises.readFile(file, "utf-8");
@@ -15,8 +15,8 @@ const prebuildScripts = async () => {
     file,
     content.replace(
       "if (process.env.__NEXT_PRIVATE_PREBUNDLED_REACT) {",
-      "if (true) {"
-    )
+      "if (true) {",
+    ),
   );
 };
 

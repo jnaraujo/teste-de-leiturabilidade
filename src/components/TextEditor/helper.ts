@@ -47,7 +47,7 @@ export const EditorExtensions = [
 
 export const handleContentEase = (
   text: string,
-  setEase: (obj: IEase) => void
+  setEase: (obj: IEase) => void,
 ) => {
   const phrases = splitPhrases(text);
 
@@ -65,7 +65,11 @@ export const handleContentEase = (
   }
 
   setEase({
-    index: calculateFleschEase(textAnalyses.words, textAnalyses.sentences, textAnalyses.syllables),
+    index: calculateFleschEase(
+      textAnalyses.words,
+      textAnalyses.sentences,
+      textAnalyses.syllables,
+    ),
     syllables: textAnalyses.syllables,
     words: textAnalyses.words,
     sentences: textAnalyses.sentences,

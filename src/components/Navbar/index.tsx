@@ -19,7 +19,12 @@ const Navbar = () => {
         Teste de Leiturabilidade
       </Link>
       <Links onClose={handleClick} isOpen={isOpen} />
-      <button className={styles.menuButton} type="button" onClick={handleClick} aria-label="Abrir menu">
+      <button
+        className={styles.menuButton}
+        type="button"
+        onClick={handleClick}
+        aria-label="Abrir menu"
+      >
         <AiOutlineMenu />
       </button>
     </header>

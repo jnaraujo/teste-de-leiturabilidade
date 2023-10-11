@@ -27,8 +27,8 @@ const ImportPageModal: React.FC<Props> = ({ open, onClose, onImportPage }) => {
         center
         styles={{
           modal: {
-            backgroundColor: "#fafafa"
-          }
+            backgroundColor: "#fafafa",
+          },
         }}
       >
         <section className={styles.container}>
@@ -42,9 +42,7 @@ const ImportPageModal: React.FC<Props> = ({ open, onClose, onImportPage }) => {
                 placeholder="Insira o link da página que deseja importar"
                 required
               />
-              <Button type="submit">
-                Importar página externa
-              </Button>
+              <Button type="submit">Importar página externa</Button>
             </form>
           </div>
         </section>

@@ -121,11 +121,11 @@
     [data-tip]:hover {
       border-color: $secondary;
     }
-  
+
     [data-tip]::before {
       content: attr(data-tip);
       position: absolute;
-      
+
       font-weight: 500;
       line-height: 1.5;
       font-style: normal;
@@ -140,13 +140,13 @@
 
       left: 50%;
       transform: translateX(-50%);
-  
+
       top: -35px;
 
       z-index: 9999;
       width: max-content;
     }
-    
+
     [data-tip]:hover::before {
       display: block;
     }

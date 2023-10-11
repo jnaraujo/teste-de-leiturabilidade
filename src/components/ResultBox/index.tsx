@@ -12,7 +12,7 @@ import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 import styles from "./styles.module.scss";
 import Button from "../Button";
 import dynamic from "next/dynamic";
-const ImportPageModal  = dynamic(() => import("./ImportPageModal"));
+const ImportPageModal = dynamic(() => import("./ImportPageModal"));
 
 interface ResultBoxProps {
   onImportPage?: (value: string) => void;
@@ -26,7 +26,6 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
   const { width, height } = useWindowSize();
   const { config, setConfig } = useConfigStore();
   const ease = useReadingStore((state) => state.ease);
-
 
   function base100ToSlideBarSize(value: number) {
     if (!sliderRef.current) return 0;
@@ -45,11 +44,11 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
     if (onImportPage) {
       onImportPage(value || "");
     }
-  }
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
-  }
+  };
 
   useEffect(() => {
     setSliderSize(base100ToSlideBarSize(ease.index));
@@ -65,7 +64,10 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
 
         <div className={styles.content}>
           <div className={styles.ease_bar}>
-            <div className={styles.slider} style={{ left: `${sliderSize}px` }} />
+            <div
+              className={styles.slider}
+              style={{ left: `${sliderSize}px` }}
+            />
             <div className={styles.cont}>
               <div className={styles.row} ref={sliderRef}>
                 <div className={styles.col} />
@@ -132,22 +134,20 @@ const ResultBox: React.FC<ResultBoxProps> = ({ onImportPage }) => {
             Quantidade de frases: <strong>{ease.sentences}</strong>
           </p>
         </div>
-        <div className={cx(
-          styles.content,
-          styles.contentImportExternalPage
-        )}>
+        <div className={cx(styles.content, styles.contentImportExternalPage)}>
           <strong>Deseja importar o conteúdo de uma página externa?</strong>
-          <Button
-            onClick={handleOpenModal}
-            type="submit"
-          >
+          <Button onClick={handleOpenModal} type="submit">
             Importar página externa
           </Button>
         </div>
       </div>
-      {
-        isModalOpen && <ImportPageModal open={isModalOpen} onClose={closeModal} onImportPage={handleImportPage} />
-      }
+      {isModalOpen && (
+        <ImportPageModal
+          open={isModalOpen}
+          onClose={closeModal}
+          onImportPage={handleImportPage}
+        />
+      )}
     </>
   );
 };

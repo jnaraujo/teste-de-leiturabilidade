@@ -23,21 +23,14 @@ export const BubbleMenu = ({ editor, shouldBeVisible }: Props) => {
       editor={editor}
     >
       <div
-        className={cx(
-          styles.content,
-          {
-            [styles.visible]: shouldBeVisible,
-          }
-        )
-        }
+        className={cx(styles.content, {
+          [styles.visible]: shouldBeVisible,
+        })}
       >
         <ul>
           {getMenuItems(editor).map((item) => (
             <li key={item.tooltip}>
-              <Button
-                onClick={item.onClick}
-                tooltip={item.tooltip}
-              >
+              <Button onClick={item.onClick} tooltip={item.tooltip}>
                 {item.icon ? <item.icon size={18} /> : item.name}
               </Button>
             </li>

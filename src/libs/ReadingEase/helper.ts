@@ -1,12 +1,10 @@
 import silabaJS from "./silaba";
 
 export function getWords(text: string) {
-  const words = text
-    .replace(/\n\r,!?;/g, " ")
-    .split(" ")
+  const words = text.replace(/\n\r,!?;/g, " ").split(" ");
 
-  for(let i = 0; i < words.length; i++){
-    if(words[i] === ""){
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] === "") {
       words.splice(i, 1);
       i--;
     }
@@ -36,7 +34,7 @@ export function countSyllables(words: string[]) {
 export function calculateFleschEase(
   words: number,
   sentences: number,
-  syllables: number
+  syllables: number,
 ) {
   return 248.835 - 1.015 * (words / sentences) - 84.6 * (syllables / words);
 }

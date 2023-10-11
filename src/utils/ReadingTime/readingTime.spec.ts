@@ -9,7 +9,7 @@ import {
 describe("getReadingTime", () => {
   it("some text", () => {
     const emptyTextTest = getReadingTime(
-      "As pessoas têm medo das mudanças. Eu tenho medo que as coisas nunca mudem."
+      "As pessoas têm medo das mudanças. Eu tenho medo que as coisas nunca mudem.",
     );
     expect(emptyTextTest).toEqual(1);
   });

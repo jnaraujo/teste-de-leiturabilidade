@@ -16,13 +16,13 @@ export function secondsToHMS(seconds: number) {
   if (hours > 0) {
     return `${String(hours).padStart(2, "0")}h ${String(minutes).padStart(
       2,
-      "0"
+      "0",
     )}m ${String(secs).padStart(2, "0")}s`;
   }
   if (minutes > 0) {
     return `${String(minutes).padStart(2, "0")}m ${String(secs).padStart(
       2,
-      "0"
+      "0",
     )}s`;
   }
   return `${String(secs).padStart(2, "0")}s`;

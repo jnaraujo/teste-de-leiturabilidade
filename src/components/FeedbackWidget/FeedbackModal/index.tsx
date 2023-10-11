@@ -52,8 +52,8 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
         center
         styles={{
           modal: {
-            backgroundColor: "#fafafa"
-          }
+            backgroundColor: "#fafafa",
+          },
         }}
       >
         <section className={styles.container}>

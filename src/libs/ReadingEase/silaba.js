@@ -76,7 +76,7 @@ function posicionSilabas(palabra) {
     // Obtiene y silaba de la palabra
     silabaAux.silaba = silaba.palabra.substring(
       silabaAux.inicioPosicion,
-      actPos
+      actPos,
     );
 
     // Guarda silaba de la palabra

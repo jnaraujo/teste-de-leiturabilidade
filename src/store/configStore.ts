@@ -16,7 +16,7 @@ const defaultConfig: IConfig = {
   tips: true,
 };
 
-const config = Object.assign(defaultConfig, getLocalStorage("config-store"))
+const config = Object.assign(defaultConfig, getLocalStorage("config-store"));
 
 export const useConfigStore = create<IConfigStore>((set, get) => ({
   config: config,

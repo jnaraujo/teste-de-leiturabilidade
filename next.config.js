@@ -34,7 +34,7 @@ const nextConfig = {
         "prosemirror-view",
         "@babel/runtime",
         "@radix-ui/react-compose-refs",
-        "@radix-ui/react-slot"
+        "@radix-ui/react-slot",
       ];
 
       moduleList.forEach((moduleName) => {
@@ -53,6 +53,4 @@ const nextConfig = {
   compress: false,
 };
 
-module.exports = withBundleAnalyzer(
-  nextConfig
-);
+module.exports = withBundleAnalyzer(nextConfig);

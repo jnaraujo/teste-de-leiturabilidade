@@ -27,16 +27,16 @@ function generateTip({
   result,
   sentences,
   syllables,
-  words
+  words,
 }: FleschReadingResult) {
-  const a = 1.015 * (words / sentences)
-  const b = 84.6 * (syllables / words)
+  const a = 1.015 * (words / sentences);
+  const b = 84.6 * (syllables / words);
 
   if (result <= 50) {
     if (a > 10 && b > 12) {
-      return "A frase é muito longa. Tente dividi-la em duas ou mais frases."
+      return "A frase é muito longa. Tente dividi-la em duas ou mais frases.";
     } else {
-      return "A frase é muito complexa. Tente usar palavras mais simples."
+      return "A frase é muito complexa. Tente usar palavras mais simples.";
     }
   }
 }
@@ -44,12 +44,16 @@ function generateTip({
 function highlightPhrasesEase(doc: Node) {
   const decorations: Decoration[] = [];
 
-  function addDecoration(start: number, end: number, data: FleschReadingResult) {
+  function addDecoration(
+    start: number,
+    end: number,
+    data: FleschReadingResult,
+  ) {
     decorations.push(
       Decoration.inline(start, end, {
         class: styles[`ease-${easeToLabel(data.result)}`],
         "data-tip": generateTip(data),
-      })
+      }),
     );
   }
 
@@ -67,7 +71,7 @@ function highlightPhrasesEase(doc: Node) {
         continue;
       }
 
-      const phrases = splitPhrases(node.textContent)
+      const phrases = splitPhrases(node.textContent);
 
       for (let j = 0; j < phrases.length; j++) {
         const phrase = phrases[j];
@@ -90,14 +94,13 @@ function highlightPhrasesEase(doc: Node) {
   return DecorationSet.create(doc, decorations);
 }
 
-
 const TextAnalysisHLProse = new Plugin({
   state: {
     init(_, { doc }) {
       return highlightPhrasesEase(doc);
     },
     apply(tr, old) {
-      return tr.docChanged ? highlightPhrasesEase(tr.doc) : old;;
+      return tr.docChanged ? highlightPhrasesEase(tr.doc) : old;
     },
   },
   props: {

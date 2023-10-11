@@ -42,9 +42,9 @@ export default function TextEditor({ html }: ComponentPropsType) {
       handleDOMEvents: {
         mousedown() {
           didMouseDown.current = true;
-          setShouldShowBubbleMenu(false)
+          setShouldShowBubbleMenu(false);
         },
-      }
+      },
     },
     content: content,
   });
@@ -52,38 +52,41 @@ export default function TextEditor({ html }: ComponentPropsType) {
   useEffect(() => {
     function handleMouseUp() {
       if (didMouseDown.current) {
-        setShouldShowBubbleMenu(true)
+        setShouldShowBubbleMenu(true);
       }
       didMouseDown.current = false;
     }
 
-    document.addEventListener("mouseup", handleMouseUp)
+    document.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      document.removeEventListener("mouseup", handleMouseUp)
-    }
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
   }, []);
 
   useEffect(() => {
     if (html && editor) {
       editor.commands.setContent(html, true);
     }
-  }, [html]);
+  }, [html, editor]);
 
   const shouldBeVisible = width > 720 && shouldShowBubbleMenu;
 
-  return (  
-    <section className={clsx(
-      styles.container,
-      {
+  return (
+    <section
+      className={clsx(styles.container, {
         [styles.highlight]: config.highlight,
         [styles.allowTips]: config.tips,
-      }
-    )}>
+      })}
+    >
       <Toolbar editor={editor as any} />
-      <EditorContent ref={editorRef} className={styles.editor} editor={editor} />
+      <EditorContent
+        ref={editorRef}
+        className={styles.editor}
+        editor={editor}
+      />
 
       <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} />
     </section>
   );
-};
+}

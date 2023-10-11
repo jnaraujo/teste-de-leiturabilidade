@@ -29,7 +29,7 @@ export class GoogleDocsService {
 
   private async fetch() {
     const { data } = await axios.get(
-      `https://docs.google.com/feeds/download/documents/export/Export?id=${this.pageId}&exportFormat=html`
+      `https://docs.google.com/feeds/download/documents/export/Export?id=${this.pageId}&exportFormat=html`,
     );
 
     return data;

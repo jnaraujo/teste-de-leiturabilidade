@@ -28,7 +28,11 @@ export default async function Page({ params }: Props) {
   }
 
   return (
-    <div className={styles.container} itemScope itemType="https://schema.org/NewsArticle">
+    <div
+      className={styles.container}
+      itemScope
+      itemType="https://schema.org/NewsArticle"
+    >
       <div className={styles.content}>
         <article className={styles.article}>
           <h1 itemProp="headline">{post.Title}</h1>
@@ -47,7 +51,7 @@ export default async function Page({ params }: Props) {
       </div>
     </div>
   );
-};
+}
 
 export async function generateMetadata({ params: { slug } }: Props) {
   const post = await fetchPostBySlug(slug);

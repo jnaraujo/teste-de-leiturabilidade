@@ -1,9 +1,6 @@
 import { Editor } from "@tiptap/react";
 
-import {
-  getToolbarGroups,
-  isActive,
-} from "./helper";
+import { getToolbarGroups, isActive } from "./helper";
 
 import styles from "./styles.module.scss";
 import Button from "./Button";
@@ -21,7 +18,7 @@ const Toolbar = ({ editor }: { editor: Editor }) => (
             isActive={isActive(
               editor,
               item.isActive?.name,
-              item.isActive?.attributes
+              item.isActive?.attributes,
             )}
           >
             {item.icon ? <item.icon /> : item.name}

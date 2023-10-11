@@ -17,7 +17,8 @@
     }
   }
 
-  p, label {
+  p,
+  label {
     font-size: 16px;
   }
 
@@ -30,7 +31,7 @@
   }
 }
 
-.contentImportExternalPage{
+.contentImportExternalPage {
   display: flex;
   flex-direction: column;
   gap: 8px;

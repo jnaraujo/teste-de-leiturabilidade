@@ -23,11 +23,11 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
   }, [pathname]);
 
   return (
-    <nav className={
-      cx(styles.navbar, {
+    <nav
+      className={cx(styles.navbar, {
         [styles.open]: isOpen,
-      })
-    }>
+      })}
+    >
       <button className={styles.closeModalButton} onClick={onClose}>
         <AiOutlineClose />
       </button>
@@ -39,12 +39,9 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
               <Link
                 href={url}
                 passHref
-                className={
-                  cx(
-                    styles.link, {
-                    [styles.active]: currentPath === url,
-                  })
-                }
+                className={cx(styles.link, {
+                  [styles.active]: currentPath === url,
+                })}
                 onClick={onClose}
               >
                 {title}
@@ -54,9 +51,7 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
         })}
         <li>
           <Button asChild className={styles.openEditor}>
-            <Link href="/editor" >
-              Abrir o Editor
-            </Link>
+            <Link href="/editor">Abrir o Editor</Link>
           </Button>
         </li>
       </ul>

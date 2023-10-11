@@ -17,9 +17,9 @@ export async function fetchPosts(limit = 10) {
     `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`,
     {
       next: {
-        revalidate: 120 // 2 minutes
-      }
-    }
+        revalidate: 120, // 2 minutes
+      },
+    },
   );
 
   let posts: PostResponse = [];
@@ -50,8 +50,8 @@ export async function fetchPosts(limit = 10) {
 export async function fetchPost(id: string) {
   const response = await fetch(`https://notion-api.splitbee.io/v1/page/${id}`, {
     next: {
-      revalidate: 120 // 2 minutes
-    }
+      revalidate: 120, // 2 minutes
+    },
   });
 
   let post;
@@ -67,12 +67,12 @@ export async function fetchPostBySlug(slug: string) {
 
   const post = posts.find((post) => slugfy(post.Title) === slug);
 
-  if(!post) return null;
+  if (!post) return null;
 
   const blocks = await fetchPost(post.id);
 
   return {
     ...post,
     blocks,
-  }
+  };
 }

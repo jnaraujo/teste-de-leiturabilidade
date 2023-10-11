@@ -1,8 +1,8 @@
-import React from 'react';
-import cx from 'clsx';
-import { Slot } from '@radix-ui/react-slot';
+import React from "react";
+import cx from "clsx";
+import { Slot } from "@radix-ui/react-slot";
 
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -15,12 +15,13 @@ const Button: React.FC<ButtonProps> = ({
   asChild,
   ...rest
 }) => {
-  const Comp = asChild ? Slot : 'button';
+  const Comp = asChild ? Slot : "button";
 
-  return <Comp className={cx(
-    styles.button,
-    className
-  )} {...rest}>{children}</Comp>;
-}
+  return (
+    <Comp className={cx(styles.button, className)} {...rest}>
+      {children}
+    </Comp>
+  );
+};
 
 export default Button;

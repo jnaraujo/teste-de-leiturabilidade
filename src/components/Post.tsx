@@ -1,6 +1,6 @@
 "use client";
 
-import { NotionRenderer as Renderer } from "react-notion"
+import { NotionRenderer as Renderer } from "react-notion";
 
 interface Props {
   className?: string;

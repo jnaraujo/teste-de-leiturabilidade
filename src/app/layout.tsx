@@ -1,31 +1,31 @@
 import "../styles/globals.scss";
-import FeedbackWidget from "@/components/FeedbackWidget"
-import Providers from "@/components/Providers"
-import { Inter, Merriweather } from "next/font/google"
+import FeedbackWidget from "@/components/FeedbackWidget";
+import Providers from "@/components/Providers";
+import { Inter, Merriweather } from "next/font/google";
 import Script from "next/script";
 
 import "react-responsive-modal/styles.css";
 
 const inter = Inter({
-  subsets: ['latin'], display: 'swap', weight: [
-    "400", "500", "600", "700"
-  ],
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
-  preload: false
-})
+  preload: false,
+});
 
 const merriweather = Merriweather({
-  subsets: ['latin'], display: 'swap', weight: [
-    "400"
-  ],
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
   variable: "--font-merriweather",
-  preload: false
-})
+  preload: false,
+});
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
@@ -46,5 +46,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  )
+  );
 }

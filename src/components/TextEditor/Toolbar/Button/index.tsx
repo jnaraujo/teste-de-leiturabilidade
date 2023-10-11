@@ -24,14 +24,11 @@ const ButtonComponent = ({
   };
   return (
     <Tooltip text={tooltip}>
-      <button onClick={handleClick} className={
-        cx(
-          styles.button,
-          {
-            [styles.active]: isActive,
-          }
-        )
-      }
+      <button
+        onClick={handleClick}
+        className={cx(styles.button, {
+          [styles.active]: isActive,
+        })}
         {...rest}
       >
         {children}

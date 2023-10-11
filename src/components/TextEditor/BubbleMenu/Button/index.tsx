@@ -4,7 +4,7 @@ import React from "react";
 const Button = ({
   tooltip,
   onClick,
-  children
+  children,
 }: {
   tooltip: string;
   children?: React.ReactNode;
