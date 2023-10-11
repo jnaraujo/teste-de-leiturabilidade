@@ -14,6 +14,7 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/javascript",
     "plugin:import/typescript",
+    "prettier-plugin-tailwindcss"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
