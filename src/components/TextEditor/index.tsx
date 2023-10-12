@@ -9,14 +9,20 @@ import { EditorExtensions, handleContentEase } from "./helper";
 import { useContentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
+import { useStatsStore } from "@/store/statsStore";
 
 type ComponentPropsType = {
   html: string;
 };
 
 export default function TextEditor({ html }: ComponentPropsType) {
-  const { config } = useConfigStore();
   const setEase = useReadingStore((state) => state.setEase);
+  const { config } = useConfigStore();
+
+  const { setTimeWritingInSecs, timeWrittingInSecs } = useStatsStore();
+
+  const startedWritingAt = useRef(0);
+  const writtingTimeout = useRef<any>();
   const { content, setContent } = useContentStore();
 
   const { width } = useWindowSize();
@@ -36,6 +42,23 @@ export default function TextEditor({ html }: ComponentPropsType) {
     onUpdate: (state) => {
       setContent(state.editor.getHTML());
       handleContentEase(state.editor.getText(), setEase);
+
+      if (startedWritingAt.current === 0) {
+        startedWritingAt.current = Date.now();
+      }
+
+      if (writtingTimeout.current) {
+        clearTimeout(writtingTimeout.current);
+      }
+
+      writtingTimeout.current = setTimeout(() => {
+        const timeInMs = Date.now() - startedWritingAt.current;
+        const timeWithoutDelay = timeInMs - 1000;
+        const timeInSecs = timeWithoutDelay / 1000;
+        setTimeWritingInSecs(timeWrittingInSecs + timeInSecs);
+        startedWritingAt.current = 0;
+        console.log("timeInSecs", timeInSecs);
+      }, 1000);
     },
     editorProps: {
       handleDOMEvents: {
