@@ -1,5 +1,5 @@
-import { getLocalStorage, setLocalStorage } from "@/libs/localstorage";
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export interface IConfig {
   highlight: boolean;
@@ -16,14 +16,18 @@ const defaultConfig: IConfig = {
   tips: true,
 };
 
-const config = Object.assign(defaultConfig, getLocalStorage("config-store"));
-
-export const useConfigStore = create<IConfigStore>((set, get) => ({
-  config: config,
-  setConfig: (key: keyof IConfig, value: any) => {
-    const config = get().config;
-    config[key] = value;
-    set({ config });
-    setLocalStorage("config-store", config);
-  },
-}));
+export const useConfigStore = create(
+  persist<IConfigStore>(
+    (set, get) => ({
+      config: defaultConfig,
+      setConfig: (key: keyof IConfig, value: any) => {
+        const config = get().config;
+        config[key] = value;
+        set({ config });
+      },
+    }),
+    {
+      name: "configStore",
+    },
+  ),
+);
