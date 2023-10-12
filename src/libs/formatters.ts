@@ -15,10 +15,10 @@ export function secondsToHMS(secs: number) {
   const seconds = Math.floor(((secs % 86400) % 3600) % 60);
 
   if (days > 0) {
-    return `${days} dia(s) e ${hours} hora(s)`;
+    return `${days} dia(s)`;
   }
   if (hours > 0) {
-    return `${hours} hora(s) e ${minutes} minuto(s)`;
+    return `${hours} hora(s)`;
   }
   if (minutes > 0) {
     return `${minutes} minuto(s)`;

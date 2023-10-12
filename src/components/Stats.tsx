@@ -11,11 +11,11 @@ export default function Stats() {
 
   return (
     <div className="text-sm text-zinc-500">
-      🎉 Você passou{" "}
-      <span className="font-medium text-zinc-600">
+      🎉 Você já escreveu por mais de{" "}
+      <strong className="font-medium text-zinc-600">
         {secondsToHMS(timeWrittingInSecs || 0)}
-      </span>{" "}
-      escrevendo.
+      </strong>
+      !
     </div>
   );
 }
