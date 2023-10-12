@@ -10,17 +10,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 import { Label } from "@/components/ui/label";
 
 export default function Pomodoro() {
@@ -78,7 +79,7 @@ export default function Pomodoro() {
       <Popover>
         <PopoverTrigger>
           <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <span className="text-center text-2xl tabular-nums text-zinc-600">
                 {secondsToHms(timeInSecs)}
               </span>
