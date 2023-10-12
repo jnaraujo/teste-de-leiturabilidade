@@ -3,7 +3,6 @@
 import clsx from "clsx";
 import { Play, Pause, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { secondsToHms } from "./helper";
 import {
   Popover,
   PopoverContent,
@@ -23,6 +22,7 @@ import {
 } from "@/components/ui/tooltip";
 
 import { Label } from "@/components/ui/label";
+import { secondsToMS } from "@/libs/formatters";
 
 export default function Pomodoro() {
   const [state, setState] = useState<"paused" | "running" | "idle">("idle");
@@ -81,7 +81,7 @@ export default function Pomodoro() {
           <Tooltip>
             <TooltipTrigger asChild>
               <span className="text-center text-2xl tabular-nums text-zinc-600">
-                {secondsToHms(timeInSecs)}
+                {secondsToMS(timeInSecs)}
               </span>
             </TooltipTrigger>
             <TooltipContent>Temporizador</TooltipContent>
