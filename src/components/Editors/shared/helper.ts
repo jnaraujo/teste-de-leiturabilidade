@@ -12,9 +12,9 @@ import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import Placeholder from "@tiptap/extension-placeholder";
 import History from "@tiptap/extension-history";
-import styles from "./styles.module.scss";
+import styles from "./editor.module.scss";
 
-import * as ReadingEase from "../../libs/ReadingEase";
+import * as ReadingEase from "@/libs/ReadingEase";
 import { TextAnalysisHL } from "./plugins/TextAnalysisHL/textAnalysisHL";
 import { IEase } from "@/store/readingStore";
 import { splitPhrases } from "./plugins/TextAnalysisHL/helper";

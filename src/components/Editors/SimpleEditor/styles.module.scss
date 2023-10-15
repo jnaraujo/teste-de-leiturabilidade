@@ -14,14 +14,6 @@
 
   color: $on-background;
 
-  p.emptyNodeClass::before {
-    color: #aeb0b3;
-    content: attr(data-placeholder);
-    float: left;
-    height: 0;
-    pointer-events: none;
-  }
-
   * {
     outline: none;
   }
@@ -98,58 +90,6 @@
     font-size: 1rem;
     width: 100%;
     min-height: 1rem;
-  }
-
-  &.highlight {
-    .ease-hard {
-      background-color: #bd232364;
-    }
-    .ease-medium {
-      background-color: #fff4f4e0;
-    }
-    .ease-easy {
-      background-color: #10ba2c39;
-    }
-  }
-
-  &.allowTips {
-    [data-tip] {
-      position: relative;
-      border-bottom: 3px dashed $on-secondary;
-    }
-
-    [data-tip]:hover {
-      border-color: $secondary;
-    }
-
-    [data-tip]::before {
-      content: attr(data-tip);
-      position: absolute;
-
-      font-weight: 500;
-      line-height: 1.5;
-      font-style: normal;
-      font-size: 12px;
-      display: none;
-      padding: 4px 6px;
-      background-color: $on-background;
-      color: $on-primary;
-      font-family: "Inter", sans-serif;
-      border-radius: 6px 6px 6px 0px;
-      white-space: nowrap;
-
-      left: 50%;
-      transform: translateX(-50%);
-
-      top: -35px;
-
-      z-index: 9999;
-      width: max-content;
-    }
-
-    [data-tip]:hover::before {
-      display: block;
-    }
   }
 
   figure {

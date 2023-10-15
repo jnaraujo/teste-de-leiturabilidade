@@ -1,11 +1,12 @@
 import styles from "./styles.module.scss";
+import editorStyles from "../shared/editor.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
 import Toolbar from "./Toolbar";
 import { BubbleMenu } from "./BubbleMenu";
-import { EditorExtensions, handleContentEase } from "./helper";
+import { EditorExtensions, handleContentEase } from "../shared/helper";
 import { useContentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
@@ -96,13 +97,16 @@ export default function TextEditor({ html }: ComponentPropsType) {
 
   return (
     <section
-      className={clsx(styles.container, {
-        [styles.highlight]: config.highlight,
-        [styles.allowTips]: config.tips,
+      className={clsx(editorStyles.container, {
+        [editorStyles.highlight]: config.highlight,
+        [editorStyles.allowTips]: config.tips,
       })}
     >
       <Toolbar editor={editor as any} />
-      <EditorContent className={styles.editor} editor={editor} />
+      <EditorContent
+        className={`${styles.editor} ${editorStyles.editor}`}
+        editor={editor}
+      />
 
       <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} />
     </section>
