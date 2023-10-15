@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import editorStyles from "../shared/editor.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
@@ -10,7 +10,7 @@ import { useStatsStore } from "@/store/statsStore";
 import { EditorExtensions, handleContentEase } from "../shared/helper";
 
 type Props = {
-  html: string;
+  html?: string;
 };
 
 export default function ProEditor({ html }: Props) {
@@ -65,6 +65,9 @@ export default function ProEditor({ html }: Props) {
           setShouldShowBubbleMenu(false);
         },
       },
+      attributes: {
+        class: "outline-none space-y-2 leading-6",
+      },
     },
     content: content,
   });
@@ -93,16 +96,19 @@ export default function ProEditor({ html }: Props) {
   const shouldBeVisible = width > 720 && shouldShowBubbleMenu;
 
   return (
-    <section
-      className={clsx(styles.container, {
-        [styles.highlight]: config.highlight,
-        [styles.allowTips]: config.tips,
+    <div
+      className={clsx("w-full max-w-3xl", editorStyles.container, {
+        [editorStyles.highlight]: config.highlight,
+        [editorStyles.allowTips]: config.tips,
       })}
     >
       {/* <Toolbar editor={editor as any} /> */}
-      <EditorContent className={styles.editor} editor={editor} />
+      <EditorContent
+        className={`w-full appearance-none bg-transparent font-serif ${editorStyles.editor}`}
+        editor={editor}
+      />
 
       {/* <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} /> */}
-    </section>
+    </div>
   );
 }

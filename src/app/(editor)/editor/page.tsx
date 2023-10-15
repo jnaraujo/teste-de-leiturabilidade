@@ -1,5 +1,5 @@
-import Editor from "@/components/layouts/Editor";
-import Navbar from "@/components/layouts/EditorPro/Navbar";
+import Navbar from "@/components/layouts/ProEditor/Navbar";
+import ProEditorLayout from "@/components/layouts/ProEditor/ProEditorLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,9 +12,7 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <section className="container mt-4">
-        <Editor />
-      </section>
+      <ProEditorLayout />
     </>
   );
 }
