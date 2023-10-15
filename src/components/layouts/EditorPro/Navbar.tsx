@@ -20,14 +20,14 @@ export default function Navbar() {
   return (
     <>
       <header className="container grid grid-cols-3 items-center gap-4 py-4 sm:py-6">
-        <div className="items-center">
+        <nav className="items-center">
           <Link href="/" className="group flex items-center gap-1">
             <ArrowLeft className="text-lg text-zinc-600 group-hover:text-zinc-800 sm:text-sm" />
             <span className="hidden text-sm text-zinc-500 group-hover:text-zinc-600 sm:block">
               Voltar para a página inicial
             </span>
           </Link>
-        </div>
+        </nav>
         <Pomodoro />
         <div className="hidden items-center justify-end sm:flex">
           {hasWrittingTime ? <Stats /> : null}
