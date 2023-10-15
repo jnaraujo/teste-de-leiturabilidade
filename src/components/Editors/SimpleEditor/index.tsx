@@ -97,7 +97,7 @@ export default function TextEditor({ html }: ComponentPropsType) {
 
   return (
     <section
-      className={clsx(editorStyles.container, {
+      className={clsx(editorStyles.container, styles.container, {
         [editorStyles.highlight]: config.highlight,
         [editorStyles.allowTips]: config.tips,
       })}
