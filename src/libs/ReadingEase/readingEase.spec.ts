@@ -2,7 +2,6 @@ import { expect, describe, it } from "vitest";
 
 import { calculateFleschReading, easeToLabel } from ".";
 import { countSyllables, getWords } from "./helper";
-import { splitPhrases } from "../../components/TextEditor/plugins/TextAnalysisHL/helper";
 
 describe("calculateFleschReading", () => {
   it("empty text", () => {
