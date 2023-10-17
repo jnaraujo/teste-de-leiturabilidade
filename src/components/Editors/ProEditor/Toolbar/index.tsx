@@ -25,8 +25,8 @@ export default function Toolbar({ editor }: { editor: Editor }) {
   };
 
   return (
-    <div className="sticky top-4 z-20 flex w-full justify-start gap-2 overflow-x-auto rounded-xl border border-zinc-300 bg-zinc-100 px-2 py-[2px] sm:justify-evenly">
-      <div className="flex w-fit gap-2">
+    <div className="sticky top-4 z-20 flex w-full justify-start gap-2 overflow-x-auto rounded-xl border border-zinc-300 bg-zinc-100 px-2 py-1 sm:justify-evenly sm:py-[2px]">
+      <div className="flex w-fit items-center gap-2">
         <Select
           onValueChange={(value) => {
             if (value === "paragrafo") {
@@ -40,7 +40,7 @@ export default function Toolbar({ editor }: { editor: Editor }) {
           value={isHeadingActive()}
           defaultValue="paragrafo"
         >
-          <SelectTrigger className="h-fit w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0">
+          <SelectTrigger className="h-9 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0">
             <SelectValue placeholder="Parágrafo" />
           </SelectTrigger>
           <SelectContent>
