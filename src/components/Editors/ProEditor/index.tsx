@@ -8,6 +8,8 @@ import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
 import { useStatsStore } from "@/store/statsStore";
 import { EditorExtensions, handleContentEase } from "../shared/helper";
+import Toolbar from "./Toolbar";
+import { BubbleMenu } from "../shared/BubbleMenu";
 
 type Props = {
   html?: string;
@@ -55,7 +57,6 @@ export default function ProEditor({ html }: Props) {
         const timeInSecs = timeWithoutDelay / 1000;
         setTimeWritingInSecs(timeWrittingInSecs + timeInSecs);
         startedWritingAt.current = 0;
-        console.log("timeInSecs", timeInSecs);
       }, 1000);
     },
     editorProps: {
@@ -97,18 +98,22 @@ export default function ProEditor({ html }: Props) {
 
   return (
     <div
-      className={clsx("w-full max-w-3xl", editorStyles.container, {
-        [editorStyles.highlight]: config.highlight,
-        [editorStyles.allowTips]: config.tips,
-      })}
+      className={clsx(
+        "top-4 mb-4 h-fit w-full max-w-3xl",
+        editorStyles.container,
+        {
+          [editorStyles.highlight]: config.highlight,
+          [editorStyles.allowTips]: config.tips,
+        },
+      )}
     >
-      {/* <Toolbar editor={editor as any} /> */}
+      <Toolbar editor={editor as any} />
       <EditorContent
         className={`w-full appearance-none bg-transparent font-serif ${editorStyles.editor}`}
         editor={editor}
       />
 
-      {/* <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} /> */}
+      <BubbleMenu shouldBeVisible={shouldBeVisible} editor={editor} />
     </div>
   );
 }
