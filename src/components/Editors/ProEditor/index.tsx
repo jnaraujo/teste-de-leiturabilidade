@@ -98,14 +98,10 @@ export default function ProEditor({ html }: Props) {
 
   return (
     <div
-      className={clsx(
-        "top-4 mb-4 h-fit w-full max-w-3xl",
-        editorStyles.container,
-        {
-          [editorStyles.highlight]: config.highlight,
-          [editorStyles.allowTips]: config.tips,
-        },
-      )}
+      className={clsx("top-4 mb-4 h-fit w-full", editorStyles.container, {
+        [editorStyles.highlight]: config.highlight,
+        [editorStyles.allowTips]: config.tips,
+      })}
     >
       <Toolbar editor={editor as any} />
       <EditorContent
