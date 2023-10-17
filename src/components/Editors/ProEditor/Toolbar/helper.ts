@@ -23,51 +23,6 @@ interface ToolbarItem {
 }
 
 export function getToolbarGroups(editor: Editor) {
-  const TextTagsItems: ToolbarItem[] = [
-    {
-      onClick: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
-      name: "H1",
-      tooltip: "H1",
-      isActive: {
-        name: "heading",
-        attributes: { level: 1 },
-      },
-    },
-    {
-      name: "H2",
-      tooltip: "H2",
-      onClick: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
-      isActive: {
-        name: "heading",
-        attributes: { level: 2 },
-      },
-    },
-    {
-      name: "H3",
-      tooltip: "H3",
-      onClick: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
-      isActive: {
-        name: "heading",
-        attributes: { level: 3 },
-      },
-    },
-    {
-      name: "P",
-      tooltip: "Parágrafo",
-      onClick: () => editor.chain().focus().setParagraph().run(),
-      isActive: {
-        name: "paragraph",
-      },
-    },
-    {
-      icon: MdFormatQuote,
-      tooltip: "Citação",
-      onClick: () => editor.chain().focus().setBlockquote().run(),
-      isActive: {
-        name: "blockquote",
-      },
-    },
-  ];
   const TextFormattingItems: ToolbarItem[] = [
     {
       icon: MdFormatItalic,
@@ -131,12 +86,7 @@ export function getToolbarGroups(editor: Editor) {
     },
   ];
 
-  return [
-    TextTagsItems,
-    TextFormattingItems,
-    TextAlignItems,
-    EditingControlItems,
-  ];
+  return [TextFormattingItems, TextAlignItems, EditingControlItems];
 }
 
 export const isActive = (editor: Editor, name?: string, attributes?: any) => {
