@@ -5,12 +5,12 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
 import Toolbar from "./Toolbar";
-import { BubbleMenu } from "./BubbleMenu";
 import { EditorExtensions, handleContentEase } from "../shared/helper";
 import { useContentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
 import { useStatsStore } from "@/store/statsStore";
+import { BubbleMenu } from "../shared/BubbleMenu";
 
 type ComponentPropsType = {
   html: string;
