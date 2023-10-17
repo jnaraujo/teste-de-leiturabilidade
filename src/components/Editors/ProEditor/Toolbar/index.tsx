@@ -55,14 +55,12 @@ export default function Toolbar({ editor }: { editor: Editor }) {
           tooltip="Citação"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
         >
-          <span className="text-xl">
-            <MdFormatQuote />
-          </span>
+          <MdFormatQuote size={20} />
         </Button>
       </div>
 
       {getToolbarGroups(editor).map((items, index) => (
-        <div key={index} className="flex w-fit gap-2">
+        <div key={index} className="flex w-fit gap-2 sm:gap-4">
           {items.map((item) => (
             <Button
               key={item.name + item.tooltip}
@@ -75,13 +73,7 @@ export default function Toolbar({ editor }: { editor: Editor }) {
                 item.isActive?.attributes,
               )}
             >
-              {item.icon ? (
-                <span className="text-xl">
-                  <item.icon />
-                </span>
-              ) : (
-                item.name
-              )}
+              {item.icon ? <item.icon size={20} /> : item.name}
             </Button>
           ))}
         </div>
