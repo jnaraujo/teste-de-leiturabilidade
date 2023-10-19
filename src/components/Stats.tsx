@@ -94,8 +94,6 @@ export default function Stats() {
     }
   }, [achievements, addAchievement, timeWrittingInSecs]);
 
-  const hasWrittingTime = timeWrittingInSecs && timeWrittingInSecs > 1;
-
   return (
     <>
       <div className="hidden sm:block">
