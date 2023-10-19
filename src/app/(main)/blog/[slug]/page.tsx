@@ -2,7 +2,6 @@ import { BannerCTA } from "@/components/BannerCTA";
 import styles from "@/styles/pages/Blog.module.scss";
 import { fetchPostBySlug, fetchPosts } from "@/services/BlogService";
 import { redirect } from "next/navigation";
-import Post from "@/components/Post";
 
 interface Props {
   params: {
@@ -28,28 +27,40 @@ export default async function Page({ params }: Props) {
   }
 
   return (
-    <div
-      className={styles.container}
+    <article
+      className="mx-auto max-w-3xl space-y-4 px-3"
       itemScope
       itemType="https://schema.org/NewsArticle"
     >
-      <div className={styles.content}>
-        <article className={styles.article}>
-          <h1 itemProp="headline">{post.Title}</h1>
-          <div className={styles.info}>
-            <span itemProp="datePublished" content={post["Published at"]}>
-              {new Date(post["Published at"]).toLocaleDateString("pt-BR", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </span>
-          </div>
-          <Post blocks={post.blocks} className={styles.blogText} />
-          <BannerCTA />
-        </article>
+      <div className="space-y-2">
+        <h1 className="text-2xl font-semibold sm:text-3xl" itemProp="headline">
+          {post.Title}
+        </h1>
+        <span
+          className="block text-xs text-zinc-500 sm:text-sm"
+          itemProp="datePublished"
+          content={post["Published at"]}
+        >
+          Publicado em:{" "}
+          {new Date(post["Published at"]).toLocaleDateString("pt-BR", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}{" "}
+          - ☕ {post.readingTime} min(s) de leitura
+        </span>
       </div>
-    </div>
+
+      <div>
+        <div
+          className={`prose prose-zinc ${styles.post}`}
+          dangerouslySetInnerHTML={{
+            __html: post.html,
+          }}
+        />
+      </div>
+      <BannerCTA />
+    </article>
   );
 }
 

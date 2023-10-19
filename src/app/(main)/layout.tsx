@@ -10,7 +10,7 @@ export default function RootLayout({
     <>
       <Navbar />
       <main>{children}</main>
-      <div className="container">
+      <div className="container mt-4">
         <div className="h-[1px] w-full bg-gray-300" />
         <Footer />
       </div>

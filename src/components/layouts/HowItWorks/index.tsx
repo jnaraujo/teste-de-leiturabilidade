@@ -1,13 +1,13 @@
-import styles from "./styles.module.scss";
-
 const HowItWorks: React.FC = () => (
-  <section className={styles.container}>
-    <h1>
+  <section className="container flex flex-col gap-2 py-4 text-zinc-700">
+    <h1 className="text-2xl font-semibold">
       Algumas perguntas que você pode ter sobre o Teste de Leiturabilidade:
     </h1>
-    <div className={styles.texts} id="como-funciona">
-      <div>
-        <h2>Como funciona o Teste de Leiturabilidade?</h2>
+    <div className="space-y-4" id="como-funciona">
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
+          Como funciona o Teste de Leiturabilidade?
+        </h2>
         <div>
           <p>
             Para testar o nível de leitura de um texto, nós utilizamos o{" "}
@@ -28,8 +28,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div>
-        <h2>Como é calculado o Teste de Leiturabilidade?</h2>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
+          Como é calculado o Teste de Leiturabilidade?
+        </h2>
         <div>
           <p>
             O <strong>Teste de Flesch-Kincaid</strong> é calculado com base no{" "}
@@ -45,8 +47,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div>
-        <h2>Como interpretar o resultado do Teste de Leiturabilidade?</h2>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
+          Como interpretar o resultado do Teste de Leiturabilidade?
+        </h2>
         <div>
           <p>
             O resultado do <strong>Teste de Flesch-Kincaid</strong> é um número
@@ -63,8 +67,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div>
-        <h2>Como melhorar o resultado do Teste de Leiturabilidade?</h2>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
+          Como melhorar o resultado do Teste de Leiturabilidade?
+        </h2>
         <div>
           <p>
             Para melhorar o resultado do{" "}
@@ -76,15 +82,17 @@ const HowItWorks: React.FC = () => (
             <br />
             <strong>3)</strong> Utilizar parágrafos mais curtos;
             <br />
-            <br />
             Além disso, você pode visualizar dicas de como melhorar o seu texto
             clicando no botão{" "}
             <strong>Mostrar dicas de como melhorar o texto</strong>.
           </p>
         </div>
       </div>
-      <div>
-        <h2>O que o Teste de Leitura leva em conta?</h2>
+
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
+          O que o Teste de Leitura leva em conta?
+        </h2>
         <div>
           <p>
             Tanto a versão original do <strong>Teste de Flesch-Kincaid</strong>{" "}
@@ -96,8 +104,10 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div>
-        <h2>Quão preciso é o Teste de Leitura?</h2>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
+          Quão preciso é o Teste de Leitura?
+        </h2>
         <div>
           <p>
             A versão original do <strong>Teste de Flesch-Kincaid</strong> tem
@@ -108,8 +118,8 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div>
-        <h2>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
           Quais são as principais métricas utilizadas no Teste de
           Leiturabilidade?
         </h2>
@@ -124,8 +134,8 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div>
-        <h2>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
           O Teste de Leiturabilidade é amplamente utilizado na criação de
           conteúdo online?
         </h2>
@@ -141,8 +151,8 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div>
-        <h2>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
           {" "}
           O Teste de Leiturabilidade leva em consideração a estrutura do texto?
         </h2>
@@ -158,8 +168,8 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <div>
-        <h2>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
           O Teste de Leiturabilidade é igualmente eficaz para avaliar a
           legibilidade de diferentes gêneros de texto?
         </h2>
@@ -177,27 +187,33 @@ const HowItWorks: React.FC = () => (
         </div>
       </div>
 
-      <h2>Quer saber mais? Dá uma olhada nas fontes:</h2>
-      <ul>
-        <li>
-          <a
-            href="http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests"
-            target="_blank"
-            rel="noreferrer"
-          >
-            https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests
-          </a>
-        </li>
-      </ul>
+      <div className="space-y-2">
+        <h2 className="text-xl font-semibold">
+          Quer saber mais? Dá uma olhada nas fontes:
+        </h2>
+        <ul className="list-inside list-disc space-y-1">
+          <li>
+            <a
+              href="http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="text-violet-600 underline"
+            >
+              http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests"
+              target="_blank"
+              rel="noreferrer"
+              className="text-violet-600 underline"
+            >
+              https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 );

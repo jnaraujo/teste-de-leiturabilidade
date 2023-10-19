@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "@/styles/pages/Blog.module.scss";
 import { BannerCTA } from "@/components/BannerCTA";
 import type { Metadata } from "next";
 import { fetchPosts } from "@/services/BlogService";
@@ -14,25 +13,21 @@ export default async function Page() {
   const posts = await fetchPosts(Infinity);
 
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <div className={styles.article}>
-            <h1>Blog</h1>
-            <div className={styles.postList}>
-              {posts.map((post) => (
-                <div key={post.Slug}>
-                  <h3>
-                    <Link href={`/blog/${post.Slug}`}>{post.Title}</Link>
-                  </h3>
-                  <p>{post.Description}</p>
-                </div>
-              ))}
+    <section className="mx-auto max-w-3xl space-y-6 px-3">
+      <article className="mx-auto space-y-4">
+        <h1 className="text-2xl font-semibold sm:text-3xl">Blog</h1>
+        <div className="space-y-5">
+          {posts.map((post) => (
+            <div className="space-y-[2px]" key={post.Slug}>
+              <h3 className="text-xl font-semibold text-zinc-700 hover:text-zinc-800 hover:underline">
+                <Link href={`/blog/${post.Slug}`}>{post.Title}</Link>
+              </h3>
+              <p className="text-zinc-600">{post.Description}</p>
             </div>
-            <BannerCTA />
-          </div>
+          ))}
         </div>
-      </div>
-    </>
+      </article>
+      <BannerCTA />
+    </section>
   );
 }
