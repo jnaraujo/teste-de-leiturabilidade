@@ -40,7 +40,10 @@ export default function Toolbar({ editor }: { editor: Editor }) {
           value={isHeadingActive()}
           defaultValue="paragrafo"
         >
-          <SelectTrigger className="h-9 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0">
+          <SelectTrigger
+            className="h-9 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0"
+            aria-label="Selecionar tipo de texto"
+          >
             <SelectValue placeholder="Parágrafo" />
           </SelectTrigger>
           <SelectContent>
@@ -93,7 +96,7 @@ function Button({ name, onClick, tooltip, isActive, children }: ButtonProps) {
   return (
     <Tooltip key={name + tooltip} text={tooltip}>
       <button
-        aria-label={name}
+        aria-label={tooltip}
         onClick={onClick}
         className={cn(
           "flex h-9 w-9 items-center justify-center rounded-md font-sans text-base font-bold text-zinc-600 transition-colors duration-200 hover:bg-gray-200",

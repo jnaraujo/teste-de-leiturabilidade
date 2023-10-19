@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import { Play, Pause, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -23,6 +22,7 @@ import {
 
 import { Label } from "@/components/ui/label";
 import { secondsToMS } from "@/libs/formatters";
+import { cn } from "@/libs/utils";
 
 export default function Pomodoro() {
   const [state, setState] = useState<"paused" | "running" | "idle">("idle");
@@ -64,22 +64,27 @@ export default function Pomodoro() {
   }
 
   return (
-    <div className="flex items-center justify-center gap-3 rounded-xl px-4">
+    <div className="flex items-center justify-center gap-1 rounded-xl px-4">
       <button
-        className={clsx({
-          "text-zinc-600 hover:text-zinc-700": state !== "idle",
-          "cursor-not-allowed text-zinc-400": state === "idle",
-        })}
+        aria-label="Resetar o temporizador"
+        aria-disabled={state === "idle" ? true : false}
+        className={cn(
+          "flex h-11 w-11 items-center justify-center text-base text-zinc-600 hover:text-zinc-700",
+          {
+            "cursor-not-allowed text-zinc-400 hover:text-zinc-400":
+              state === "idle",
+          },
+        )}
         disabled={state === "idle"}
         onClick={handleReset}
       >
-        <RotateCcw size={16} />
+        <RotateCcw size={18} />
       </button>
 
       <Popover>
         <PopoverTrigger>
           <Tooltip>
-            <TooltipTrigger asChild>
+            <TooltipTrigger asChild aria-label="Temporizador">
               <span className="text-center text-2xl tabular-nums text-zinc-600">
                 {secondsToMS(timeInSecs)}
               </span>
@@ -109,26 +114,32 @@ export default function Pomodoro() {
         </PopoverContent>
       </Popover>
 
-      {state !== "running" ? (
-        <button onClick={handleStart} disabled={timeInSecs === 0}>
+      <button
+        aria-label={state !== "running" ? "Iniciar o temporizador" : "Pausar"}
+        onClick={() => {
+          state !== "running" ? handleStart() : handlePause();
+        }}
+        className="flex h-11 w-11 items-center justify-center"
+        disabled={timeInSecs === 0}
+      >
+        {state !== "running" ? (
           <Play
-            className={clsx({
-              "fill-zinc-500 text-zinc-600 hover:fill-zinc-600 hover:text-zinc-600":
-                timeInSecs !== 0,
-              "cursor-not-allowed fill-zinc-400 text-zinc-400 hover:fill-zinc-400 hover:text-zinc-400":
-                timeInSecs === 0,
-            })}
-            size={16}
+            className={cn(
+              "fill-zinc-500 text-zinc-600 hover:fill-zinc-600 hover:text-zinc-600",
+              {
+                "cursor-not-allowed fill-zinc-400 text-zinc-400 hover:fill-zinc-400 hover:text-zinc-400":
+                  timeInSecs === 0,
+              },
+            )}
+            size={18}
           />
-        </button>
-      ) : (
-        <button onClick={handlePause}>
+        ) : (
           <Pause
             className="fill-zinc-500 text-zinc-500 hover:fill-zinc-600 hover:text-zinc-600"
-            size={16}
+            size={18}
           />
-        </button>
-      )}
+        )}
+      </button>
     </div>
   );
 }

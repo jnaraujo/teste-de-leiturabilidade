@@ -41,7 +41,10 @@ const Toobar = ({ editor }: { editor: Editor }) => {
           value={isHeadingActive()}
           defaultValue="paragrafo"
         >
-          <SelectTrigger className="h-8 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0">
+          <SelectTrigger
+            className="h-8 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0"
+            aria-label="Selecionar tipo de texto"
+          >
             <SelectValue placeholder="Parágrafo" />
           </SelectTrigger>
           <SelectContent>
@@ -65,7 +68,7 @@ const Toobar = ({ editor }: { editor: Editor }) => {
           {items.map((item) => (
             <Button
               key={item.name + item.tooltip}
-              aria-label={item.name}
+              aria-label={item.tooltip}
               onClick={item.onClick}
               tooltip={item.tooltip}
               isActive={isActive(

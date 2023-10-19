@@ -43,6 +43,7 @@ export default function Aside() {
               "h-8 w-8 text-zinc-700 transition-colors duration-200",
             )}
             onClick={() => setIsOpen((prev) => !prev)}
+            aria-label={isOpen ? "Fechar painel" : "Abrir painel"}
           >
             {isOpen ? <PanelBottomOpen /> : <PanelBottomClose />}
           </button>

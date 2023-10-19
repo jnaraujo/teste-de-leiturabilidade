@@ -102,7 +102,10 @@ export default function Stats() {
 
       <div className="flex items-center justify-end sm:hidden">
         <Popover>
-          <PopoverTrigger>
+          <PopoverTrigger
+            aria-label="Estatísticas do tempo de escrita"
+            className="flex h-11 w-11 items-center justify-end"
+          >
             <PartyPopper
               size={24}
               className="text-zinc-600 group-hover:text-zinc-800"

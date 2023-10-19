@@ -21,7 +21,11 @@ const FeedbackWidget: React.FC = () => {
   return (
     <>
       <Tooltip text="Deixe seu Feedback!" placement="top">
-        <button className={styles.widget} onClick={handleModal}>
+        <button
+          className={styles.widget}
+          onClick={handleModal}
+          aria-label="Deixe seu Feedback!"
+        >
           <MdFeedback />
         </button>
       </Tooltip>

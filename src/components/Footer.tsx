@@ -6,7 +6,7 @@ const Footer: React.FC = () => (
     <Link
       href="https://jnaraujo.com/"
       target="_blank"
-      className="text-violet-600 hover:text-violet-700"
+      className="text-violet-600 underline hover:text-violet-700"
     >
       Jônatas Araújo
     </Link>{" "}
