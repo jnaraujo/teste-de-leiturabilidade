@@ -1,4 +1,3 @@
-import styles from "@/styles/pages/Home.module.scss";
 import type { Metadata } from "next";
 
 // COMPONENTS
@@ -8,15 +7,11 @@ import HowItWorks from "@/components/layouts/HowItWorks";
 export default function Page() {
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <Editor />
-          <div className={styles.line} />
-          <div className={styles.inner}>
-            <HowItWorks />
-          </div>
-        </div>
-      </div>
+      <article className="container">
+        <Editor />
+        <div className="h-[1px] w-full max-w-5xl bg-gray-300" />
+        <HowItWorks />
+      </article>
     </>
   );
 }
