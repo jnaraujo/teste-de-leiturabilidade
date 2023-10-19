@@ -5,6 +5,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
 import Toolbar from "./Toolbar";
+import ProToolbar from "../ProEditor/Toolbar";
 import { EditorExtensions, handleContentEase } from "../shared/helper";
 import { useContentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
@@ -13,10 +14,14 @@ import { useStatsStore } from "@/store/statsStore";
 import { BubbleMenu } from "../shared/BubbleMenu";
 
 type ComponentPropsType = {
-  html: string;
+  html?: string;
+  isPro?: boolean;
 };
 
-export default function TextEditor({ html }: ComponentPropsType) {
+export default function TextEditor({
+  html,
+  isPro = false,
+}: ComponentPropsType) {
   const setEase = useReadingStore((state) => state.setEase);
   const { config } = useConfigStore();
 
@@ -68,6 +73,9 @@ export default function TextEditor({ html }: ComponentPropsType) {
           setShouldShowBubbleMenu(false);
         },
       },
+      attributes: {
+        class: "outline-none space-y-2 leading-6",
+      },
     },
     content: content,
   });
@@ -97,12 +105,17 @@ export default function TextEditor({ html }: ComponentPropsType) {
 
   return (
     <section
-      className={clsx(editorStyles.container, styles.container, {
+      className={clsx("top-4 mb-8 h-full w-full", editorStyles.container, {
         [editorStyles.highlight]: config.highlight,
         [editorStyles.allowTips]: config.tips,
       })}
     >
-      <Toolbar editor={editor as any} />
+      {isPro ? (
+        <ProToolbar editor={editor as any} />
+      ) : (
+        <Toolbar editor={editor as any} />
+      )}
+
       <EditorContent
         className={`${styles.editor} ${editorStyles.editor}`}
         editor={editor}

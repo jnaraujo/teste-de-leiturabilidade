@@ -5,11 +5,11 @@ import cx from "clsx";
 import dynamic from "next/dynamic";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import styles from "./styles.module.scss";
-import Loading from "@/components/Editors/SimpleEditor/Loading";
+import Loading from "@/components/Editors/Editor/Loading";
 import { useImportExternalPage } from "@/hooks/useImportExternalPage";
 import useModal from "@/hooks/useModal";
 import ResultBox from "@/components/ResultBox";
-const TextEditor = dynamic(() => import("@/components/Editors/SimpleEditor"), {
+const TextEditor = dynamic(() => import("@/components/Editors/Editor"), {
   ssr: false,
   loading: () => <Loading />,
 });
