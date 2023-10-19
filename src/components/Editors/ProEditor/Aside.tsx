@@ -100,7 +100,7 @@ export default function Aside() {
             />
 
             <label htmlFor="tips" className="text-sm text-zinc-700">
-              Mostrar dicas
+              Mostrar dicas de como melhorar o texto
             </label>
           </div>
         </div>
