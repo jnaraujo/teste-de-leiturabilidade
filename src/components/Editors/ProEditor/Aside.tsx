@@ -48,7 +48,11 @@ export default function Aside() {
           </button>
         </Tooltip>
       </div>
-      <div className={cn("relative h-4 w-full overflow-hidden")}>
+      <div
+        className={cn("relative h-3 w-full overflow-hidden", {
+          "mx-auto h-4 w-[95%] rounded-lg": isOpen,
+        })}
+      >
         <div
           className="absolute h-full w-1 rounded-lg bg-zinc-700"
           style={{ left: `${sliderWidth}px` }}
@@ -65,7 +69,7 @@ export default function Aside() {
       </div>
 
       <div
-        className={cn("mt-2 space-y-4 p-2", {
+        className={cn("space-y-4 p-2", {
           hidden: !isOpen,
         })}
       >
