@@ -6,6 +6,12 @@ import { useStatsStore } from "@/store/statsStore";
 import useStore from "@/store/useStore";
 import { useAchievementsStore } from "@/store/achievementsStore";
 import toast from "react-hot-toast";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { PartyPopper } from "lucide-react";
 
 const CONSTANTS = {
   "15_MINUTES": 60 * 15,
@@ -88,13 +94,51 @@ export default function Stats() {
     }
   }, [achievements, addAchievement, timeWrittingInSecs]);
 
+  const hasWrittingTime = timeWrittingInSecs && timeWrittingInSecs > 1;
+
   return (
-    <div className="text-sm text-zinc-500">
-      🎉 Você já escreveu por mais de{" "}
-      <strong className="font-medium text-zinc-600">
-        {secondsToHMS(timeWrittingInSecs || 0)}
-      </strong>
-      !
-    </div>
+    <>
+      <div className="hidden sm:block">
+        {hasWrittingTime ? (
+          <p className="text-sm text-zinc-500">
+            🎉 Você já escreveu por mais de{" "}
+            <strong className="font-medium text-zinc-600">
+              {secondsToHMS(timeWrittingInSecs || 0)}
+            </strong>
+            !
+          </p>
+        ) : (
+          <p className="text-sm text-zinc-500">
+            Comece a escrever para ver as estatísticas 😁
+          </p>
+        )}
+      </div>
+
+      <div className="flex items-center justify-end sm:hidden">
+        <Popover>
+          <PopoverTrigger>
+            <PartyPopper
+              size={24}
+              className="text-zinc-600 group-hover:text-zinc-800"
+            />
+          </PopoverTrigger>
+          <PopoverContent>
+            {hasWrittingTime ? (
+              <p className="text-sm text-zinc-500">
+                🎉 Você já escreveu por mais de{" "}
+                <strong className="font-medium text-zinc-600">
+                  {secondsToHMS(timeWrittingInSecs || 0)}
+                </strong>
+                !
+              </p>
+            ) : (
+              <p className="text-sm text-zinc-500">
+                Comece a escrever para ver as estatísticas 😁
+              </p>
+            )}
+          </PopoverContent>
+        </Popover>
+      </div>
+    </>
   );
 }
