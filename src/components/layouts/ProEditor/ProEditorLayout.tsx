@@ -11,7 +11,7 @@ export default function ProEditorLayout() {
   return (
     <section className="container grid grid-cols-1 gap-4 sm:grid-cols-[1fr_300px]">
       <div className="mx-auto min-h-[100svh] w-full">
-        <div className="w-full max-w-3xl">
+        <div className="h-full w-full max-w-3xl">
           <ProEditor />
         </div>
       </div>

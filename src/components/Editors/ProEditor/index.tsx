@@ -98,7 +98,7 @@ export default function ProEditor({ html }: Props) {
 
   return (
     <div
-      className={clsx("top-4 mb-4 h-fit w-full", editorStyles.container, {
+      className={clsx("top-4 mb-8 h-full w-full", editorStyles.container, {
         [editorStyles.highlight]: config.highlight,
         [editorStyles.allowTips]: config.tips,
       })}
