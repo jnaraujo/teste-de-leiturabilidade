@@ -1,4 +1,5 @@
-import { slugfy } from "@/utils";
+import { getReadingTime, slugfy } from "@/utils";
+import { NotionRenderer } from "react-notion";
 
 interface Post {
   id: string;
@@ -10,16 +11,12 @@ interface Post {
   Title: string;
   Slug: string;
 }
+
 export type PostResponse = Post[];
 
 export async function fetchPosts(limit = 10) {
   const response = await fetch(
     `https://notion-api.splitbee.io/v1/table/${process.env.NOTION_BLOG_ID}`,
-    {
-      next: {
-        revalidate: 120 // 2 minutes
-      }
-    }
   );
 
   let posts: PostResponse = [];
@@ -48,11 +45,7 @@ export async function fetchPosts(limit = 10) {
 }
 
 export async function fetchPost(id: string) {
-  const response = await fetch(`https://notion-api.splitbee.io/v1/page/${id}`, {
-    next: {
-      revalidate: 120 // 2 minutes
-    }
-  });
+  const response = await fetch(`https://notion-api.splitbee.io/v1/page/${id}`);
 
   let post;
   if (response.ok) {
@@ -67,12 +60,21 @@ export async function fetchPostBySlug(slug: string) {
 
   const post = posts.find((post) => slugfy(post.Title) === slug);
 
-  if(!post) return null;
+  if (!post) return null;
 
-  const blocks = await fetchPost(post.id);
+  const blockMap = await fetchPost(post.id);
+
+  const ReactDOMServer = (await import("react-dom/server")).default;
+
+  const html = ReactDOMServer.renderToString(
+    <NotionRenderer blockMap={blockMap} />,
+  );
+
+  const time = getReadingTime(html);
 
   return {
     ...post,
-    blocks,
-  }
+    readingTime: time,
+    html,
+  };
 }

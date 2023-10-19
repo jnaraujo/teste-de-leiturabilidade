@@ -3,7 +3,7 @@ import handleImport from "../../../libs/ImportExternalPage";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const { url: URL } = req.query;
 

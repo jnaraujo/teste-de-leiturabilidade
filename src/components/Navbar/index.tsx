@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import styles from "./styles.module.scss";
 import { Links } from "./Links";
 import { AiOutlineMenu } from "react-icons/ai";
 
@@ -14,12 +13,17 @@ const Navbar = () => {
   };
 
   return (
-    <header className={styles.header}>
-      <Link href="/" passHref className={styles.title}>
+    <header className="container flex items-center justify-between py-3">
+      <Link href="/" passHref className="text-lg font-semibold text-zinc-700">
         Teste de Leiturabilidade
       </Link>
       <Links onClose={handleClick} isOpen={isOpen} />
-      <button className={styles.menuButton} type="button" onClick={handleClick} aria-label="Abrir menu">
+      <button
+        className="text-2xl text-zinc-700 focus:outline-none sm:hidden"
+        type="button"
+        onClick={handleClick}
+        aria-label="Abrir menu"
+      >
         <AiOutlineMenu />
       </button>
     </header>

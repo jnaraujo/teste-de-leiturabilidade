@@ -22,7 +22,7 @@ export class NotionService {
 
   private async fetch() {
     const { data } = await axios.get(
-      `https://potion-api.vercel.app/html?id=${this.pageId}`
+      `https://potion-api.vercel.app/html?id=${this.pageId}`,
     );
 
     return data;

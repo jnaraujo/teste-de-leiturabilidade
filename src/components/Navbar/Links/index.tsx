@@ -4,9 +4,9 @@ import cx from "clsx";
 import { NAVBAR_LINKS } from "../constants";
 
 import styles from "./styles.module.scss";
-import Button from "@/components/Button";
 import { AiOutlineClose } from "react-icons/ai";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   onClose: () => void;
@@ -23,11 +23,11 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
   }, [pathname]);
 
   return (
-    <nav className={
-      cx(styles.navbar, {
+    <nav
+      className={cx(styles.navbar, {
         [styles.open]: isOpen,
-      })
-    }>
+      })}
+    >
       <button className={styles.closeModalButton} onClick={onClose}>
         <AiOutlineClose />
       </button>
@@ -39,12 +39,9 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
               <Link
                 href={url}
                 passHref
-                className={
-                  cx(
-                    styles.link, {
-                    [styles.active]: currentPath === url,
-                  })
-                }
+                className={cx(styles.link, {
+                  [styles.active]: currentPath === url,
+                })}
                 onClick={onClose}
               >
                 {title}
@@ -53,10 +50,8 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
           );
         })}
         <li>
-          <Button asChild className={styles.openEditor}>
-            <Link href="/editor" >
-              Abrir o Editor
-            </Link>
+          <Button asChild className="h-full bg-violet-600 hover:bg-violet-700">
+            <Link href="/editor">Testar o Novo Editor!</Link>
           </Button>
         </li>
       </ul>

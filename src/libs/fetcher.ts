@@ -1,6 +1,6 @@
-export default async function (
+export default async function fetcher(
   input: RequestInfo | URL,
-  init?: RequestInit | undefined
+  init?: RequestInit | undefined,
 ) {
   const res = await fetch(input, init);
   const data = await res.json();

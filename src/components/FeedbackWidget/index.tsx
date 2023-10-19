@@ -25,9 +25,7 @@ const FeedbackWidget: React.FC = () => {
           <MdFeedback />
         </button>
       </Tooltip>
-      {
-        openModal && <FeedbackModal onClose={handleModal} open={openModal} />
-      }
+      {openModal && <FeedbackModal onClose={handleModal} open={openModal} />}
     </>
   );
 };

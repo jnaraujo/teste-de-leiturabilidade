@@ -1,5 +1,5 @@
 .navbar {
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     display: none;
 
     &.open {
@@ -18,9 +18,6 @@
       ul {
         padding: 0;
         flex-direction: column;
-        a {
-          font-size: 1.2rem;
-        }
       }
     }
   }
@@ -56,27 +53,12 @@
   }
 }
 
-.openEditor {
-  padding: 0 24px !important;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-
-  a {
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    color: $on-primary !important;
-    cursor: pointer;
-  }
-}
-
 .closeModalButton {
   all: unset;
   display: none;
   font-size: 1.6rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     display: block;
     position: absolute;
     top: 16px;
