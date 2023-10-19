@@ -6,13 +6,11 @@ import HowItWorks from "@/components/layouts/HowItWorks";
 
 export default function Page() {
   return (
-    <>
-      <article className="container">
-        <Editor />
-        <div className="h-[1px] w-full max-w-5xl bg-gray-300" />
-        <HowItWorks />
-      </article>
-    </>
+    <article className="container">
+      <Editor />
+      <div className="h-[1px] w-full max-w-5xl bg-gray-300" />
+      <HowItWorks />
+    </article>
   );
 }
 
