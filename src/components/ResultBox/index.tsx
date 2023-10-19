@@ -10,8 +10,8 @@ import { useConfigStore } from "@/store/configStore";
 import { getReadingTimeByWords, secondsToHMS } from "../../utils";
 
 import styles from "./styles.module.scss";
-import Button from "../Button";
 import dynamic from "next/dynamic";
+import { Button } from "../ui/button";
 const ImportPageModal = dynamic(() => import("./ImportPageModal"));
 
 interface ResultBoxProps {

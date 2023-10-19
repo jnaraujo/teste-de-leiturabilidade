@@ -7,8 +7,8 @@ import { toast } from "react-hot-toast";
 import styles from "./styles.module.scss";
 import { sendFeedback } from "./helper";
 import Input from "@/components/Input";
-import Button from "@/components/Button";
 import Modal from "react-responsive-modal";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   open: boolean;
@@ -73,7 +73,11 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
                 required
                 placeholder="Escreva sua ideia, crítica, sugestão... O que você quiser!"
               />
-              <Button type="submit" disabled={isSubmitting}>
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="disabled:cursor-not-allowed"
+              >
                 {isSubmitting ? "Enviando..." : "Enviar"}
               </Button>
             </form>

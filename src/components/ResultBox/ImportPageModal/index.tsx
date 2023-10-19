@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import styles from "./styles.module.scss";
 import Input from "@/components/Input";
-import Button from "@/components/Button";
 import Modal from "react-responsive-modal";
+import { Button } from "@/components/ui/button";
 
 type Props = {
   open: boolean;
