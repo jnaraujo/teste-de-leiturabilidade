@@ -99,19 +99,7 @@ export default function Stats() {
   return (
     <>
       <div className="hidden sm:block">
-        {hasWrittingTime ? (
-          <p className="text-sm text-zinc-500">
-            🎉 Você já escreveu por mais de{" "}
-            <strong className="font-medium text-zinc-600">
-              {secondsToHMS(timeWrittingInSecs || 0)}
-            </strong>
-            !
-          </p>
-        ) : (
-          <p className="text-sm text-zinc-500">
-            Comece a escrever para ver as estatísticas 😁
-          </p>
-        )}
+        <StatsMessage timeWrittingInSecs={timeWrittingInSecs || 0} />
       </div>
 
       <div className="flex items-center justify-end sm:hidden">
@@ -123,22 +111,32 @@ export default function Stats() {
             />
           </PopoverTrigger>
           <PopoverContent>
-            {hasWrittingTime ? (
-              <p className="text-sm text-zinc-500">
-                🎉 Você já escreveu por mais de{" "}
-                <strong className="font-medium text-zinc-600">
-                  {secondsToHMS(timeWrittingInSecs || 0)}
-                </strong>
-                !
-              </p>
-            ) : (
-              <p className="text-sm text-zinc-500">
-                Comece a escrever para ver as estatísticas 😁
-              </p>
-            )}
+            <StatsMessage timeWrittingInSecs={timeWrittingInSecs || 0} />
           </PopoverContent>
         </Popover>
       </div>
+    </>
+  );
+}
+
+function StatsMessage({ timeWrittingInSecs }: { timeWrittingInSecs: number }) {
+  const hasWrittingTime = timeWrittingInSecs && timeWrittingInSecs > 1;
+
+  return (
+    <>
+      {hasWrittingTime ? (
+        <p className="text-sm text-zinc-500">
+          🎉 Você já escreveu por mais de{" "}
+          <strong className="font-medium text-zinc-600">
+            {secondsToHMS(timeWrittingInSecs || 0)}
+          </strong>
+          !
+        </p>
+      ) : (
+        <p className="text-sm text-zinc-500">
+          Comece a escrever para ver as estatísticas 😁
+        </p>
+      )}
     </>
   );
 }
