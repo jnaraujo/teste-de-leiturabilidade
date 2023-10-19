@@ -191,7 +191,7 @@ const HowItWorks: React.FC = () => (
         <h2 className="text-xl font-semibold">
           Quer saber mais? Dá uma olhada nas fontes:
         </h2>
-        <ul className="list-inside list-disc space-y-1">
+        <ul className="space-y-2">
           <li>
             <a
               href="http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf"
