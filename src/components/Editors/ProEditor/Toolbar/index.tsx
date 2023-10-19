@@ -1,5 +1,4 @@
 import { type Editor } from "@tiptap/react";
-import { getToolbarGroups, isActive } from "./helper";
 import Tooltip from "@/components/Tooltip";
 import { cn } from "@/libs/utils";
 import {
@@ -10,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { MdFormatQuote } from "react-icons/md";
+import { getToolbarGroups, isActive } from "../../Editor/Toolbar/helper";
 
 export default function Toolbar({ editor }: { editor: Editor }) {
   const isHeadingActive = () => {
