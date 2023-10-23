@@ -25,7 +25,7 @@ export default function Toolbar({ editor }: { editor: Editor }) {
   };
 
   return (
-    <div className="sticky top-4 z-20 flex w-full justify-start gap-2 overflow-x-auto rounded-xl border border-zinc-300 bg-zinc-100 px-2 py-1 sm:justify-evenly sm:py-[2px]">
+    <div className="sticky top-4 z-20 flex w-full justify-start gap-2 overflow-x-auto rounded-xl border border-zinc-300 bg-zinc-100 px-2 py-1 sm:justify-evenly sm:py-[6px]">
       <div className="flex w-fit items-center gap-2 sm:gap-4">
         <Select
           onValueChange={(value) => {
