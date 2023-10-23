@@ -11,12 +11,16 @@ import { useConfigStore } from "@/store/configStore";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useStore } from "@/hooks/useStore";
 
-export default function Aside() {
+interface Props {
+  isPanelOpen?: boolean;
+}
+
+export default function Aside({ isPanelOpen = true }: Props) {
   const { ease } = useReadingStore();
   const config = useStore(useConfigStore, (state) => state.config);
   const { setConfig } = useConfigStore();
   const ref = useRef<HTMLDivElement | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(isPanelOpen);
 
   function base100ToSlideBarSize(value: number) {
     if (!ref.current) return 0;

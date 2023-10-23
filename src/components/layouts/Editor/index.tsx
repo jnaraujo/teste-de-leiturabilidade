@@ -1,60 +1,22 @@
-"use client";
-
-import React, { useCallback, useEffect } from "react";
-import cx from "clsx";
 import dynamic from "next/dynamic";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import styles from "./styles.module.scss";
 import Loading from "@/components/Editors/Editor/Loading";
-import { useImportExternalPage } from "@/hooks/useImportExternalPage";
-import useModal from "@/hooks/useModal";
-import ResultBox from "@/components/ResultBox";
+import Aside from "@/components/Editors/ProEditor/Aside";
 const TextEditor = dynamic(() => import("@/components/Editors/Editor"), {
   ssr: false,
   loading: () => <Loading />,
 });
 
 const Editor: React.FC = () => {
-  const { showModal } = useModal();
-
-  const { fetch, data: pageContent, error, loading } = useImportExternalPage();
-
-  const handleImportClick = useCallback(
-    (value: string) => {
-      if (value) {
-        fetch(value);
-      }
-    },
-    [fetch],
-  );
-
-  useEffect(() => {
-    if (error) {
-      showModal({
-        title: error.title,
-        message: error.message,
-      });
-    }
-  }, [error, showModal]);
-
   return (
-    <>
-      <div className={styles.container}>
-        <div className={cx(styles.content, styles.left, styles.textarea)}>
-          <TextEditor html={pageContent} />
+    <section className="container grid grid-cols-1 gap-4 md:grid-cols-[minmax(450px,1fr)_250px] lg:grid-cols-[1fr_300px]">
+      <div className="mx-auto mb-6 min-h-[100svh] w-full rounded-lg">
+        <div className="h-full w-full max-w-3xl rounded-lg border border-zinc-300 bg-stone-200/50 shadow-md">
+          <TextEditor />
         </div>
-
-        <aside className={cx(styles.content, styles.right)}>
-          <ResultBox onImportPage={handleImportClick} />
-        </aside>
       </div>
 
-      {loading && (
-        <div className={styles.loading}>
-          <AiOutlineLoading3Quarters stroke="white" />
-        </div>
-      )}
-    </>
+      <Aside />
+    </section>
   );
 };
 
