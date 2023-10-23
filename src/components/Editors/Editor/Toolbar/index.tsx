@@ -27,7 +27,7 @@ const Toobar = ({ editor }: { editor: Editor }) => {
 
   return (
     <div className={styles.toolbar}>
-      <div className="flex w-fit items-center gap-2 px-4">
+      <div className="flex w-fit items-center gap-2 px-4 sm:gap-4">
         <Select
           onValueChange={(value) => {
             if (value === "paragrafo") {
