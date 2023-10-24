@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="container flex items-center justify-between py-3">
+    <header className="container flex items-center justify-between py-4">
       <Link href="/" passHref className="text-lg font-semibold text-zinc-700">
         Teste de Leiturabilidade
       </Link>
