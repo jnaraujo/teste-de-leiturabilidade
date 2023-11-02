@@ -79,9 +79,9 @@ export default function Aside({ isPanelOpen = true }: Props) {
         })}
       >
         <div className="space-y-1">
-          <h3 className="text-base font-semibold text-zinc-700">
+          <h2 className="text-base font-semibold text-zinc-700">
             Configurações do editor:
-          </h3>
+          </h2>
 
           <div className="flex gap-2">
             <Checkbox
@@ -115,9 +115,9 @@ export default function Aside({ isPanelOpen = true }: Props) {
         </div>
 
         <div className="space-y-1">
-          <h3 className="text-base font-semibold text-zinc-700">
+          <h2 className="text-base font-semibold text-zinc-700">
             Mais sobre seu texto:
-          </h3>
+          </h2>
           <div className="flex gap-2 text-sm text-zinc-700">
             <strong className="font-semibold">Tempo de leitura:</strong>
             <span>{secondsToHMS(getReadingTimeByWords(ease.words))}</span>
