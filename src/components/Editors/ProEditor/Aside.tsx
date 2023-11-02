@@ -91,6 +91,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
               onCheckedChange={(state) => {
                 setConfig("highlight", state);
               }}
+              aria-label="Destacar dificuldade de leitura das frases"
             />
 
             <label htmlFor="highlight" className="text-sm text-zinc-700">
@@ -106,6 +107,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
               onCheckedChange={(state) => {
                 setConfig("tips", state);
               }}
+              aria-label="Mostrar dicas de como melhorar o texto"
             />
 
             <label htmlFor="tips" className="text-sm text-zinc-700">
