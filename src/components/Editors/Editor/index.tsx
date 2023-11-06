@@ -119,7 +119,7 @@ export default function TextEditor({
       )}
 
       <EditorContent
-        className={`${styles.editor} ${editorStyles.editor}`}
+        className={`${styles.editor} ${editorStyles.editor} text-zinc-700 dark:text-zinc-400`}
         editor={editor}
       />
 
