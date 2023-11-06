@@ -96,11 +96,7 @@ export default function Stats() {
 
   return (
     <>
-      <div className="hidden sm:block">
-        <StatsMessage timeWrittingInSecs={timeWrittingInSecs || 0} />
-      </div>
-
-      <div className="flex items-center justify-end sm:hidden">
+      <div className="flex items-center justify-end">
         <Popover>
           <PopoverTrigger
             aria-label="Estatísticas do tempo de escrita"
@@ -108,7 +104,7 @@ export default function Stats() {
           >
             <PartyPopper
               size={24}
-              className="text-zinc-600 group-hover:text-zinc-800"
+              className="text-zinc-600 transition-colors duration-200 hover:text-zinc-800"
             />
           </PopoverTrigger>
           <PopoverContent>
