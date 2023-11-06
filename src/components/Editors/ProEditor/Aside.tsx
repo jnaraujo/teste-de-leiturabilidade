@@ -34,17 +34,17 @@ export default function Aside({ isPanelOpen = true }: Props) {
   const sliderWidth = base100ToSlideBarSize(ease.index);
 
   return (
-    <aside className="sticky top-4 h-fit w-full overflow-hidden rounded-lg border border-zinc-300 bg-zinc-100 shadow-sm">
+    <aside className="sticky top-4 h-fit w-full overflow-hidden rounded-lg border border-zinc-300 bg-zinc-100 shadow-sm dark:border-zinc-600 dark:bg-zinc-800">
       <div className="flex items-start justify-between p-2">
-        <p className="mt-1 text-sm text-zinc-700">
+        <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
           Seu texto está no nível de leitura de{" "}
-          <strong className="font-semibold">{easeToLabel(ease.index)}</strong>
+          <strong className="font-medium">{easeToLabel(ease.index)}</strong>
         </p>
 
         <Tooltip text={isOpen ? "Fechar painel" : "Abrir painel"}>
           <button
             className={cn(
-              "h-8 w-8 text-zinc-700 transition-colors duration-200",
+              "h-8 w-8 text-zinc-700 transition-colors duration-200 dark:text-zinc-300",
             )}
             onClick={() => setIsOpen((prev) => !prev)}
             aria-label={isOpen ? "Fechar painel" : "Abrir painel"}
@@ -79,7 +79,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
         })}
       >
         <div className="space-y-1">
-          <h2 className="text-base font-semibold text-zinc-700">
+          <h2 className="text-base font-medium text-zinc-700 dark:text-zinc-300">
             Configurações do editor:
           </h2>
 
@@ -94,7 +94,10 @@ export default function Aside({ isPanelOpen = true }: Props) {
               aria-label="Destacar dificuldade de leitura das frases"
             />
 
-            <label htmlFor="highlight" className="text-sm text-zinc-700">
+            <label
+              htmlFor="highlight"
+              className="text-sm text-zinc-700 dark:text-zinc-400"
+            >
               Destacar dificuldade de leitura das frases
             </label>
           </div>
@@ -110,26 +113,29 @@ export default function Aside({ isPanelOpen = true }: Props) {
               aria-label="Mostrar dicas de como melhorar o texto"
             />
 
-            <label htmlFor="tips" className="text-sm text-zinc-700">
+            <label
+              htmlFor="tips"
+              className="text-sm text-zinc-700 dark:text-zinc-400"
+            >
               Mostrar dicas de como melhorar o texto
             </label>
           </div>
         </div>
 
         <div className="space-y-1">
-          <h2 className="text-base font-semibold text-zinc-700">
+          <h2 className="text-base font-medium text-zinc-700 dark:text-zinc-300">
             Mais sobre seu texto:
           </h2>
-          <div className="flex gap-2 text-sm text-zinc-700">
-            <strong className="font-semibold">Tempo de leitura:</strong>
+          <div className="flex gap-2 text-sm text-zinc-700 dark:text-zinc-400">
+            <strong className="font-medium">Tempo de leitura:</strong>
             <span>{secondsToHMS(getReadingTimeByWords(ease.words))}</span>
           </div>
-          <div className="flex gap-2 text-sm text-zinc-700">
-            <strong>Palavras:</strong>
+          <div className="flex gap-2 text-sm text-zinc-700 dark:text-zinc-400">
+            <strong className="font-medium">Palavras:</strong>
             <p>{ease.words}</p>
           </div>
-          <div className="flex gap-2 text-sm text-zinc-700">
-            <strong>Frases:</strong>
+          <div className="flex gap-2 text-sm text-zinc-700 dark:text-zinc-400">
+            <strong className="font-medium">Frases:</strong>
             <p>{ease.sentences}</p>
           </div>
         </div>
