@@ -23,7 +23,7 @@ export default function Navbar() {
 
         <Pomodoro />
 
-        <div className="flex w-fit items-center justify-between gap-3 justify-self-end">
+        <div className="flex w-fit items-center justify-between gap-1 justify-self-end">
           <Stats />
           <ThemeToggle />
         </div>

@@ -96,11 +96,11 @@ export default function Stats() {
 
   return (
     <>
-      <div className="flex items-center justify-end">
+      <div className="flex items-center">
         <Popover>
           <PopoverTrigger
             aria-label="Estatísticas do tempo de escrita"
-            className="flex h-11 w-11 items-center justify-end"
+            className="flex h-11 w-11 items-center justify-center"
           >
             <PartyPopper
               size={24}
