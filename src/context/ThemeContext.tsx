@@ -6,7 +6,7 @@ type Theme = "light" | "dark";
 
 interface IThemeContext {
   theme: Theme;
-  setTheme: (theme: Theme) => void;
+  setTheme: (theme: Theme | ((theme: Theme) => Theme)) => void;
 }
 
 const ThemeContext = createContext<IThemeContext>({} as IThemeContext);
