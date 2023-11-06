@@ -23,7 +23,7 @@ export default function ThemeToggle() {
         />
         <Sun
           className={cn(
-            "absolute text-yellow-500 transition-opacity duration-100 ease-linear hover:text-yellow-600",
+            "absolute text-yellow-500 hover:text-yellow-600",
             "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform", // center
             "-rotate-90 opacity-100 transition-all duration-300 ease-linear dark:rotate-90 dark:opacity-0", // animate
           )}
