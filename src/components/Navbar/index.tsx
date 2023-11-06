@@ -14,7 +14,11 @@ const Navbar = () => {
 
   return (
     <header className="container flex items-center justify-between py-4">
-      <Link href="/" passHref className="text-lg font-semibold text-zinc-700">
+      <Link
+        href="/"
+        passHref
+        className="text-lg font-semibold text-zinc-700 dark:text-zinc-300"
+      >
         Teste de Leiturabilidade
       </Link>
       <Links onClose={handleClick} isOpen={isOpen} />
