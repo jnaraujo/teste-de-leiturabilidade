@@ -6,14 +6,14 @@ import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
-import Toolbar from "./Toolbar";
-import ProToolbar from "../ProEditor/Toolbar";
 import { EditorExtensions, handleContentEase } from "../shared/helper";
 import { useContentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
 import { useStatsStore } from "@/store/statsStore";
 import { BubbleMenu } from "../shared/BubbleMenu";
+import { cn } from "@/libs/utils";
+import Toolbar from "../ProEditor/Toolbar";
 
 type ComponentPropsType = {
   html?: string;
@@ -112,11 +112,7 @@ export default function TextEditor({
         [editorStyles.allowTips]: config.tips,
       })}
     >
-      {isPro ? (
-        <ProToolbar editor={editor as any} />
-      ) : (
-        <Toolbar editor={editor as any} />
-      )}
+      <Toolbar editor={editor as any} isPro={isPro} />
 
       <EditorContent
         className={`${styles.editor} ${editorStyles.editor} text-zinc-700 dark:text-zinc-400`}

@@ -9,9 +9,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { MdFormatQuote } from "react-icons/md";
-import { getToolbarGroups, isActive } from "../../Editor/Toolbar/helper";
+import { getToolbarGroups, isActive } from "./helper";
 
-export default function Toolbar({ editor }: { editor: Editor }) {
+interface Props {
+  editor: Editor;
+  className?: string;
+  isPro?: boolean;
+}
+
+export default function Toolbar({ editor, className, isPro = false }: Props) {
   const isHeadingActive = () => {
     if (isActive(editor, "heading", { level: 1 })) {
       return "titulo";
@@ -25,7 +31,15 @@ export default function Toolbar({ editor }: { editor: Editor }) {
   };
 
   return (
-    <div className="sticky top-4 z-20 flex w-full justify-start gap-2 overflow-x-auto rounded-xl border border-zinc-300 bg-zinc-100 px-2 py-1 sm:justify-evenly sm:py-[6px]">
+    <div
+      className={cn(
+        "sm:py-[6px]) z-20 flex w-full justify-start gap-2 overflow-x-auto border bg-zinc-50 px-2 py-2 sm:justify-evenly",
+        {
+          "sticky top-4 rounded-xl border-zinc-300 bg-zinc-100": isPro,
+        },
+        className,
+      )}
+    >
       <div className="flex w-fit items-center gap-2 sm:gap-4">
         <Select
           onValueChange={(value) => {
