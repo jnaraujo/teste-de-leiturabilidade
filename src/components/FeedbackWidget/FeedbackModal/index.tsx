@@ -59,7 +59,7 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
         <section className={styles.container}>
           <div className={styles.content}>
             <form onSubmit={handleSubmit(onSubmit)} method="post">
-              <h1>Deixe seu Feedback</h1>
+              <h1 className="text-zinc-700">Deixe seu Feedback</h1>
               <Input
                 id="name"
                 {...register("name")}
