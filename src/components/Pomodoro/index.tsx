@@ -63,15 +63,17 @@ export default function Pomodoro() {
     clearInterval(intervalRef.current);
   }
 
+  const TIME_ENDED = timeInSecs === 0;
+
   return (
     <div className="flex items-center justify-center gap-1 rounded-xl px-4">
       <button
         aria-label="Resetar o temporizador"
         aria-disabled={state === "idle" ? true : false}
         className={cn(
-          "flex h-11 w-11 items-center justify-center text-base text-zinc-600 hover:text-zinc-700",
+          "flex h-11 w-11 items-center justify-center text-base text-zinc-600 hover:text-zinc-700 dark:text-zinc-500",
           {
-            "cursor-not-allowed text-zinc-400 hover:text-zinc-400":
+            "cursor-not-allowed text-zinc-400 hover:text-zinc-400 dark:text-zinc-600":
               state === "idle",
           },
         )}
@@ -85,7 +87,7 @@ export default function Pomodoro() {
         <PopoverTrigger>
           <Tooltip>
             <TooltipTrigger asChild aria-label="Temporizador">
-              <span className="text-center text-2xl tabular-nums text-zinc-600">
+              <span className="text-center text-2xl tabular-nums text-zinc-600 dark:text-zinc-300">
                 {secondsToMS(timeInSecs)}
               </span>
             </TooltipTrigger>
@@ -119,23 +121,23 @@ export default function Pomodoro() {
         onClick={() => {
           state !== "running" ? handleStart() : handlePause();
         }}
-        className="flex h-11 w-11 items-center justify-center"
-        disabled={timeInSecs === 0}
+        className="flex h-11 w-11 items-center justify-center disabled:cursor-not-allowed"
+        disabled={TIME_ENDED}
       >
         {state !== "running" ? (
           <Play
             className={cn(
-              "fill-zinc-500 text-zinc-600 hover:fill-zinc-600 hover:text-zinc-600",
+              "fill-zinc-500 text-zinc-600 hover:fill-zinc-600 hover:text-zinc-600 dark:text-zinc-500",
               {
-                "cursor-not-allowed fill-zinc-400 text-zinc-400 hover:fill-zinc-400 hover:text-zinc-400":
-                  timeInSecs === 0,
+                "text-zinc-400 hover:text-zinc-400 dark:text-zinc-600":
+                  TIME_ENDED,
               },
             )}
             size={18}
           />
         ) : (
           <Pause
-            className="fill-zinc-500 text-zinc-500 hover:fill-zinc-600 hover:text-zinc-600"
+            className="fill-zinc-500 text-zinc-500 hover:fill-zinc-600 hover:text-zinc-600 dark:text-zinc-500"
             size={18}
           />
         )}
