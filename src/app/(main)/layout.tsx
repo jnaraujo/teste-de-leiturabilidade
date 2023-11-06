@@ -11,7 +11,7 @@ export default function RootLayout({
       <Navbar />
       <main>{children}</main>
       <div className="container mt-4">
-        <div className="h-[1px] w-full bg-gray-300" />
+        <div className="mx-auto h-[1px] w-full max-w-5xl bg-zinc-300 dark:bg-zinc-600" />
         <Footer />
       </div>
     </>

@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <div className="container">
       <Editor />
-      <div className="h-[1px] w-full max-w-5xl bg-gray-300" />
+      <div className="mx-auto h-[1px] w-full max-w-5xl bg-zinc-300 dark:bg-zinc-600" />
       <HowItWorks />
     </div>
   );
