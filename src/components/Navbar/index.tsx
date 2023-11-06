@@ -6,6 +6,7 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { NAVBAR_LINKS } from "./constants";
 import { Button } from "../ui/button";
 import { cn } from "@/libs/utils";
+import ThemeToggle from "../ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,10 @@ const Navbar = () => {
         <ul className="flex items-center justify-center gap-4">
           {NAVBAR_LINKS.map(({ title, url }) => (
             <li key={title}>
-              <Link href={url} className="text-zinc-700 hover:text-zinc-800">
+              <Link
+                href={url}
+                className="text-zinc-700 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-500"
+              >
                 {title}
               </Link>
             </li>
@@ -36,10 +40,13 @@ const Navbar = () => {
           <li>
             <Button
               asChild
-              className="h-full bg-violet-600 hover:bg-violet-700"
+              className="h-full bg-violet-600 hover:bg-violet-700 dark:text-zinc-200"
             >
               <Link href="/editor">Testar o Novo Editor!</Link>
             </Button>
+          </li>
+          <li>
+            <ThemeToggle />
           </li>
         </ul>
       </nav>
@@ -65,7 +72,10 @@ const Navbar = () => {
         <ul className="flex flex-col items-center justify-center gap-4">
           {NAVBAR_LINKS.map(({ title, url }) => (
             <li key={title}>
-              <Link href={url} className="text-zinc-700 hover:text-zinc-800">
+              <Link
+                href={url}
+                className="text-zinc-700 hover:text-zinc-800 dark:text-zinc-400"
+              >
                 {title}
               </Link>
             </li>
@@ -73,10 +83,13 @@ const Navbar = () => {
           <li>
             <Button
               asChild
-              className="h-full bg-violet-600 hover:bg-violet-700"
+              className="h-full bg-violet-600 hover:bg-violet-700 dark:text-zinc-200"
             >
               <Link href="/editor">Testar o Novo Editor!</Link>
             </Button>
+          </li>
+          <li>
+            <ThemeToggle />
           </li>
         </ul>
       </nav>
