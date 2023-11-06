@@ -23,7 +23,7 @@ export const BubbleMenu = ({ editor, shouldBeVisible }: Props) => {
     >
       <div
         className={cn(
-          "h-8 w-36 overflow-hidden rounded-md border border-zinc-300 bg-zinc-200 shadow-md",
+          "h-8 w-36 overflow-hidden rounded-md border border-zinc-300 bg-zinc-200 shadow-md dark:border-zinc-600 dark:bg-zinc-600",
           {
             hidden: !shouldBeVisible,
           },

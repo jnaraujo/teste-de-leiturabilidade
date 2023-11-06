@@ -15,7 +15,7 @@ const Button = ({
       onMouseDown={() => {
         onClick();
       }}
-      className="flex flex-1 items-center justify-center bg-zinc-50 text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300"
+      className="flex flex-1 items-center justify-center bg-zinc-50 text-zinc-700 hover:bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900"
       type="button"
     >
       {children}
