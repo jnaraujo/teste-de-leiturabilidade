@@ -70,13 +70,13 @@
 
   &.highlight {
     .ease-hard {
-      background-color: #bd232364;
+      background-color: var(--color-hard);
     }
     .ease-medium {
-      background-color: #fff4f4e0;
+      background-color: var(--color-medium);
     }
     .ease-easy {
-      background-color: #10ba2c39;
+      background-color: var(--color-easy);
     }
   }
 

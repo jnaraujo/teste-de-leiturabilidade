@@ -12,6 +12,7 @@ import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
 import { useStatsStore } from "@/store/statsStore";
 import { BubbleMenu } from "../shared/BubbleMenu";
+import { cn } from "@/libs/utils";
 import Toolbar from "../ProEditor/Toolbar";
 
 type ComponentPropsType = {

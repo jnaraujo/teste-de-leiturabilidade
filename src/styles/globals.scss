@@ -85,6 +85,16 @@ html {
 
   font-size: 16px;
   line-height: 1.5;
+
+  --color-hard: theme("colors.red.200");
+  --color-medium: theme("colors.red.50/50");
+  --color-easy: theme("colors.green.100");
+}
+
+html.dark {
+  --color-hard: theme("colors.red.600 / 10%");
+  --color-medium: theme("colors.stone.100 / 10%");
+  --color-easy: theme("colors.green.800 / 30%");
 }
 
 * {
