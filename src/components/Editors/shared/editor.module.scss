@@ -1,14 +1,3 @@
-.editor {
-  p.emptyNodeClass::before {
-    color: #aeb0b3;
-    content: attr(data-placeholder);
-    float: left;
-    height: 0;
-    pointer-events: none;
-  }
-  
-}
-
 .container {
   h1,
   h2,
