@@ -1,8 +1,7 @@
 import { BubbleMenu as TiptapBubbleMenu, Editor } from "@tiptap/react";
 import Button from "./Button";
-import styles from "./styles.module.scss";
 import { getMenuItems } from "./helper";
-import cx from "clsx";
+import { cn } from "@/libs/utils";
 
 interface Props {
   editor: Editor | null;
@@ -23,13 +22,16 @@ export const BubbleMenu = ({ editor, shouldBeVisible }: Props) => {
       editor={editor}
     >
       <div
-        className={cx(styles.content, {
-          [styles.visible]: shouldBeVisible,
-        })}
+        className={cn(
+          "h-8 w-36 overflow-hidden rounded-md border border-zinc-300 bg-zinc-200 shadow-md",
+          {
+            hidden: !shouldBeVisible,
+          },
+        )}
       >
-        <ul>
+        <ul className="grid h-full w-full grid-cols-3 items-center justify-between gap-[2px]">
           {getMenuItems(editor).map((item) => (
-            <li key={item.tooltip}>
+            <li key={item.tooltip} className="flex h-full w-full">
               <Button onClick={item.onClick} tooltip={item.tooltip}>
                 {item.icon ? <item.icon size={18} /> : item.name}
               </Button>

@@ -15,7 +15,7 @@ const Button = ({
       onMouseDown={() => {
         onClick();
       }}
-      className="editButton"
+      className="flex flex-1 items-center justify-center bg-zinc-50 text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300"
       type="button"
     >
       {children}
