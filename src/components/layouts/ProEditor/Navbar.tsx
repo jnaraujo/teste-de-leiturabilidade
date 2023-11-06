@@ -1,5 +1,6 @@
 import Pomodoro from "@/components/Pomodoro";
 import Stats from "@/components/Stats";
+import ThemeToggle from "@/components/ThemeToggle";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -21,7 +22,8 @@ export default function Navbar() {
         </nav>
         <Pomodoro />
 
-        <div className="flex items-center justify-end ">
+        <div className="flex items-center justify-end">
+          <ThemeToggle />
           <Stats />
         </div>
       </header>
