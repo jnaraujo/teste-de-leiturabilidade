@@ -22,9 +22,9 @@ export default function Navbar() {
         </nav>
         <Pomodoro />
 
-        <div className="flex items-center justify-end">
-          <ThemeToggle />
+        <div className="flex w-fit items-center justify-between gap-3 justify-self-end">
           <Stats />
+          <ThemeToggle />
         </div>
       </header>
     </>
