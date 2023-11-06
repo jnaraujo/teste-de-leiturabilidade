@@ -22,7 +22,7 @@ export default function Tooltip({
         <TooltipComp.Trigger asChild>{children}</TooltipComp.Trigger>
         <TooltipComp.Portal>
           <TooltipComp.Content
-            className={styles.tooltip}
+            className={`${styles.tooltip} z-30`}
             sideOffset={offset}
             side={placement}
           >
