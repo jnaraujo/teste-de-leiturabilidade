@@ -33,7 +33,8 @@ export default function Toolbar({ editor, className, isPro = false }: Props) {
   return (
     <div
       className={cn(
-        "sm:py-[6px]) z-20 flex w-full justify-start gap-2 overflow-x-auto border bg-zinc-50 px-2 py-2 sm:justify-evenly",
+        "sm:py-[6px]) z-20 flex w-full justify-start gap-2 overflow-x-auto border px-2 py-2 sm:justify-evenly",
+        "bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-800", //colors
         {
           "sticky top-4 rounded-xl border-zinc-300 bg-zinc-100": isPro,
         },
@@ -55,7 +56,7 @@ export default function Toolbar({ editor, className, isPro = false }: Props) {
           defaultValue="paragrafo"
         >
           <SelectTrigger
-            className="h-9 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0"
+            className="h-9 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0 dark:border-zinc-600 dark:bg-transparent dark:text-zinc-300"
             aria-label="Selecionar tipo de texto"
           >
             <SelectValue placeholder="Parágrafo" />
@@ -113,8 +114,10 @@ function Button({ name, onClick, tooltip, isActive, children }: ButtonProps) {
         aria-label={tooltip}
         onClick={onClick}
         className={cn(
-          "flex h-9 w-9 items-center justify-center rounded-md font-sans text-base font-bold text-zinc-600 transition-colors duration-200 hover:bg-gray-200",
+          "flex h-9 w-9 items-center justify-center rounded-md font-sans text-base font-bold transition-colors duration-200",
           {
+            "text-zinc-600 hover:bg-gray-200 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-zinc-100":
+              !isActive,
             "bg-violet-500 text-zinc-50 hover:bg-violet-600": isActive,
           },
         )}
