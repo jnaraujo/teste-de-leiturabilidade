@@ -79,7 +79,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
         })}
       >
         <div className="space-y-1">
-          <h2 className="text-base font-medium text-zinc-700 dark:text-zinc-300">
+          <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-300">
             Configurações do editor:
           </h2>
 
@@ -123,7 +123,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
         </div>
 
         <div className="space-y-1">
-          <h2 className="text-base font-medium text-zinc-700 dark:text-zinc-300">
+          <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-300">
             Mais sobre seu texto:
           </h2>
           <div className="flex gap-2 text-sm text-zinc-700 dark:text-zinc-400">
