@@ -33,11 +33,14 @@ export default async function Page({ params }: Props) {
       itemType="https://schema.org/NewsArticle"
     >
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold sm:text-3xl" itemProp="headline">
+        <h1
+          className="text-2xl font-semibold text-zinc-700 dark:text-zinc-300 sm:text-3xl"
+          itemProp="headline"
+        >
           {post.Title}
         </h1>
         <span
-          className="block text-xs text-zinc-500 sm:text-sm"
+          className="block text-xs text-zinc-500 dark:text-zinc-400 sm:text-sm"
           itemProp="datePublished"
           content={post["Published at"]}
         >
@@ -53,7 +56,7 @@ export default async function Page({ params }: Props) {
 
       <div>
         <div
-          className={`prose prose-zinc ${styles.post}`}
+          className={`prose prose-zinc ${styles.post} dark:prose-invert`}
           dangerouslySetInnerHTML={{
             __html: post.html,
           }}
