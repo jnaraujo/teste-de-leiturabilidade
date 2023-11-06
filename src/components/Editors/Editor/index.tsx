@@ -115,7 +115,14 @@ export default function TextEditor({
       <Toolbar editor={editor as any} isPro={isPro} />
 
       <EditorContent
-        className={`${styles.editor} ${editorStyles.editor} text-zinc-700 dark:text-zinc-400`}
+        className={cn(
+          styles.editor,
+          editorStyles.editor,
+          "text-zinc-700 dark:text-zinc-400",
+          {
+            "dark:text-zinc-300": config.highlight,
+          },
+        )}
         editor={editor}
       />
 
