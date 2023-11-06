@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface Props {
   onClose: () => void;
@@ -53,6 +54,9 @@ export const Links: React.FC<Props> = ({ onClose, isOpen }) => {
           <Button asChild className="h-full bg-violet-600 hover:bg-violet-700">
             <Link href="/editor">Testar o Novo Editor!</Link>
           </Button>
+        </li>
+        <li>
+          <ThemeToggle />
         </li>
       </ul>
     </nav>
