@@ -1,11 +1,11 @@
 const HowItWorks: React.FC = () => (
   <section className="container flex flex-col gap-2 py-4 text-zinc-700">
-    <h1 className="text-2xl font-semibold text-zinc-900">
+    <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-300">
       Algumas perguntas que você pode ter sobre o Teste de Leiturabilidade:
     </h1>
     <div className="space-y-4" id="como-funciona">
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           Como funciona o Teste de Leiturabilidade?
         </h2>
         <div>
@@ -29,7 +29,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           Como é calculado o Teste de Leiturabilidade?
         </h2>
         <div>
@@ -48,7 +48,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           Como interpretar o resultado do Teste de Leiturabilidade?
         </h2>
         <div>
@@ -68,7 +68,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           Como melhorar o resultado do Teste de Leiturabilidade?
         </h2>
         <div>
@@ -90,7 +90,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           O que o Teste de Leitura leva em conta?
         </h2>
         <div>
@@ -105,7 +105,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           Quão preciso é o Teste de Leitura?
         </h2>
         <div>
@@ -119,7 +119,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           Quais são as principais métricas utilizadas no Teste de
           Leiturabilidade?
         </h2>
@@ -135,7 +135,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           O Teste de Leiturabilidade é amplamente utilizado na criação de
           conteúdo online?
         </h2>
@@ -152,7 +152,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           {" "}
           O Teste de Leiturabilidade leva em consideração a estrutura do texto?
         </h2>
@@ -169,7 +169,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           O Teste de Leiturabilidade é igualmente eficaz para avaliar a
           legibilidade de diferentes gêneros de texto?
         </h2>
@@ -188,7 +188,7 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600">
+        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
           Quer saber mais? Dá uma olhada nas fontes:
         </h2>
         <ul className="space-y-2">
