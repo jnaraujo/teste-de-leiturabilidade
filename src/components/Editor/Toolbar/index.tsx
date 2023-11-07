@@ -34,7 +34,7 @@ export default function Toolbar({ editor, className, isPro = false }: Props) {
     <div
       className={cn(
         "sm:py-[6px]) z-20 flex w-full justify-start gap-2 overflow-x-auto border px-2 py-2 sm:justify-evenly",
-        "bg-zinc-50 dark:bg-zinc-800", //colors
+        "bg-zinc-50 dark:bg-zinc-900", //colors
         {
           "sticky top-4 rounded-xl border-zinc-300 bg-zinc-100 dark:border-zinc-600":
             isPro,

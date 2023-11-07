@@ -39,7 +39,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className="bg-zinc-50 font-sans antialiased dark:bg-zinc-900">
+      <body className="bg-zinc-50 font-sans antialiased dark:bg-zinc-950">
         <Providers>
           {children}
           <FeedbackWidget />
