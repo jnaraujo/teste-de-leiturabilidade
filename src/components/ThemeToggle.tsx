@@ -5,7 +5,7 @@ import { cn } from "@/libs/utils";
 import { Moon, Sun } from "lucide-react";
 
 export default function ThemeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
 
   return (
     <div>
@@ -18,14 +18,22 @@ export default function ThemeToggle() {
           className={cn(
             "absolute text-yellow-300 hover:text-yellow-400",
             "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform", // center
-            "-rotate-90 opacity-0 transition-all duration-300 ease-linear dark:rotate-0 dark:opacity-100", // animate
+            "transition-all duration-300 ease-linear", // animate
+            {
+              "-rotate-90 opacity-0": theme === "light",
+              "rotate-0 opacity-100": theme === "dark",
+            },
           )}
         />
         <Sun
           className={cn(
             "absolute text-yellow-500 hover:text-yellow-600",
             "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform", // center
-            "-rotate-90 opacity-100 transition-all duration-300 ease-linear dark:rotate-90 dark:opacity-0", // animate
+            "transition-all duration-300 ease-linear", // animate
+            {
+              "-rotate-90 opacity-100": theme === "light",
+              "rotate-90 opacity-0": theme === "dark",
+            },
           )}
         />
       </button>
