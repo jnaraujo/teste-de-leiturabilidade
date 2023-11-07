@@ -23,23 +23,23 @@ export default function ThemeToggle() {
       >
         <Moon
           className={cn(
-            "absolute text-yellow-300 hover:text-yellow-400",
+            "absolute fill-yellow-400 text-yellow-400 hover:fill-yellow-500 hover:text-yellow-500",
             "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform", // center
             "transition-all duration-300 ease-linear", // animate
             {
-              "-rotate-90 opacity-0": theme === "light",
-              "rotate-0 opacity-100": theme === "dark",
+              "-rotate-90 scale-0 opacity-0": theme === "dark",
+              "rotate-0 scale-100 opacity-100": theme === "light",
             },
           )}
         />
         <Sun
           className={cn(
-            "absolute text-yellow-500 hover:text-yellow-600",
+            "absolute fill-yellow-500 text-yellow-500 hover:fill-yellow-600 hover:text-yellow-600",
             "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform", // center
             "transition-all duration-300 ease-linear", // animate
             {
-              "-rotate-90 opacity-100": theme === "light",
-              "rotate-90 opacity-0": theme === "dark",
+              "-rotate-90 opacity-100": theme === "dark",
+              "rotate-90 opacity-0": theme === "light",
             },
           )}
         />
