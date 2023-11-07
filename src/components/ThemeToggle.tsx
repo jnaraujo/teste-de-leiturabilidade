@@ -3,12 +3,19 @@
 import { useTheme } from "@/context/ThemeContext";
 import { cn } from "@/libs/utils";
 import { Moon, Sun } from "lucide-react";
+import Tooltip from "./Tooltip";
 
 export default function ThemeToggle() {
   const { setTheme, theme } = useTheme();
 
   return (
-    <div>
+    <Tooltip
+      text={
+        theme === "light" ? "Mudar para tema escuro" : "Mudar para tema claro"
+      }
+      placement="bottom"
+      offset={0}
+    >
       <button
         aria-label="Mudar tema"
         className="relative h-10 w-10"
@@ -37,6 +44,6 @@ export default function ThemeToggle() {
           )}
         />
       </button>
-    </div>
+    </Tooltip>
   );
 }
