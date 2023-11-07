@@ -3,7 +3,13 @@
 import { ModalProvider } from "@/context/ModalContext";
 import { Toaster } from "react-hot-toast";
 import { TooltipProvider } from "./ui/tooltip";
-import { ThemeProvider } from "@/context/ThemeContext";
+import dynamic from "next/dynamic";
+const ThemeProvider = dynamic(
+  () => import("@/context/ThemeContext").then((mod) => mod.ThemeProvider),
+  {
+    ssr: false,
+  },
+);
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
