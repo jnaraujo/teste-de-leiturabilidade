@@ -1,8 +1,8 @@
 "use client";
-import Aside from "@/components/Editors/ProEditor/Aside";
-import Loading from "@/components/Editors/Editor/Loading";
+import Aside from "@/components/Editor/Aside";
+import Loading from "@/components/Editor/Loading";
 import dynamic from "next/dynamic";
-const ProEditor = dynamic(() => import("@/components/Editors/Editor"), {
+const ProEditor = dynamic(() => import("@/components/Editor"), {
   ssr: false,
   loading: () => <Loading />,
 });

@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
-import Loading from "@/components/Editors/Editor/Loading";
-import Aside from "@/components/Editors/ProEditor/Aside";
-const TextEditor = dynamic(() => import("@/components/Editors/Editor"), {
+import Loading from "@/components/Editor/Loading";
+import Aside from "@/components/Editor/Aside";
+const TextEditor = dynamic(() => import("@/components/Editor"), {
   ssr: false,
   loading: () => <Loading />,
 });

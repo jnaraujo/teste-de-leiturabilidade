@@ -1,4 +1,4 @@
-import { splitPhrases } from "../../components/Editors/shared/plugins/TextAnalysisHL/helper";
+import { splitPhrases } from "../../components/Editors/Editor/TextAnalysisHL/helper";
 import {
   calculateFleschEase,
   calculateResult,

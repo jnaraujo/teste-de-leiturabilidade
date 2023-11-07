@@ -14,9 +14,9 @@ import Placeholder from "@tiptap/extension-placeholder";
 import History from "@tiptap/extension-history";
 
 import * as ReadingEase from "@/libs/ReadingEase";
-import { TextAnalysisHL } from "./plugins/TextAnalysisHL/textAnalysisHL";
+import { TextAnalysisHL } from "./TextAnalysisHL/textAnalysisHL";
 import { IEase } from "@/store/readingStore";
-import { splitPhrases } from "./plugins/TextAnalysisHL/helper";
+import { splitPhrases } from "./TextAnalysisHL/helper";
 import { calculateFleschEase } from "@/libs/ReadingEase/helper";
 
 export const EditorExtensions = [

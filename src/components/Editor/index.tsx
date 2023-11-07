@@ -6,14 +6,14 @@ import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
-import { EditorExtensions, handleContentEase } from "../shared/helper";
+import { EditorExtensions, handleContentEase } from "./helper";
 import { useContentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
 import { useStatsStore } from "@/store/statsStore";
-import { BubbleMenu } from "../shared/BubbleMenu";
+import { BubbleMenu } from "./BubbleMenu";
 import { cn } from "@/libs/utils";
-import Toolbar from "../ProEditor/Toolbar";
+import Toolbar from "./Toolbar";
 
 type ComponentPropsType = {
   html?: string;
