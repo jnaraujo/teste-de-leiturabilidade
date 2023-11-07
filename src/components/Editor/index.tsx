@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./styles.module.scss";
-import editorStyles from "../shared/editor.module.scss";
+import editorStyles from "./editor.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
