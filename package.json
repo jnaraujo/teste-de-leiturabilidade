@@ -14,8 +14,7 @@
     "test:watch": "vitest",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "prepare": "husky install",
-    "postinstall": "husky install"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.4",
