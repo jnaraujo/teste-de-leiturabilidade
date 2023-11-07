@@ -1,5 +1,4 @@
 import * as TooltipComp from "@radix-ui/react-tooltip";
-import styles from "./styles.module.scss";
 
 interface TooltipProps {
   text: string;
@@ -22,7 +21,7 @@ export default function Tooltip({
         <TooltipComp.Trigger asChild>{children}</TooltipComp.Trigger>
         <TooltipComp.Portal>
           <TooltipComp.Content
-            className={`${styles.tooltip} z-30`}
+            className={`z-30 rounded-md bg-zinc-800 px-2 py-[2px] text-xs text-zinc-50 dark:bg-zinc-50 dark:text-zinc-800`}
             sideOffset={offset}
             side={placement}
           >
