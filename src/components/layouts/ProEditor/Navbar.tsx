@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <>
-      <header className="container grid grid-cols-[50px_1fr_50px] items-center gap-4 py-4 sm:grid-cols-3 sm:py-6">
+      <header className="container grid grid-cols-[50px_1fr_50px] items-center gap-4 py-4 sm:grid-cols-3">
         <nav className="items-center">
           <Link
             href="/"
