@@ -27,8 +27,8 @@ export default function ThemeToggle() {
             "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform", // center
             "transition-all duration-300 ease-linear", // animate
             {
-              "-rotate-90 scale-0 opacity-0": theme === "dark",
-              "rotate-0 scale-100 opacity-100": theme === "light",
+              "-rotate-90 opacity-0": theme === "dark",
+              "rotate-0 opacity-100": theme === "light",
             },
           )}
         />
