@@ -22,7 +22,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(isPanelOpen);
 
-  function base100ToSlideBarSize(value: number) {
+  function canculateSliderPosition(value: number) {
     if (!ref.current) return 0;
 
     const sliderWidth = ref.current.offsetWidth;
@@ -31,7 +31,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
     return Math.max(Math.min(formula, sliderWidth - 6), 2);
   }
 
-  const sliderWidth = base100ToSlideBarSize(ease.index);
+  const sliderPosition = canculateSliderPosition(ease.index);
 
   return (
     <aside className="sticky top-4 mb-6 h-fit w-full overflow-hidden rounded-lg border border-zinc-300 bg-zinc-100 shadow-sm dark:border-zinc-600 dark:bg-zinc-900">
@@ -60,7 +60,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
       >
         <div
           className="absolute h-full w-1 rounded-lg bg-zinc-700"
-          style={{ left: `${sliderWidth}px` }}
+          style={{ left: `${sliderPosition}px` }}
         />
         <div
           ref={ref}
