@@ -126,15 +126,15 @@ export default function Aside({ isPanelOpen = true }: Props) {
           <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-300">
             Mais sobre seu texto:
           </h2>
-          <div className="flex gap-2 text-sm text-zinc-700 dark:text-zinc-400">
+          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-400">
             <strong className="font-medium">Tempo de leitura:</strong>
             <span>{secondsToHMS(getReadingTimeByWords(ease.words))}</span>
           </div>
-          <div className="flex gap-2 text-sm text-zinc-700 dark:text-zinc-400">
+          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-400">
             <strong className="font-medium">Palavras:</strong>
             <p>{ease.words}</p>
           </div>
-          <div className="flex gap-2 text-sm text-zinc-700 dark:text-zinc-400">
+          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-400">
             <strong className="font-medium">Frases:</strong>
             <p>{ease.sentences}</p>
           </div>
