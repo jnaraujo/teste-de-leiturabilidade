@@ -1,6 +1,6 @@
 const HowItWorks: React.FC = () => (
   <section className="container flex flex-col gap-2 py-4">
-    <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-300">
+    <h1 className="text-2xl font-semibold text-zinc-700 dark:text-zinc-400">
       Algumas perguntas que você pode ter sobre o Teste de Leiturabilidade:
     </h1>
     <div className="space-y-4" id="como-funciona">
