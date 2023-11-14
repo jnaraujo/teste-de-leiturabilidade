@@ -38,7 +38,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
       <div className="flex items-start justify-between p-2">
         <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
           Seu texto está no nível de leitura de{" "}
-          <strong className="font-medium">{easeToLabel(ease.index)}</strong>
+          <strong className="font-semibold">{easeToLabel(ease.index)}</strong>
         </p>
 
         <Tooltip text={isOpen ? "Fechar painel" : "Abrir painel"}>
