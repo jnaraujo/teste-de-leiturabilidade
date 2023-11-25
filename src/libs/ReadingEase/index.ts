@@ -51,6 +51,7 @@ export function calculateFleschReadingFromText(text: string) {
     words: 0,
     sentences: 0,
   };
+
   for (let i = 0; i < phrases.length; i++) {
     const phraseAnalyses = calculateFleschReading(phrases[i]);
     result.syllables += phraseAnalyses.syllables;

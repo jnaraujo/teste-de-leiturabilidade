@@ -46,12 +46,16 @@ export default function TextEditor({
         state.editor.commands.setContent(html);
         return;
       }
-      setEase(calculateFleschReadingFromText(state.editor.getText()));
+      const text = state.editor.getText();
+      const ease = calculateFleschReadingFromText(text);
+      setEase(ease);
     },
     onUpdate: (state) => {
       setContent(state.editor.getHTML());
 
-      setEase(calculateFleschReadingFromText(state.editor.getText()));
+      const text = state.editor.getText();
+      const ease = calculateFleschReadingFromText(text);
+      setEase(ease);
 
       if (startedWritingAt.current === 0) {
         startedWritingAt.current = Date.now();
