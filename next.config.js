@@ -15,7 +15,6 @@ function resolveModule(moduleName) {
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  productionBrowserSourceMaps: true,
   sassOptions: {
     prependData: `
       @import "./src/styles/variables.scss";
