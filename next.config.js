@@ -27,19 +27,6 @@ const nextConfig = {
       config.optimization.minimizer = [];
       config.optimization.minimizer.push(new TerserPlugin({ parallel: true }));
       config.plugins.push(new DuplicatePackageCheckerPlugin());
-
-      const moduleList = [
-        "prosemirror-state",
-        "react-is",
-        "prosemirror-view",
-        "@babel/runtime",
-        "@radix-ui/react-compose-refs",
-        "@radix-ui/react-slot",
-      ];
-
-      moduleList.forEach((moduleName) => {
-        config.resolve.alias[moduleName] = resolveModule(moduleName);
-      });
     }
     return config;
   },
