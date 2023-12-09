@@ -48,6 +48,8 @@ export default function TextEditor({
       }
       const text = state.editor.getText();
       const ease = calculateFleschReadingFromText(text);
+      console.log("ease", ease);
+
       setEase(ease);
     },
     onUpdate: (state) => {
@@ -55,6 +57,8 @@ export default function TextEditor({
 
       const text = state.editor.getText();
       const ease = calculateFleschReadingFromText(text);
+
+      console.log("ease2", ease);
       setEase(ease);
 
       if (startedWritingAt.current === 0) {
