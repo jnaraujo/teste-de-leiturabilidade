@@ -42,27 +42,21 @@ export default function TextEditor({
   const editor = useEditor({
     extensions: EditorExtensions,
     onCreate: (state) => {
-      console.log("state create", state.editor.getHTML());
-
       if (html) {
         state.editor.commands.setContent(html);
         return;
       }
       const text = state.editor.getText();
       const ease = calculateFleschReadingFromText(text);
-      console.log("ease", ease);
 
       setEase(ease);
     },
     onUpdate: (state) => {
-      console.log("state update", state.editor.getHTML());
-
       setContent(state.editor.getHTML());
 
       const text = state.editor.getText();
       const ease = calculateFleschReadingFromText(text);
 
-      console.log("ease2", ease);
       setEase(ease);
 
       if (startedWritingAt.current === 0) {
@@ -79,7 +73,6 @@ export default function TextEditor({
         const timeInSecs = timeWithoutDelay / 1000;
         setTimeWritingInSecs(timeWrittingInSecs + timeInSecs);
         startedWritingAt.current = 0;
-        console.log("timeInSecs", timeInSecs);
       }, 1000);
     },
     editorProps: {
