@@ -25,7 +25,7 @@ export default function TextEditor({
   html,
   isPro = false,
 }: ComponentPropsType) {
-  const setEase = useReadingStore((state) => state.setEase);
+  const { setEase } = useReadingStore();
   const { config } = useConfigStore();
 
   const { setTimeWritingInSecs, timeWrittingInSecs } = useStatsStore();
