@@ -42,6 +42,8 @@ export default function TextEditor({
   const editor = useEditor({
     extensions: EditorExtensions,
     onCreate: (state) => {
+      console.log("state create", state.editor.getHTML());
+
       if (html) {
         state.editor.commands.setContent(html);
         return;
@@ -53,6 +55,8 @@ export default function TextEditor({
       setEase(ease);
     },
     onUpdate: (state) => {
+      console.log("state update", state.editor.getHTML());
+
       setContent(state.editor.getHTML());
 
       const text = state.editor.getText();
