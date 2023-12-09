@@ -1,4 +1,4 @@
-import { splitPhrases } from "@/libs/ReadingEase/helper";
+import { splitPhrases } from "../../../libs/ReadingEase/helper";
 import { describe, expect, it } from "vitest";
 
 describe("textAnalysisHL helper", () => {
