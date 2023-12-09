@@ -1,5 +1,5 @@
+import { splitPhrases } from "@/libs/ReadingEase/helper";
 import { describe, expect, it } from "vitest";
-import { splitPhrases } from "./helper";
 
 describe("textAnalysisHL helper", () => {
   it("should splitPhrases", () => {

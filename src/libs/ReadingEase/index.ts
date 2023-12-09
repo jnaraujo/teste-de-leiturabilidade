@@ -1,9 +1,9 @@
-import { splitPhrases } from "../../components/Editor/TextAnalysisHL/helper";
 import {
   calculateFleschEase,
   calculateResult,
   countSyllables,
   getWords,
+  splitPhrases,
 } from "./helper";
 
 /**
