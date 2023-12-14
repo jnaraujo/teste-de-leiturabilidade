@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
-import { EditorExtensions } from "./helper";
+import { EditorExtensions, handleContentEase } from "./helper";
 import { useContentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
@@ -14,7 +14,6 @@ import { useStatsStore } from "@/store/statsStore";
 import { BubbleMenu } from "./BubbleMenu";
 import { cn } from "@/libs/utils";
 import Toolbar from "./Toolbar";
-import { calculateFleschReadingFromText } from "@/libs/ReadingEase";
 
 type ComponentPropsType = {
   html?: string;
@@ -46,18 +45,10 @@ export default function TextEditor({
         state.editor.commands.setContent(html);
         return;
       }
-      const text = state.editor.getText();
-      const ease = calculateFleschReadingFromText(text);
-
-      setEase(ease);
+      handleContentEase(state.editor.getText(), setEase);
     },
     onUpdate: (state) => {
       setContent(state.editor.getHTML());
-
-      const text = state.editor.getText();
-      const ease = calculateFleschReadingFromText(text);
-
-      setEase(ease);
 
       if (startedWritingAt.current === 0) {
         startedWritingAt.current = Date.now();
