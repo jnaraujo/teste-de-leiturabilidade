@@ -102,9 +102,9 @@ function bruteSplit(text: string) {
  */
 export function splitPhrases(text: string) {
   // lookbehind is not supported in Safari
-  if (DOES_BROWSER_SUPPORT_LOOKBEHIND) {
+  try {
     return lookbehindSplit(text);
+  } catch (e) {
+    return bruteSplit(text);
   }
-
-  return bruteSplit(text);
 }
