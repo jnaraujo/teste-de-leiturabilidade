@@ -43,18 +43,29 @@ export function calculateFleschReading(phrase: string) {
 }
 
 export function calculateFleschReadingFromText(text: string) {
-  const words = getWords(text);
-  const totalSyllables = countSyllables(words);
-  const sentences = splitPhrases(text).length;
+  const phrases = splitPhrases(text);
 
-  return {
-    words: words.length,
-    sentences: sentences,
-    syllables: totalSyllables,
-    result: calculateResult(
-      calculateFleschEase(words.length, sentences, totalSyllables),
-    ),
+  const result = {
+    index: 0,
+    syllables: 0,
+    words: 0,
+    sentences: 0,
   };
+
+  for (let i = 0; i < phrases.length; i++) {
+    const phraseAnalyses = calculateFleschReading(phrases[i]);
+    result.syllables += phraseAnalyses.syllables;
+    result.words += phraseAnalyses.words;
+    result.sentences += phraseAnalyses.sentences;
+  }
+
+  result.index = calculateFleschEase(
+    result.words,
+    result.sentences,
+    result.syllables,
+  );
+
+  return result;
 }
 
 export function easeToLabel(ease: number) {

@@ -13,10 +13,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import Placeholder from "@tiptap/extension-placeholder";
 import History from "@tiptap/extension-history";
 
-import * as ReadingEase from "@/libs/ReadingEase";
 import { TextAnalysisHL } from "./TextAnalysisHL/textAnalysisHL";
-import { IEase } from "@/store/readingStore";
-import { calculateFleschEase, splitPhrases } from "@/libs/ReadingEase/helper";
 
 export const EditorExtensions = [
   Heading,
@@ -42,40 +39,3 @@ export const EditorExtensions = [
     types: ["heading", "paragraph"],
   }),
 ];
-
-export const handleContentEase = (
-  text: string,
-  setEase: (obj: IEase) => void,
-) => {
-  const phrases = splitPhrases(text);
-
-  let textAnalyses = {
-    result: 0,
-    syllables: 0,
-    words: 0,
-    sentences: 0,
-  };
-  for (let i = 0; i < phrases.length; i++) {
-    const phraseAnalyses = ReadingEase.calculateFleschReading(phrases[i]);
-    textAnalyses.syllables += phraseAnalyses.syllables;
-    textAnalyses.words += phraseAnalyses.words;
-    textAnalyses.sentences += phraseAnalyses.sentences;
-  }
-
-  setEase({
-    index: calculateFleschEase(
-      textAnalyses.words,
-      textAnalyses.sentences,
-      textAnalyses.syllables,
-    ),
-    syllables: textAnalyses.syllables,
-    words: textAnalyses.words,
-    sentences: textAnalyses.sentences,
-  });
-};
-
-export const calculateReadingEase = (text: string) => {
-  const textAnalyses = ReadingEase.calculateFleschReading(text);
-
-  return textAnalyses.result;
-};
