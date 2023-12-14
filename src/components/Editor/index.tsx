@@ -53,7 +53,6 @@ export default function TextEditor({
     },
     onUpdate: (state) => {
       setContent(state.editor.getHTML());
-      handleContentEase(state.editor.getText(), setEase);
 
       const text = state.editor.getText();
       const ease = calculateFleschReadingFromText(text);
