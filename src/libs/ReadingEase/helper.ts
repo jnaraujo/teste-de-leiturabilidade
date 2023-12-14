@@ -53,16 +53,17 @@ function isPunctuation(char: string) {
   return /[.?!]/.test(char);
 }
 
-function checkLookbehindSupport() {
+function supportsRegexLookAheadLookBehind() {
   try {
-    new RegExp("(?<=a)b");
-    return true;
-  } catch (e) {
+    return (
+      "hibyehihi"
+        .replace(new RegExp("(?<=hi)hi", "g"), "hello")
+        .replace(new RegExp("hi(?!bye)", "g"), "hey") === "hibyeheyhello"
+    );
+  } catch (error) {
     return false;
   }
 }
-
-const DOES_BROWSER_SUPPORT_LOOKBEHIND = checkLookbehindSupport();
 
 function lookbehindSplit(text: string) {
   const regex = /(?<=[.?!])\s/g;
@@ -102,9 +103,7 @@ function bruteSplit(text: string) {
  */
 export function splitPhrases(text: string) {
   // lookbehind is not supported in Safari
-  try {
-    return lookbehindSplit(text);
-  } catch (e) {
-    return bruteSplit(text);
-  }
+  if (!supportsRegexLookAheadLookBehind()) return bruteSplit(text);
+
+  return lookbehindSplit(text);
 }
