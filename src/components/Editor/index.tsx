@@ -49,6 +49,7 @@ export default function TextEditor({
     },
     onUpdate: (state) => {
       setContent(state.editor.getHTML());
+      handleContentEase(state.editor.getText(), setEase);
 
       if (startedWritingAt.current === 0) {
         startedWritingAt.current = Date.now();
