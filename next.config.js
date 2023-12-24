@@ -1,6 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const TerserPlugin = require("terser-webpack-plugin");
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 const path = require("path");
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
@@ -19,16 +17,6 @@ const nextConfig = {
     prependData: `
       @import "./src/styles/variables.scss";
     `,
-  },
-  reactStrictMode: true,
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && !isServer) {
-      // eslint-disable-next-line no-param-reassign
-      config.optimization.minimizer = [];
-      config.optimization.minimizer.push(new TerserPlugin({ parallel: true }));
-      config.plugins.push(new DuplicatePackageCheckerPlugin());
-    }
-    return config;
   },
   pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
   eslint: {
