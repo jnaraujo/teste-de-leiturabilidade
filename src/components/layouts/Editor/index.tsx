@@ -1,3 +1,4 @@
+"use client";
 import dynamic from "next/dynamic";
 import Loading from "@/components/Editor/Loading";
 import Aside from "@/components/Editor/Aside";
