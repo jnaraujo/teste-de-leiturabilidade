@@ -8,8 +8,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MdFormatQuote } from "react-icons/md";
 import { getToolbarGroups, isActive } from "./helper";
+import { Quote } from "lucide-react";
 
 interface Props {
   editor: Editor;
@@ -74,7 +74,10 @@ export default function Toolbar({ editor, className, isPro = false }: Props) {
           tooltip="Citação"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
         >
-          <MdFormatQuote size={20} />
+          <Quote
+            size={14}
+            className="fill-zinc-600 text-zinc-600 dark:fill-zinc-300 dark:text-zinc-300"
+          />
         </Button>
       </div>
 
@@ -92,7 +95,7 @@ export default function Toolbar({ editor, className, isPro = false }: Props) {
                 item.isActive?.attributes,
               )}
             >
-              {item.icon ? <item.icon size={20} /> : item.name}
+              {item.icon ? <item.icon size={16} /> : item.name}
             </Button>
           ))}
         </div>

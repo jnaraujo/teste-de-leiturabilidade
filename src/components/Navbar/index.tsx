@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { NAVBAR_LINKS } from "./constants";
 import { Button } from "../ui/button";
 import { cn } from "@/libs/utils";
 import ThemeToggle from "../ThemeToggle";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +66,7 @@ const Navbar = () => {
           onClick={handleClick}
           aria-label="Abrir menu"
         >
-          <AiOutlineClose />
+          <X />
         </button>
 
         <ul className="flex flex-col items-center justify-center gap-4">
@@ -100,7 +100,7 @@ const Navbar = () => {
         onClick={handleClick}
         aria-label="Abrir menu"
       >
-        <AiOutlineMenu />
+        <Menu />
       </button>
     </header>
   );

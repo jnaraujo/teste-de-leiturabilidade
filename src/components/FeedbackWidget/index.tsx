@@ -1,11 +1,11 @@
 "use client";
 
-import { MdFeedback } from "react-icons/md";
 import styles from "./styles.module.scss";
 import dynamic from "next/dynamic";
 import React, { useState, useEffect } from "react";
 const FeedbackModal = dynamic(() => import("./FeedbackModal"));
 import Tooltip from "../Tooltip";
+import { MessageSquarePlus } from "lucide-react";
 
 const FeedbackWidget: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -26,7 +26,7 @@ const FeedbackWidget: React.FC = () => {
           onClick={handleModal}
           aria-label="Deixe seu Feedback!"
         >
-          <MdFeedback />
+          <MessageSquarePlus />
         </button>
       </Tooltip>
       {openModal && <FeedbackModal onClose={handleModal} open={openModal} />}

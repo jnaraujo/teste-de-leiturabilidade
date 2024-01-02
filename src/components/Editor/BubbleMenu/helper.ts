@@ -1,14 +1,9 @@
 import { Editor } from "@tiptap/react";
-import {
-  AiOutlineBold,
-  AiOutlineItalic,
-  AiOutlineUnderline,
-} from "react-icons/ai";
-import { IconType } from "react-icons/lib";
+import { Bold, Italic, Underline, LucideIcon } from "lucide-react";
 
 interface ToolbarItem {
   name?: string;
-  icon?: IconType;
+  icon?: LucideIcon;
   tooltip: string;
   onClick: () => void;
 }
@@ -18,17 +13,17 @@ export const getMenuItems = (editor: Editor) => {
     {
       tooltip: "Itálico",
       onClick: () => editor.chain().focus().toggleItalic().run(),
-      icon: AiOutlineItalic,
+      icon: Italic,
     },
     {
       tooltip: "Negrito",
       onClick: () => editor.chain().focus().toggleBold().run(),
-      icon: AiOutlineBold,
+      icon: Bold,
     },
     {
       tooltip: "Sublinhado",
       onClick: () => editor.chain().focus().toggleUnderline().run(),
-      icon: AiOutlineUnderline,
+      icon: Underline,
     },
   ];
   return items;
