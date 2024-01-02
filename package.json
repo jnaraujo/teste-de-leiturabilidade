@@ -45,7 +45,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.285.0",
-    "next": "13.4.4",
+    "next": "^14.0.4",
     "notion-client": "^6.12.12",
     "react": "^18.2.0",
     "react-confetti": "^6.1.0",
