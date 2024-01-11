@@ -27,5 +27,5 @@ export default function Page() {
 export const metadata: Metadata = {
   title: "Teste de Leiturabilidade - Faça seu texto ser entendido por todos",
   description:
-    "Teste a leiturabilidade do seu texto e saiba se ele é de fácil de entender. O teste analisa a legibilidade do seu texto e te dá dicas de como melhorá-lo utlizando o Flesch Reading Ease.",
+    "Teste a leiturabilidade do seu texto e saiba se ele é de fácil de entender. O teste analisa a legibilidade e a leiturabilidade do seu texto e te dá dicas de como melhorá-lo utlizando o Flesch Reading Ease.",
 };
