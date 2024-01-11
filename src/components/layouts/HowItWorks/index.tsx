@@ -30,6 +30,21 @@ const HowItWorks: React.FC = () => (
 
       <div className="space-y-2">
         <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
+          O que é legibilidade?
+        </h3>
+        <div>
+          <p className="text-zinc-500">
+            Legibilidade refere-se à facilidade com que um texto pode ser lido e
+            compreendido. É a qualidade de um texto que torna as palavras e as
+            frases claras e acessíveis aos leitores. Vários fatores contribuem
+            para a legibilidade de um texto, incluindo o uso adequado de
+            palavras, estrutura de frases, pontuação e layout.
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           Como é calculado o Teste de Leiturabilidade?
         </h3>
         <div>
@@ -43,6 +58,21 @@ const HowItWorks: React.FC = () => (
               248.835 - 1.015 x (número médio de palavras por frase) - 84.6 x
               (número médio de sílabas por palavra)
             </strong>
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
+          Como fazer o teste de um texto?
+        </h3>
+        <div>
+          <p className="text-zinc-500">
+            Para fazer o teste de um texto, basta colar o texto no editor e o
+            resultado irá aparecer automaticamente.
+            <br />
+            Além disso, dicas de como melhorar as partes mais difíceis do texto
+            também podem ser habilitadas pelo painel lateral.
           </p>
         </div>
       </div>
