@@ -1,13 +1,13 @@
 const HowItWorks: React.FC = () => (
   <section className="container flex flex-col gap-2 py-4">
-    <h1 className="text-2xl font-semibold text-zinc-700 dark:text-zinc-400">
+    <h2 className="text-xl font-semibold text-zinc-700 dark:text-zinc-400">
       Algumas perguntas que você pode ter sobre o Teste de Leiturabilidade:
-    </h1>
+    </h2>
     <div className="space-y-4" id="como-funciona">
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           Como funciona o Teste de Leiturabilidade?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             Para testar o nível de leitura de um texto, nós utilizamos o{" "}
@@ -29,9 +29,24 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
+          O que é legibilidade?
+        </h3>
+        <div>
+          <p className="text-zinc-500">
+            Legibilidade refere-se à facilidade com que um texto pode ser lido e
+            compreendido. É a qualidade de um texto que torna as palavras e as
+            frases claras e acessíveis aos leitores. Vários fatores contribuem
+            para a legibilidade de um texto, incluindo o uso adequado de
+            palavras, estrutura de frases, pontuação e layout.
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           Como é calculado o Teste de Leiturabilidade?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             O <strong>Teste de Flesch-Kincaid</strong> é calculado com base no{" "}
@@ -48,9 +63,24 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
+          Como fazer o teste de um texto?
+        </h3>
+        <div>
+          <p className="text-zinc-500">
+            Para fazer o teste de um texto, basta colar o texto no editor e o
+            resultado irá aparecer automaticamente.
+            <br />
+            Além disso, dicas de como melhorar as partes mais difíceis do texto
+            também podem ser habilitadas pelo painel lateral.
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           Como interpretar o resultado do Teste de Leiturabilidade?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             O resultado do <strong>Teste de Flesch-Kincaid</strong> é um número
@@ -68,9 +98,9 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           Como melhorar o resultado do Teste de Leiturabilidade?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             Para melhorar o resultado do{" "}
@@ -90,9 +120,9 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           O que o Teste de Leitura leva em conta?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             Tanto a versão original do <strong>Teste de Flesch-Kincaid</strong>{" "}
@@ -105,9 +135,9 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           Quão preciso é o Teste de Leitura?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             A versão original do <strong>Teste de Flesch-Kincaid</strong> tem
@@ -119,10 +149,10 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           Quais são as principais métricas utilizadas no Teste de
           Leiturabilidade?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             No Teste de Leiturabilidade, algumas das principais métricas
@@ -135,10 +165,10 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           O Teste de Leiturabilidade é amplamente utilizado na criação de
           conteúdo online?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             Sim, o Teste de Leiturabilidade é amplamente utilizado na criação de
@@ -152,10 +182,10 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           {" "}
           O Teste de Leiturabilidade leva em consideração a estrutura do texto?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             O Teste de Leiturabilidade geralmente não leva em consideração a
@@ -169,10 +199,10 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           O Teste de Leiturabilidade é igualmente eficaz para avaliar a
           legibilidade de diferentes gêneros de texto?
-        </h2>
+        </h3>
         <div>
           <p className="text-zinc-500">
             O Teste de Leiturabilidade pode fornecer uma indicação geral da
@@ -188,9 +218,9 @@ const HowItWorks: React.FC = () => (
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-xl font-semibold text-zinc-600 dark:text-zinc-400">
+        <h3 className="text-lg font-semibold text-zinc-600 dark:text-zinc-400">
           Quer saber mais? Dá uma olhada nas fontes:
-        </h2>
+        </h3>
         <ul className="space-y-2">
           <li>
             <a
