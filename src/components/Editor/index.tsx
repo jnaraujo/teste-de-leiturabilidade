@@ -119,7 +119,7 @@ export default function TextEditor({
         [editorStyles.allowTips]: config.tips,
       })}
     >
-      <Toolbar editor={editor as any} isPro={isPro} />
+      <Toolbar editor={editor as any} isPro={isPro} className="mb-3" />
 
       <EditorContent
         className={cn(
