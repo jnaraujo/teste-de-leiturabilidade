@@ -34,7 +34,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
   const sliderPosition = canculateSliderPosition(ease.index);
 
   return (
-    <aside className="sticky top-4 mb-6 h-fit w-full overflow-hidden rounded-lg border border-zinc-300 bg-zinc-100 shadow-sm dark:border-zinc-600 dark:bg-zinc-900">
+    <aside className="sticky top-4 mb-6 h-fit w-full overflow-hidden rounded-lg border border-zinc-300 bg-[#eeeeef] shadow-sm dark:border-zinc-600 dark:bg-zinc-900">
       <div className="flex items-start justify-between p-2">
         <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
           Seu texto está no nível de leitura de{" "}
