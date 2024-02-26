@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
+    <html lang="pt-br" className={`${inter.variable} ${merriweather.variable}`}>
       <head>
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <meta name="theme-color" content="#317EFB" />
