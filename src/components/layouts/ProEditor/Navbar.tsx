@@ -14,8 +14,8 @@ export default function Navbar() {
             className="group flex h-11 w-11 items-center justify-start gap-1 sm:w-fit"
             aria-label="Voltar para a página inicial"
           >
-            <ArrowLeft className="text-lg text-zinc-600 group-hover:text-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-500 sm:text-sm" />
-            <span className="hidden text-sm text-zinc-500 group-hover:text-zinc-500 dark:text-zinc-300 dark:group-hover:text-zinc-500 sm:block">
+            <ArrowLeft className="text-lg text-zinc-600 group-hover:text-zinc-800 sm:text-sm dark:text-zinc-400 dark:group-hover:text-zinc-500" />
+            <span className="hidden text-sm text-zinc-500 group-hover:text-zinc-500 sm:block dark:text-zinc-300 dark:group-hover:text-zinc-500">
               Voltar para a página inicial
             </span>
           </Link>

@@ -34,13 +34,13 @@ export default async function Page({ params }: Props) {
     >
       <div className="space-y-2">
         <h1
-          className="text-2xl font-semibold text-zinc-700 dark:text-zinc-300 sm:text-3xl"
+          className="text-2xl font-semibold text-zinc-700 sm:text-3xl dark:text-zinc-300"
           itemProp="headline"
         >
           {post.Title}
         </h1>
         <span
-          className="block text-xs text-zinc-500 dark:text-zinc-400 sm:text-sm"
+          className="block text-xs text-zinc-500 sm:text-sm dark:text-zinc-400"
           itemProp="datePublished"
           content={post["Published at"]}
         >

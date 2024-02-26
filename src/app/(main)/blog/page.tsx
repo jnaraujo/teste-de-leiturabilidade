@@ -15,7 +15,7 @@ export default async function Page() {
   return (
     <section className="mx-auto max-w-3xl space-y-6 px-3">
       <article className="mx-auto space-y-4">
-        <h1 className="text-2xl font-semibold text-zinc-700 dark:text-zinc-300 sm:text-3xl">
+        <h1 className="text-2xl font-semibold text-zinc-700 sm:text-3xl dark:text-zinc-300">
           Blog
         </h1>
         <div className="space-y-5">
