@@ -34,15 +34,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#317EFB" />
         <Script
           defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon={`{"token": "${process.env.NEXT_PUBLIC_CLOUDFLARE_TOKEN}"}`}
-          strategy="afterInteractive"
-        />
-        <Script
-          defer
           data-domain="leiturabilidade.jnaraujo.com"
           src="https://analytics.jnaraujo.com/js/script.js"
-        ></Script>
+        />
       </head>
       <body className="bg-zinc-100 font-sans antialiased dark:bg-zinc-950">
         <Providers>
