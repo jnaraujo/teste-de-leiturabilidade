@@ -125,10 +125,7 @@ export default function TextEditor({
         className={cn(
           styles.editor,
           editorStyles.editor,
-          "text-zinc-700 dark:text-zinc-400",
-          {
-            "dark:text-zinc-300": config.highlight,
-          },
+          "text-zinc-700 dark:text-stone-300",
         )}
         editor={editor}
       />

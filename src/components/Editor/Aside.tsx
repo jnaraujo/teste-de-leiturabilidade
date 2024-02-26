@@ -34,9 +34,9 @@ export default function Aside({ isPanelOpen = true }: Props) {
   const sliderPosition = canculateSliderPosition(ease.index);
 
   return (
-    <aside className="sticky top-4 mb-6 h-fit w-full overflow-hidden rounded-lg border border-zinc-300 bg-[#eeeeef] shadow-sm dark:border-zinc-600 dark:bg-zinc-900">
+    <aside className="sticky top-4 mb-6 h-fit w-full overflow-hidden rounded-lg border border-zinc-300 bg-[#eeeeef] shadow-sm dark:border-stone-700 dark:bg-stone-800">
       <div className="flex items-start justify-between p-2">
-        <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
+        <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-50">
           Seu texto está no nível de leitura de{" "}
           <strong className="font-semibold">{easeToLabel(ease.index)}</strong>
         </p>
@@ -79,7 +79,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
         })}
       >
         <div className="space-y-1">
-          <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-300">
+          <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-100">
             Configurações do editor:
           </h2>
 
@@ -96,7 +96,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
 
             <label
               htmlFor="highlight"
-              className="text-sm text-zinc-700 dark:text-zinc-400"
+              className="text-sm text-zinc-700 dark:text-zinc-300"
             >
               Destacar dificuldade de leitura das frases
             </label>
@@ -115,7 +115,7 @@ export default function Aside({ isPanelOpen = true }: Props) {
 
             <label
               htmlFor="tips"
-              className="text-sm text-zinc-700 dark:text-zinc-400"
+              className="text-sm text-zinc-700 dark:text-zinc-300"
             >
               Mostrar dicas de como melhorar o texto
             </label>
@@ -123,18 +123,18 @@ export default function Aside({ isPanelOpen = true }: Props) {
         </div>
 
         <div className="space-y-1">
-          <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-300">
+          <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-100">
             Mais sobre seu texto:
           </h2>
-          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-400">
+          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
             <strong className="font-medium">Tempo de leitura:</strong>
             <span>{secondsToHMS(getReadingTimeByWords(ease.words))}</span>
           </div>
-          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-400">
+          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
             <strong className="font-medium">Palavras:</strong>
             <p>{ease.words}</p>
           </div>
-          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-400">
+          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
             <strong className="font-medium">Frases:</strong>
             <p>{ease.sentences}</p>
           </div>

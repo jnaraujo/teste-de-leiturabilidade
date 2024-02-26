@@ -38,7 +38,7 @@ export default function RootLayout({
           src="https://analytics.jnaraujo.com/js/script.js"
         />
       </head>
-      <body className="bg-zinc-100 font-sans antialiased dark:bg-zinc-950">
+      <body className="bg-zinc-100 font-sans antialiased dark:bg-stone-900">
         <Providers>
           {children}
           <FeedbackWidget />

@@ -21,7 +21,7 @@ export default async function Page() {
         <div className="space-y-5">
           {posts.map((post) => (
             <div className="space-y-[2px]" key={post.Slug}>
-              <h3 className="text-xl font-semibold text-zinc-700 hover:text-zinc-800 hover:underline dark:text-zinc-300">
+              <h3 className="text-xl font-semibold text-zinc-700 hover:text-zinc-800 hover:underline dark:text-zinc-300 dark:hover:text-zinc-200">
                 <Link href={`/blog/${post.Slug}`}>{post.Title}</Link>
               </h3>
               <p className="text-zinc-600 dark:text-zinc-400">
