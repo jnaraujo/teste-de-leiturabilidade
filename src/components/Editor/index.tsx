@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./styles.module.scss";
-import editorStyles from "./editor.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
@@ -114,19 +113,15 @@ export default function TextEditor({
 
   return (
     <section
-      className={clsx("top-4 mb-8 h-full w-full", editorStyles.container, {
-        [editorStyles.highlight]: config.highlight,
-        [editorStyles.allowTips]: config.tips,
+      className={clsx("top-4 mb-8 h-full w-full", styles.container, {
+        [styles.highlight]: config.highlight,
+        [styles.allowTips]: config.tips,
       })}
     >
       <Toolbar editor={editor as any} isPro={isPro} className="mb-3" />
 
       <EditorContent
-        className={cn(
-          styles.editor,
-          editorStyles.editor,
-          "text-zinc-700 dark:text-stone-300",
-        )}
+        className={cn(styles.editor, "text-zinc-700 dark:text-stone-300")}
         editor={editor}
       />
 

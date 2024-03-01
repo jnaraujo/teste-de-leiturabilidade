@@ -4,7 +4,7 @@ import { Plugin } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
 import { Node } from "prosemirror-model";
 import { calculateFleschReading } from "@/libs/ReadingEase";
-import styles from "../editor.module.scss";
+import styles from "../styles.module.scss";
 import { splitPhrases } from "@/libs/ReadingEase/helper";
 
 function easeToLabel(ease: number) {

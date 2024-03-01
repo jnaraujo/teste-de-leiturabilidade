@@ -43,4 +43,125 @@
   padding: 0;
 
   line-height: 1.75;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 175%;
+    font-weight: 600;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 8px 0;
+  }
+
+  font-size: 16px;
+
+  h1 {
+    font-size: 1.3em;
+  }
+  h2 {
+    font-size: 1.15em;
+  }
+  h3 {
+    font-size: 1.7em;
+  }
+
+  p {
+    font-size: 1em;
+    width: 100%;
+    min-height: 1em;
+  }
+
+  figure {
+    div {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  img,
+  figure {
+    width: 90% !important;
+    height: auto;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  blockquote {
+    padding: 8px;
+    padding-right: 0;
+    margin: 8px 0;
+    border-left: 4px solid #495057;
+    line-height: 150%;
+    font-size: 1em;
+  }
+
+  &:empty:before {
+    content: attr(placeholder);
+    position: absolute;
+    color: gray;
+    background-color: transparent;
+  }
+
+  &.highlight {
+    .ease-hard {
+      background-color: var(--color-hard);
+    }
+    .ease-medium {
+      background-color: var(--color-medium);
+    }
+    .ease-easy {
+      background-color: var(--color-easy);
+    }
+  }
+
+  &.allowTips {
+    [data-tip] {
+      position: relative;
+      border-bottom: 3px dashed $on-secondary;
+    }
+
+    [data-tip]:hover {
+      border-color: $secondary;
+    }
+
+    [data-tip]::before {
+      content: attr(data-tip);
+      position: absolute;
+
+      font-weight: 500;
+      line-height: 1.5;
+      font-style: normal;
+      font-size: 12px;
+      display: none;
+      padding: 4px 6px;
+      background-color: $on-background;
+      color: $on-primary;
+      font-family: "Inter", sans-serif;
+      border-radius: 6px 6px 6px 0px;
+      white-space: nowrap;
+
+      left: 50%;
+      transform: translateX(-50%);
+
+      top: -35px;
+
+      z-index: 9999;
+      width: max-content;
+    }
+
+    [data-tip]:hover::before {
+      display: block;
+    }
+  }
 }
