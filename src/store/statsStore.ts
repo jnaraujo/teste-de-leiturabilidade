@@ -2,16 +2,16 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface StatsStore {
-  timeWrittingInSecs: number;
+  timeWritingInSecs: number;
   setTimeWritingInSecs: (secs: number) => void;
 }
 
 export const useStatsStore = create(
   persist<StatsStore>(
     (set) => ({
-      timeWrittingInSecs: 0,
+      timeWritingInSecs: 0,
       setTimeWritingInSecs: (secs) => {
-        set({ timeWrittingInSecs: secs });
+        set({ timeWritingInSecs: secs });
       },
     }),
     {

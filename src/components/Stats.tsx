@@ -24,19 +24,19 @@ const CONSTANTS = {
 
 export default function Stats() {
   const { achievements, addAchievement } = useAchievementsStore();
-  const timeWrittingInSecs = useStore(
+  const timeWritingInSecs = useStore(
     useStatsStore,
-    (state) => state.timeWrittingInSecs,
+    (state) => state.timeWritingInSecs,
   );
 
   useEffect(() => {
-    if (!timeWrittingInSecs) return;
+    if (!timeWritingInSecs) return;
 
     let hasAchieved = false;
     let text = "";
 
     if (
-      timeWrittingInSecs >= CONSTANTS["15_MINUTES"] &&
+      timeWritingInSecs >= CONSTANTS["15_MINUTES"] &&
       !achievements.includes("WROTE_FOR_MORE_THAN_15_MINUTE")
     ) {
       addAchievement("WROTE_FOR_MORE_THAN_15_MINUTE");
@@ -45,7 +45,7 @@ export default function Stats() {
     }
 
     if (
-      timeWrittingInSecs >= CONSTANTS["1_HOUR"] &&
+      timeWritingInSecs >= CONSTANTS["1_HOUR"] &&
       !achievements.includes("WROTE_FOR_MORE_THAN_1_HOUR")
     ) {
       addAchievement("WROTE_FOR_MORE_THAN_1_HOUR");
@@ -54,7 +54,7 @@ export default function Stats() {
     }
 
     if (
-      timeWrittingInSecs >= CONSTANTS["1_DAY"] &&
+      timeWritingInSecs >= CONSTANTS["1_DAY"] &&
       !achievements.includes("WROTE_FOR_MORE_THAN_1_DAY")
     ) {
       addAchievement("WROTE_FOR_MORE_THAN_1_DAY");
@@ -63,7 +63,7 @@ export default function Stats() {
     }
 
     if (
-      timeWrittingInSecs >= CONSTANTS["2_WEEKS"] &&
+      timeWritingInSecs >= CONSTANTS["2_WEEKS"] &&
       !achievements.includes("WROTE_FOR_MORE_THAN_15_DAYS")
     ) {
       addAchievement("WROTE_FOR_MORE_THAN_15_DAYS");
@@ -72,7 +72,7 @@ export default function Stats() {
     }
 
     if (
-      timeWrittingInSecs >= CONSTANTS["1_MONTH"] &&
+      timeWritingInSecs >= CONSTANTS["1_MONTH"] &&
       !achievements.includes("WROTE_FOR_MORE_THAN_1_MONTH")
     ) {
       addAchievement("WROTE_FOR_MORE_THAN_1_MONTH");
@@ -81,7 +81,7 @@ export default function Stats() {
     }
 
     if (
-      timeWrittingInSecs >= CONSTANTS["1_YEAR"] &&
+      timeWritingInSecs >= CONSTANTS["1_YEAR"] &&
       !achievements.includes("WROTE_FOR_MORE_THAN_1_YEAR")
     ) {
       addAchievement("WROTE_FOR_MORE_THAN_1_YEAR");
@@ -92,7 +92,7 @@ export default function Stats() {
     if (hasAchieved) {
       toast.success(`🎉 ${text}`);
     }
-  }, [achievements, addAchievement, timeWrittingInSecs]);
+  }, [achievements, addAchievement, timeWritingInSecs]);
 
   return (
     <>
@@ -108,7 +108,7 @@ export default function Stats() {
             />
           </PopoverTrigger>
           <PopoverContent>
-            <StatsMessage timeWrittingInSecs={timeWrittingInSecs || 0} />
+            <StatsMessage timeWritingInSecs={timeWritingInSecs || 0} />
           </PopoverContent>
         </Popover>
       </div>
@@ -116,16 +116,16 @@ export default function Stats() {
   );
 }
 
-function StatsMessage({ timeWrittingInSecs }: { timeWrittingInSecs: number }) {
-  const hasWrittingTime = timeWrittingInSecs && timeWrittingInSecs > 1;
+function StatsMessage({ timeWritingInSecs }: { timeWritingInSecs: number }) {
+  const hasWritingTime = timeWritingInSecs && timeWritingInSecs > 1;
 
   return (
     <>
-      {hasWrittingTime ? (
+      {hasWritingTime ? (
         <p className="text-sm text-zinc-500 dark:text-zinc-300">
           🎉 Você já escreveu por mais de{" "}
           <strong className="font-medium text-zinc-600 dark:text-zinc-200">
-            {secondsToHMS(timeWrittingInSecs || 0)}
+            {secondsToHMS(timeWritingInSecs || 0)}
           </strong>
           !
         </p>

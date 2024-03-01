@@ -27,10 +27,10 @@ export default function TextEditor({
   const { setEase } = useReadingStore();
   const { config } = useConfigStore();
 
-  const { setTimeWritingInSecs, timeWrittingInSecs } = useStatsStore();
+  const { setTimeWritingInSecs, timeWritingInSecs } = useStatsStore();
 
   const startedWritingAt = useRef(0);
-  const writtingTimeout = useRef<any>();
+  const writingTimeout = useRef<any>();
   const { content, setContent } = useContentStore();
 
   const { width } = useWindowSize();
@@ -62,15 +62,15 @@ export default function TextEditor({
         startedWritingAt.current = Date.now();
       }
 
-      if (writtingTimeout.current) {
-        clearTimeout(writtingTimeout.current);
+      if (writingTimeout.current) {
+        clearTimeout(writingTimeout.current);
       }
 
-      writtingTimeout.current = setTimeout(() => {
+      writingTimeout.current = setTimeout(() => {
         const timeInMs = Date.now() - startedWritingAt.current;
         const timeWithoutDelay = timeInMs - 1000;
         const timeInSecs = timeWithoutDelay / 1000;
-        setTimeWritingInSecs(timeWrittingInSecs + timeInSecs);
+        setTimeWritingInSecs(timeWritingInSecs + timeInSecs);
         startedWritingAt.current = 0;
       }, 1000);
     },
