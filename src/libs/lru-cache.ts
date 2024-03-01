@@ -22,7 +22,7 @@ export class LRUCache<KeyType, ValueType> {
       this.cache.delete(tailKey);
     }
 
-    this.keys.push(key);
+    this.keys.unshift(key);
     this.cache.set(key, value);
   }
 

@@ -20,31 +20,31 @@ describe("LRUCache", () => {
       v4: "k4",
       v5: "k5",
     });
-    expect(lruCache.readKeys()).toEqual(["v1", "v2", "v3", "v4", "v5"]);
+    expect(lruCache.readKeys()).toEqual(["v5", "v4", "v3", "v2", "v1"]);
 
     lruCache.add("v6", "k6");
 
     expect(lruCache.readCache()).toStrictEqual({
-      v1: "k1",
       v2: "k2",
       v3: "k3",
       v4: "k4",
+      v5: "k5",
       v6: "k6",
     });
-    expect(lruCache.readKeys()).toEqual(["v1", "v2", "v3", "v4", "v6"]);
+    expect(lruCache.readKeys()).toEqual(["v6", "v5", "v4", "v3", "v2"]);
 
     lruCache.add("v2", "k2");
     expect(lruCache.readCache()).toStrictEqual({
       v2: "k2",
-      v1: "k1",
       v3: "k3",
       v4: "k4",
+      v5: "k5",
       v6: "k6",
     });
-    expect(lruCache.readKeys()).toEqual(["v2", "v1", "v3", "v4", "v6"]);
+    expect(lruCache.readKeys()).toEqual(["v2", "v6", "v5", "v4", "v3"]);
 
     lruCache.get("v3");
 
-    expect(lruCache.readKeys()).toEqual(["v3", "v2", "v1", "v4", "v6"]);
+    expect(lruCache.readKeys()).toEqual(["v3", "v2", "v6", "v5", "v4"]);
   });
 });
