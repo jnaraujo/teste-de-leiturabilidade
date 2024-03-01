@@ -1,3 +1,4 @@
+import { LRUCache } from "../lru-cache";
 import {
   calculateFleschEase,
   calculateResult,
@@ -5,6 +6,18 @@ import {
   getWords,
   splitPhrases,
 } from "./helper";
+
+const cache = new LRUCache<
+  string,
+  {
+    words: number;
+    sentences: number;
+    syllables: number;
+    result: number;
+  }
+>({
+  limit: 25,
+});
 
 /**
  * Calculate the Flesch Reading score for a given text
@@ -21,6 +34,11 @@ import {
  * // }
  **/
 export function calculateFleschReading(phrase: string) {
+  const cached = cache.get(phrase);
+  if (cached) {
+    return cached;
+  }
+
   if (!phrase)
     return {
       words: 0,
@@ -32,7 +50,7 @@ export function calculateFleschReading(phrase: string) {
   const words = getWords(phrase);
   const totalSyllables = countSyllables(words);
 
-  return {
+  const result = {
     words: words.length,
     sentences: 1,
     syllables: totalSyllables,
@@ -40,6 +58,10 @@ export function calculateFleschReading(phrase: string) {
       calculateFleschEase(words.length, 1, totalSyllables),
     ),
   };
+
+  cache.add(phrase, result);
+
+  return result;
 }
 
 export function calculateFleschReadingFromText(text: string) {
@@ -64,7 +86,6 @@ export function calculateFleschReadingFromText(text: string) {
     result.sentences,
     result.syllables,
   );
-
   return result;
 }
 
