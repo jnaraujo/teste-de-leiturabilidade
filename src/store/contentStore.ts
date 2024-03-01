@@ -1,5 +1,4 @@
 import { getLocalStorage, setLocalStorage } from "@/libs/localstorage";
-import { create } from "zustand";
 
 export interface IContentStore {
   content: string;
@@ -24,12 +23,12 @@ const textExample = `
   </p>
 `;
 
-export const useContentStore = create<IContentStore>((set) => ({
+export const contentStore = {
   content: getLocalStorage("content-store").content || textExample,
   setContent: (content: string) => {
-    set({ content });
+    contentStore.content = content;
     setLocalStorage("content-store", {
       content,
     });
   },
-}));
+};

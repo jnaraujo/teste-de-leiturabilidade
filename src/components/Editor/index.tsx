@@ -6,7 +6,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import { useWindowSize } from "react-use";
 import { useReadingStore } from "@/store/readingStore";
 import { EditorExtensions } from "./helper";
-import { useContentStore } from "@/store/contentStore";
+import { contentStore } from "@/store/contentStore";
 import { useConfigStore } from "@/store/configStore";
 import clsx from "clsx";
 import { useStatsStore } from "@/store/statsStore";
@@ -31,7 +31,6 @@ export default function TextEditor({
 
   const startedWritingAt = useRef(0);
   const writingTimeout = useRef<any>();
-  const { content, setContent } = useContentStore();
 
   const { width } = useWindowSize();
 
@@ -51,7 +50,7 @@ export default function TextEditor({
       setEase(ease);
     },
     onUpdate: (state) => {
-      setContent(state.editor.getHTML());
+      contentStore.setContent(state.editor.getHTML());
 
       const text = state.editor.getText();
       const ease = calculateFleschReadingFromText(text);
@@ -85,7 +84,7 @@ export default function TextEditor({
         class: "outline-none space-y-2 leading-6",
       },
     },
-    content: content,
+    content: contentStore.content,
   });
 
   useEffect(() => {
