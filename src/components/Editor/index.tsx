@@ -1,5 +1,6 @@
 "use client";
 
+import type { Editor } from "@tiptap/core";
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -14,6 +15,7 @@ import { BubbleMenu } from "./BubbleMenu";
 import { cn } from "@/libs/utils";
 import Toolbar from "./Toolbar";
 import { calculateFleschReadingFromText } from "@/libs/ReadingEase";
+import useDebounce from "@/hooks/use-debounce";
 
 type ComponentPropsType = {
   html?: string;
@@ -37,6 +39,21 @@ export default function TextEditor({
   const didMouseDown = useRef(false);
   const [shouldShowBubbleMenu, setShouldShowBubbleMenu] = useState(false);
 
+  const saveContent = useDebounce(
+    (editor: Editor) => {
+      console.log("Saving content...");
+
+      contentStore.setContent(editor.getHTML());
+
+      const text = editor.getText();
+      const ease = calculateFleschReadingFromText(text);
+
+      setEase(ease);
+    },
+    500,
+    [],
+  );
+
   const editor = useEditor({
     extensions: EditorExtensions,
     onCreate: (state) => {
@@ -50,12 +67,7 @@ export default function TextEditor({
       setEase(ease);
     },
     onUpdate: (state) => {
-      contentStore.setContent(state.editor.getHTML());
-
-      const text = state.editor.getText();
-      const ease = calculateFleschReadingFromText(text);
-
-      setEase(ease);
+      saveContent(state.editor);
 
       if (startedWritingAt.current === 0) {
         startedWritingAt.current = Date.now();
