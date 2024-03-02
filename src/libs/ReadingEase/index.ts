@@ -16,7 +16,7 @@ const cache = new LRUCache<
     result: number;
   }
 >({
-  limit: 25,
+  limit: 250,
 });
 
 /**
