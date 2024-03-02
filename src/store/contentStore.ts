@@ -6,7 +6,7 @@ export interface IContentStore {
 }
 
 const textExample = `
-  <h1>Ei! Esse é um exemplo de título.</h1> 
+  <h2>Ei! Esse é um exemplo de título.</h2> 
   <p>
     Você poder escrever <b>qualquer texto</b> que quiser aqui. <br />
     Além disso, ainda pode importar textos de outros lugares!
