@@ -1,7 +1,5 @@
-import Link from "next/link";
-import React from "react";
-
 import styles from "./styles.module.scss";
+import Link from "next/link";
 
 const Button: React.FC = () => (
   <button className={styles.button}>

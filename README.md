@@ -42,13 +42,13 @@ cd teste_de_facilidade_de_leitura
 3. Instale as dependências
 
 ```sh
-yarn install
+pnpm install
 ```
 
 4. Rode localmente
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 ## Algumas informações:

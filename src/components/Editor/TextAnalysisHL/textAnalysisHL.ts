@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Extension } from "@tiptap/core";
-import { Plugin } from "prosemirror-state";
-import { Decoration, DecorationSet } from "prosemirror-view";
-import { Node } from "prosemirror-model";
+import { Plugin } from "@tiptap/pm/state";
+import { Decoration, DecorationSet } from "@tiptap/pm/view";
+import { Node } from "@tiptap/pm/model";
 import { calculateFleschReading } from "@/libs/ReadingEase";
 import styles from "../styles.module.scss";
 import { splitPhrases } from "@/libs/ReadingEase/helper";
