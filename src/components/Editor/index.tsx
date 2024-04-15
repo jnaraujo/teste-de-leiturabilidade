@@ -39,7 +39,7 @@ export default function TextEditor({
   const didMouseDown = useRef(false);
   const [shouldShowBubbleMenu, setShouldShowBubbleMenu] = useState(false);
 
-  const saveContent = useDebounce(
+  const saveContentDebounce = useDebounce(
     (editor: Editor) => {
       console.log("Saving content...");
 
@@ -50,7 +50,7 @@ export default function TextEditor({
 
       setEase(ease);
     },
-    500,
+    300,
     [],
   );
 
@@ -67,7 +67,7 @@ export default function TextEditor({
       setEase(ease);
     },
     onUpdate: (state) => {
-      saveContent(state.editor);
+      saveContentDebounce(state.editor);
 
       if (startedWritingAt.current === 0) {
         startedWritingAt.current = Date.now();
