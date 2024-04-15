@@ -6,6 +6,7 @@ import { Node } from "@tiptap/pm/model";
 import { calculateFleschReading } from "@/libs/ReadingEase";
 import styles from "../styles.module.scss";
 import { splitPhrases } from "@/libs/ReadingEase/helper";
+import { IEase } from "@/store/readingStore";
 
 function easeToLabel(ease: number) {
   if (ease > 50) return "easy";
@@ -13,26 +14,14 @@ function easeToLabel(ease: number) {
   return "hard";
 }
 
-interface FleschReadingResult {
-  words: number;
-  sentences: number;
-  syllables: number;
-  result: number;
-}
-
 /**
  * Essa função gera dicas para a frase de acordo com o resultado do teste
  */
-function generateTip({
-  result,
-  sentences,
-  syllables,
-  words,
-}: FleschReadingResult) {
+function generateTip({ index, sentences, syllables, words }: IEase) {
   const a = 1.015 * (words / sentences);
   const b = 84.6 * (syllables / words);
 
-  if (result <= 50) {
+  if (index <= 50) {
     if (a > 10 && b > 12) {
       return "A frase é muito longa. Tente dividi-la em duas ou mais frases.";
     } else {
@@ -44,14 +33,10 @@ function generateTip({
 function highlightPhrasesEase(doc: Node) {
   const decorations: Decoration[] = [];
 
-  function addDecoration(
-    start: number,
-    end: number,
-    data: FleschReadingResult,
-  ) {
+  function addDecoration(start: number, end: number, data: IEase) {
     decorations.push(
       Decoration.inline(start, end, {
-        class: styles[`ease-${easeToLabel(data.result)}`],
+        class: styles[`ease-${easeToLabel(data.index)}`],
         "data-tip": generateTip(data),
       }),
     );

@@ -1,3 +1,4 @@
+import { IEase } from "@/store/readingStore";
 import { LRUCache } from "../lru-cache";
 import {
   calculateFleschEase,
@@ -7,15 +8,7 @@ import {
   splitPhrases,
 } from "./helper";
 
-const cache = new LRUCache<
-  string,
-  {
-    words: number;
-    sentences: number;
-    syllables: number;
-    result: number;
-  }
->({
+const cache = new LRUCache<string, IEase>({
   limit: 250,
 });
 
@@ -33,7 +26,7 @@ const cache = new LRUCache<
  * //   result: 100
  * // }
  **/
-export function calculateFleschReading(phrase: string) {
+export function calculateFleschReading(phrase: string): IEase {
   const cached = cache.get(phrase);
   if (cached) {
     return cached;
@@ -44,7 +37,8 @@ export function calculateFleschReading(phrase: string) {
       words: 0,
       sentences: 0,
       syllables: 0,
-      result: 0,
+      index: 0,
+      chars: 0,
     };
 
   const words = getWords(phrase);
@@ -54,9 +48,10 @@ export function calculateFleschReading(phrase: string) {
     words: words.length,
     sentences: 1,
     syllables: totalSyllables,
-    result: calculateResult(
+    index: calculateResult(
       calculateFleschEase(words.length, 1, totalSyllables),
     ),
+    chars: phrase.length,
   };
 
   cache.add(phrase, result);
@@ -64,7 +59,7 @@ export function calculateFleschReading(phrase: string) {
   return result;
 }
 
-export function calculateFleschReadingFromText(text: string) {
+export function calculateFleschReadingFromText(text: string): IEase {
   const phrases = splitPhrases(text);
 
   const result = {
@@ -72,13 +67,15 @@ export function calculateFleschReadingFromText(text: string) {
     syllables: 0,
     words: 0,
     sentences: 0,
-  };
+    chars: 0,
+  } satisfies IEase;
 
   for (let i = 0; i < phrases.length; i++) {
     const phraseAnalyses = calculateFleschReading(phrases[i]);
     result.syllables += phraseAnalyses.syllables;
     result.words += phraseAnalyses.words;
     result.sentences += phraseAnalyses.sentences;
+    result.chars += phraseAnalyses.chars;
   }
 
   result.index = calculateFleschEase(

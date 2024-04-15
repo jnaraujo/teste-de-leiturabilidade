@@ -135,6 +135,10 @@ export default function Aside({ isPanelOpen = true }: Props) {
             <span>{ease.words}</span>
           </div>
           <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+            <strong className="font-medium">Caracteres:</strong>
+            <span>{ease.chars}</span>
+          </div>
+          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
             <strong className="font-medium">Frases:</strong>
             <span>{ease.sentences}</span>
           </div>

@@ -50,7 +50,7 @@ export default function TextEditor({
 
       setEase(ease);
     },
-    300,
+    200,
     [],
   );
 

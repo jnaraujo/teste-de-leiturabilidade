@@ -5,6 +5,7 @@ export interface IEase {
   syllables: number;
   words: number;
   sentences: number;
+  chars: number;
 }
 
 export interface IReadingStore {
@@ -18,6 +19,7 @@ export const useReadingStore = create<IReadingStore>((set) => ({
     syllables: 0,
     words: 0,
     sentences: 0,
+    chars: 0,
   },
   setEase: (ease) => set({ ease }),
 }));
