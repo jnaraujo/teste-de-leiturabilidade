@@ -10,7 +10,8 @@ describe("calculateFleschReading", () => {
       words: 0,
       sentences: 0,
       syllables: 0,
-      result: 0,
+      index: 0,
+      chars: 0,
     });
   });
 
@@ -19,7 +20,8 @@ describe("calculateFleschReading", () => {
     expect(oneWordTest.sentences).toEqual(1);
     expect(oneWordTest.words).toEqual(1);
     expect(oneWordTest.syllables).toEqual(2);
-    expect(oneWordTest.result).toBeDefined();
+    expect(oneWordTest.chars).toEqual(5);
+    expect(oneWordTest.index).toBeDefined();
   });
 
   it("text with only one sentence", () => {
@@ -29,12 +31,13 @@ describe("calculateFleschReading", () => {
     expect(oneSentenceTest.sentences).toEqual(1);
     expect(oneSentenceTest.words).toEqual(10);
     expect(oneSentenceTest.syllables).toEqual(22);
-    expect(oneSentenceTest.result).toBeDefined();
+    expect(oneSentenceTest.chars).toEqual(59);
+    expect(oneSentenceTest.index).toBeDefined();
   });
 
   it("100% result", () => {
     const oneSentenceTest = calculateFleschReading("bom dia");
-    expect(oneSentenceTest.result).toEqual(100);
+    expect(oneSentenceTest.index).toEqual(100);
   });
 
   it("text with multiple sentences", () => {
@@ -44,7 +47,7 @@ describe("calculateFleschReading", () => {
     expect(multipleSentencesTest.sentences).toEqual(1);
     expect(multipleSentencesTest.words).toEqual(6);
     expect(multipleSentencesTest.syllables).toEqual(11);
-    expect(multipleSentencesTest.result).toBeCloseTo(87.6, 1);
+    expect(multipleSentencesTest.index).toBeCloseTo(87.6, 1);
   });
 
   describe("getWords", () => {
