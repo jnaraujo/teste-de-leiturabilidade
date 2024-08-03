@@ -37,6 +37,12 @@ export default function RootLayout({
           data-domain="leiturabilidade.site"
           src="https://analytics.jnaraujo.com/js/script.js"
         />
+        {process.env.NEXT_PUBLIC_ADSENSE && (
+          <meta
+            name="google-adsense-account"
+            content={process.env.NEXT_PUBLIC_ADSENSE}
+          />
+        )}
       </head>
       <body className="bg-zinc-100 font-sans antialiased dark:bg-stone-900">
         <Providers>
