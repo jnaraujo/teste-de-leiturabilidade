@@ -4,7 +4,10 @@ const HowItWorks: React.FC = () => (
       Algumas perguntas que você pode ter sobre o Teste de Leiturabilidade:
     </h2>
 
-    <h3 className="mt-6 text-lg font-semibold text-zinc-700 dark:text-stone-300">
+    <h3
+      id="como-funciona"
+      className="mt-6 text-lg font-semibold text-zinc-700 dark:text-stone-300"
+    >
       Como funciona o Teste de Leiturabilidade?
     </h3>
     <p className="text-zinc-600 dark:text-stone-400">
