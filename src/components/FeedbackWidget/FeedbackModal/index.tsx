@@ -1,25 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { useForm } from "react-hook-form";
 import { useWindowSize } from "react-use";
 import { toast } from "react-hot-toast";
-
-import styles from "./styles.module.scss";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { sendFeedback } from "./helper";
-import Input from "@/components/Input";
-import Modal from "react-responsive-modal";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 type Props = {
-  open: boolean;
-  onClose(): void;
+  children: React.ReactNode;
 };
-const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
+const FeedbackModal: React.FC<Props> = ({ children }) => {
   const { register, handleSubmit, reset, formState } = useForm();
   const { isSubmitting } = formState;
-
   const { width, height } = useWindowSize();
   const [confetti, setConfetti] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "unset";
+  }, [open]);
 
   const onSubmit = async (data: any) => {
     try {
@@ -30,8 +39,10 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
         position: "top-center",
       });
 
-      setConfetti(true);
+      reset();
+      setOpen(false);
 
+      setConfetti(true);
       setTimeout(() => {
         setConfetti(false);
       }, 5000);
@@ -39,53 +50,52 @@ const FeedbackModal: React.FC<Props> = ({ open, onClose }) => {
       toast.error("Ops! Ocorreu um erro ao enviar a mensagem.", {
         position: "top-center",
       });
-    } finally {
-      reset();
-      onClose();
     }
   };
   return (
     <>
-      <Modal
-        open={open}
-        onClose={onClose}
-        center
-        styles={{
-          modal: {
-            backgroundColor: "#fafafa",
-          },
-        }}
-      >
-        <section className={styles.container}>
-          <div className={styles.content}>
-            <form onSubmit={handleSubmit(onSubmit)} method="post">
-              <h1 className="text-zinc-700">Deixe seu Feedback</h1>
-              <Input
-                id="name"
-                {...register("name")}
-                type="text"
-                required
-                placeholder="Seu nome"
-              />
-              <textarea
-                id="text"
-                {...register("message")}
-                required
-                placeholder="Escreva sua ideia, crítica, sugestão... O que você quiser!"
-              />
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Enviando..." : "Enviar"}
-              </Button>
-            </form>
-          </div>
-        </section>
-      </Modal>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger asChild>{children}</DialogTrigger>
+        <DialogContent className="w-full max-w-96">
+          <DialogHeader>
+            <DialogTitle className="text-zinc-700">
+              Deixe seu Feedback
+            </DialogTitle>
+            <DialogDescription>
+              Envie sua dúvida, ideia, crítica ou sugestão.
+            </DialogDescription>
+          </DialogHeader>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            method="post"
+            className="space-y-3"
+          >
+            <Input
+              id="name"
+              {...register("name")}
+              type="text"
+              required
+              placeholder="Seu nome"
+            />
+            <Textarea
+              id="text"
+              {...register("message")}
+              required
+              className="h-24"
+              placeholder="Ex: o menu lateral do site no meu IPhone 13 não está aparecendo quando eu clico no botão de menu. Há três dias atrás funcionava."
+            />
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Enviando..." : "Enviar"}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
       {confetti && (
-        <div className={styles.confetti}>
+        <div className="pointer-events-none fixed left-0 top-0 z-50 h-full w-full">
           <Confetti
             width={width}
             height={height}
