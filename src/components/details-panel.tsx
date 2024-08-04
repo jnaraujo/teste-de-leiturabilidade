@@ -15,14 +15,14 @@ interface Props {
   isPanelOpen?: boolean;
 }
 
-export default function Aside({ isPanelOpen = true }: Props) {
+export default function DetailsPanel({ isPanelOpen = true }: Props) {
   const { ease } = useReadingStore();
   const config = useStore(useConfigStore, (state) => state.config);
   const { setConfig } = useConfigStore();
   const ref = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(isPanelOpen);
 
-  function canculateSliderPosition(value: number) {
+  function calculateSliderPosition(value: number) {
     if (!ref.current) return 0;
 
     const sliderWidth = ref.current.offsetWidth;
@@ -31,10 +31,10 @@ export default function Aside({ isPanelOpen = true }: Props) {
     return Math.max(Math.min(formula, sliderWidth - 6), 2);
   }
 
-  const sliderPosition = canculateSliderPosition(ease.index);
+  const sliderPosition = calculateSliderPosition(ease.index);
 
   return (
-    <aside className="sticky top-4 mb-6 h-fit w-full overflow-hidden rounded-lg border border-zinc-300 bg-[#eeeeef] shadow-sm dark:border-stone-700 dark:bg-stone-800">
+    <article className="flex-1 overflow-hidden rounded-lg border border-zinc-300 bg-[#eeeeef] shadow-sm dark:border-stone-700 dark:bg-stone-800">
       <div className="flex items-start justify-between p-2">
         <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-50">
           Seu texto está no nível de leitura de{" "}
@@ -144,6 +144,6 @@ export default function Aside({ isPanelOpen = true }: Props) {
           </div>
         </div>
       </div>
-    </aside>
+    </article>
   );
 }

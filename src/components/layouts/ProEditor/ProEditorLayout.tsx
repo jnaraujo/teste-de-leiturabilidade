@@ -1,5 +1,5 @@
 "use client";
-import Aside from "@/components/Editor/Aside";
+import DetailsPanel from "@/components/details-panel";
 import Loading from "@/components/Editor/Loading";
 import dynamic from "next/dynamic";
 const ProEditor = dynamic(() => import("@/components/Editor"), {
@@ -15,7 +15,9 @@ export default function ProEditorLayout() {
           <ProEditor isPro={true} />
         </div>
       </div>
-      <Aside />
+      <aside className="sticky top-4 mb-6 h-fit w-full">
+        <DetailsPanel />
+      </aside>
     </section>
   );
 }

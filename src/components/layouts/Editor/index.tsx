@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Loading from "@/components/Editor/Loading";
-import Aside from "@/components/Editor/Aside";
+import DetailsPanel from "@/components/details-panel";
 const TextEditor = dynamic(() => import("@/components/Editor"), {
   ssr: false,
   loading: () => <Loading />,
@@ -16,7 +16,9 @@ const Editor: React.FC = () => {
         </div>
       </div>
 
-      <Aside />
+      <aside className="sticky top-4 mb-6 h-fit w-full">
+        <DetailsPanel />
+      </aside>
     </section>
   );
 };
