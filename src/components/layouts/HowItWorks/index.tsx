@@ -227,7 +227,7 @@ const HowItWorks: React.FC = () => (
               href="http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf"
               target="_blank"
               rel="noreferrer"
-              className="text-violet-600 underline"
+              className="break-words text-violet-600 underline"
             >
               http://www.ufrgs.br/textecc/acessibilidade/files/Índices-de-Leiturabilidade.pdf
             </a>
@@ -237,7 +237,7 @@ const HowItWorks: React.FC = () => (
               href="https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests"
               target="_blank"
               rel="noreferrer"
-              className="text-violet-600 underline"
+              className="break-words text-violet-600 underline"
             >
               https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests
             </a>
