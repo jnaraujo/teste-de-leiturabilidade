@@ -122,9 +122,6 @@ importers:
       react-notion:
         specifier: ^0.10.0
         version: 0.10.0(react@18.2.0)
-      react-responsive-modal:
-        specifier: ^6.4.2
-        version: 6.4.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-use:
         specifier: ^17.4.0
         version: 17.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -224,16 +221,6 @@ packages:
 
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
-
-  '@bedrock-layout/use-forwarded-ref@1.6.1':
-    resolution: {integrity: sha512-GD9A9AFLzFNjr7k6fgerSqxfwDWl+wsPS11PErOKe1zkVz0y7RGC9gzlOiX/JrgpyB3NFHWIuGtoOQqifJQQpw==}
-    peerDependencies:
-      react: ^16.8 || ^17 || ^18
-
-  '@bedrock-layout/use-stateful-ref@1.4.1':
-    resolution: {integrity: sha512-4eKO2KdQEXcR5LI4QcxqlJykJUDQJWDeWYAukIn6sRQYoabcfI5kDl61PUi6FR6o8VFgQ8IEP7HleKqWlSe8SQ==}
-    peerDependencies:
-      react: ^16.8 || ^17 || ^18
 
   '@esbuild/aix-ppc64@0.20.2':
     resolution: {integrity: sha512-D+EBOJHXdNZcLJRBkhENNG8Wji2kgc9AZ9KiPr1JuZjsNtyHzrsfLRrY0tk2H2aoFu6RANO1y1iPPUCDYWkb5g==}
@@ -1635,9 +1622,6 @@ packages:
   bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
 
-  body-scroll-lock@3.1.5:
-    resolution: {integrity: sha512-Yi1Xaml0EvNA0OYWxXiYNqY24AfWkbA6w5vxE7GWxtKfzIbZM+Qw+aSmkgsbWzbHiy/RCSkUZBplVxTA+E4jJg==}
-
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
 
@@ -1727,9 +1711,6 @@ packages:
 
   class-variance-authority@0.7.0:
     resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
-
-  classnames@2.5.1:
-    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
 
   clean-stack@4.2.0:
     resolution: {integrity: sha512-LYv6XPxoyODi36Dp976riBtSY27VmFo+MKqEU9QCCWyTrdEPDog+RWA7xQWHi6Vbp61j5c4cdzzX1NidnwtUWg==}
@@ -3495,12 +3476,6 @@ packages:
       '@types/react':
         optional: true
 
-  react-responsive-modal@6.4.2:
-    resolution: {integrity: sha512-ARjGEKE5Gu5CSvyA8U9ARVbtK4SMAtdXsjtzwtxRlQIHC99RQTnOUctLpl7+/sp1Kg1OJZ6yqvp6ivd4TBueEw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17 || ^18
-      react-dom: ^16.8.0 || ^17 || ^18
-
   react-style-singleton@2.2.1:
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
     engines: {node: '>=10'}
@@ -4307,15 +4282,6 @@ snapshots:
       regenerator-runtime: 0.14.1
 
   '@bcoe/v8-coverage@0.2.3': {}
-
-  '@bedrock-layout/use-forwarded-ref@1.6.1(react@18.2.0)':
-    dependencies:
-      '@bedrock-layout/use-stateful-ref': 1.4.1(react@18.2.0)
-      react: 18.2.0
-
-  '@bedrock-layout/use-stateful-ref@1.4.1(react@18.2.0)':
-    dependencies:
-      react: 18.2.0
 
   '@esbuild/aix-ppc64@0.20.2':
     optional: true
@@ -5720,8 +5686,6 @@ snapshots:
       inherits: 2.0.4
       readable-stream: 3.6.2
 
-  body-scroll-lock@3.1.5: {}
-
   brace-expansion@1.1.11:
     dependencies:
       balanced-match: 1.0.2
@@ -5845,8 +5809,6 @@ snapshots:
   class-variance-authority@0.7.0:
     dependencies:
       clsx: 2.0.0
-
-  classnames@2.5.1: {}
 
   clean-stack@4.2.0:
     dependencies:
@@ -7680,14 +7642,6 @@ snapshots:
       use-sidecar: 1.1.2(@types/react@18.2.67)(react@18.2.0)
     optionalDependencies:
       '@types/react': 18.2.67
-
-  react-responsive-modal@6.4.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
-    dependencies:
-      '@bedrock-layout/use-forwarded-ref': 1.6.1(react@18.2.0)
-      body-scroll-lock: 3.1.5
-      classnames: 2.5.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
 
   react-style-singleton@2.2.1(@types/react@18.2.67)(react@18.2.0):
     dependencies:

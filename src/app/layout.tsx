@@ -4,8 +4,6 @@ import Providers from "@/components/Providers";
 import { Inter, Merriweather } from "next/font/google";
 import Script from "next/script";
 
-import "react-responsive-modal/styles.css";
-
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
