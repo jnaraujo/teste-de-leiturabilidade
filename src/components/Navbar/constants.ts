@@ -5,11 +5,15 @@ type ILink = {
 
 export const NAVBAR_LINKS: ILink[] = [
   {
-    title: "Blog",
-    url: "/blog",
-  },
-  {
     title: "Como funciona?",
     url: "/#como-funciona",
+  },
+  {
+    title: "Contador de Palavras",
+    url: "/contador-de-palavras",
+  },
+  {
+    title: "Blog",
+    url: "/blog",
   },
 ];
