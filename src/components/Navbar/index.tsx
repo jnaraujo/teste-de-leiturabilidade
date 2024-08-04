@@ -45,7 +45,7 @@ function Nav() {
             asChild
             className="h-full bg-violet-600 hover:bg-violet-700 dark:text-stone-200"
           >
-            <Link href="/editor">Testar o Novo Editor!</Link>
+            <Link href="/editor">Editor Completo</Link>
           </Button>
         </li>
         <li>
@@ -104,7 +104,7 @@ function MobileNav() {
               asChild
               className="h-full bg-violet-600 text-zinc-50 hover:bg-violet-700"
             >
-              <Link href="/editor">Testar o Novo Editor!</Link>
+              <Link href="/editor">Editor Completo</Link>
             </Button>
           </li>
           <li>
