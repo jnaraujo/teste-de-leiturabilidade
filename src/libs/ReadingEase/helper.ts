@@ -1,7 +1,8 @@
 import silabaJS from "./silaba";
 
 export function getWords(text: string) {
-  const words = text.replace(/\n\r,!?;/g, " ").split(" ");
+  text = text.replace(/(\n\s*\n|[.,!?;])/g, " ");
+  const words = text.split(" ");
 
   for (let i = 0; i < words.length; i++) {
     if (words[i] === "") {

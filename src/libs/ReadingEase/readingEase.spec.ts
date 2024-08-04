@@ -70,6 +70,13 @@ describe("calculateFleschReading", () => {
       const words = getWords("teste teste teste!");
       expect(words.length).toEqual(3);
     });
+
+    it("should remove break line chars", () => {
+      const words = getWords(
+        "teste \n\n\n\nteste \n\n\n\n\n\n\nteste! \n\n\n\n",
+      );
+      expect(words.length).toEqual(3);
+    });
   });
 
   describe("countSyllables", () => {
