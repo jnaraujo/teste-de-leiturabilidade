@@ -42,7 +42,7 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="bg-zinc-100 font-sans antialiased dark:bg-stone-900">
+      <body className="bg-muted font-sans antialiased dark:bg-stone-900">
         <Providers>
           {children}
           <FeedbackWidget />
