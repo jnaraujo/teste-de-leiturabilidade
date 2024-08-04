@@ -10,10 +10,10 @@ export default function Page() {
       <Editor />
       <div className="mx-auto h-[1px] w-full max-w-5xl bg-zinc-300 dark:bg-zinc-600" />
       <article className="container py-4">
-        <h1 className="text-2xl font-bold text-zinc-600 dark:text-zinc-200">
+        <h1 className="text-2xl font-bold text-zinc-800 dark:text-stone-200">
           Teste de Leiturabilidade - Faça seu texto ser entendido por todos
         </h1>
-        <p className="text-zinc-400">
+        <p className="text-zinc-600 dark:text-stone-400">
           Teste a leiturabilidade do seu texto e saiba se ele é de fácil de
           entender. O teste analisa a legibilidade do seu texto e te dá dicas de
           como melhorá-lo utilizando o Flesch Reading Ease.
