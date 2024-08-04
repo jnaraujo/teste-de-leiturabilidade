@@ -1,7 +1,7 @@
 import { expect, describe, it } from "vitest";
 
 import { calculateFleschReading, easeToLabel } from ".";
-import { countSyllables, getWords } from "./helper";
+import { countSyllables, getWords, splitPhrases } from "./helper";
 
 describe("calculateFleschReading", () => {
   it("empty text", () => {
@@ -121,5 +121,43 @@ describe("easeToLabel", () => {
   it("0% result", () => {
     const oneSentenceTest = easeToLabel(0);
     expect(oneSentenceTest).toEqual("um estudante universitário");
+  });
+});
+
+describe("splitPhrases", () => {
+  it("empty text", () => {
+    const emptyTextTest = splitPhrases("");
+    expect(emptyTextTest).toEqual([]);
+  });
+
+  it("text with only one phrase", () => {
+    const onePhraseTest = splitPhrases("teste");
+    expect(onePhraseTest).toEqual(["teste"]);
+  });
+
+  it("text with multiple phrases", () => {
+    const multiplePhrasesTest = splitPhrases("teste. teste");
+    expect(multiplePhrasesTest).toEqual(["teste.", "teste"]);
+  });
+
+  it("text with multiple phrases and special characters", () => {
+    const multiplePhrasesTest = splitPhrases("teste! teste.");
+    expect(multiplePhrasesTest).toEqual(["teste!", "teste."]);
+  });
+
+  it("text with multiple phrases and special characters", () => {
+    const multiplePhrasesTest = splitPhrases("teste! teste. teste?");
+    expect(multiplePhrasesTest).toEqual(["teste!", "teste.", "teste?"]);
+  });
+
+  it("text with multiple phrases and break lines", () => {
+    const multiplePhrasesTest = splitPhrases("teste! teste. \n\n\n\nteste?");
+    expect(multiplePhrasesTest).toEqual(["teste!", "teste.", "teste?"]);
+  });
+
+  it("text with multiple phrases and break lines", () => {
+    const multiplePhrasesTest = splitPhrases("teste! teste \n\n\n\nteste?");
+
+    expect(multiplePhrasesTest).toEqual(["teste!", "teste", "teste?"]);
   });
 });

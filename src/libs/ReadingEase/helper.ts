@@ -73,8 +73,7 @@ function lookbehindSplit(text: string) {
 }
 
 function bruteSplit(text: string) {
-  const regex = /([.?!])/g;
-  const tokens = text.split(regex);
+  const tokens = text.split(/([.?!]|[\r?\n])/g);
   const phrases: string[] = [];
   let phrase = "";
 
