@@ -12,7 +12,7 @@ export function WordCounter() {
   return (
     <article className="grid w-full flex-1 grid-cols-1 gap-4 md:grid-cols-[minmax(450px,1fr)_250px] lg:grid-cols-[1fr_300px] 2xl:gap-16">
       <Textarea
-        className="h-full min-h-[250px] border bg-background/20 py-4 text-zinc-600 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 dark:placeholder:text-stone-500"
+        className="h-full min-h-[250px] border bg-background/50 py-4 text-zinc-600 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 dark:placeholder:text-stone-500"
         placeholder="Copie e cole seu texto aqui para contar as palavras..."
         value={text}
         onChange={(e) => {
@@ -20,7 +20,7 @@ export function WordCounter() {
         }}
       />
 
-      <div className="h-fit space-y-1 rounded-lg border bg-background/20 p-3 shadow-sm dark:border-stone-700 dark:bg-stone-800">
+      <div className="h-fit space-y-1 rounded-lg border bg-background/50 p-3 shadow-sm dark:border-stone-700 dark:bg-stone-800">
         <h2 className="text-lg font-semibold text-zinc-800 dark:text-stone-100">
           Sobre seu texto:
         </h2>
