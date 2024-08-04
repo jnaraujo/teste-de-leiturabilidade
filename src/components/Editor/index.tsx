@@ -20,11 +20,13 @@ import useDebounce from "@/hooks/use-debounce";
 type ComponentPropsType = {
   html?: string;
   isPro?: boolean;
+  stickyToolBarOnTop?: boolean;
 };
 
 export default function TextEditor({
   html,
   isPro = false,
+  stickyToolBarOnTop = false,
 }: ComponentPropsType) {
   const { setEase } = useReadingStore();
   const { config } = useConfigStore();
@@ -129,7 +131,12 @@ export default function TextEditor({
         [styles.allowTips]: config.tips,
       })}
     >
-      <Toolbar editor={editor as any} isPro={isPro} className="mb-3" />
+      <Toolbar
+        editor={editor as any}
+        isPro={isPro}
+        stickyToolBarOnTop={stickyToolBarOnTop}
+        className="mb-3"
+      />
 
       <EditorContent
         className={cn(styles.editor, "text-zinc-700 dark:text-stone-300")}

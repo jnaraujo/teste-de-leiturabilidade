@@ -15,9 +15,15 @@ interface Props {
   editor: Editor;
   className?: string;
   isPro?: boolean;
+  stickyToolBarOnTop?: boolean;
 }
 
-export default function Toolbar({ editor, className, isPro = false }: Props) {
+export default function Toolbar({
+  editor,
+  className,
+  isPro = false,
+  stickyToolBarOnTop = false,
+}: Props) {
   const isHeadingActive = () => {
     if (isActive(editor, "heading", { level: 1 })) {
       return "titulo";
@@ -36,7 +42,7 @@ export default function Toolbar({ editor, className, isPro = false }: Props) {
         "sm:py-[6px]) z-20 flex w-full justify-start gap-2 overflow-x-auto border px-2 py-2 sm:justify-evenly",
         "rounded-xl border-zinc-300 bg-[#eeeeef] dark:border-stone-700 dark:bg-stone-800", //colors
         {
-          "sticky top-4": isPro,
+          "sticky top-4": stickyToolBarOnTop,
         },
         className,
       )}
@@ -118,7 +124,7 @@ interface ButtonProps {
 }
 function Button({ name, onClick, tooltip, isActive, children }: ButtonProps) {
   return (
-    <Tooltip key={name + tooltip} text={tooltip}>
+    <Tooltip key={name + tooltip} text={tooltip} offset={0}>
       <button
         aria-label={tooltip}
         onClick={onClick}
