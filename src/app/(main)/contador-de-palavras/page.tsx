@@ -108,6 +108,25 @@ export default function Page() {
             desejada.
           </li>
         </ul>
+
+        <h2 className="mt-6 text-lg font-semibold text-zinc-700 dark:text-stone-300">
+          Como contar o tempo de leitura do meu texto?
+        </h2>
+        <p className="text-zinc-600 dark:text-stone-400">
+          Contar quanto tempo leva para uma pessoa ler um texto é uma tarefa
+          muito complicada, pois pessoas diferentes possuem tempos de leitura
+          diferente. Por exemplo, a velocidade de leitura de uma criança não é a mesma de um adolescente, e a de um adolescente é diferente da de um adulto.
+        </p>
+        <p className="text-zinc-600 dark:text-stone-400">
+          O nosso Contador de Palavras se baseia no tempo de leitura de uma pessoa média (entre 150 a 250 palavras por minuto) para calcular em quanto tempo o seu texto pode ser lido. Para verificar o seu texto,basta colá-lo no editor e ele vai te mostrar todos os detalhes.
+        </p>
+
+        <h2 className="mt-6 text-lg font-semibold text-zinc-700 dark:text-stone-300">
+          Como contar quantas frases tem meu texto?
+        </h2>
+        <p className="text-zinc-600 dark:text-stone-400">
+          Para calcular quantas frases tem o seu texto, basta colar o texto no editor e ele vai te mostrar a quantidade de frases do seu texto. Além disso, ele vai te mostrar o tempo de leitura, a quantidade de palavras e de caracteres.
+        </p>
       </article>
     </div>
   );
@@ -116,5 +135,5 @@ export default function Page() {
 export const metadata: Metadata = {
   title: "Contador de Palavras - Teste de Leiturabilidade",
   description:
-    "Use nosso contador de palavras online para calcular rapidamente o número de palavras em seus textos. Nossa ferramenta gratuita e precisa é ideal para escritores, estudantes e profissionais que precisam verificar o comprimento de seus documentos com facilidade.",
+    "Use nosso contador de palavras online para calcular rapidamente o número de palavras, caracteres, frases e tempo de leitura em seus textos. Nossa ferramenta gratuita e precisa é ideal para escritores, estudantes e profissionais que precisam verificar o comprimento de seus documentos com facilidade.",
 };
