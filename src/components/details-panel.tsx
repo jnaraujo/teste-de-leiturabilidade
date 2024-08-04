@@ -2,7 +2,7 @@
 
 import { easeToLabel } from "@/libs/ReadingEase";
 import { useReadingStore } from "@/store/readingStore";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PanelBottomClose, PanelBottomOpen } from "lucide-react";
 import { cn } from "@/libs/utils";
 import { getReadingTimeByWords, secondsToHMS } from "@/utils";
@@ -14,6 +14,12 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Button } from "./ui/button";
+import { contentStore } from "@/store/contentStore";
+import { aiTextAnalyze, canUseAiFeature } from "@/libs/ai";
+import dynamic from "next/dynamic";
+
+const Markdown = dynamic(() => import("react-markdown"));
 
 interface Props {
   isPanelOpen?: boolean;
@@ -25,6 +31,10 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
   const { setConfig } = useConfigStore();
   const ref = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(isPanelOpen);
+  const [hasAiEnabled, setHasAiEnabled] = useState(false);
+  const [aiResponse, setAIResponse] = useState(
+    "Saiba o que você pode melhorar no seu texto.",
+  );
 
   function calculateSliderPosition(value: number) {
     if (!ref.current) return 0;
@@ -36,6 +46,12 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
   }
 
   const sliderPosition = calculateSliderPosition(ease.index);
+
+  useEffect(() => {
+    (async () => {
+      setHasAiEnabled(await canUseAiFeature());
+    })();
+  }, []);
 
   return (
     <article className="flex-1 overflow-hidden rounded-lg border border-zinc-300 bg-[#eeeeef] shadow-sm dark:border-stone-700 dark:bg-stone-800">
@@ -152,6 +168,42 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
             <span>{ease.sentences}</span>
           </span>
         </div>
+
+        {hasAiEnabled ? (
+          <div className="space-y-4 rounded-md border bg-orange-100/50 p-2">
+            <span className="font-medium text-zinc-700">
+              Você tem a funcionalidade de IA ligada no navegador! *
+            </span>
+            <Markdown className="max-h-32 overflow-y-auto hyphens-auto  text-sm text-zinc-600">
+              {aiResponse}
+            </Markdown>
+            <Button
+              onClick={async () => {
+                setAIResponse("Analisando o texto...");
+                const text = contentStore.content;
+
+                try {
+                  const res = await aiTextAnalyze(text, ease);
+
+                  for await (const chunk of res) {
+                    console.log(chunk);
+                    setAIResponse(chunk);
+                  }
+                } catch (error) {
+                  console.log(error);
+                  setAIResponse(
+                    "Houve um erro ao analisar seu texto. Tente de novo.",
+                  );
+                }
+              }}
+            >
+              Analisar meu texto con IA!
+            </Button>
+            <span className="block text-sm text-zinc-500">
+              * A funcionalidade de IA é experimental e PODE CONTER ERROS.
+            </span>
+          </div>
+        ) : null}
       </div>
     </article>
   );
