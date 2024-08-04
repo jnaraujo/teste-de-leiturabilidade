@@ -36,10 +36,10 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
   return (
     <article className="flex-1 overflow-hidden rounded-lg border border-zinc-300 bg-[#eeeeef] shadow-sm dark:border-stone-700 dark:bg-stone-800">
       <div className="flex items-start justify-between p-2">
-        <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-50">
+        <span className="mt-1 text-sm text-zinc-700 dark:text-zinc-50">
           Seu texto está no nível de leitura de{" "}
           <strong className="font-semibold">{easeToLabel(ease.index)}</strong>
-        </p>
+        </span>
 
         <Tooltip text={isOpen ? "Fechar painel" : "Abrir painel"}>
           <button
@@ -79,9 +79,9 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
         })}
       >
         <div className="space-y-1">
-          <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-100">
+          <span className="text-base font-semibold text-zinc-700 dark:text-zinc-100">
             Configurações do editor:
-          </h2>
+          </span>
 
           <div className="flex gap-2">
             <Checkbox
@@ -123,25 +123,25 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
         </div>
 
         <div className="space-y-1">
-          <h2 className="text-base font-semibold text-zinc-700 dark:text-zinc-100">
+          <span className="text-base font-semibold text-zinc-700 dark:text-zinc-100">
             Mais sobre seu texto:
-          </h2>
-          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          </span>
+          <span className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
             <strong className="font-medium">Tempo de leitura:</strong>
             <span>{secondsToHMS(getReadingTimeByWords(ease.words))}</span>
-          </div>
-          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          </span>
+          <span className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
             <strong className="font-medium">Palavras:</strong>
             <span>{ease.words}</span>
-          </div>
-          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          </span>
+          <span className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
             <strong className="font-medium">Caracteres:</strong>
             <span>{ease.chars}</span>
-          </div>
-          <div className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          </span>
+          <span className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
             <strong className="font-medium">Frases:</strong>
             <span>{ease.sentences}</span>
-          </div>
+          </span>
         </div>
       </div>
     </article>
