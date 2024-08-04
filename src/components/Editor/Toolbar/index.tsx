@@ -73,23 +73,6 @@ export default function Toolbar({
             <SelectItem value="paragrafo">Parágrafo</SelectItem>
           </SelectContent>
         </Select>
-        <Button
-          name="Citação"
-          isActive={isActive(editor, "blockquote")}
-          tooltip="Citação"
-          onClick={() => editor.chain().focus().toggleBlockquote().run()}
-        >
-          <Quote
-            size={14}
-            className={cn(
-              "fill-zinc-600 text-zinc-600 dark:fill-zinc-300 dark:text-zinc-300",
-              {
-                "bg-violet-500 fill-zinc-50 text-zinc-50 hover:bg-violet-600":
-                  isActive(editor, "blockquote"),
-              },
-            )}
-          />
-        </Button>
       </div>
 
       {getToolbarGroups(editor).map((items, index) => (
