@@ -2,8 +2,11 @@
 import React from "react";
 import { MessageSquarePlus } from "lucide-react";
 import FeedbackModal from "./FeedbackModal";
-import { Tooltip, TooltipContent, TooltipProvider } from "../ui/tooltip";
-import { TooltipTrigger } from "@radix-ui/react-tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const FeedbackWidget: React.FC = () => {
   return (

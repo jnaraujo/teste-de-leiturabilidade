@@ -1,7 +1,7 @@
 "use client";
 
 import { Toaster } from "react-hot-toast";
-import { TooltipProvider } from "./ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import dynamic from "next/dynamic";
 const ThemeProvider = dynamic(
   () => import("@/context/ThemeContext").then((mod) => mod.ThemeProvider),

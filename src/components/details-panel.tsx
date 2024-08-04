@@ -5,11 +5,15 @@ import { useReadingStore } from "@/store/readingStore";
 import { useRef, useState } from "react";
 import { PanelBottomClose, PanelBottomOpen } from "lucide-react";
 import { cn } from "@/libs/utils";
-import Tooltip from "@/components/Tooltip";
 import { getReadingTimeByWords, secondsToHMS } from "@/utils";
 import { useConfigStore } from "@/store/configStore";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useStore } from "@/hooks/useStore";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface Props {
   isPanelOpen?: boolean;
@@ -41,16 +45,21 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
           <strong className="font-semibold">{easeToLabel(ease.index)}</strong>
         </span>
 
-        <Tooltip text={isOpen ? "Fechar painel" : "Abrir painel"}>
-          <button
-            className={cn(
-              "h-8 w-8 text-zinc-700 transition-colors duration-200 dark:text-zinc-300",
-            )}
-            onClick={() => setIsOpen((prev) => !prev)}
-            aria-label={isOpen ? "Fechar painel" : "Abrir painel"}
-          >
-            {isOpen ? <PanelBottomOpen /> : <PanelBottomClose />}
-          </button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              className={cn(
+                "h-8 w-8 text-zinc-700 transition-colors duration-200 dark:text-zinc-300",
+              )}
+              onClick={() => setIsOpen((prev) => !prev)}
+              aria-label={isOpen ? "Fechar painel" : "Abrir painel"}
+            >
+              {isOpen ? <PanelBottomOpen /> : <PanelBottomClose />}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent>
+            {isOpen ? "Fechar painel" : "Abrir painel"}
+          </TooltipContent>
         </Tooltip>
       </div>
       <div

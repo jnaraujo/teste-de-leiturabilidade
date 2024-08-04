@@ -1,5 +1,4 @@
 import { type Editor } from "@tiptap/react";
-import Tooltip from "@/components/Tooltip";
 import { cn } from "@/libs/utils";
 import {
   Select,
@@ -9,7 +8,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getToolbarGroups, isActive } from "./helper";
-import { Quote } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface Props {
   editor: Editor;
@@ -107,21 +110,24 @@ interface ButtonProps {
 }
 function Button({ name, onClick, tooltip, isActive, children }: ButtonProps) {
   return (
-    <Tooltip key={name + tooltip} text={tooltip} offset={0}>
-      <button
-        aria-label={tooltip}
-        onClick={onClick}
-        className={cn(
-          "flex h-9 w-9 items-center justify-center rounded-md font-sans text-base font-bold transition-colors duration-200",
-          {
-            "text-zinc-600 hover:bg-gray-200 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-zinc-100":
-              !isActive,
-            "bg-violet-500 text-zinc-50 hover:bg-violet-600": isActive,
-          },
-        )}
-      >
-        {children}
-      </button>
+    <Tooltip key={name + tooltip}>
+      <TooltipTrigger asChild>
+        <button
+          aria-label={tooltip}
+          onClick={onClick}
+          className={cn(
+            "flex h-9 w-9 items-center justify-center rounded-md font-sans text-base font-bold transition-colors duration-200",
+            {
+              "text-zinc-600 hover:bg-gray-200 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-zinc-100":
+                !isActive,
+              "bg-violet-500 text-zinc-50 hover:bg-violet-600": isActive,
+            },
+          )}
+        >
+          {children}
+        </button>
+      </TooltipTrigger>
+      <TooltipContent sideOffset={0}>{tooltip}</TooltipContent>
     </Tooltip>
   );
 }
