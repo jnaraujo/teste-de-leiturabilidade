@@ -15,7 +15,9 @@ const Footer: React.FC = () => (
     </p>
 
     <div className="md:justify-self-end">
-      <h5 className="text-lg font-semibold text-zinc-700">Links úteis:</h5>
+      <h5 className="text-lg font-semibold text-zinc-700 dark:text-stone-300">
+        Links úteis:
+      </h5>
       <ul className="space-y-1">
         <li>
           <a
