@@ -52,8 +52,8 @@ module.exports = withBundleAnalyzer(
 
       // Suppresses source map uploading logs during build
       silent: true,
-      org: "no-org-mb",
-      project: "leiturabilidade",
+      org: "teste-de-facilidade-de-leitura",
+      project: "teste-de-facilidade-website-nextjs",
     },
     {
       // For all available options, see:
