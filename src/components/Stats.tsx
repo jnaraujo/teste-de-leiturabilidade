@@ -104,7 +104,7 @@ export default function Stats() {
           >
             <PartyPopper
               size={24}
-              className="text-zinc-600 transition-colors duration-200 hover:text-zinc-800 dark:text-zinc-300 dark:hover:text-zinc-500"
+              className="text-zinc-600 transition-colors duration-200 hover:text-zinc-800 dark:text-stone-300 dark:hover:text-stone-500"
             />
           </PopoverTrigger>
           <PopoverContent>
@@ -122,15 +122,15 @@ function StatsMessage({ timeWritingInSecs }: { timeWritingInSecs: number }) {
   return (
     <>
       {hasWritingTime ? (
-        <p className="text-sm text-zinc-500 dark:text-zinc-300">
+        <p className="text-sm text-zinc-500 dark:text-stone-300">
           🎉 Você já escreveu por mais de{" "}
-          <strong className="font-medium text-zinc-600 dark:text-zinc-200">
+          <strong className="font-medium text-zinc-600 dark:text-stone-200">
             {secondsToHMS(timeWritingInSecs || 0)}
           </strong>
           !
         </p>
       ) : (
-        <p className="text-sm text-zinc-500 dark:text-zinc-300">
+        <p className="text-sm text-zinc-500 dark:text-stone-300">
           Comece a escrever para ver as estatísticas 😁
         </p>
       )}

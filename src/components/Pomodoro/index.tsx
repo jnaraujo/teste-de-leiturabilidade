@@ -71,9 +71,9 @@ export default function Pomodoro() {
         aria-label="Resetar o temporizador"
         aria-disabled={state === "idle" ? true : false}
         className={cn(
-          "flex h-11 w-11 items-center justify-center text-base text-zinc-600 hover:text-zinc-700 dark:text-zinc-500",
+          "flex h-11 w-11 items-center justify-center text-base text-zinc-600 hover:text-zinc-700 dark:text-stone-500",
           {
-            "cursor-not-allowed text-zinc-400 hover:text-zinc-400 dark:text-zinc-600":
+            "cursor-not-allowed text-zinc-400 hover:text-zinc-400 dark:text-stone-600":
               state === "idle",
           },
         )}
@@ -87,7 +87,7 @@ export default function Pomodoro() {
         <PopoverTrigger>
           <Tooltip>
             <TooltipTrigger asChild aria-label="Temporizador">
-              <span className="text-center text-2xl tabular-nums text-zinc-600 dark:text-zinc-300">
+              <span className="text-center text-2xl tabular-nums text-zinc-600 dark:text-stone-300">
                 {secondsToMS(timeInSecs)}
               </span>
             </TooltipTrigger>
@@ -127,9 +127,9 @@ export default function Pomodoro() {
         {state !== "running" ? (
           <Play
             className={cn(
-              "fill-zinc-500 text-zinc-600 hover:fill-zinc-600 hover:text-zinc-600 dark:text-zinc-500",
+              "fill-zinc-500 text-zinc-600 hover:fill-zinc-600 hover:text-zinc-600 dark:text-stone-500",
               {
-                "text-zinc-400 hover:text-zinc-400 dark:text-zinc-600":
+                "text-zinc-400 hover:text-zinc-400 dark:text-stone-600":
                   TIME_ENDED,
               },
             )}
@@ -137,7 +137,7 @@ export default function Pomodoro() {
           />
         ) : (
           <Pause
-            className="fill-zinc-500 text-zinc-500 hover:fill-zinc-600 hover:text-zinc-600 dark:text-zinc-500"
+            className="fill-zinc-500 text-zinc-500 hover:fill-zinc-600 hover:text-zinc-600 dark:text-stone-500"
             size={18}
           />
         )}
