@@ -60,9 +60,7 @@ const FeedbackModal: React.FC<Props> = ({ children }) => {
         <DialogTrigger asChild>{children}</DialogTrigger>
         <DialogContent className="w-full max-w-96">
           <DialogHeader>
-            <DialogTitle className="text-zinc-700">
-              Deixe seu Feedback
-            </DialogTitle>
+            <DialogTitle>Deixe seu Feedback</DialogTitle>
             <DialogDescription>
               Envie sua dúvida, ideia, crítica ou sugestão.
             </DialogDescription>
