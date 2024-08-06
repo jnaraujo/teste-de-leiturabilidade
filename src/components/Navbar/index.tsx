@@ -14,7 +14,7 @@ const Navbar = () => {
       <Link
         href="/"
         passHref
-        className="text-lg font-semibold text-zinc-700 dark:text-stone-200"
+        className="text-lg font-semibold text-zinc-700 dark:text-stone-300"
       >
         Teste de Leiturabilidade
       </Link>
@@ -71,7 +71,7 @@ function MobileNav() {
     <>
       <nav
         className={cn(
-          "hidden bg-zinc-100 p-4 dark:bg-zinc-900",
+          "hidden bg-zinc-100 p-4 dark:bg-stone-900",
           "fixed bottom-0 left-0 right-0 top-0 z-50", // position
           {
             "flex items-center justify-center sm:hidden": isOpen,
@@ -79,7 +79,7 @@ function MobileNav() {
         )}
       >
         <button
-          className="absolute right-2 top-2 text-2xl text-zinc-700"
+          className="absolute right-4 top-4 text-2xl text-zinc-700 dark:text-stone-300"
           type="button"
           onClick={handleClick}
           aria-label="Abrir menu"
@@ -113,7 +113,7 @@ function MobileNav() {
         </ul>
       </nav>
       <button
-        className="text-2xl text-zinc-700 focus:outline-none sm:hidden"
+        className="text-2xl text-zinc-700 focus:outline-none dark:text-stone-400 sm:hidden"
         type="button"
         onClick={handleClick}
         aria-label="Abrir menu"
