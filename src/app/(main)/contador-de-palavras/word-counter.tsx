@@ -21,22 +21,22 @@ export function WordCounter() {
       />
 
       <div className="h-fit space-y-1 rounded-lg border bg-background/50 p-3 shadow-sm dark:border-stone-700 dark:bg-stone-800">
-        <h2 className="text-lg font-semibold text-zinc-800 dark:text-stone-100">
+        <h2 className="text-lg font-semibold text-zinc-800 dark:text-stone-300">
           Sobre seu texto:
         </h2>
-        <div className="flex gap-1 text-sm text-zinc-600 dark:text-stone-300">
+        <div className="flex gap-1 text-sm text-zinc-600 dark:text-stone-400">
           <strong className="font-medium">Tempo de leitura:</strong>
           <span>{secondsToHMS(getReadingTimeByWords(ease.words))}</span>
         </div>
-        <div className="flex gap-1 text-sm text-zinc-600 dark:text-stone-300">
+        <div className="flex gap-1 text-sm text-zinc-600 dark:text-stone-400">
           <strong className="font-medium">Palavras:</strong>
           <span>{ease.words}</span>
         </div>
-        <div className="flex gap-1 text-sm text-zinc-600 dark:text-stone-300">
+        <div className="flex gap-1 text-sm text-zinc-600 dark:text-stone-400">
           <strong className="font-medium">Caracteres:</strong>
           <span>{ease.chars}</span>
         </div>
-        <div className="flex gap-1 text-sm text-zinc-600 dark:text-stone-300">
+        <div className="flex gap-1 text-sm text-zinc-600 dark:text-stone-400">
           <strong className="font-medium">Frases:</strong>
           <span>{ease.sentences}</span>
         </div>

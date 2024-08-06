@@ -6,7 +6,7 @@ export default function Page() {
     <div className="container">
       <section className="flex h-full min-h-[70svh] w-full flex-col items-center gap-6">
         <div className="w-full space-y-2">
-          <h1 className="text-2xl font-bold text-zinc-800 dark:text-stone-200">
+          <h1 className="text-2xl font-bold text-zinc-800 dark:text-stone-300">
             Contador de Palavras
           </h1>
           <p className="max-w-screen-md text-zinc-600 dark:text-stone-400">
