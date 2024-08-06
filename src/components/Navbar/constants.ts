@@ -9,10 +9,6 @@ export const NAVBAR_LINKS: ILink[] = [
     url: "/#como-funciona",
   },
   {
-    title: "Contador de Palavras",
-    url: "/contador-de-palavras",
-  },
-  {
     title: "Blog",
     url: "/blog",
   },
