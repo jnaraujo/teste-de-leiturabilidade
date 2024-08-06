@@ -65,30 +65,15 @@ export default function Toolbar({
           defaultValue="paragrafo"
         >
           <SelectTrigger
-            className="h-9 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0 dark:border-zinc-600 dark:bg-transparent dark:text-stone-400"
+            className="h-9 w-32 border-zinc-300 bg-zinc-100 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0 dark:border-zinc-600 dark:bg-transparent dark:text-stone-400"
             aria-label="Selecionar tipo de texto"
           >
             <SelectValue placeholder="Parágrafo" />
           </SelectTrigger>
-          <SelectContent className="bg-zinc-100 dark:bg-stone-800">
-            <SelectItem
-              value="titulo"
-              className="dark:text-stone-400 dark:hover:bg-stone-900/50"
-            >
-              Título
-            </SelectItem>
-            <SelectItem
-              value="subtitulo"
-              className="dark:text-stone-400 dark:hover:bg-stone-900/50"
-            >
-              Subtítulo
-            </SelectItem>
-            <SelectItem
-              value="paragrafo"
-              className="dark:text-stone-400 dark:hover:bg-stone-900/50"
-            >
-              Parágrafo
-            </SelectItem>
+          <SelectContent>
+            <SelectItem value="titulo">Título</SelectItem>
+            <SelectItem value="subtitulo">Subtítulo</SelectItem>
+            <SelectItem value="paragrafo">Parágrafo</SelectItem>
           </SelectContent>
         </Select>
       </div>
