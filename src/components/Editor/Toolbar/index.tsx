@@ -65,7 +65,7 @@ export default function Toolbar({
           defaultValue="paragrafo"
         >
           <SelectTrigger
-            className="h-9 w-32 border-zinc-300 bg-zinc-100 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0 dark:border-zinc-600 dark:bg-transparent dark:text-stone-400"
+            className="h-9 w-32"
             aria-label="Selecionar tipo de texto"
           >
             <SelectValue placeholder="Parágrafo" />
