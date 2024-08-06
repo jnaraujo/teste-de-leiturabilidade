@@ -33,7 +33,7 @@ export const EditorExtensions = [
   }),
   Placeholder.configure({
     placeholder: "Digite aqui seu texto...",
-    emptyNodeClass: `before:content-[attr(data-placeholder)] before:float-left before:h-0 before:pointer-events-none before:text-zinc-400 before:dark:text-stone-500`,
+    emptyNodeClass: `before:content-[attr(data-placeholder)] before:float-left before:h-0 before:pointer-events-none before:text-zinc-400/80 dark:before:text-stone-600`,
   }),
   TextAlign.configure({
     types: ["heading", "paragraph"],

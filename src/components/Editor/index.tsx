@@ -139,7 +139,7 @@ export default function TextEditor({
       />
 
       <EditorContent
-        className={cn(styles.editor, "text-zinc-700 dark:text-stone-300")}
+        className={cn(styles.editor, "text-zinc-700 dark:text-stone-400")}
         editor={editor}
       />
 

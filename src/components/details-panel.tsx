@@ -56,7 +56,7 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
   return (
     <article className="flex-1 overflow-hidden rounded-lg border border-zinc-300 bg-[#eeeeef] shadow-sm dark:border-stone-700 dark:bg-stone-800">
       <div className="flex items-start justify-between p-2">
-        <span className="mt-1 text-sm text-zinc-700 dark:text-zinc-50">
+        <span className="mt-1 text-sm text-zinc-700 dark:text-stone-400">
           Seu texto está no nível de leitura de{" "}
           <strong className="font-semibold">{easeToLabel(ease.index)}</strong>
         </span>
@@ -65,7 +65,7 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
           <TooltipTrigger asChild>
             <button
               className={cn(
-                "h-8 w-8 text-zinc-700 transition-colors duration-200 dark:text-zinc-300",
+                "h-8 w-8 text-zinc-700 transition-colors duration-200 hover:text-zinc-600 dark:text-stone-400 dark:hover:text-stone-500",
               )}
               onClick={() => setIsOpen((prev) => !prev)}
               aria-label={isOpen ? "Fechar painel" : "Abrir painel"}
@@ -104,7 +104,7 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
         })}
       >
         <div className="space-y-1">
-          <span className="text-base font-semibold text-zinc-700 dark:text-zinc-100">
+          <span className="text-base font-semibold text-zinc-700 dark:text-stone-300">
             Configurações do editor:
           </span>
 
@@ -121,7 +121,7 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
 
             <label
               htmlFor="highlight"
-              className="text-sm text-zinc-700 dark:text-zinc-300"
+              className="text-sm text-zinc-700 dark:text-stone-400"
             >
               Destacar dificuldade de leitura das frases
             </label>
@@ -140,7 +140,7 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
 
             <label
               htmlFor="tips"
-              className="text-sm text-zinc-700 dark:text-zinc-300"
+              className="text-sm text-zinc-700 dark:text-stone-400"
             >
               Mostrar dicas de como melhorar o texto
             </label>
@@ -148,22 +148,22 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
         </div>
 
         <div className="space-y-1">
-          <span className="text-base font-semibold text-zinc-700 dark:text-zinc-100">
+          <span className="text-base font-semibold text-zinc-700 dark:text-stone-300">
             Mais sobre seu texto:
           </span>
-          <span className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          <span className="flex gap-1 text-sm text-zinc-700 dark:text-stone-400">
             <strong className="font-medium">Tempo de leitura:</strong>
             <span>{secondsToHMS(getReadingTimeByWords(ease.words))}</span>
           </span>
-          <span className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          <span className="flex gap-1 text-sm text-zinc-700 dark:text-stone-400">
             <strong className="font-medium">Palavras:</strong>
             <span>{ease.words}</span>
           </span>
-          <span className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          <span className="flex gap-1 text-sm text-zinc-700 dark:text-stone-400">
             <strong className="font-medium">Caracteres:</strong>
             <span>{ease.chars}</span>
           </span>
-          <span className="flex gap-1 text-sm text-zinc-700 dark:text-zinc-300">
+          <span className="flex gap-1 text-sm text-zinc-700 dark:text-stone-400">
             <strong className="font-medium">Frases:</strong>
             <span>{ease.sentences}</span>
           </span>

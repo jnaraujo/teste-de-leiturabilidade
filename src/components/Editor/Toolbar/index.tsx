@@ -65,15 +65,30 @@ export default function Toolbar({
           defaultValue="paragrafo"
         >
           <SelectTrigger
-            className="h-9 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0 dark:border-zinc-600 dark:bg-transparent dark:text-zinc-300"
+            className="h-9 w-32 border-zinc-300 bg-zinc-100 text-zinc-600 focus:border-zinc-500 focus:bg-transparent focus:ring-0 focus:ring-offset-0 dark:border-zinc-600 dark:bg-transparent dark:text-stone-400"
             aria-label="Selecionar tipo de texto"
           >
             <SelectValue placeholder="Parágrafo" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="titulo">Título</SelectItem>
-            <SelectItem value="subtitulo">Subtítulo</SelectItem>
-            <SelectItem value="paragrafo">Parágrafo</SelectItem>
+          <SelectContent className="bg-zinc-100 dark:bg-stone-800">
+            <SelectItem
+              value="titulo"
+              className="dark:text-stone-400 dark:hover:bg-stone-900/50"
+            >
+              Título
+            </SelectItem>
+            <SelectItem
+              value="subtitulo"
+              className="dark:text-stone-400 dark:hover:bg-stone-900/50"
+            >
+              Subtítulo
+            </SelectItem>
+            <SelectItem
+              value="paragrafo"
+              className="dark:text-stone-400 dark:hover:bg-stone-900/50"
+            >
+              Parágrafo
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -116,11 +131,10 @@ function Button({ name, onClick, tooltip, isActive, children }: ButtonProps) {
           aria-label={tooltip}
           onClick={onClick}
           className={cn(
-            "flex h-9 w-9 items-center justify-center rounded-md font-sans text-base font-bold transition-colors duration-200",
+            "flex h-9 w-9 items-center justify-center rounded-md font-sans font-bold text-zinc-600 transition-colors duration-200 hover:bg-gray-200 dark:text-stone-400 dark:hover:bg-stone-700 dark:hover:text-zinc-100",
             {
-              "text-zinc-600 hover:bg-gray-200 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-zinc-100":
-                !isActive,
-              "bg-violet-500 text-zinc-50 hover:bg-violet-600": isActive,
+              "bg-violet-500 text-zinc-50 hover:bg-violet-600 dark:text-stone-100 dark:hover:bg-violet-700":
+                isActive,
             },
           )}
         >
