@@ -30,7 +30,7 @@ const AdBanner = ({
         "bg-zinc-200": !process.env.NEXT_PUBLIC_ADSENSE,
       })}
       style={{ display: "block" }}
-      data-ad-client={`ca-pub-${process.env.NEXT_PUBLIC_ADSENSE}`}
+      data-ad-client={process.env.NEXT_PUBLIC_ADSENSE}
       data-ad-slot={dataAdSlot}
       data-ad-format={dataAdFormat}
       data-full-width-responsive={dataFullWidthResponsive.toString()}
