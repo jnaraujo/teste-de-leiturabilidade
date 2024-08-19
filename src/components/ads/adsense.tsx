@@ -4,7 +4,7 @@ export function AdSense() {
   return (
     <Script
       async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.pID}`}
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.NEXT_PUBLIC_pID}`}
       crossOrigin="anonymous"
       strategy="afterInteractive"
     />

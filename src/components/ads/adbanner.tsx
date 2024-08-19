@@ -27,10 +27,10 @@ const AdBanner = ({
   return (
     <ins
       className={cn("adsbygoogle", {
-        "bg-zinc-200": !process.env.pID,
+        "bg-zinc-200": !process.env.NEXT_PUBLIC_pID,
       })}
       style={{ display: "block" }}
-      data-ad-client={`ca-pub-${process.env.pID}`}
+      data-ad-client={`ca-pub-${process.env.NEXT_PUBLIC_pID}`}
       data-ad-slot={dataAdSlot}
       data-ad-format={dataAdFormat}
       data-full-width-responsive={dataFullWidthResponsive.toString()}
