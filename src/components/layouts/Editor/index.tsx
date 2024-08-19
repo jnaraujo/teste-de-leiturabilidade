@@ -2,6 +2,7 @@
 import dynamic from "next/dynamic";
 import Loading from "@/components/Editor/Loading";
 import DetailsPanel from "@/components/details-panel";
+import AdBanner from "@/components/ads/adbanner";
 const TextEditor = dynamic(() => import("@/components/Editor"), {
   ssr: false,
   loading: () => <Loading />,
@@ -16,8 +17,14 @@ const Editor: React.FC = () => {
         </div>
       </div>
 
-      <aside className="sticky top-4 mb-6 h-fit w-full">
+      <aside className="sticky top-4 mb-6 h-fit w-full space-y-4">
         <DetailsPanel />
+
+        <AdBanner
+          dataAdFormat="auto"
+          dataAdSlot="6506396388"
+          dataFullWidthResponsive={true}
+        />
       </aside>
     </section>
   );

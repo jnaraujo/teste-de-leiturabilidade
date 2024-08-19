@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BannerCTA } from "@/components/BannerCTA";
 import type { Metadata } from "next";
 import { fetchPosts } from "@/services/BlogService";
+import AdBanner from "@/components/ads/adbanner";
 
 export const metadata: Metadata = {
   title: "Blog - Teste de Leiturabilidade",
@@ -15,7 +16,7 @@ export default async function Page() {
   return (
     <section className="mx-auto max-w-3xl space-y-6 px-3">
       <article className="mx-auto space-y-4">
-        <h1 className="text-2xl font-semibold text-zinc-700 sm:text-3xl dark:text-zinc-300">
+        <h1 className="text-2xl font-semibold text-zinc-700 dark:text-zinc-300 sm:text-3xl">
           Blog
         </h1>
         <div className="space-y-5">
@@ -29,6 +30,12 @@ export default async function Page() {
               </p>
             </div>
           ))}
+
+          <AdBanner
+            dataAdFormat="fluid"
+            dataAdSlot="8187143712"
+            dataFullWidthResponsive={true}
+          />
         </div>
       </article>
       <BannerCTA />

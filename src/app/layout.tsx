@@ -1,3 +1,4 @@
+import { AdSense } from "@/components/ads/adsense";
 import "../styles/globals.scss";
 import FeedbackWidget from "@/components/FeedbackWidget";
 import Providers from "@/components/Providers";
@@ -41,6 +42,7 @@ export default function RootLayout({
             content={process.env.NEXT_PUBLIC_ADSENSE}
           />
         )}
+        <AdSense />
       </head>
       <body className="bg-muted font-sans antialiased dark:bg-stone-900">
         <Providers>

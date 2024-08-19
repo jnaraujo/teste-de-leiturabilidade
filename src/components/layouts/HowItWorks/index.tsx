@@ -1,3 +1,5 @@
+import AdBanner from "@/components/ads/adbanner";
+
 const HowItWorks: React.FC = () => (
   <section className="container flex flex-col gap-2 py-4">
     <h2 className="text-xl font-bold text-zinc-700 dark:text-stone-200">
@@ -40,6 +42,12 @@ const HowItWorks: React.FC = () => (
       ativar a opção <i>Mostrar dicas de como melhorar o texto</i> e verá dicas
       no próprio texto de como melhorar.
     </p>
+
+    <AdBanner
+      dataAdFormat="auto"
+      dataAdSlot="9308653695"
+      dataFullWidthResponsive={true}
+    />
 
     <h3 className="mt-6 text-lg font-semibold text-zinc-700 dark:text-stone-300">
       O que é Legibilidade?
@@ -125,6 +133,12 @@ const HowItWorks: React.FC = () => (
       Além disso, dicas de como melhorar as partes mais difíceis do texto também
       podem ser habilitadas pelo painel lateral.
     </p>
+
+    <AdBanner
+      dataAdFormat="auto"
+      dataAdSlot="9308653695"
+      dataFullWidthResponsive={true}
+    />
 
     <h3 className="mt-6 text-lg font-semibold text-zinc-700 dark:text-stone-300">
       Como interpretar o resultado do Teste de Leiturabilidade?
