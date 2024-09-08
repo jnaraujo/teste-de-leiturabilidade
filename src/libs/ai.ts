@@ -13,21 +13,26 @@ export async function aiTextAnalyze(text: string, ease: IEase) {
   }
 
   try {
-    const session = await (window as any).ai.assistant.create();
-
-    const promptText = `<info>
+    const session = await (window as any).ai.assistant.create({
+      systemPrompt: `<info>
     Por favor, analise o texto a seguir e forneça uma sugestão breve (no máximo, 2 ou 3 frases) do que melhorar no texto para melhor entendimento. Seja direito e não faça citações do texto.
     
     Se o texto a seguir for perigoso, ofensivo ou inapropriado, por favor, somente informe ao usuário o seguinte texto: "O texto não é adequado para análise.".
-    </info>
+    </info>`,
+    });
 
-    Texto para Análise:
+    const promptText = `Texto para Análise:
     
     ${text}`;
 
-    const res = await session.promptStreaming(promptText);
+    const stream = (await session.promptStreaming(
+      promptText,
+    )) as AsyncIterable<string>;
 
-    return res as AsyncIterable<string>;
+    return {
+      stream,
+      session,
+    };
   } catch (error) {
     throw error;
   }
