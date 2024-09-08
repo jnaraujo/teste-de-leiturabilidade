@@ -197,7 +197,7 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
                 }
               }}
             >
-              Analisar meu texto con IA!
+              Analisar meu texto com IA!
             </Button>
             <span className="block text-xs text-zinc-500">
               * A funcionalidade de IA é experimental e pode contar erros.
