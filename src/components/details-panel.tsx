@@ -171,10 +171,10 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
 
         {hasAiEnabled ? (
           <div className="space-y-4 rounded-md border bg-orange-100/50 p-2">
-            <span className="font-medium text-zinc-700">
+            <span className="text-sm font-medium text-zinc-700">
               Você tem a funcionalidade de IA ligada no navegador! *
             </span>
-            <Markdown className="max-h-32 overflow-y-auto hyphens-auto  text-sm text-zinc-600">
+            <Markdown className="max-h-32 overflow-y-auto hyphens-auto text-xs text-zinc-600">
               {aiResponse}
             </Markdown>
             <Button
@@ -199,7 +199,7 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
             >
               Analisar meu texto con IA!
             </Button>
-            <span className="block text-sm text-zinc-500">
+            <span className="block text-xs text-zinc-500">
               * A funcionalidade de IA é experimental e pode contar erros.
               Sempre verifique o resultado gerado.
             </span>
