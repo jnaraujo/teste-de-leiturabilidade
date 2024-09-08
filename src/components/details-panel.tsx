@@ -186,7 +186,6 @@ export default function DetailsPanel({ isPanelOpen = true }: Props) {
                   const res = await aiTextAnalyze(text, ease);
 
                   for await (const chunk of res) {
-                    console.log(chunk);
                     setAIResponse(chunk);
                   }
                 } catch (error) {
