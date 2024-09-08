@@ -2,7 +2,9 @@ import { IEase } from "@/store/readingStore";
 
 export async function canUseAiFeature() {
   if (!("ai" in window)) return false;
-  return (await (window as any).ai.canCreateTextSession()) === "readily";
+  return (
+    (await (window as any).ai?.assistant.capabilities()).available === "readily"
+  );
 }
 
 export async function aiTextAnalyze(text: string, ease: IEase) {
@@ -11,7 +13,7 @@ export async function aiTextAnalyze(text: string, ease: IEase) {
   }
 
   try {
-    const model = await (window as any).ai.createTextSession();
+    const session = await (window as any).ai.assistant.create();
 
     const promptText = `<info>
     Por favor, analise o texto a seguir e forneça uma sugestão breve (no máximo, 2 ou 3 frases) do que melhorar no texto para melhor entendimento. Seja direito e não faça citações do texto.
@@ -23,7 +25,7 @@ export async function aiTextAnalyze(text: string, ease: IEase) {
     
     ${text}`;
 
-    const res = await model.promptStreaming(promptText);
+    const res = await session.promptStreaming(promptText);
 
     return res as AsyncIterable<string>;
   } catch (error) {
