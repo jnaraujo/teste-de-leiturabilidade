@@ -1,5 +1,4 @@
 "use client";
-import AdBanner from "@/components/ads/adbanner";
 import { Textarea } from "@/components/ui/textarea";
 import { calculateFleschReadingFromText } from "@/libs/ReadingEase";
 import { getReadingTimeByWords, secondsToHMS } from "@/utils";
@@ -43,12 +42,6 @@ export function WordCounter() {
             <span>{ease.sentences}</span>
           </div>
         </div>
-
-        <AdBanner
-          dataAdFormat="auto"
-          dataAdSlot="5869507100"
-          dataFullWidthResponsive={true}
-        />
       </div>
     </article>
   );

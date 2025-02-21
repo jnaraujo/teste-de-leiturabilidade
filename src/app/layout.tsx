@@ -1,4 +1,3 @@
-import { AdSense } from "@/components/ads/adsense";
 import "../styles/globals.scss";
 import FeedbackWidget from "@/components/FeedbackWidget";
 import Providers from "@/components/Providers";
@@ -36,13 +35,6 @@ export default function RootLayout({
           data-domain="leiturabilidade.site"
           src="https://analytics.jnaraujo.com/js/script.js"
         />
-        {process.env.NEXT_PUBLIC_ADSENSE && (
-          <meta
-            name="google-adsense-account"
-            content={process.env.NEXT_PUBLIC_ADSENSE}
-          />
-        )}
-        <AdSense />
       </head>
       <body className="bg-muted font-sans antialiased dark:bg-stone-900">
         <Providers>
