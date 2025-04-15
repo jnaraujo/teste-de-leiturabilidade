@@ -1,23 +1,23 @@
 [[redirects]]
-from="https://leitura.jnaraujo.com/*"
-to="https://leiturabilidade.site/:splat"
+from="https://leiturabilidade.site/*"
+to="https://leitura.jnaraujo.com/:splat"
 status=301
 force=true
 
 [[redirects]]
-from="https://www.leitura.jnaraujo.com/*"
-to="https://leiturabilidade.site/:splat"
+from="https://www.leiturabilidade.site/*"
+to="https://leitura.jnaraujo.com/:splat"
 status=301
 force=true
 
 [[redirects]]
 from="https://leiturabilidade.jnaraujo.com/*"
-to="https://leiturabilidade.site/:splat"
+to="https://leitura.jnaraujo.com/:splat"
 status=301
 force=true
 
 [[redirects]]
 from="https://www.leiturabilidade.jnaraujo.com/*"
-to="https://leiturabilidade.site/:splat"
+to="https://leitura.jnaraujo.com/:splat"
 status=301
 force=true
