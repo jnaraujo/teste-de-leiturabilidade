@@ -32,7 +32,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#317EFB" />
         <Script
           defer
-          data-domain="leiturabilidade.site"
+          data-domain="leitura.jnaraujo.com"
           src="https://analytics.jnaraujo.com/js/script.js"
         />
       </head>
